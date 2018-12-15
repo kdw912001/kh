@@ -15,13 +15,13 @@ public class SungjukProcess {
 		try(DataOutputStream dout = new DataOutputStream(
 				new FileOutputStream("score.dat"));) {
 			do{
-				System.out.print("±¹¾î Á¡¼ö ÀÔ·Â : ");
+				System.out.print("êµ­ì–´ ì ìˆ˜ ì…ë ¥ : ");
 				int kor = sc.nextInt();
 				dout.writeInt(kor);
-				System.out.print("¿µ¾î Á¡¼ö ÀÔ·Â : ");
+				System.out.print("ì˜ì–´ ì ìˆ˜ ì…ë ¥ : ");
 				int eng = sc.nextInt();
 				dout.writeInt(eng);
-				System.out.print("¼öÇĞ Á¡¼ö ÀÔ·Â : ");
+				System.out.print("ìˆ˜í•™ ì ìˆ˜ ì…ë ¥ : ");
 				int ma = sc.nextInt();
 				dout.writeInt(ma);
 				
@@ -29,18 +29,18 @@ public class SungjukProcess {
 				dout.writeInt(sum);
 				double avg = (kor+eng+ma)/3;
 				dout.writeDouble(avg);
-				System.out.print("°è¼Ó ÀúÀåÇÏ½Ã°Ú½À´Ï±î?(y/n) : ");
+				System.out.print("ê³„ì† ì €ì¥í•˜ì‹œê² ìŠµë‹ˆê¹Œ?(y/n) : ");
 			}while(sc.next().toUpperCase().charAt(0) == 'Y');
-			System.out.println("score.dat¿¡ ÀúÀå ¿Ï·á.");
+			System.out.println("score.datì— ì €ì¥ ì™„ë£Œ.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public void scoreRead() {
-		/*FileInputStream¿¡ readDouble() the next eight bytes of this input stream, interpreted as a double.
+		/*FileInputStreamì— readDouble() the next eight bytes of this input stream, interpreted as a double.
 		 * EOFException - if this input stream reaches the end before reading eight bytes.
-		 * ¸¶Áö¸·À¸·Î ÀÔ·Â¹ŞÀº double°ª¿¡ EOFException(°ªÀÌ ¾øÀ»¶§)ÀÌ ¹ß»ıÇÏ¸é ¹İº¹¹® Á¾·á
+		 * ë§ˆì§€ë§‰ìœ¼ë¡œ ì…ë ¥ë°›ì€ doubleê°’ì— EOFException(ê°’ì´ ì—†ì„ë•Œ)ì´ ë°œìƒí•˜ë©´ ë°˜ë³µë¬¸ ì¢…ë£Œ
 		 */
 		int count = 0;
 		int totalSum=0;
@@ -57,15 +57,15 @@ public class SungjukProcess {
 						
 				//System.out.println(kor+" "+eng+" "+ma+" "+sum+" "+avg);
 				System.out.printf("%5d%5d%5d%5d%7.2f\n", kor,eng,ma,sum,avg);
-				//printf ¼Ò¼öÁ¡ °è»ê½Ã ÀÚµ¿À¸·Î ¹İ¿Ã¸² µÊ.
+				//printf ì†Œìˆ˜ì  ê³„ì‚°ì‹œ ìë™ìœ¼ë¡œ ë°˜ì˜¬ë¦¼ ë¨.
 				totalSum +=sum;
 				totalAvg +=avg;
 				count++;
 			}while(true);
-			//System.out.println("ÀüÃ¼ÃÑÁ¡ : "+totalSum+"ÀüÃ¼ Æò±Õ : "+totalAvg+"ÀĞÀº È½¼ö : "+count);
+			//System.out.println("ì „ì²´ì´ì  : "+totalSum+"ì „ì²´ í‰ê·  : "+totalAvg+"ì½ì€ íšŸìˆ˜ : "+count);
 			
-		}catch(EOFException e) {//¸¶Áö¸·À¸·Î ÀúÀåÇÑ °ª readDouble()ÀÌ ¾øÀ» ¶§ ½ÇÇàµÇ´Â ¿¹¿Ü 
-			System.out.printf("È½¼ö : %2d ÇÕÆò±Õ : %2d Æò±ÕÀÇ ÇÕ : %2.2f\n", count,totalSum/count,totalAvg/count);
+		}catch(EOFException e) {//ë§ˆì§€ë§‰ìœ¼ë¡œ ì €ì¥í•œ ê°’ readDouble()ì´ ì—†ì„ ë•Œ ì‹¤í–‰ë˜ëŠ” ì˜ˆì™¸ 
+			System.out.printf("íšŸìˆ˜ : %2d í•©í‰ê·  : %2d í‰ê· ì˜ í•© : %2.2f\n", count,totalSum/count,totalAvg/count);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
