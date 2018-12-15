@@ -1,27 +1,20 @@
-package silsub3;
+package io.silsub3;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-
-
-public class Book implements java.io.Serializable{
-	
-	private static final long serialVersionUID = 6681877589150129960L;
+public class Book implements Serializable{
+	private static final long serialVersionUID = 2126172264279034891L;
 	private String title;
 	private String author;
 	private int price;
-
 	private Calendar dates;
-	
 	private double discountRate;
 	
 	public Book() {}
 
-	
-	
-
-	public Book(String title, String author, int price, Calendar dates, double discountRate, SimpleDateFormat sdf) {
+	public Book(String title, String author, int price, Calendar dates, double discountRate) {
 		super();
 		this.title = title;
 		this.author = author;
@@ -29,9 +22,6 @@ public class Book implements java.io.Serializable{
 		this.dates = dates;
 		this.discountRate = discountRate;
 	}
-
-
-
 
 	public String getTitle() {
 		return title;
@@ -78,13 +68,9 @@ public class Book implements java.io.Serializable{
 	}
 	
 	public String toString() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy'ÎÖÑ'MM'Ïõî'dd'Ïùº'Ï∂úÍ∞Ñ");
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy'≥‚' MM'ø˘' dd'¿œ' √‚∞£");
-		
-		//String str = sdf.format(dates);
-		return title+", "+author+", "+price+", "+sdf.format(dates.getTime())+", "+discountRate;
-		//return title+", "+author+", "+price+", "+discountRate;
+		return title+" "+author+" "+price+" "+sdf.format(dates.getTime())+" "+discountRate;
 	}
-	
 	
 }

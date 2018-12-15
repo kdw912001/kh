@@ -1,4 +1,4 @@
-package silsub2;
+package io.silsub2;
 
 import java.util.*;
 import java.io.*;
