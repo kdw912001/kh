@@ -1,10 +1,10 @@
-package io.silsub3;
+ï»¿package io.silsub3;
 
 import java.util.*;
 import java.io.*;
 
 public class BookManager {
-	Scanner sc = new Scanner(System.in);	//ÃÊ±âÈ­ °´Ã¼ »ı¼ºÇÔ
+	Scanner sc = new Scanner(System.in);	//ì´ˆê¸°í™” ê°ì²´ ìƒì„±í•¨
 
 	public BookManager(){}
 
@@ -19,18 +19,18 @@ public class BookManager {
 		try(ObjectOutputStream objOut = 
 				new ObjectOutputStream(
 				new FileOutputStream("books.dat"))){
-			//´ë»ó ÆÄÀÏÀÌ ¾øÀ¸¸é ÀÚµ¿À¸·Î ÆÄÀÏÀ» ¸¸µê
-			//´ë»ó ÆÄÀÏÀÌ ÀÖÀ¸¸é, ÆÄÀÏ ¾ÈÀÇ ³»¿ëÀ» Áö¿ì°í
-			//»õ·Î¾²±â »óÅÂ·Î ÆÄÀÏÀ» ¿¬´Ù.
-			//ÆÄÀÏÃâ·Â½ºÆ®¸² »ı¼º½Ã¿¡ 
-			//Ãß°¡¾²±â(append) ¸ğµå¸¦ true ·Î ÇÏ¸é
-			//´ë»óÆÄÀÏÀÌ ÀÖÀ» ¶§ ±âÁ¸ ³»¿ëÀº ±×´ë·Î µÎ°í
-			//³»¿ë µÚ¿¡ Ãß°¡¾²±â°¡ µÊ
+			//ëŒ€ìƒ íŒŒì¼ì´ ì—†ìœ¼ë©´ ìë™ìœ¼ë¡œ íŒŒì¼ì„ ë§Œë“¦
+			//ëŒ€ìƒ íŒŒì¼ì´ ìˆìœ¼ë©´, íŒŒì¼ ì•ˆì˜ ë‚´ìš©ì„ ì§€ìš°ê³ 
+			//ìƒˆë¡œì“°ê¸° ìƒíƒœë¡œ íŒŒì¼ì„ ì—°ë‹¤.
+			//íŒŒì¼ì¶œë ¥ìŠ¤íŠ¸ë¦¼ ìƒì„±ì‹œì— 
+			//ì¶”ê°€ì“°ê¸°(append) ëª¨ë“œë¥¼ true ë¡œ í•˜ë©´
+			//ëŒ€ìƒíŒŒì¼ì´ ìˆì„ ë•Œ ê¸°ì¡´ ë‚´ìš©ì€ ê·¸ëŒ€ë¡œ ë‘ê³ 
+			//ë‚´ìš© ë’¤ì— ì¶”ê°€ì“°ê¸°ê°€ ë¨
 			
 			for(Book b : books)
 				objOut.writeObject(b);
 			
-			System.out.println("books.dat ¿¡ ÀúÀå ¿Ï·á!");
+			System.out.println("books.dat ì— ì €ì¥ ì™„ë£Œ!");
 		}catch(IOException e){
 			e.printStackTrace();
 		}
@@ -49,7 +49,7 @@ public class BookManager {
 			}
 						
 		}catch(EOFException e){
-			System.out.println("books.dat ÀĞ±â ¿Ï·á!");
+			System.out.println("books.dat ì½ê¸° ì™„ë£Œ!");
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();
 		}catch(IOException e){

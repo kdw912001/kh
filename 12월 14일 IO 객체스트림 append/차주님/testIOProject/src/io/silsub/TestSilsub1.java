@@ -1,4 +1,4 @@
-package io.silsub;
+ï»¿package io.silsub;
 
 import java.io.*;
 import java.util.*;
@@ -9,29 +9,29 @@ public class TestSilsub1 {
 	public TestSilsub1() {}
 	
 	public void fileSave() {		
-		System.out.print("ÀúÀåÇÒ ÆÄÀÏ¸í : ");
+		System.out.print("ì €ì¥í•  íŒŒì¼ëª… : ");
 		String fileName = sc.next();
 		
 		try(BufferedWriter bw 
 			= new BufferedWriter(
 				new FileWriter(fileName));) {
 					
-			System.out.println("ÆÄÀÏ¿¡ ÀúÀåÇÒ ³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
+			System.out.println("íŒŒì¼ì— ì €ì¥í•  ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”.");
 			String line = null;
-			sc.nextLine();  //¹öÆÛ ¿£ÅÍÅ° Á¦°Å
+			sc.nextLine();  //ë²„í¼ ì—”í„°í‚¤ ì œê±°
 			while(!(line = sc.nextLine()).equals("exit")) {
 				bw.write(line + "\n");
 			}
 			bw.flush();
 			
-			System.out.println("ÆÄÀÏ¿¡ ¼º°øÀûÀ¸·Î ÀúÀåµÇ¾ú½À´Ï´Ù.");
+			System.out.println("íŒŒì¼ì— ì„±ê³µì ìœ¼ë¡œ ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public void fileRead() {
-		System.out.print("ÀĞÀ» ÆÄÀÏ¸í : ");
+		System.out.print("ì½ì„ íŒŒì¼ëª… : ");
 		String fileName = sc.next();
 		
 		try(BufferedReader br 
@@ -43,7 +43,7 @@ public class TestSilsub1 {
 				sb.append(line + "\n");
 			}
 			
-			System.out.println("ÆÄÀÏÀÇ ³»¿ëÀº ´ÙÀ½°ú °°½À´Ï´Ù.");
+			System.out.println("íŒŒì¼ì˜ ë‚´ìš©ì€ ë‹¤ìŒê³¼ ê°™ìŠµë‹ˆë‹¤.");
 			System.out.println(sb.toString());
 			
 		}catch(Exception e) {
@@ -52,7 +52,7 @@ public class TestSilsub1 {
 	}
 	
 	public static void main(String[] args) {
-		// ÀÔÃâ·Â ½Ç½À¹®Á¦ 1
+		// ì…ì¶œë ¥ ì‹¤ìŠµë¬¸ì œ 1
 		TestSilsub1 test1 = new TestSilsub1();
 		//test1.fileSave();
 		test1.fileRead();

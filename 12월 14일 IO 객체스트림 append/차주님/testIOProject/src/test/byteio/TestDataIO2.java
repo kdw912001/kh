@@ -1,4 +1,4 @@
-package test.byteio;
+ï»¿package test.byteio;
 
 import java.io.*;
 
@@ -11,9 +11,9 @@ public class TestDataIO2 {
 			fout = new FileOutputStream("member.dat");
 			dout = new DataOutputStream(fout);
 			
-			String name = "È«±æµ¿";
+			String name = "í™ê¸¸ë™";
 			int age = 27;
-			char gender = '³²';
+			char gender = 'ë‚¨';
 			double height = 178.5;			
 			
 			dout.writeUTF(name);
@@ -22,7 +22,7 @@ public class TestDataIO2 {
 			dout.writeDouble(height);
 			dout.flush();
 			
-			System.out.println("ÆÄÀÏ¿¡ ±â·Ï ¿Ï·á.");
+			System.out.println("íŒŒì¼ì— ê¸°ë¡ ì™„ë£Œ.");
 		}catch(FileNotFoundException e) {
 			e.printStackTrace();
 		}catch(IOException e) {
@@ -73,7 +73,7 @@ public class TestDataIO2 {
 	}
 
 	public static void main(String[] args) {
-		// data ÀÔÃâ·Â º¸Á¶½ºÆ®¸² Å×½ºÆ®
+		// data ì…ì¶œë ¥ ë³´ì¡°ìŠ¤íŠ¸ë¦¼ í…ŒìŠ¤íŠ¸
 		TestDataIO2 test2 = new TestDataIO2();
 		//test2.fileSave();
 		test2.fileRead();

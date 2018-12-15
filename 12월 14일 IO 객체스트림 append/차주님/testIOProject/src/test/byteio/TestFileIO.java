@@ -1,4 +1,4 @@
-package test.byteio;
+ï»¿package test.byteio;
 
 import java.util.*;
 import java.io.*;
@@ -6,26 +6,26 @@ import java.io.*;
 public class TestFileIO {
 	private Scanner sc = new Scanner(System.in);
 	
-	//¹ÙÀÌÆ®±â¹İ ÆÄÀÏÃâ·Â½ºÆ®¸² Å¬·¡½º »ç¿ë
-	//ÆÄÀÏÀ» ÇÏ³ª ¸¸µé¾î¼­
-	//ÆÄÀÏ¿¡ Å°º¸µå ÀÔ·Â°ªÀ» ±â·ÏÀúÀå Ã³¸®
+	//ë°”ì´íŠ¸ê¸°ë°˜ íŒŒì¼ì¶œë ¥ìŠ¤íŠ¸ë¦¼ í´ë˜ìŠ¤ ì‚¬ìš©
+	//íŒŒì¼ì„ í•˜ë‚˜ ë§Œë“¤ì–´ì„œ
+	//íŒŒì¼ì— í‚¤ë³´ë“œ ì…ë ¥ê°’ì„ ê¸°ë¡ì €ì¥ ì²˜ë¦¬
 	public void fileSave() {
 		FileOutputStream fout = null;
 		
-		System.out.print("ÀúÀåÇÒ ÆÄÀÏ¸í : ");
+		System.out.print("ì €ì¥í•  íŒŒì¼ëª… : ");
 		String fileName = sc.next();
 		
 		try {
 			fout = new FileOutputStream(fileName);
-			//ÆÄÀÏ°ú ÇöÀç ÇÁ·Î¼¼½º°¡ ¿¬°áµÈ Ãâ·Â½ºÆ®¸² »ı¼ºµÊ
-			//ÆÄÀÏ Ãâ·Â½ºÆ®¸² »ı¼º½Ã¿¡
-			//´ë»ó ÆÄÀÏÀÌ ¾øÀ¸¸é, ÀÚµ¿À¸·Î
-			//ÆÄÀÏÀÌ ¸¸µé¾îÁü
-			//´ë»ó ÆÄÀÏÀÌ Á¸ÀçÇÏ¸é, ÆÄÀÏ ¾ÈÀÇ
-			//³»¿ëÀ» Áö¿ì¸é¼­ »õ·Î¾²±â »óÅÂ·Î
-			//ÆÄÀÏÀÌ ¿ÀÇÂµÊ			
+			//íŒŒì¼ê³¼ í˜„ì¬ í”„ë¡œì„¸ìŠ¤ê°€ ì—°ê²°ëœ ì¶œë ¥ìŠ¤íŠ¸ë¦¼ ìƒì„±ë¨
+			//íŒŒì¼ ì¶œë ¥ìŠ¤íŠ¸ë¦¼ ìƒì„±ì‹œì—
+			//ëŒ€ìƒ íŒŒì¼ì´ ì—†ìœ¼ë©´, ìë™ìœ¼ë¡œ
+			//íŒŒì¼ì´ ë§Œë“¤ì–´ì§
+			//ëŒ€ìƒ íŒŒì¼ì´ ì¡´ì¬í•˜ë©´, íŒŒì¼ ì•ˆì˜
+			//ë‚´ìš©ì„ ì§€ìš°ë©´ì„œ ìƒˆë¡œì“°ê¸° ìƒíƒœë¡œ
+			//íŒŒì¼ì´ ì˜¤í”ˆë¨			
 			
-			//ÆÄÀÏ¿¡ µ¥ÀÌÅÍ ±â·Ï Ã³¸®
+			//íŒŒì¼ì— ë°ì´í„° ê¸°ë¡ ì²˜ë¦¬
 			fout.write(65);
 			byte[] bar = {74, 65, 86, 65};
 			fout.write(bar);
@@ -34,47 +34,47 @@ public class TestFileIO {
 			fout.write(bstr, 4, 7);
 			
 			//fout.close();
-			//½ºÆ®¸² ¹İ³³
-			//¿¹¿Ü°¡ ¹ß»ıÇÏµç ¾ÈÇÏµç
-			//¹«Á¶°Ç ¹İ³³ÇØ¾ß ÇÔ
+			//ìŠ¤íŠ¸ë¦¼ ë°˜ë‚©
+			//ì˜ˆì™¸ê°€ ë°œìƒí•˜ë“  ì•ˆí•˜ë“ 
+			//ë¬´ì¡°ê±´ ë°˜ë‚©í•´ì•¼ í•¨
 		} catch (FileNotFoundException e) {
-			System.out.println("ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+			System.out.println("íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 		}catch(IOException e) {
 			e.printStackTrace();
 		}finally {
-			//¿¹¿Ü°¡ ¹ß»ıÇØµµ ½ÇÇàÇÏ°í ³¡³²
-			//¿¹¿Ü°¡ ¹ß»ı ¾ÈÇØµµ ½ÇÇàÇÏ°í ³¡³²
+			//ì˜ˆì™¸ê°€ ë°œìƒí•´ë„ ì‹¤í–‰í•˜ê³  ëë‚¨
+			//ì˜ˆì™¸ê°€ ë°œìƒ ì•ˆí•´ë„ ì‹¤í–‰í•˜ê³  ëë‚¨
 			try {
 				fout.close();
-				System.out.println(fileName + "¿¡ ÀúÀå ¿Ï·á.");
+				System.out.println(fileName + "ì— ì €ì¥ ì™„ë£Œ.");
 			} catch (IOException e) {				
 				e.printStackTrace();
 			}
 		}
 	}
 	
-	//¹ÙÀÌÆ®±â¹İ ÆÄÀÏÀÔ·Â½ºÆ®¸² Å¬·¡½º »ç¿ë
-	//ÆÄÀÏÀÇ µ¥ÀÌÅÍ¸¦ ÀĞ¾î¼­
-	//ÄÜ¼Ö¿¡ Ãâ·Â Ã³¸®
+	//ë°”ì´íŠ¸ê¸°ë°˜ íŒŒì¼ì…ë ¥ìŠ¤íŠ¸ë¦¼ í´ë˜ìŠ¤ ì‚¬ìš©
+	//íŒŒì¼ì˜ ë°ì´í„°ë¥¼ ì½ì–´ì„œ
+	//ì½˜ì†”ì— ì¶œë ¥ ì²˜ë¦¬
 	public void fileRead() {
 		FileInputStream fin = null;
 		
-		System.out.print("ÀĞÀ» ÆÄÀÏ¸í(*.dat) : ");
+		System.out.print("ì½ì„ íŒŒì¼ëª…(*.dat) : ");
 		String fileName = sc.next();
 		
 		try {
 			fin = new FileInputStream(fileName);
-			//´ë»ó ÆÄÀÏÀÌ ¾øÀ¸¸é ¿¡·¯ ³²
+			//ëŒ€ìƒ íŒŒì¼ì´ ì—†ìœ¼ë©´ ì—ëŸ¬ ë‚¨
 			
 			int data;
 			while((data = fin.read()) != -1) {
 				System.out.print((char)data);
 			}
 			
-			System.out.println("\nÀĞ±â¿Ï·á!");
+			System.out.println("\nì½ê¸°ì™„ë£Œ!");
 			
 		} catch (FileNotFoundException e) {
-			System.out.println(fileName + " ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+			System.out.println(fileName + " íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 		}catch(IOException e) {
 			e.printStackTrace();
 		}finally {
@@ -87,7 +87,7 @@ public class TestFileIO {
 	}
 
 	public static void main(String[] args) {
-		// ¹ÙÀÌÆ®½ºÆ®¸² ÆÄÀÏÀÔÃâ·Â Å×½ºÆ®
+		// ë°”ì´íŠ¸ìŠ¤íŠ¸ë¦¼ íŒŒì¼ì…ì¶œë ¥ í…ŒìŠ¤íŠ¸
 		TestFileIO test = new TestFileIO();
 		//test.fileSave();
 		test.fileRead();

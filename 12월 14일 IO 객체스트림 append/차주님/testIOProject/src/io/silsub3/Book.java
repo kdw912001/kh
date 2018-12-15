@@ -1,4 +1,4 @@
-package io.silsub3;
+ï»¿package io.silsub3;
 
 import java.util.*;
 import java.io.*;
@@ -8,11 +8,11 @@ public class Book implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	//Field
-	private String title;		//µµ¼­¸í
-	private String author;		//ÀúÀÚ
-	private int price;			//°¡°İ
-	private Calendar dates;		//ÃâÆÇ³¯Â¥
-	private double discountRate;	//ÇÒÀÎÀ²
+	private String title;		//ë„ì„œëª…
+	private String author;		//ì €ì
+	private int price;			//ê°€ê²©
+	private Calendar dates;		//ì¶œíŒë‚ ì§œ
+	private double discountRate;	//í• ì¸ìœ¨
 
 	//Constructor
 	public Book(){}
@@ -69,9 +69,9 @@ public class Book implements Serializable{
 
 	@Override
 	public String toString(){
-		//³¯Â¥¿¡ Æ÷¸Ë Àû¿ëÇÔ ("yyyy'³â' MM'¿ù' dd'ÀÏ Ãâ°£')
+		//ë‚ ì§œì— í¬ë§· ì ìš©í•¨ ("yyyy'ë…„' MM'ì›”' dd'ì¼ ì¶œê°„')
 		SimpleDateFormat fmt = 
-				new SimpleDateFormat("yyyy'³â' MM'¿ù' dd'ÀÏ Ãâ°£'");
+				new SimpleDateFormat("yyyy'ë…„' MM'ì›”' dd'ì¼ ì¶œê°„'");
 		return this.title + ", " + this.author + ", " + this.price + ", " + 
 						fmt.format(this.dates.getTime()) + ", " 
 						+ this.discountRate;

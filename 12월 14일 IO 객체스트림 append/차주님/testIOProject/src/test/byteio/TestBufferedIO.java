@@ -1,4 +1,4 @@
-package test.byteio;
+ï»¿package test.byteio;
 
 import java.util.*;
 import java.io.*;
@@ -12,26 +12,26 @@ public class TestBufferedIO {
 		BufferedOutputStream bout = null;
 		FileOutputStream fout = null;
 		
-		System.out.print("ÀúÀåÇÒ ÆÄÀÏ¸í : ");
+		System.out.print("ì €ì¥í•  íŒŒì¼ëª… : ");
 		String fileName = sc.next();
 		
 		try {
 			fout = new FileOutputStream(fileName);
 			bout = new BufferedOutputStream(fout);
 			
-			System.out.println("ÆÄÀÏ¿¡ ±â·ÏÇÒ ³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
+			System.out.println("íŒŒì¼ì— ê¸°ë¡í•  ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”.");
 			String str = null;
-			sc.nextLine();  //¹öÆÛ ¿£ÅÍÅ° Á¦°Å
+			sc.nextLine();  //ë²„í¼ ì—”í„°í‚¤ ì œê±°
 			while(!(str = sc.nextLine()).equals("exit")) {
 				bout.write(str.getBytes());
 			}
 			bout.flush();
 			
-			System.out.println("ÆÄÀÏ ÀúÀå Á¾·á.");
+			System.out.println("íŒŒì¼ ì €ì¥ ì¢…ë£Œ.");
 		} catch (FileNotFoundException e) {
-			System.out.println("ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+			System.out.println("íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 		}catch (IOException e) {
-			System.out.println("ÆÄÀÏ ±â·Ï ¿À·ù ¹ß»ı");
+			System.out.println("íŒŒì¼ ê¸°ë¡ ì˜¤ë¥˜ ë°œìƒ");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -45,29 +45,29 @@ public class TestBufferedIO {
 	}
 	
 	public void fileSave2() {		
-		System.out.print("ÀúÀåÇÒ ÆÄÀÏ¸í : ");
+		System.out.print("ì €ì¥í•  íŒŒì¼ëª… : ");
 		String fileName = sc.next();
 		
 		try(BufferedOutputStream bout 
 			= new BufferedOutputStream(
 				new FileOutputStream(fileName));) {
 					
-			System.out.println("ÆÄÀÏ¿¡ ±â·ÏÇÒ ³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
+			System.out.println("íŒŒì¼ì— ê¸°ë¡í•  ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”.");
 			String str = null;
-			sc.nextLine();  //¹öÆÛ ¿£ÅÍÅ° Á¦°Å
+			sc.nextLine();  //ë²„í¼ ì—”í„°í‚¤ ì œê±°
 			while(!(str = sc.nextLine()).equals("exit")) {
 				bout.write(str.getBytes());
 			}
 			bout.flush();
 			
-			System.out.println("ÆÄÀÏ ÀúÀå Á¾·á.");
+			System.out.println("íŒŒì¼ ì €ì¥ ì¢…ë£Œ.");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public void fileRead() {
-		System.out.print("ÀĞÀ» ÆÄÀÏ¸í : ");
+		System.out.print("ì½ì„ íŒŒì¼ëª… : ");
 		String fileName = sc.next();
 		
 		try(BufferedInputStream bin 
@@ -77,14 +77,14 @@ public class TestBufferedIO {
 			while((readData = bin.read()) != -1) {
 				System.out.print((char)readData);
 			}
-			System.out.println("\nÆÄÀÏÀĞ±â ¿Ï·á.");
+			System.out.println("\níŒŒì¼ì½ê¸° ì™„ë£Œ.");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public static void main(String[] args) {
-		// Buffer ¸¦ ÀÌ¿ëÇÑ º¸Á¶½ºÆ®¸² »ç¿ë Å×½ºÆ®
+		// Buffer ë¥¼ ì´ìš©í•œ ë³´ì¡°ìŠ¤íŠ¸ë¦¼ ì‚¬ìš© í…ŒìŠ¤íŠ¸
 		TestBufferedIO test = new TestBufferedIO();
 		//test.fileSave();
 		//test.fileSave2();

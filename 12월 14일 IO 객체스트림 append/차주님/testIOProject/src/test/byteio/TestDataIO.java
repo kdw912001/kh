@@ -1,13 +1,13 @@
-package test.byteio;
+ï»¿package test.byteio;
 
 import java.io.*;
 
 public class TestDataIO {
 	
 	public void fileSave() {
-		//DataOutputStream Å¬·¡½º´Â
-		//°ªÀ» Á¾·ùº°·Î ±â·ÏÇÒ ¼ö ÀÖ´Â
-		//¸Ş¼Òµå¸¦ Á¦°øÇÏ´Â º¸Á¶½ºÆ®¸² Å¬·¡½ºÀÓ.
+		//DataOutputStream í´ë˜ìŠ¤ëŠ”
+		//ê°’ì„ ì¢…ë¥˜ë³„ë¡œ ê¸°ë¡í•  ìˆ˜ ìˆëŠ”
+		//ë©”ì†Œë“œë¥¼ ì œê³µí•˜ëŠ” ë³´ì¡°ìŠ¤íŠ¸ë¦¼ í´ë˜ìŠ¤ì„.
 		/*try(FileOutputStream fout = 
 				new FileOutputStream("member.dat");
 			DataOutputStream dout = 
@@ -16,9 +16,9 @@ public class TestDataIO {
 				new DataOutputStream(
 					new FileOutputStream("member.dat"));){
 			
-			String name = "È«±æµ¿";
+			String name = "í™ê¸¸ë™";
 			int age = 27;
-			char gender = '³²';
+			char gender = 'ë‚¨';
 			double height = 178.5;			
 			
 			dout.writeUTF(name);
@@ -27,7 +27,7 @@ public class TestDataIO {
 			dout.writeDouble(height);
 			dout.flush();
 			
-			System.out.println("ÆÄÀÏ¿¡ ±â·Ï ¿Ï·á.");
+			System.out.println("íŒŒì¼ì— ê¸°ë¡ ì™„ë£Œ.");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -57,7 +57,7 @@ public class TestDataIO {
 	}
 
 	public static void main(String[] args) {
-		// data ÀÔÃâ·Â º¸Á¶½ºÆ®¸² Å×½ºÆ®
+		// data ì…ì¶œë ¥ ë³´ì¡°ìŠ¤íŠ¸ë¦¼ í…ŒìŠ¤íŠ¸
 		TestDataIO test = new TestDataIO();
 		//test.fileSave();
 		test.fileRead();

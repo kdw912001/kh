@@ -1,4 +1,4 @@
-package io.silsub2;
+ï»¿package io.silsub2;
 
 import java.io.*;
 import java.util.*;
@@ -14,11 +14,11 @@ public class SungjukProcess {
 				new DataOutputStream(
 					new FileOutputStream("score.dat"));){
 			do{
-				System.out.print("±¹¾î : ");
+				System.out.print("êµ­ì–´ : ");
 				int kor = sc.nextInt();
-				System.out.print("¿µ¾î : ");
+				System.out.print("ì˜ì–´ : ");
 				int eng = sc.nextInt();
-				System.out.print("¼öÇĞ : ");
+				System.out.print("ìˆ˜í•™ : ");
 				int mat = sc.nextInt();
 				
 				int tot = kor + eng + mat;
@@ -30,14 +30,14 @@ public class SungjukProcess {
 				dout.writeInt(tot);
 				dout.writeDouble(avg);
 				
-				System.out.print("°è¼Ó ÀúÀåÇÏ½Ã°Ú½À´Ï±î? (y/n) : ");
+				System.out.print("ê³„ì† ì €ì¥í•˜ì‹œê² ìŠµë‹ˆê¹Œ? (y/n) : ");
 				
 			}while(sc.next().toUpperCase().charAt(0) != 'N');
 			
-			System.out.println("score.dat ¿¡ ÀúÀå ¿Ï·á...");
+			System.out.println("score.dat ì— ì €ì¥ ì™„ë£Œ...");
 			
 		}catch(IOException e){
-			System.out.println("score.dat ÆÄÀÏ¿¡ ÀúÀå ½ÇÆĞ...");
+			System.out.println("score.dat íŒŒì¼ì— ì €ì¥ ì‹¤íŒ¨...");
 			e.printStackTrace();
 		}		
 		
@@ -68,17 +68,17 @@ public class SungjukProcess {
 		}catch(EOFException e){
 			System.out.printf("%5d%15d%7.2f\n", 
 					count, totalSum/count, totalAvg/count);
-			System.out.println("score.dat ÆÄÀÏ ÀĞ±â ¿Ï·á...");
+			System.out.println("score.dat íŒŒì¼ ì½ê¸° ì™„ë£Œ...");
 			
 		}catch(IOException e){
-			System.out.println("score.dat ÆÄÀÏ ÀĞ±â ½ÇÆĞ...");
+			System.out.println("score.dat íŒŒì¼ ì½ê¸° ì‹¤íŒ¨...");
 			e.printStackTrace();
 		}
 		
 	}
 	
 	public static void main(String[] args) {
-		// ÀÔÃâ·Â ½Ç½À¹®Á¦ 2
+		// ì…ì¶œë ¥ ì‹¤ìŠµë¬¸ì œ 2
 		SungjukProcess test2 = new SungjukProcess();
 		test2.sungjukSave();
 		test2.scoreRead();

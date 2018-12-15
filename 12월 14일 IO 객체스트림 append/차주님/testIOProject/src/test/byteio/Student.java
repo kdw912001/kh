@@ -1,9 +1,9 @@
-package test.byteio;
+ï»¿package test.byteio;
 
-//°´Ã¼ÀÔÃâ·Â¿¡ »ç¿ëµÇ·Á¸é, ¹İµå½Ã Á÷·ÄÈ­Ã³¸® ÇØ¾ß ÇÔ
-//java.io.Serializable ÀÎÅÍÆäÀÌ½º¸¦ »ó¼Ó¹ŞÀ¸¸é µÊ
-//Ãß»ó¸Ş¼Òµå¸¦ °¡Áö°í ÀÖÁö ¾Ê´Â ÀÎÅÍÆäÀÌ½ºÀÓ.
-//¸¶Å©¾÷(markup) ÀÎÅÍÆäÀÌ½ºÀÓ
+//ê°ì²´ì…ì¶œë ¥ì— ì‚¬ìš©ë˜ë ¤ë©´, ë°˜ë“œì‹œ ì§ë ¬í™”ì²˜ë¦¬ í•´ì•¼ í•¨
+//java.io.Serializable ì¸í„°í˜ì´ìŠ¤ë¥¼ ìƒì†ë°›ìœ¼ë©´ ë¨
+//ì¶”ìƒë©”ì†Œë“œë¥¼ ê°€ì§€ê³  ìˆì§€ ì•ŠëŠ” ì¸í„°í˜ì´ìŠ¤ì„.
+//ë§ˆí¬ì—…(markup) ì¸í„°í˜ì´ìŠ¤ì„
 public class Student 
 	implements java.io.Serializable {
 	private static final long serialVersionUID = 333L;

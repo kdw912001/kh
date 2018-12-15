@@ -1,4 +1,4 @@
-package test.chario;
+ï»¿package test.chario;
 
 import java.util.*;
 import java.io.*;
@@ -8,17 +8,17 @@ public class TestCFileIO1 {
 	
 	public TestCFileIO1() {}
 	
-	//¹®ÀÚ½ºÆ®¸²À¸·Î ÆÄÀÏ¿¡ ÀúÀå Ã³¸®
+	//ë¬¸ììŠ¤íŠ¸ë¦¼ìœ¼ë¡œ íŒŒì¼ì— ì €ì¥ ì²˜ë¦¬
 	public void fileSave() {
 		FileWriter fw = null;
 		
-		System.out.print("ÀúÀåÇÒ ÆÄÀÏ¸í : ");
+		System.out.print("ì €ì¥í•  íŒŒì¼ëª… : ");
 		String fileName = sc.next();
 		
 		try {
 			fw = new FileWriter(fileName/*, true*/);
-			//´ë»ó ÆÄÀÏÀÌ ¾øÀ¸¸é ÆÄÀÏÀ» »õ·Î ¸¸µê
-			//´ë»ó ÆÄÀÏÀÌ ÀÖÀ¸¸é, »õ·Î¾²±â »óÅÂ·Î ¿­¸²
+			//ëŒ€ìƒ íŒŒì¼ì´ ì—†ìœ¼ë©´ íŒŒì¼ì„ ìƒˆë¡œ ë§Œë“¦
+			//ëŒ€ìƒ íŒŒì¼ì´ ìˆìœ¼ë©´, ìƒˆë¡œì“°ê¸° ìƒíƒœë¡œ ì—´ë¦¼
 			
 			fw.write('A');
 			fw.write("java program" + "\n");
@@ -26,7 +26,7 @@ public class TestCFileIO1 {
 			fw.write(charr);
 			fw.flush();
 			
-			System.out.println("ÆÄÀÏ ±â·Ï ÀúÀå ¿Ï·á.");
+			System.out.println("íŒŒì¼ ê¸°ë¡ ì €ì¥ ì™„ë£Œ.");
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -39,25 +39,25 @@ public class TestCFileIO1 {
 		}
 	}
 	
-	//¹®ÀÚ½ºÆ®¸²À¸·Î ÆÄÀÏ·Î ºÎÅÍ ÀĞ¾î¿Í¼­
-	//ÄÜ¼Ö¿¡ Ãâ·Â
+	//ë¬¸ììŠ¤íŠ¸ë¦¼ìœ¼ë¡œ íŒŒì¼ë¡œ ë¶€í„° ì½ì–´ì™€ì„œ
+	//ì½˜ì†”ì— ì¶œë ¥
 	public void fileRead() {
 		//FileReader fr = null;
 		
-		System.out.print("ÀĞÀ» ÆÄÀÏ¸í : ");
+		System.out.print("ì½ì„ íŒŒì¼ëª… : ");
 		String fileName = sc.next();
 		
 		try(FileReader fr = 
 				new FileReader(fileName);) {
 			//fr = new FileReader(fileName);
-			//ÆÄÀÏÀÌ ¾øÀ¸¸é ¿¡·¯ÀÓ
+			//íŒŒì¼ì´ ì—†ìœ¼ë©´ ì—ëŸ¬ì„
 			
 			int readData;
 			while((readData = fr.read()) != -1) {
 				System.out.print((char)readData);
 			}
 			
-			System.out.println("\nÆÄÀÏÀĞ±â ¿Ï·á.");
+			System.out.println("\níŒŒì¼ì½ê¸° ì™„ë£Œ.");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -71,7 +71,7 @@ public class TestCFileIO1 {
 	}
 	
 	public static void main(String[] args) {
-		// ¹®ÀÚ±â¹İ ÆÄÀÏÀÔÃâ·Â Å×½ºÆ®
+		// ë¬¸ìê¸°ë°˜ íŒŒì¼ì…ì¶œë ¥ í…ŒìŠ¤íŠ¸
 		TestCFileIO1 test = new TestCFileIO1();
 		test.fileSave();
 		test.fileRead();

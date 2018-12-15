@@ -1,9 +1,9 @@
-package io.silsub3;
+ï»¿package io.silsub3;
 
 public class TestBookManager {
 
 	public static void main(String[] args) {
-		// ÀÔÃâ·Â ½Ç½À¹®Á¦ 3
+		// ì…ì¶œë ¥ ì‹¤ìŠµë¬¸ì œ 3
 		BookManager bm = new BookManager();
 		bm.fileSave();
 		bm.fileRead();
