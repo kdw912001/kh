@@ -1,16 +1,16 @@
 package test.byteio;
 
-	//°´Ã¼ÀÔÃâ·Â¿¡ »ç¿ëµÇ·Á¸é, ¹Ýµå½Ã Á÷·ÄÈ­Ã³¸® ÇØ¾ßÇÔ.
-	//java.io.Serializable ÀÎÅÍÆäÀÌ½º¸¦ »ó¼Ó¹ÞÀ¸¸é µÊ.
-	//Serializable ÀÎÅÍÆäÀÌ½º´Â Ãß»ó¸Þ¼Òµå¸¦ °¡Áö°í ÀÖ´Â ¾Ê´Â ÀÎÅÍÆäÀÌ½ºÀÓ.
-	//->¿À¹ö¶óÀÌµùÀ» ÇÏÁö ¾Ê¾Æµµ µÊ.
-	//¸¶Å©¾÷(markup) ÀÎÅÍÆäÀÌ½ºÀÓ.
+	//ê°ì²´ìž…ì¶œë ¥ì— ì‚¬ìš©ë˜ë ¤ë©´, ë°˜ë“œì‹œ ì§ë ¬í™”ì²˜ë¦¬ í•´ì•¼í•¨.
+	//java.io.Serializable ì¸í„°íŽ˜ì´ìŠ¤ë¥¼ ìƒì†ë°›ìœ¼ë©´ ë¨.
+	//Serializable ì¸í„°íŽ˜ì´ìŠ¤ëŠ” ì¶”ìƒë©”ì†Œë“œë¥¼ ê°€ì§€ê³  ìžˆëŠ” ì•ŠëŠ” ì¸í„°íŽ˜ì´ìŠ¤ìž„.
+	//->ì˜¤ë²„ë¼ì´ë”©ì„ í•˜ì§€ ì•Šì•„ë„ ë¨.
+	//ë§ˆí¬ì—…(markup) ì¸í„°íŽ˜ì´ìŠ¤ìž„.
 public class Student implements java.io.Serializable{
 	private static final long serialVersionUID = 3687787741274169068L;
-	//Student¿¡ ³ª¿À´Â ¿À·ù ÇØ°á->¸¶¿ì½º ¿Ã·Á¼­ 2¹øÂ° ÇØ°á¹ý
-	//UID´Â Å¬·¡½º¸¦ ±¸ºÐÇÏ´Â ID, ÀÌ ¼ýÀÚ´Â ´Ù¸¥ Å¬·¡½º¿Í °ãÄ¡¸é ¾È µÊ.
-	//Á÷·ÄÈ­ ÀÌÈÄ ¿ªÁ÷·ÄÈ­¸¦ ÇÏ´Âµ¥ ¿ªÁ÷·ÄÈ­¸¦ ÇÏ±â À§ÇØ ÇÊ¿äÇÑ ID°ª
-	//ÀÚ¹Ù´Â ±¦ÂúÁö¸¸ ÇÁ·¹ÀÓ¿öÅ©´Â ÀÌ·¯ÇÑ ³ë¶õ»ö ¿¡·¯µµ ¹«½ÃÇÏ°í ³Ñ¾î°¡¸é ¾È µÊ.
+	//Studentì— ë‚˜ì˜¤ëŠ” ì˜¤ë¥˜ í•´ê²°->ë§ˆìš°ìŠ¤ ì˜¬ë ¤ì„œ 2ë²ˆì§¸ í•´ê²°ë²•
+	//UIDëŠ” í´ëž˜ìŠ¤ë¥¼ êµ¬ë¶„í•˜ëŠ” ID, ì´ ìˆ«ìžëŠ” ë‹¤ë¥¸ í´ëž˜ìŠ¤ì™€ ê²¹ì¹˜ë©´ ì•ˆ ë¨.
+	//ì§ë ¬í™” ì´í›„ ì—­ì§ë ¬í™”ë¥¼ í•˜ëŠ”ë° ì—­ì§ë ¬í™”ë¥¼ í•˜ê¸° ìœ„í•´ í•„ìš”í•œ IDê°’
+	//ìžë°”ëŠ” ê´œì°®ì§€ë§Œ í”„ë ˆìž„ì›Œí¬ëŠ” ì´ëŸ¬í•œ ë…¸ëž€ìƒ‰ ì—ëŸ¬ë„ ë¬´ì‹œí•˜ê³  ë„˜ì–´ê°€ë©´ ì•ˆ ë¨.
 	
 	private int no;
 	private String name;

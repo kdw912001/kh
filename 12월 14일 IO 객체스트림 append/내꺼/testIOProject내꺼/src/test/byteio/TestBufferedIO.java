@@ -12,32 +12,32 @@ public class TestBufferedIO {
 		BufferedOutputStream bout = null;
 		FileOutputStream fout = null; 
 		
-		System.out.print("ÀúÀåÇÒ ÆÄÀÏ¸í : ");
+		System.out.print("ì €ì¥í•  íŒŒì¼ëª… : ");
 		String fileName = sc.next();
 		
 		try {
 			fout = new FileOutputStream(fileName);
 			bout = new BufferedOutputStream(fout);
-			//º¸Á¶½ºÆ®¸²Àº ¹İµå½Ã ±âº» ½ºÆ®¸²ÀÌ ÀÖ¾î¾ß »ı¼º °¡´É
+			//ë³´ì¡°ìŠ¤íŠ¸ë¦¼ì€ ë°˜ë“œì‹œ ê¸°ë³¸ ìŠ¤íŠ¸ë¦¼ì´ ìˆì–´ì•¼ ìƒì„± ê°€ëŠ¥
 			
-			System.out.print("ÆÄÀÏ¿¡ ±â·ÏÇÒ ³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä. ");
+			System.out.print("íŒŒì¼ì— ê¸°ë¡í•  ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”. ");
 			String str = null;
-			sc.nextLine(); //¹öÆÛ ¿£ÅÍÅ° Á¦°Å
+			sc.nextLine(); //ë²„í¼ ì—”í„°í‚¤ ì œê±°
 			while(!(str = sc.nextLine()).equals("exit")) {
 				bout.write(str.getBytes());
 			}
-			bout.flush(); //È¤½Ã³ª ³²¾ÆÀÖÀ» µ¥ÀÌÅÍ Âî²¨±â Á¦°Å
-			System.out.println("ÆÄÀÏ ÀúÀå Á¾·á");
+			bout.flush(); //í˜¹ì‹œë‚˜ ë‚¨ì•„ìˆì„ ë°ì´í„° ì°Œêº¼ê¸° ì œê±°
+			System.out.println("íŒŒì¼ ì €ì¥ ì¢…ë£Œ");
 		} catch (FileNotFoundException e) {
-			System.out.println("ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+			System.out.println("íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 		} catch (IOException e) {
-			System.out.println("ÆÄÀÏ ±â·Ï ¿À·ù ¹ß»ı");
+			System.out.println("íŒŒì¼ ê¸°ë¡ ì˜¤ë¥˜ ë°œìƒ");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			try {
-				bout.close();//À§¿¡¼­ FileOutputStream ¸¸µé°í BufferedOutputStream 
-				fout.close();//¸¸µé¾ú±â ¶§¹®¿¡ ¹öÆÛ Á¾·á ÈÄ ÆÄÀÏ½ºÆ®¸² Á¾·á
+				bout.close();//ìœ„ì—ì„œ FileOutputStream ë§Œë“¤ê³  BufferedOutputStream 
+				fout.close();//ë§Œë“¤ì—ˆê¸° ë•Œë¬¸ì— ë²„í¼ ì¢…ë£Œ í›„ íŒŒì¼ìŠ¤íŠ¸ë¦¼ ì¢…ë£Œ
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -45,49 +45,49 @@ public class TestBufferedIO {
 	}
 	
 	public void fileSave2() {
-		System.out.print("ÀúÀåÇÒ ÆÄÀÏ¸í : ");
+		System.out.print("ì €ì¥í•  íŒŒì¼ëª… : ");
 		String fileName = sc.next();
 		
 		try(BufferedOutputStream bout = new BufferedOutputStream(
 				new FileOutputStream(fileName));){
-			//close()Ã³¸®, BufferedOutputStream ÇÑ ¹®Àå¿¡ ÀÛ¼º °¡´É
+			//close()ì²˜ë¦¬, BufferedOutputStream í•œ ë¬¸ì¥ì— ì‘ì„± ê°€ëŠ¥
 						
-			System.out.print("ÆÄÀÏ¿¡ ±â·ÏÇÒ ³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä. ");
+			System.out.print("íŒŒì¼ì— ê¸°ë¡í•  ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”. ");
 			String str = null;
-			sc.nextLine(); //¹öÆÛ ¿£ÅÍÅ° Á¦°Å
+			sc.nextLine(); //ë²„í¼ ì—”í„°í‚¤ ì œê±°
 			while(!(str = sc.nextLine()).equals("exit")) {
 				bout.write(str.getBytes());
 			}
-			bout.flush(); //È¤½Ã³ª ³²¾ÆÀÖÀ» µ¥ÀÌÅÍ Âî²¨±â Á¦°Å
+			bout.flush(); //í˜¹ì‹œë‚˜ ë‚¨ì•„ìˆì„ ë°ì´í„° ì°Œêº¼ê¸° ì œê±°
 			
-			System.out.println("ÆÄÀÏ ÀúÀå Á¾·á");
+			System.out.println("íŒŒì¼ ì €ì¥ ì¢…ë£Œ");
 		} catch (FileNotFoundException e) {
-			System.out.println("ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+			System.out.println("íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 		} catch (IOException e) {
-			System.out.println("ÆÄÀÏ ±â·Ï ¿À·ù ¹ß»ı");
+			System.out.println("íŒŒì¼ ê¸°ë¡ ì˜¤ë¥˜ ë°œìƒ");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public void fileRead() {
-		System.out.print("ÀĞÀ» ÆÄÀÏ¸í : ");
+		System.out.print("ì½ì„ íŒŒì¼ëª… : ");
 		String fileName = sc.next();
 		
 		try(BufferedInputStream bin = new BufferedInputStream(
-				new FileInputStream(fileName));){//±âº»½ºÆ®¸²ºÎÅÍ ¹öÆÛ½ºÆ®¸²±îÁö ¿¬°á
+				new FileInputStream(fileName));){//ê¸°ë³¸ìŠ¤íŠ¸ë¦¼ë¶€í„° ë²„í¼ìŠ¤íŠ¸ë¦¼ê¹Œì§€ ì—°ê²°
 			int readData;
 			while((readData = bin.read()) != -1) {
 				System.out.print((char)readData);
 			}
-			System.out.println("\nÆÄÀÏ ÀĞ±â ¿Ï·á.");
+			System.out.println("\níŒŒì¼ ì½ê¸° ì™„ë£Œ.");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public static void main(String[] args) {
-		// Buffer ¸¦ ÀÌ¿ëÇÑ º¸Á¶½ºÆ®¸² »ç¿ë Å×½ºÆ®
+		// Buffer ë¥¼ ì´ìš©í•œ ë³´ì¡°ìŠ¤íŠ¸ë¦¼ ì‚¬ìš© í…ŒìŠ¤íŠ¸
 		TestBufferedIO test = new TestBufferedIO();
 		//test.fileSave();
 		//test.fileSave2();

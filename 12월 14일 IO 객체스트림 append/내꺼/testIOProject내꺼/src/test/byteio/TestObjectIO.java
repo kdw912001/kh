@@ -4,11 +4,11 @@ import java.io.*;
 
 public class TestObjectIO {
 	public void fileSave() {
-		//ÆÄÀÏ ±â·Ï¿¡ »ç¿ëÇÒ °´Ã¼¹è¿­ ÁØºñ
+		//íŒŒì¼ ê¸°ë¡ì— ì‚¬ìš©í•  ê°ì²´ë°°ì—´ ì¤€ë¹„
 		Student[] sar = {
-				new Student(12, "È«±æµ¿",4.43,"°æ¿µÇĞ°ú"),
-				new Student(25, "ÀÌ¼ø½Å",4.5,"Ã¼À°ÇĞ°ú"),
-				new Student(37, "Àå¿µ½Ç", 3.87,"Á¤º¸Åë½ÅÇĞ°ú")
+				new Student(12, "í™ê¸¸ë™",4.43,"ê²½ì˜í•™ê³¼"),
+				new Student(25, "ì´ìˆœì‹ ",4.5,"ì²´ìœ¡í•™ê³¼"),
+				new Student(37, "ì¥ì˜ì‹¤", 3.87,"ì •ë³´í†µì‹ í•™ê³¼")
 		};
 		
 		try(ObjectOutputStream objOut = new ObjectOutputStream(
@@ -16,7 +16,7 @@ public class TestObjectIO {
 			for(int i=0; i<sar.length;i++) {
 				objOut.writeObject(sar[i]);
 			}
-			System.out.println("ÆÄÀÏ ±â·Ï ¿Ï·á.");
+			System.out.println("íŒŒì¼ ê¸°ë¡ ì™„ë£Œ.");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -24,32 +24,32 @@ public class TestObjectIO {
 	
 	public void fileRead() {
 		int count = 0;
-		//¹è¿­°ø°£Àº ¸ğÀÚ¸£¸é ¾ÈµÇ±â ¶§¹®¿¡ ³Ë³ËÈ÷ ¼±¾ğ
+		//ë°°ì—´ê³µê°„ì€ ëª¨ìë¥´ë©´ ì•ˆë˜ê¸° ë•Œë¬¸ì— ë„‰ë„‰íˆ ì„ ì–¸
 		Student[] sar = new Student[10];
 		try(ObjectInputStream objIn = new ObjectInputStream(
 				new FileInputStream("student.dat"))){
 			while(true) {
 				/*Student std = (Student)objIn.readObject();
-				//Object°¡ »óÀ§ Å¬·¡½ºÀÌ±â ¶§¹®¿¡ ´Ù¿îÄ³½ºÆÃ*/
-				//À§¿Í°°ÀÌ ÇÒ ÇÊ¿ä ¾øÀÌ ¾Æ·¡Ã³·³ ÇÑ ¹®ÀåÀ¸·Î ¼±¾ğ
+				//Objectê°€ ìƒìœ„ í´ë˜ìŠ¤ì´ê¸° ë•Œë¬¸ì— ë‹¤ìš´ìºìŠ¤íŒ…*/
+				//ìœ„ì™€ê°™ì´ í•  í•„ìš” ì—†ì´ ì•„ë˜ì²˜ëŸ¼ í•œ ë¬¸ì¥ìœ¼ë¡œ ì„ ì–¸
 				sar[count] = (Student)objIn.readObject();
 				count++;
 			}
 			
 		}catch(EOFException e) {
-			System.out.println("ÆÄÀÏ ÀĞ±â ¿Ï·á");
+			System.out.println("íŒŒì¼ ì½ê¸° ì™„ë£Œ");
 			for(int i=0; i<count;i++) {
-				System.out.println(sar[i]); //toString¿À¹ö¶óÀÌµù
+				System.out.println(sar[i]); //toStringì˜¤ë²„ë¼ì´ë”©
 			}
 		}catch(Exception e) {
-			//System.out.println("ÆÄÀÏ ÀĞ±â ¿Ï·á.");
-			//->EOFException¹ß»ı °í·Î catch¹® ÀÛ¼º
+			//System.out.println("íŒŒì¼ ì½ê¸° ì™„ë£Œ.");
+			//->EOFExceptionë°œìƒ ê³ ë¡œ catchë¬¸ ì‘ì„±
 			e.printStackTrace();
 		}
 	}
 	
 	public static void main(String[] args) {
-		// °´Ã¼ÀÔÃâ·Â Å×½ºÆ®
+		// ê°ì²´ì…ì¶œë ¥ í…ŒìŠ¤íŠ¸
 		TestObjectIO test = new TestObjectIO();
 		test.fileSave();
 		test.fileRead();

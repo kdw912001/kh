@@ -5,28 +5,28 @@ import java.io.*;
 public class TestDataIO2 {
 
 	public void fileSave() {
-		//try ¿·¿¡ ¼±¾ğ°ú »ı¼ºÇØ¼­ close »ı·«ÇÏÁö ¸»°í Á÷Á¢ ´Ù ÃÄº¸±â
-		//exception Á¾·ùµµ ´Ù ½áº¸±â
+		//try ì˜†ì— ì„ ì–¸ê³¼ ìƒì„±í•´ì„œ close ìƒëµí•˜ì§€ ë§ê³  ì§ì ‘ ë‹¤ ì³ë³´ê¸°
+		//exception ì¢…ë¥˜ë„ ë‹¤ ì¨ë³´ê¸°
 		FileOutputStream fout = null;
 		DataOutputStream dout = null;
 		
 		try {
 			fout=new FileOutputStream("member.dat");
 			dout=new DataOutputStream(fout);
-			//dout.writeUTF("È«±æµ¿"); //Data ½ºÆ®¸²Àº ±â·ÏÇÑ ¼ø¼­´ë·Î °ªÀ» ÀĞ¾î¾ß ÇÔ.
-			String name = "È«±æµ¿";
+			//dout.writeUTF("í™ê¸¸ë™"); //Data ìŠ¤íŠ¸ë¦¼ì€ ê¸°ë¡í•œ ìˆœì„œëŒ€ë¡œ ê°’ì„ ì½ì–´ì•¼ í•¨.
+			String name = "í™ê¸¸ë™";
 			int age = 27;
-			char gender = '³²';
+			char gender = 'ë‚¨';
 			double height = 178.5;
-			dout.writeUTF(name);//ÀĞÀ» ¶§ ²À UTF·Î ÀĞ¾î¾ß ÇÔ
+			dout.writeUTF(name);//ì½ì„ ë•Œ ê¼­ UTFë¡œ ì½ì–´ì•¼ í•¨
 			dout.writeInt(age);
 			dout.writeChar(gender);
 			dout.writeDouble(height);
 			dout.flush();
 			
-			System.out.println("ÆÄÀÏ¿¡ ±â·Ï ¿Ï·á.");
+			System.out.println("íŒŒì¼ì— ê¸°ë¡ ì™„ë£Œ.");
 		}catch(FileNotFoundException e) {
-			System.out.println("ÆÄÀÏÀÌ ¾ø½À´Ï´Ù.");
+			System.out.println("íŒŒì¼ì´ ì—†ìŠµë‹ˆë‹¤.");
 		}catch(IOException e) {
 			e.printStackTrace();
 		}catch (Exception e) {
@@ -49,7 +49,7 @@ public class TestDataIO2 {
 		try {
 			fin = new FileInputStream("test.dat");
 			din = new DataInputStream(fin);
-			//²À ±â·ÏÇÑ ¼ø¼­´ë·Î ÀĞ¾î¿Í¾ß ÇÔ.
+			//ê¼­ ê¸°ë¡í•œ ìˆœì„œëŒ€ë¡œ ì½ì–´ì™€ì•¼ í•¨.
 			String name = din.readUTF();
 			int age = din.readInt();
 			char gender = din.readChar();
@@ -57,7 +57,7 @@ public class TestDataIO2 {
 			
 			System.out.println(name + ", "+age +", "+gender+", "+height);
 		}catch(FileNotFoundException e) {
-			System.out.println("ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+			System.out.println("íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 		}catch(IOException e) {
 			e.printStackTrace();
 		}catch (Exception e) {

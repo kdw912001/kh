@@ -5,39 +5,39 @@ import java.io.*;
 public class TestDataIO {
 	
 	public void fileSave() {
-		//DataOutputStream Å¬·¡½º´Â °ªÀ» Á¾·ùº°·Î ±â·ÏÇÒ ¼ö ÀÖ´Â
-		//¸Ş¼Òµå¸¦ Á¦°øÇÏ´Â º¸Á¶½ºÆ®¸² Å¬·¡½ºÀÓ.
+		//DataOutputStream í´ë˜ìŠ¤ëŠ” ê°’ì„ ì¢…ë¥˜ë³„ë¡œ ê¸°ë¡í•  ìˆ˜ ìˆëŠ”
+		//ë©”ì†Œë“œë¥¼ ì œê³µí•˜ëŠ” ë³´ì¡°ìŠ¤íŠ¸ë¦¼ í´ë˜ìŠ¤ì„.
 		/*try (FileOutputStream fout = new FileOutputStream("member.dat");
 				DataOutputStream dout = new DataOutputStream(fout);){
 			
-		}·¹ÆÛ·±½º¸¦ °¢°¢ ¾µ ÀÏÀÌ ¾ø´Ù¸é ÇÏ³ªÀÇ ·¹ÆÛ·±½º·Î ¼±¾ğÇÒ °Í.*/
-		//ÇÑ¹ø¿¡ ¼±¾ğÇÏ¸é ±»ÀÌ À§¿¡ Ã³·³ 2°³ÀÇ ·¹ÆÛ·±½º¸¦ ¼±¾ğÇÒ ÇÊ¿ä°¡ ¾øÀ½.
+		}ë ˆí¼ëŸ°ìŠ¤ë¥¼ ê°ê° ì“¸ ì¼ì´ ì—†ë‹¤ë©´ í•˜ë‚˜ì˜ ë ˆí¼ëŸ°ìŠ¤ë¡œ ì„ ì–¸í•  ê²ƒ.*/
+		//í•œë²ˆì— ì„ ì–¸í•˜ë©´ êµ³ì´ ìœ„ì— ì²˜ëŸ¼ 2ê°œì˜ ë ˆí¼ëŸ°ìŠ¤ë¥¼ ì„ ì–¸í•  í•„ìš”ê°€ ì—†ìŒ.
 		try(DataOutputStream dout = new DataOutputStream(
 				new FileOutputStream("member.dat"))) {
-			//dout.writeUTF("È«±æµ¿"); //Data ½ºÆ®¸²Àº ±â·ÏÇÑ ¼ø¼­´ë·Î °ªÀ» ÀĞ¾î¾ß ÇÔ.
-			String name = "È«±æµ¿";
+			//dout.writeUTF("í™ê¸¸ë™"); //Data ìŠ¤íŠ¸ë¦¼ì€ ê¸°ë¡í•œ ìˆœì„œëŒ€ë¡œ ê°’ì„ ì½ì–´ì•¼ í•¨.
+			String name = "í™ê¸¸ë™";
 			int age = 27;
-			char gender = '³²';
+			char gender = 'ë‚¨';
 			double height = 178.5;
-			dout.writeUTF(name);//ÀĞÀ» ¶§ ²À UTF·Î ÀĞ¾î¾ß ÇÔ
+			dout.writeUTF(name);//ì½ì„ ë•Œ ê¼­ UTFë¡œ ì½ì–´ì•¼ í•¨
 			dout.writeInt(age);
 			dout.writeChar(gender);
 			dout.writeDouble(height);
 			dout.flush();
 			
-			System.out.println("ÆÄÀÏ¿¡ ±â·Ï ¿Ï·á.");
+			System.out.println("íŒŒì¼ì— ê¸°ë¡ ì™„ë£Œ.");
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public void fileRead() {
-		//·¹ÆÛ·±½º¸¦ °¢°¢ ¾µ ÀÏÀÌ ¾ø´Ù¸é ÇÏ³ªÀÇ ·¹ÆÛ·±½º·Î ¼±¾ğÇÒ °Í.
+		//ë ˆí¼ëŸ°ìŠ¤ë¥¼ ê°ê° ì“¸ ì¼ì´ ì—†ë‹¤ë©´ í•˜ë‚˜ì˜ ë ˆí¼ëŸ°ìŠ¤ë¡œ ì„ ì–¸í•  ê²ƒ.
 		/*try(FileInputStream fin = new FileInputStream("member.dat");
 				DataInputStream din = new DataInputStream(fin);)*/
 		try (DataInputStream din = new DataInputStream(
 				new FileInputStream("member.dat"));){
-			//²À ±â·ÏÇÑ ¼ø¼­´ë·Î ÀĞ¾î¿Í¾ß ÇÔ.
+			//ê¼­ ê¸°ë¡í•œ ìˆœì„œëŒ€ë¡œ ì½ì–´ì™€ì•¼ í•¨.
 			String name = din.readUTF();
 			int age = din.readInt();
 			char gender = din.readChar();
@@ -50,10 +50,10 @@ public class TestDataIO {
 	}
 	
 	public static void main(String[]args) {
-		//data ÀÔÃâ·Â º¸Á¶ ½ºÆ®¸² Å×½ºÆ®
+		//data ì…ì¶œë ¥ ë³´ì¡° ìŠ¤íŠ¸ë¦¼ í…ŒìŠ¤íŠ¸
 		TestDataIO test = new TestDataIO();
 		//test.fileSave();
-		//member.dat¸¦ ¿­¾îº¸¸é Á÷Á¢ byte°ªÀÌ ³ª¿À±â ¶§¹®¿¡ °ªÀÌ ÀÌ»óÇÏ°Ô ³ª¿È
+		//member.datë¥¼ ì—´ì–´ë³´ë©´ ì§ì ‘ byteê°’ì´ ë‚˜ì˜¤ê¸° ë•Œë¬¸ì— ê°’ì´ ì´ìƒí•˜ê²Œ ë‚˜ì˜´
 		test.fileRead();
 	}
 }

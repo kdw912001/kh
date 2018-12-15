@@ -8,26 +8,26 @@ public class TestCFileIO1 {
 	
 	public TestCFileIO1() {}
 	
-	//¹®ÀÚ½ºÆ®¸²À¸·Î ÆÄÀÏ¿¡ ÀúÀå Ã³¸®
+	//ë¬¸ììŠ¤íŠ¸ë¦¼ìœ¼ë¡œ íŒŒì¼ì— ì €ì¥ ì²˜ë¦¬
 	public void fileSave() {
 		FileWriter fw = null;
 		
-		System.out.print("ÀúÀåÇÒ ÆÄÀÏ¸í : ");
+		System.out.print("ì €ì¥í•  íŒŒì¼ëª… : ");
 		String fileName = sc.next();
 		
 		try {
-			fw = new FileWriter(fileName,true);//´ë»óÆÄÀÏ°ú ½ºÆ®¸²(Åë·Î) »ı¼º
-			//´ë»ó ÆÄÀÏÀÌ ¾øÀ¸¸é ÆÄÀÏÀ» »õ·Î ¸¸µê
-			//´ë»ó ÆÄÀÏÀÌ ÀÖÀ¸¸é, »õ·Î¾²±â »óÅÂ·Î ¿­¸²
+			fw = new FileWriter(fileName,true);//ëŒ€ìƒíŒŒì¼ê³¼ ìŠ¤íŠ¸ë¦¼(í†µë¡œ) ìƒì„±
+			//ëŒ€ìƒ íŒŒì¼ì´ ì—†ìœ¼ë©´ íŒŒì¼ì„ ìƒˆë¡œ ë§Œë“¦
+			//ëŒ€ìƒ íŒŒì¼ì´ ìˆìœ¼ë©´, ìƒˆë¡œì“°ê¸° ìƒíƒœë¡œ ì—´ë¦¼
 			
 			fw.write('A');
 			fw.write("java program \n");
 			char[] charr = {'a','p','p','l','e'};
 			fw.write(charr);
-			fw.flush(); //½ºÆ®¸²¿¡¼­ ¿ÏÀüÈ÷ ¹Ğ¾î¹ö¸®´Â ÀÛ¾÷
-						//°¡²û ½ºÆ®¸²¿¡ ³²´Â µ¥ÀÌÅÍ°¡ ÀÖ´Âµ¥ ±×°É ´Ù ¹Ğ¾î¹ö¸²
+			fw.flush(); //ìŠ¤íŠ¸ë¦¼ì—ì„œ ì™„ì „íˆ ë°€ì–´ë²„ë¦¬ëŠ” ì‘ì—…
+						//ê°€ë” ìŠ¤íŠ¸ë¦¼ì— ë‚¨ëŠ” ë°ì´í„°ê°€ ìˆëŠ”ë° ê·¸ê±¸ ë‹¤ ë°€ì–´ë²„ë¦¼
 			
-			System.out.println("ÆÄÀÏ ±â·Ï ÀúÀå ¿Ï·á");
+			System.out.println("íŒŒì¼ ê¸°ë¡ ì €ì¥ ì™„ë£Œ");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}finally {
@@ -39,28 +39,28 @@ public class TestCFileIO1 {
 		}
 	}
 	
-	//¹®ÀÚ½ºÆ®¸²À¸·Î ÆÄÀÏ·ÎºÎÅÍ ÀĞ¾î¿Í¼­ ÄÜ¼Ö¿¡ Ãâ·Â
+	//ë¬¸ììŠ¤íŠ¸ë¦¼ìœ¼ë¡œ íŒŒì¼ë¡œë¶€í„° ì½ì–´ì™€ì„œ ì½˜ì†”ì— ì¶œë ¥
 	public void fileRead() {
 		//FileReader fr = null;
 		
-		System.out.print("ÀĞÀ» ÆÄÀÏ¸í : ");
+		System.out.print("ì½ì„ íŒŒì¼ëª… : ");
 		String fileName = sc.next();
 		
 		try(FileReader fr = new FileReader(fileName);) {
-			//¼±¾ğ°ú »ı¼ºÀÌ °°ÀÌ µé¾î°¡¾ß ÇÔ. ¿©·¯ °³¸¦ ¾µ¼ö ÀÖ±â¶§¹®¿¡;µµ °¡´É
-			//try ¿·¿¡ ÀÌ·±½ÄÀ¸·Î ÀÛ¼ºÇÏ°Ô µÇ¸é finally ¿¡ close()»ı·« °¡´É
+			//ì„ ì–¸ê³¼ ìƒì„±ì´ ê°™ì´ ë“¤ì–´ê°€ì•¼ í•¨. ì—¬ëŸ¬ ê°œë¥¼ ì“¸ìˆ˜ ìˆê¸°ë•Œë¬¸ì—;ë„ ê°€ëŠ¥
+			//try ì˜†ì— ì´ëŸ°ì‹ìœ¼ë¡œ ì‘ì„±í•˜ê²Œ ë˜ë©´ finally ì— close()ìƒëµ ê°€ëŠ¥
 			
 			//fr = new FileReader(fileName);
-			//ÆÄÀÏÀÌ ¾øÀ¸¸é ¿¡·¯ÀÓ
+			//íŒŒì¼ì´ ì—†ìœ¼ë©´ ì—ëŸ¬ì„
 			
 			int readData;
-			while((readData = fr.read()) != -1) { //read()´Â ¹®ÀÚ ÇÏ³ª¾¿ ÀĞÀ½
-				System.out.print((char)readData); //intÇüÀÌ±â ¶§¹®¿¡ Çüº¯È¯
+			while((readData = fr.read()) != -1) { //read()ëŠ” ë¬¸ì í•˜ë‚˜ì”© ì½ìŒ
+				System.out.print((char)readData); //intí˜•ì´ê¸° ë•Œë¬¸ì— í˜•ë³€í™˜
 			}
-			System.out.println("\nÆÄÀÏÀĞ±â ¿Ï·á");
+			System.out.println("\níŒŒì¼ì½ê¸° ì™„ë£Œ");
 		} catch (Exception e) { 
-			//°¢°¢ ¿¡·¯ Ã³¸®ÇÒ ³»¿ëÀÌ ÀÖÀ¸¸é °¢°¢ Exception
-			//ÇÏ³ªÀÇ ¿¡·¯¸Ş½ÃÁö¸¸ Ãâ·ÂÇÒ°Å¸é Exception ÇÏ³ª¸¸ ÀÛ¼º
+			//ê°ê° ì—ëŸ¬ ì²˜ë¦¬í•  ë‚´ìš©ì´ ìˆìœ¼ë©´ ê°ê° Exception
+			//í•˜ë‚˜ì˜ ì—ëŸ¬ë©”ì‹œì§€ë§Œ ì¶œë ¥í• ê±°ë©´ Exception í•˜ë‚˜ë§Œ ì‘ì„±
 			e.printStackTrace();
 		}/*finally {
 			try {
@@ -72,7 +72,7 @@ public class TestCFileIO1 {
 	}
 	
 	public static void main(String[] args) {
-		// ¹®ÀÚ±â¹İ ÆÄÀÏÀÔÃâ·Â Å×½ºÆ®
+		// ë¬¸ìê¸°ë°˜ íŒŒì¼ì…ì¶œë ¥ í…ŒìŠ¤íŠ¸
 		TestCFileIO1 test = new TestCFileIO1();
 		test.fileSave();
 		test.fileRead();

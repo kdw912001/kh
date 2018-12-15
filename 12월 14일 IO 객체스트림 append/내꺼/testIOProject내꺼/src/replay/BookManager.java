@@ -10,25 +10,25 @@ public class BookManager {
 	
 	public void fileSave() {
 		Book[] b = { //new GregorianCalendar();
-				new Book("ÀÚ¹Ù1", "±è1", 1000, new GregorianCalendar(1990,11,11), 1.1),
-				new Book("ÀÚ¹Ù1","±è1",1000, new GregorianCalendar(1990,11,12),1.1),
-				new Book("ÀÚ¹Ù1","±è1",1000, new GregorianCalendar(1990,11,12),1.1),
-				new Book("ÀÚ¹Ù1","±è1",1000, new GregorianCalendar(1990,11,12),1.1),
-				new Book("ÀÚ¹Ù1","±è1",1000, new GregorianCalendar(1990,11,12),1.1),
+				new Book("ìë°”1", "ê¹€1", 1000, new GregorianCalendar(1990,11,11), 1.1),
+				new Book("ìë°”1","ê¹€1",1000, new GregorianCalendar(1990,11,12),1.1),
+				new Book("ìë°”1","ê¹€1",1000, new GregorianCalendar(1990,11,12),1.1),
+				new Book("ìë°”1","ê¹€1",1000, new GregorianCalendar(1990,11,12),1.1),
+				new Book("ìë°”1","ê¹€1",1000, new GregorianCalendar(1990,11,12),1.1),
 		};
 		try(ObjectOutputStream objOut = new ObjectOutputStream(
 				new FileOutputStream("books.dat", true));){
-			//´ë»ó ÆÄÀÏÀÌ ¾øÀ¸¸é ÀÚµ¿À¸·Î ÆÄÀÏÀ» ¸¸µê
-			//´ë»ó ÆÄÀÏÀÌ ÀÖÀ¸¸é, ÆÄÀÏ ¾ÈÀÇ ³»¿ëÀ» Áö¿ì°í 
-			//»õ·Î¾²±â »óÅÂ·Î ÆÄÀÏÀ» ¿¬´Ù.
-			//ÆÄÀÏÃâ·Â½ºÆ®¸² »ı¼º½Ã¿¡ Ãß°¡¾²±â(append) ¸ğµå¸¦ true·Î ÇÏ¸é
-			//´ë»óÆÄÀÏÀÌ ÀÖÀ» ¶§ ±âÁ¸ ³»¿ëÀº ±×´ë·Î µÎ°í ³»¿ë µÚ¿¡ Ãß°¡¾²±â°¡ µÊ.
-			//»ı·«µÇ¸é ±âº»ÀÌ false// true¸é ÆÄÀÏ ¾ÈÀÇ ³»¿ëÀ» ³öµÎ°í °è¼Ó ¾¸
-			//°´Ã¼ Ãâ·Â ½ºÆ®¸²¿¡¼­´Â ¿À·ù ³²
+			//ëŒ€ìƒ íŒŒì¼ì´ ì—†ìœ¼ë©´ ìë™ìœ¼ë¡œ íŒŒì¼ì„ ë§Œë“¦
+			//ëŒ€ìƒ íŒŒì¼ì´ ìˆìœ¼ë©´, íŒŒì¼ ì•ˆì˜ ë‚´ìš©ì„ ì§€ìš°ê³  
+			//ìƒˆë¡œì“°ê¸° ìƒíƒœë¡œ íŒŒì¼ì„ ì—°ë‹¤.
+			//íŒŒì¼ì¶œë ¥ìŠ¤íŠ¸ë¦¼ ìƒì„±ì‹œì— ì¶”ê°€ì“°ê¸°(append) ëª¨ë“œë¥¼ trueë¡œ í•˜ë©´
+			//ëŒ€ìƒíŒŒì¼ì´ ìˆì„ ë•Œ ê¸°ì¡´ ë‚´ìš©ì€ ê·¸ëŒ€ë¡œ ë‘ê³  ë‚´ìš© ë’¤ì— ì¶”ê°€ì“°ê¸°ê°€ ë¨.
+			//ìƒëµë˜ë©´ ê¸°ë³¸ì´ false// trueë©´ íŒŒì¼ ì•ˆì˜ ë‚´ìš©ì„ ë†”ë‘ê³  ê³„ì† ì”€
+			//ê°ì²´ ì¶œë ¥ ìŠ¤íŠ¸ë¦¼ì—ì„œëŠ” ì˜¤ë¥˜ ë‚¨
 			for(int i=0; i<b.length;i++) {
 				objOut.writeObject(b[i]);
 			}
-			System.out.println("books.dat¿¡ ÀúÀå¿Ï·á!");
+			System.out.println("books.datì— ì €ì¥ì™„ë£Œ!");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -48,7 +48,7 @@ public class BookManager {
 			for(int i=0; i<count;i++) {
 				System.out.println(bk[i]);
 			}
-			System.out.println("books.dat ÀĞ±â ¿Ï·á!");
+			System.out.println("books.dat ì½ê¸° ì™„ë£Œ!");
 		}catch (Exception e) {
 			
 			e.printStackTrace();

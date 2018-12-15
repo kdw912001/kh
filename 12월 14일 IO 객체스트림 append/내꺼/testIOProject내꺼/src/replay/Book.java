@@ -68,7 +68,7 @@ public class Book implements Serializable{
 	}
 	
 	public String toString() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy'³â'MM'¿ù'dd'ÀÏ'Ãâ°£");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy'ë…„'MM'ì›”'dd'ì¼'ì¶œê°„");
 		
 		return title+" "+author+" "+price+" "+sdf.format(dates.getTime())+" "+discountRate;
 	}
