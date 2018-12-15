@@ -11,10 +11,10 @@ public class BookManager {
 	public void fileSave() {
 		Book[] b = { //new GregorianCalendar();
 				new Book("자바1", "김1", 1000, new GregorianCalendar(1990,11,11), 1.1),
-				new Book("자바1","김1",1000, new GregorianCalendar(1990,11,12),1.1),
-				new Book("자바1","김1",1000, new GregorianCalendar(1990,11,12),1.1),
-				new Book("자바1","김1",1000, new GregorianCalendar(1990,11,12),1.1),
-				new Book("자바1","김1",1000, new GregorianCalendar(1990,11,12),1.1),
+				new Book("자바2","김2",1000, new GregorianCalendar(1990,11,12),1.1),
+				new Book("자바3","김3",1000, new GregorianCalendar(1990,11,12),1.1),
+				new Book("자바4","김4",1000, new GregorianCalendar(1990,11,12),1.1),
+				new Book("자바5","김5",1000, new GregorianCalendar(1990,11,12),1.1),
 		};
 		try(ObjectOutputStream objOut = new ObjectOutputStream(
 				new FileOutputStream("books.dat", true));){
