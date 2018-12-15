@@ -4,7 +4,7 @@ import java.util.*;
 public class VariableSample {
 	
 	public void varMethod1() { 
-
+		//change
 		//지역변수 선언시 사용할 수 있는 예약어
 		//final 하나임.
 		final double pi = 3.14159;
