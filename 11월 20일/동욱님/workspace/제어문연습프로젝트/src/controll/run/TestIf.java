@@ -1,0 +1,21 @@
+package controll.run;
+
+import controll.sample.IfSample;
+
+public class TestIf {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		IfSample isamp = new IfSample();
+		//isamp.unicodeToChar();
+		//isamp.unicodeToChar2();
+		//isamp.ifExample2();
+		//static 메소드를 부르려면 클래스명.메소드();
+		//isamp.ifExample3();
+		//isamp.ifExample4();
+		//isamp.ifElseExample1();
+		//isamp.ifElseExample2();
+		isamp.ifElseExample3();
+	}
+
+}

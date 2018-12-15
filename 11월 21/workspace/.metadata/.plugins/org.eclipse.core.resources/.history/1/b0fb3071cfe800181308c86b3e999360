@@ -1,0 +1,26 @@
+package test.input;
+
+import java.util.Scanner;
+
+public class TestStringInput {
+	//멤버변수 : Field
+	private Scanner sc = new Scanner(System.in);
+	//private을 붙여야 캡슐화 가능
+	
+	public void testNextLine1() {
+		//nextLine() : 공백이 포함된 문자열 입력
+		//next() : 공백 입력 못 받음
+		System.out.print("문자열 입력: ");
+		String str = sc.next();
+		System.out.println("str : " + str);
+		
+	
+	}
+	public static void main(String[] args) {
+		//문자열 입력 테스트
+		TestStringInput test = new TestStringInput();
+		test.testNextLine1();
+		
+	}
+
+}

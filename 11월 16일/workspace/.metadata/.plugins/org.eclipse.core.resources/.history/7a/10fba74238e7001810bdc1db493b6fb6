@@ -1,0 +1,11 @@
+package cast.practice;
+import java.util.*;
+
+public class CastingSample {
+	
+	public void printUniCode() {
+		char a =  new Scanner(System.in).next().charAt(0);
+		System.out.print("문자 입력 : ");
+		System.out.println("A is unicode : "+(int)a);
+	}
+}

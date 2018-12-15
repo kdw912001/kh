@@ -1,0 +1,10 @@
+package test.practice;
+import java.util.*;
+
+public class Practce1 {
+	public static void main(String[] args) {
+		System.out.println("이름 : 홍길동");
+		System.out.println("나이 : 25 세");
+		System.out.println("연락처 : 010-1234-5678");
+	}
+}

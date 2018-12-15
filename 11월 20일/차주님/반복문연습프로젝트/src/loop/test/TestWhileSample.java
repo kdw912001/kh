@@ -1,0 +1,17 @@
+package loop.test;
+
+import loop.sample.WhileSample;
+
+public class TestWhileSample {
+
+	public static void main(String[] args) {
+		// while loop test
+		WhileSample wsamp = 
+				new WhileSample();
+		//wsamp.testWhile1();
+		wsamp.testWhile11();
+		//wsamp.testWhile2();
+		//wsamp.testWhile3();
+	}
+
+}

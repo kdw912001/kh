@@ -1,0 +1,26 @@
+package controll.sample;
+
+import java.util.Scanner;
+
+public class IfElseSample {
+	//Field
+	private Scanner sc = new Scanner(System.in);
+		
+	//if~else 문 사용 연습
+	/*키보드로 정수 두 개를 각각 입력받아서
+	 * 첫번째 정수가 두번째 정수의 배수인지
+	 * 확인하고, 맞으면 '배수다'출력
+	 * 아니면 '배수가 아니다' 출력되게 작성
+	 * */
+	public void testIfElse1() {
+		System.out.print("첫번쨰 정수 입력 : ");
+		int num1 = sc.nextInt();
+		System.out.print("두번째 정수 입력 : ");
+		int num2 = sc.nextInt();
+		if(num1%num2==0) 
+			System.out.println("배수다");
+		else
+			System.out.println("배수가 아니다");
+		
+	}
+}

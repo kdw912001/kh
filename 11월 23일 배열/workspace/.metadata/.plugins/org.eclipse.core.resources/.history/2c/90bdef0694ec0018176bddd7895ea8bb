@@ -1,0 +1,16 @@
+package loop.sample;
+
+public class ForSample {
+	public void forTest1() {
+		//1부터 100까지 정수들의 합계
+		//더하기가 100번 연산이 되어야 함.
+		int sum = 0; //더하기 누적이면 0으로 초기화
+						//곱하기 누적이면 1로 초기화
+		for(int su = 1; su<=100; su++ ) {
+			System.out.println(su + "+");
+			sum += su;
+		}//for
+		System.out.print();
+		System.out.print("더하기 결과 : " +sum);
+	}
+}

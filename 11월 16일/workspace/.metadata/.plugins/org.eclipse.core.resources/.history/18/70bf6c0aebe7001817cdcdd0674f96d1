@@ -1,0 +1,45 @@
+package var.test;
+
+public class TestVariable {
+	public void testFinal() {
+		//상수변수
+		//1개의 값만 기록해서 사용하는 변수
+		//기록된 초기값은 변경 못 하는 변수
+		final double PI = 3.14;
+		System.out.println("pi : " + PI);
+		
+		/*pi=99.9;
+		System.out.println("pi : " +pi);*/
+	}
+	
+	public void testLiteral() {
+		/*boolean flag = true;
+		boolean flag2 = false;
+		
+		char ch1 = 'A';
+		char ch2 = '\t';
+		char ch3 = '\u0041';
+		
+		System.out.println("" + ch1 + ch2 + ch3 + ", "+ (int)ch3);*/
+		
+		int num1 = 123; //십진수 백이십삼
+		int num2 = 0123; //8진수 일이삼
+		int num3 = 0x123; //16진수 일이삼
+		System.out.println("num1 : " +num1);
+		System.out.println("num2 : " +num2);
+		System.out.println("num3 : " +num3);
+		
+		long lnum = 100L;
+		float fnum = 1.234f;
+		double dnum = 12.56; //부동소수점형 표기
+		double dnum2 = 3.456e2;//지수형 표기
+		
+		System.out.println("dnum2 : "+dnum2);
+	}
+	public static void main(String[] args) {
+		TestVariable test = new TestVariable();
+		//test.testFinal();
+		test.testLiteral();
+	}
+
+}

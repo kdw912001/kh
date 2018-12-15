@@ -1,0 +1,10 @@
+package controll.run;
+
+public class TestMultiIf {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

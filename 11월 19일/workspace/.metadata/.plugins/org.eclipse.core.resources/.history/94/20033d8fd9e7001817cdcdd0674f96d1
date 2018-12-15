@@ -1,0 +1,23 @@
+package com.test.operator;
+import java.util.*;
+
+
+public class Example {
+	public void sample1() {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int kor = sc.nextInt();
+		
+		int eng = sc.nextInt();
+		int math = sc.nextInt();
+		int sum = kor+eng+math;
+		double avg = sum/3;
+		
+		if(kor>=40 && eng >=40 && math >=40 || avg>=60)
+			System.out.println("гу╟щ");
+		
+		
+		
+	}
+}

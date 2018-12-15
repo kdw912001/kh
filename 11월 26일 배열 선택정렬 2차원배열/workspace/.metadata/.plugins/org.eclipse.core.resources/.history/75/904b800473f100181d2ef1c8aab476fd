@@ -1,0 +1,24 @@
+package array.sample;
+
+public class TwoArraySample {
+	public void testTwoArray() {
+		//1. 2차원 배열에 대한 레퍼런스 선언
+		int[][] tar;
+		
+		//2. 2차원 배열 공간을 힙에 할당
+		tar = new int[3][];
+		
+		System.out.println("tar.length: "+tar.length);
+		
+		//행의 갯수는 레퍼런스 배열 갯수다.
+		//레퍼런스 변수들의 묶음
+		//주소 보관용 변수 3개를 배열로 할당.
+		//힙에 할당된 참조변수의 기본값은 null임.
+		for(int row=0; row<tar.length;row++) {
+			System.out.println("tar["+row+"] : "+tar[row]);
+			for(int column=0; column<tar[row].length;column++) {
+				System.out.print(tar[row][column]);
+			}
+		}
+	}
+}

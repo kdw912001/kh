@@ -1,0 +1,13 @@
+package loop.test;
+import loop.sample.BreakSample;
+
+public class TestBreakSample {
+
+	public static void main(String[] args) {
+		// break 문 테스트
+		BreakSample bs = new BreakSample();
+		//bs.testBreak1();
+		bs.testBreak2();
+	}
+
+}

@@ -1,0 +1,38 @@
+package org.kh.var;
+
+/**
+ *  개인 신상 정보 관리용 클래스이다.
+ *  이름과 나이와 전화번호를 저장 관리한다.
+ * 
+ */
+
+
+public class MyProfile {
+	/** 이름 저장용 필드이다. */
+	private String name;
+	/**나이 기록용 필드이다. */
+	private int age;
+	/** 전화번호 기록용 필드이다. */
+	private String phone;
+	
+	/** 기본 생성자이다. */
+	public MyProfile() {}
+	
+	/** 매개변수 있는 생성자로, 
+	 *  객체 생성시 이름, 나이, 전화번호를 
+	 *  초기값으로 전달받아 인스턴스 변수를
+	 *  초기화 시킨다.	 */
+	public MyProfile(String name, int age, String phone) {
+		this.name = name;
+		this.age = age;
+		this.phone = phone;
+	}
+	
+	public void printlnformatin() {
+		System.out.println(name + " " + age + "세, " +phone);
+	}
+	
+}
+
+
+

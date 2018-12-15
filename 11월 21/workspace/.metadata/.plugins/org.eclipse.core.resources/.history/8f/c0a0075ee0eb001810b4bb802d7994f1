@@ -1,0 +1,55 @@
+package controll.sample;
+
+import java.util.Scanner;
+
+public class SwitchSample {
+	public void testSwitch1() {
+		
+		System.out.print("색 입력: ");
+		String color  = new Scanner(System.in).next();
+		
+		//값이 뭐냐? (값이 비교값과 일치하는지
+		//주로 변수가 계산식 사용함
+		//조건식 사용 못함
+		switch(color) {
+		//jdk 7 부터 case 에 문자열값 제시 가능함
+		case "red":	System.out.println("빨강");
+				 		break;
+		case "yellow": System.out.println("노랑");
+						break;
+		case "green": System.out.println("초록");
+		    			break;
+		case "blue": System.out.println("파랑");
+						break;
+		default:	//위에 제시된 모든 값이 아닐 때
+			//맨 마지막에 사용함, 생략할 수도 있음
+			System.out.println("기타");
+		}
+	}
+	
+	/*점수(int)를 입력받아 
+	 * 학점(char) 처리해서
+	 * 점수와 학점 출력 처리
+	 * switch 사용 점수별 학점처리
+	 * 점수가 100이면 학점은 'A'
+	 * 점수가 90이상 100미만은 'B'
+	 * 점수가 80이상 90미만은 'C'
+	 * 점수가 70이상 80미만은 'D'
+	 * 점수가 60이상 70미만은 'E'
+	 * 점수가 60미만은 'F' 처리함
+	 */
+	public void testSwitch2() {
+		int score = new Scanner(System.in).nextInt();
+		char grade;
+		switch(score/10) {
+		case 10: grade = 'A';
+		case 9: grade = 'B';
+		case 8: grade = 'C';
+		case 7: grade = 'D';
+		case 6: grade = 'E';
+		default: grade = 'F';
+		}
+		System.out.println(grade);
+		
+	}
+}

@@ -1,0 +1,19 @@
+package test.operator;
+import java.util.*;
+
+public class Example {
+	public void sample1() {
+		Scanner sc = new Scanner(System.in);
+		int kor = sc.nextInt();
+		int eng = sc.nextInt();
+		int math = sc.nextInt();
+		int sum = kor+eng+math;
+		double avg = sum/3.0;
+		
+		String result = (kor>=40 && eng>=40&& math >=40&& avg>=60)? "합격":"불합격";
+		System.out.println(result);
+		
+		
+		
+	}
+}

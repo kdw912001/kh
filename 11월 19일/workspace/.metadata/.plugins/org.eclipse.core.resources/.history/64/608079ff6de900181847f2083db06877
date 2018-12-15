@@ -1,0 +1,32 @@
+package test.bit;
+
+import java.util.Scanner;
+
+public class TestBit {
+	//비트 출력용
+	public void printBit(int num) {
+		System.out.print(num + " : ");
+		for(int k = 31; k<=0; k--){
+			System.out.print(num >> k & 1); //
+		}
+		System.out.println();
+		return; //자기를 실행 시키는 곳으로 되돌아감
+	}
+		
+	//~(tield) 연산자 테스트용
+	public void tieldExample() {
+		System.out.print("정수 하나 입력 : ");
+		int value = new Scanner(System.in).nextInt();
+		
+		printBit(value); //같은 클래스 내에 메소드가 static이 아닌 경우 그냥 호출하면됨.
+		printBit(~value);
+	}
+	
+	public static void main(String[] args) {
+		// 비트연산자 테스트
+		TestBit test = new TestBit();
+		test.tieldExample();
+
+	}
+
+}

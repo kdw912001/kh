@@ -1,0 +1,30 @@
+package logic.home.model;
+
+import java.util.Scanner;
+
+public class IfSample {
+	private Scanner sc = new Scanner(System.in);
+	int num1,num2,num3;
+	public void maxNumber(){
+		System.out.println("두 수중 큰 값 출력하기");
+		System.out.print("정수 하나 입력 : ");
+		num1 = sc.nextInt();
+		System.out.print("다른 정수 입력 : ");
+		num2 = sc.nextInt();
+		if(num1>num2)
+			System.out.println(num1);
+		else if(num1<num2)
+			System.out.println(num2);
+		else
+			System.out.println("같은 값을 입력하셨습니다.");
+		
+	}
+	public void minNumber() {}
+	public void ThreeMaxMin() {}
+	public void checkEven() {}
+	public void isPassFail() {}
+	public void scoreGrade() {}
+	public void checkPlusMinusZero() {}
+	public void whatCaracter() {}
+	
+}

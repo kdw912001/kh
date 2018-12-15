@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;operator.exercise.Excercise&apos; to &apos;Exercise&apos;&#x0D;&#x0A;- Original project: &apos;testOperator&apos;&#x0D;&#x0A;- Original element: &apos;operator.exercise.Excercise&apos;&#x0D;&#x0A;- Renamed element: &apos;operator.exercise.Exercise&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Excercise&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;operator.exercise{Excercise.java[Excercise" matchStrategy="1" name="Exercise" qualified="false" references="true" similarDeclarations="false" stamp="1542271390963" textual="false" version="1.0"/>
+</session>

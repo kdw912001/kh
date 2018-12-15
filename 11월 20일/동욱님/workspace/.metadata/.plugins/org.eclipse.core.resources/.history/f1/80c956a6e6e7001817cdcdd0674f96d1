@@ -1,0 +1,32 @@
+package var.test;
+
+public class TestVariable {
+	public void testFinal() {
+		//상수변수
+		//1개의 값만 기록해서 사용하는 변수
+		//기록된 초기값은 변경 못 하는 변수
+		final double PI = 3.14;
+		System.out.println("pi : " + PI);
+		
+		/*pi=99.9;
+		System.out.println("pi : " +pi);*/
+	}
+	
+	public void testLiteral() {
+		boolean flag = true;
+		boolean flag2 = false;
+		
+		char ch1 = 'A';
+		char ch2 = '\t';
+		char ch3 = '\u0041';
+		
+		System.out.println("" + ch1 + ch2 + ch3 + ", "+ (int)ch3);
+		
+	}
+	public static void main(String[] args) {
+		TestVariable test = new TestVariable();
+		//test.testFinal();
+		test.testLiteral();
+	}
+
+}

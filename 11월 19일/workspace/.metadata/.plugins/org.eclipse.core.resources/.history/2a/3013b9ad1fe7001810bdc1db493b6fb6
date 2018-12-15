@@ -1,0 +1,16 @@
+package 변수.샘플;
+
+public class VariableSample {
+	
+	public void varMethod1() {
+		//지역변수 선언시 사용할 수 있는 예약어
+		//final 하나임.
+		double pi = 3.14159;
+		//변수방에 기록된 초기값 변경 불가능
+		
+		System.out.println("pi : " + pi);
+		pi = 56.789;
+		System.out.println("pi : " + pi);
+		
+	}
+}

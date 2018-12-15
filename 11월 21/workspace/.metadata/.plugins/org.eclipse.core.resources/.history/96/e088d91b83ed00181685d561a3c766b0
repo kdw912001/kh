@@ -1,0 +1,12 @@
+package logic.test;
+import logic.view.*;
+public class TestMain {
+
+	public static void main(String[] args) {
+		Menu me = new Menu();
+		me.displayMenu();
+		
+		
+	}
+
+}

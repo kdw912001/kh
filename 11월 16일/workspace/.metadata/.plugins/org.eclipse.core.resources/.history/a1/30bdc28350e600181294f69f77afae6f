@@ -1,0 +1,13 @@
+package variable.test;
+
+import variable.sample.Varsample;
+
+
+public class TestMain {
+
+	public static void main(String[] args) {
+		// 변수 테스트
+		
+}
+
+}

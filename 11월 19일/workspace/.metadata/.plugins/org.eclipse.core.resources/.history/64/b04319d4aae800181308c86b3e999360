@@ -1,0 +1,14 @@
+package type.test;
+
+public class TestPosition {
+
+	public static void main(String[] args) {
+		//실수값의 소수점 자릿수 지정
+		double dnum = Math.PI;
+		System.out.println("dnum : " + dnum);
+		double result = (int)(dnum * 100) / 100.0; //(int)계산(int)=(int)이므로 100.0으로 나눠서
+															//(int)/(double)형으로 계산
+		System.out.println("result : " + result);
+	}
+
+}

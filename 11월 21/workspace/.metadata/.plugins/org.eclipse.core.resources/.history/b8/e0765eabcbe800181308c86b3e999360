@@ -1,0 +1,125 @@
+package logic.home.view;
+import logic.home.model.*;
+import java.util.*;
+
+public class Menu {
+	static Scanner sc = new Scanner(System.in);
+	public static void mainMenu() {
+		int no; //메뉴번호
+		 // 종료 확인 문자 y/n
+		do {
+			System.out.printf("***** 프로그래밍 기본 기능 테스트 프로그램 *****\r\n" + 
+					"\r\n" + 
+					"		1. 변수 테스트\r\n" + 
+					"		2. 기본 자료형 테스트\r\n" + 
+					"		3. if문 테스트\r\n" + 
+					"		4. switch문 테스트\r\n" + 
+					"		5. for문 테스트\r\n" + 
+					"		6. while문 테스트\r\n" + 
+					"		7. do~while문 테스트\r\n" + 
+					"		8. break문 테스트\r\n" + 
+					"		9. continue문 테스트\r\n" + 
+					"		10. static 메소드 사용 테스트\r\n" + 
+					"		11. non-static 메소드 사용 테스트\r\n" + 
+					"		12. 프로그램 종료\r\n" + 
+					"		메뉴 번호 입력 : ");
+			no = sc.nextInt();
+			switch(no)
+			{
+			case 1: subVarMenu(); break;
+			case 2: subPTypeMenu(); break;
+			case 3: subIfMenu(); break;
+			case 4: subSwitchMenu(); break;
+			case 5: subForMenu(); break;
+			case 6: subWhileMenu(); break;
+			case 7: subDoWhileMenu(); break;
+			case 8: subBreakMenu(); break;
+			case 9: subContinueMenu(); break;
+			case 10: subStaticMethodMenu(); break;
+			case 11: subNonStaticMethodMenu(); break;
+			case 12: 
+				System.out.print("정말로 종료하시겠습니까? (예:y/아니오:n:) "); 
+				char ch = sc.next().toUpperCase().charAt(0);
+				if(ch =='Y') 
+					break;
+				else 
+					mainMenu();
+			default : mainMenu(); break;
+			}
+							
+				 //프로그램 종료
+			/*case 1:	subVarMenu();	break;
+			....... 이하 생략
+			case 12: 프로그램 종료에 대한 처리함
+			default: 잘못된 번호가 입력되었을 때 메뉴 다시 출력되게 함*/
+						
+		}while(true);
+	}
+	public static void subVarMenu() {
+		int no;
+		
+		do {
+			System.out.printf("*** 변수 테스트 부메뉴 ***\r\n" + 
+					"\r\n" + 
+					"	1. 내 신상정보 변수에 담아 출력하기\r\n" + 
+					"	2. 사원정보를 키보드로 입력받아 출력하기\r\n" + 
+					"	3. 기본 자료형 변수의 초기값 확인하기\r\n" + 
+					"	4. 이전 메뉴로 가기\r\n" + 
+					"	메뉴 선택 : ");
+			no = sc.nextInt();
+			VariableSample samp = new VariableSample();
+			switch(no)
+			{
+			
+			case 1:  samp.myProfile(); break;
+			case 2: samp.emplnformation(); break;
+			case 3: samp.defaultValue(); break;
+			case 4: System.out.println("메인 메뉴로 돌아갑니다.");
+						return;// 이전메뉴로 되돌아감.
+			default: subVarMenu(); break;
+			}
+			/*switch(no)
+			{
+			case 1:	VariableSample 클래스의 myProfile() 실행; break;
+			case 2:	VariableSample 클래스의 empInformation() 실행; break;
+			case 3:	VariableSample 클래스의 defaultValue() 실행; break;
+			case 4:	System.out.println("메인 메뉴로 돌아갑니다.");
+				return;	//이전 메뉴로 되돌아감.
+			default:	잘못된 값 입력시 메뉴 다시 출력되게 처리
+			}*/
+		}while(no!=4);
+	}
+	
+	public static void subPTypeMenu(){
+		 int no;
+		 do {
+			 System.out.printf("*** 기본자료형 테스트 부메뉴 ***\r\n" + 
+			 		"\r\n" + 
+			 		"	1. 기본자료형 메모리 할당크기 확인하기\r\n" + 
+			 		"	2. 기본자료형 값의 최소값, 최대값 출력하기\r\n" + 
+			 		"	3. 기본자료형 비트갯수 확인하기\r\n" + 
+			 		"	4. 이전 메뉴로 가기\r\n" + 
+			 		"	메뉴 선택 : ");
+			 no=sc.nextInt();
+			 PrimitiveTypeSample samp = new PrimitiveTypeSample();
+			 switch(no)
+				{
+				case 1:	typeSize() 실행; break;
+				case 2:	PrimitiveTypeSample 클래스의 minMaxValue() 실행; break;
+				case 3:	PrimitiveTypeSample 클래스의 bitSize() 실행; break;
+				case 4:	System.out.println("메인 메뉴로 돌아갑니다.");
+					return;	//이전 메뉴로 되돌아감.
+				default:	잘못된 값 입력시 메뉴 다시 출력되게 처리
+				}
+		 }while(no!=4);
+	}
+	public static void subIfMenu(){}
+	public static void subSwitchMenu(){}
+	public static void subForMenu(){}
+	public static void subWhileMenu(){}
+	public static void subDoWhileMenu(){}
+	public static void subBreakMenu(){}
+	public static void subContinueMenu(){}
+	public static void subStaticMethodMenu(){}
+	public static void subNonStaticMethodMenu(){}
+}

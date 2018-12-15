@@ -1,0 +1,50 @@
+package loop.sample;
+
+import java.util.Scanner;
+
+public class MultiLoopSample {
+	//A,B,C,D ... 영어대문자를 한글자씩 출력
+	//반복실행 : 5번
+	//단, E가 되면 끝남
+	public void testDoubleFor1() {
+		OUT:for(int k = 1; k<=5; k++) {
+			for(int c = 65; c<91; c++) {
+				if(c==69)
+					//break;
+					break OUT;
+				System.out.print((char)c+ ", ");
+			}
+			System.out.println();
+			System.out.println("안쪽 for문 빠져나옴...");
+		}//바깥 for
+		
+		System.out.println("바깥 for문 빠져나옴...");
+	}
+	
+	public void testDoubleFor2() {
+		for(int n=1; n<=5; n++) {
+					
+			for(int k = 1; k<=10;k++) {
+				System.out.print("* ");
+			}
+			System.out.println();
+		}
+	}
+	
+	public void testDoubleFor3() {
+		for(int a=1;a<=5;a++) {
+			for(int b= 1; b<=5; b++) {
+				System.out.println(a+ ", "+b);
+			}
+			System.out.println("----------------");
+		}
+	}
+	
+	//구구단 2~9단까지 출력처리
+	public void testDoubleFor4() {
+		for(i=2,j=1;j<=9;i++,j++) {
+			System.out.println(i+"*"+j+"="+(i*j));
+		}
+		
+	}
+}

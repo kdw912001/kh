@@ -1,0 +1,80 @@
+package logic.home.model;
+import java.util.*;
+
+public class DoWhileSample {
+	private Scanner sc= new Scanner(System.in);
+	
+	public void addDashToken() {
+		System.out.print("문자열 입력 : ");
+		String str = sc.next();
+		int i=0;
+		do {
+			if(i<str.length()-1)
+				System.out.print(str.charAt(i)+"-");
+			else
+				System.out.println(str.charAt(i));
+			i++;
+		}while(str.length()!=i);//while(i<str.length())
+			
+	}
+	public void burgerKingMenu() {
+		int no = 0;
+		int price = 0;
+		int menuPrice =0;
+		int count = 0;
+		String menu = "";
+		String menuSum="";
+		String sum="";
+		
+		do {
+			System.out.println("버거킹에 오신걸 환영합니다.");
+			System.out.println("메뉴를 골라주세요");
+			System.out.println("----------메------------뉴--------");
+			System.out.println("1. 치 즈 버 거 : 3000원");
+			System.out.println("2. 불고기 버 거 :2500원");
+			System.out.println("3. JAVA 버거 : 3500원");
+			System.out.println("------------------------------------");
+			System.out.println("4. 결제 진행");
+			System.out.print("메뉴 선택 : ");
+			no = sc.nextInt();
+			
+			switch(no){
+			case 1: menu = "치즈버거"; price =3000; break;
+			case 2: menu = "불고기버거"; price=2500; break;
+			case 3: menu = "JAVA버거"; price=3500; break;
+			case 4: System.out.println("결제하겠습니다."); continue;
+			default: System.out.println("잘못입력하셨습니다. 메뉴번호를 입력해주세요.");
+			}
+			System.out.print("개수를 입력 : ");
+			count = sc.nextInt();
+			menuPrice = price*count;
+			menuSum=menu+count+"개, "+menuPrice+"원";
+			sum+=menuSum;
+			
+		}while(no!=4);
+		System.out.println(sum);
+	}
+	public void isStringAlphabet() {
+
+		
+		System.out.print("문자열 입력 : ");
+		String str = sc.next();
+		int i=0;
+
+		do {
+			char c = str.charAt(i);
+			
+			if(!Character.isUpperCase(c) && !Character.isLowerCase(c)) {
+				System.out.println("영문자가 아니다."); 
+				break;
+			}
+			
+			if(i==str.length()-1)
+				System.out.println("영문자다");
+			i++;
+		
+		}while(i<str.length());
+		
+	}
+
+}

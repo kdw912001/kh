@@ -1,0 +1,16 @@
+package loop.sample;
+
+public class BreakSample {
+	//1~10까지 정수들의 합계 출력
+	public void testBreak1() {
+		int sum = 0;
+		
+		for(int k=1; ; k++) {
+			System.out.print(k + "+");
+			sum += k;
+		}
+		
+		System.out.println("= " + sum);
+		
+	}
+}

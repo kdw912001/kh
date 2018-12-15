@@ -1,0 +1,77 @@
+package logic.home.view;
+import logic.home.model.*;
+import java.util.*;
+
+public class Menu {
+	static Scanner sc = new Scanner(System.in);
+	public static void mainMenu() {
+		int no = 0; //메뉴번호
+		char ch = ' '; // 종료 확인 문자 y/n
+		do {
+			System.out.printf("***** 프로그래밍 기본 기능 테스트 프로그램 *****\r\n" + 
+					"\r\n" + 
+					"		1. 변수 테스트\r\n" + 
+					"		2. 기본 자료형 테스트\r\n" + 
+					"		3. if문 테스트\r\n" + 
+					"		4. switch문 테스트\r\n" + 
+					"		5. for문 테스트\r\n" + 
+					"		6. while문 테스트\r\n" + 
+					"		7. do~while문 테스트\r\n" + 
+					"		8. break문 테스트\r\n" + 
+					"		9. continue문 테스트\r\n" + 
+					"		10. static 메소드 사용 테스트\r\n" + 
+					"		11. non-static 메소드 사용 테스트\r\n" + 
+					"		12. 프로그램 종료\r\n" + 
+					"		메뉴 번호 입력 : ");
+			no = sc.nextInt();
+			switch(no)
+			{
+			case 1: subVarMenu(); break;
+			case 2: subPTypeMenu(); break;
+			case 3: subIfMenu(); break;
+			case 4: subSwitchMenu(); break;
+			case 5: subForMenu(); break;
+			case 6: subWhileMenu(); break;
+			case 7: subDoWhileMenu(); break;
+			case 8: subBreakMenu(); break;
+			case 9: subContinueMenu(); break;
+			case 10: subStaticMethodMenu(); break;
+			case 11: subNonStaticMethodMenu(); break;
+			case 12: 
+				System.out.println("정말로 종료하시겠습니까? (예:y/아니오:n:) "); 
+				ch = sc.next().charAt(0);
+				/*if(ch=='y' && ch =='Y') {
+					break;
+				}
+				else {
+					continue;
+				}*/
+						
+				
+				 //프로그램 종료
+			/*case 1:	subVarMenu();	break;
+			....... 이하 생략
+			case 12: 프로그램 종료에 대한 처리함
+			default: 잘못된 번호가 입력되었을 때 메뉴 다시 출력되게 함*/
+			}
+			
+			
+		}while(ch == ' ');
+	}
+	public static void subVarMenu() {
+		
+	}
+	
+	public static void subPTypeMenu(){
+		 
+	}
+	public static void subIfMenu(){}
+	public static void subSwitchMenu(){}
+	public static void subForMenu(){}
+	public static void subWhileMenu(){}
+	public static void subDoWhileMenu(){}
+	public static void subBreakMenu(){}
+	public static void subContinueMenu(){}
+	public static void subStaticMethodMenu(){}
+	public static void subNonStaticMethodMenu(){}
+}

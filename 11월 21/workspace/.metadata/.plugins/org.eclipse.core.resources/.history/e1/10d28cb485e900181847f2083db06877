@@ -1,0 +1,13 @@
+package controll.run;
+
+import controll.sample.IfSample;
+
+public class TestIf {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		IfSample isamp = new IfSample();
+		isamp.unicodeToChar();
+	}
+
+}

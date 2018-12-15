@@ -1,0 +1,52 @@
+package controll.sample;
+
+import java.util.*;
+
+public class IfSample {
+	//if만 사용하는 경우
+	private Scanner sc = new Scanner(System.in);
+	
+	public void unicodeToChar() {
+		//정수를 입력받아서 
+		//정수를 유니코드로 하는 문자 출력
+		//유니코드 : 0 ~ 65535
+		System.out.print("유니코드 입력 : ");
+		int code = sc.nextInt();
+		
+		if(code>=0 && code<=65535) {
+			System.out.println(code + " -> " + (char)code);
+		} // if close
+						
+	}
+	public void unicodeToChar2() {
+		//정수를 입력받아서 
+		//정수를 유니코드로 하는 문자 출력
+		//유니코드 : 0 ~ 65535
+		System.out.print("유니코드 입력 : ");
+		int code = sc.nextInt();
+		
+		if(code>=0 && code<=65535) {
+			System.out.println(code + " -> " + (char)code);
+		} // if close
+		else
+			System.out.println("0~65535 사이의 값을 입력하세요.");
+	}
+	
+	//실습1
+	public void ifExample1() {
+		/* 성별(남:M/여:F)을 입력받아
+		 * 남자일 때만 이름과 나이를
+		 * 키보드로 입력 받아서 출력 처리
+		 * 
+		 * 	*/
+		char gender = sc.next().charAt(0);
+		if(gender=='M') {
+			String name = sc.next();
+			int age = sc.nextInt();
+			System.out.println(gender+ name+age);
+		}
+		else
+			
+	}
+		
+}

@@ -1,0 +1,46 @@
+package logic.home.model;
+
+import java.util.Date;
+import java.util.Scanner;
+
+public class NonStaticMethodSample {
+	public void testScanner() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("boolean값 입력(true/false) : ");
+		boolean bo = sc.nextBoolean();
+		System.out.print("byte값 입력 : ");
+		byte by = sc.nextByte();
+		System.out.print("short값 입력 : ");
+		short sh = sc.nextShort();
+		System.out.print("int값 입력 : ");
+		int in = sc.nextInt();
+		System.out.print("long값 입력 : ");
+		long lo= sc.nextLong();
+		System.out.print("float값 입력 : ");
+		float fl = sc.nextFloat();
+		System.out.print("double값 입력 : ");
+		double dou = sc.nextDouble();
+		System.out.print("ch값 입력 : ");
+		char ch= sc.next().charAt(0);
+		System.out.print("str값 입력 : ");
+		String str = sc.next();
+		System.out.println("boolean값 : "+bo);
+		System.out.println("byte값 : "+by);
+		System.out.println("short값 : "+sh);
+		System.out.println("int값 : "+in);
+		System.out.println("long값 : "+lo);
+		System.out.println("float값 : "+fl);
+		System.out.println("double값 : "+dou);
+		System.out.println("char값 : "+ch);
+		System.out.println("String값 : "+str);
+		
+	}
+	public void testDate() {
+		Date da = new Date();
+		int time = da.getHours()
+		System.out.println(time);
+	}
+	public void testRandom() {
+		
+	}
+}

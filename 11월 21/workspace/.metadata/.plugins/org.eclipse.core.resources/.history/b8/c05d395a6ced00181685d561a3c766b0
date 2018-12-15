@@ -1,0 +1,22 @@
+package loop.sample;
+
+public class MultiLoopSample {
+	//A,B,C,D ... 영어대문자를 한글자씩 출력
+	//반복실행 : 5번
+	//단, E가 되면 끝남
+	public void testDoubleFor1() {
+		for(int k = 1; k<=5; k++) {
+			for(int c = 65; c<91; c++) {
+				if(c==69)
+					break;
+				System.out.print((char)c+ ", ");
+			}
+			System.out.println();
+			System.out.println("안쪽 for문 빠져나옴...");
+		}//바깥 for
+		
+		System.out.println("바깥 for문 빠져나옴...");
+	}
+	
+	
+}

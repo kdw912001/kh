@@ -1,0 +1,12 @@
+package test.exercise;
+import operator.exercise.*;
+
+public class TestExcercise {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Excercise ref = new Excercise();
+		ref.example1();
+	}
+
+}

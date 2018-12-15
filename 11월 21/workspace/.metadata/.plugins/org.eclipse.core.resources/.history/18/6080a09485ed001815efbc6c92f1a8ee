@@ -1,0 +1,55 @@
+package logic.home.model;
+
+import java.util.Scanner;
+
+public class IfSample {
+	private Scanner sc = new Scanner(System.in);
+	int num1,num2,num3;
+	public void maxNumber(){
+		System.out.println("두 수중 큰 값 출력하기");
+		System.out.print("정수 하나 입력 : ");
+		num1 = sc.nextInt();
+		System.out.print("다른 정수 입력 : ");
+		num2 = sc.nextInt();
+		if(num1>num2)
+			System.out.println("두 수 중 큰 값 : "+num1);
+		else if(num1<num2)
+			System.out.println("두 수 중 큰 값 : "+num2);
+		else
+			System.out.println("같은 값을 입력하셨습니다.");
+		
+	}
+	public void minNumber() {
+		System.out.println("두 수중 작은 값 출력하기");
+		System.out.print("정수 하나 입력 : ");
+		num1 = sc.nextInt();
+		System.out.print("다른 정수 입력 : ");
+		num2 = sc.nextInt();
+		
+		if(num1<num2)
+			System.out.println("두 수 중 작은 값 : "+num1);
+		else if(num1>num2)
+			System.out.println("두 수 중 작은 값 : "+num2);
+		else
+			System.out.println("같은 값을 입력하셨습니다.");
+		
+	}
+	public void ThreeMaxMin() {
+		System.out.println("세 수중 가장 큰 수와 가장 작은 수 출력하기");
+		
+		System.out.print("정수 하나 입력 : ");
+		num1 = sc.nextInt();
+		System.out.print("다른 정수 입력 : ");
+		num2 = sc.nextInt();
+		System.out.print("또 다른 정수 입력 : ");
+		num3 = sc.nextInt();
+		System.out.println("Integer.max(num1, num2)");
+		
+	}
+	public void checkEven() {}
+	public void isPassFail() {}
+	public void scoreGrade() {}
+	public void checkPlusMinusZero() {}
+	public void whatCaracter() {}
+	
+}

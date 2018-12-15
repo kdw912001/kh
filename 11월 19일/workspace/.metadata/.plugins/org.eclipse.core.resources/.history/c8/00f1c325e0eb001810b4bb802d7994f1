@@ -1,0 +1,14 @@
+package controll.run;
+
+import controll.sample.SwitchSample;
+
+public class TestSwitch {
+
+	public static void main(String[] args) {
+		//SwitchSample ½ÇÇà¿ë
+		SwitchSample ss = new SwitchSample();
+		ss.testSwitch1();
+
+	}
+
+}

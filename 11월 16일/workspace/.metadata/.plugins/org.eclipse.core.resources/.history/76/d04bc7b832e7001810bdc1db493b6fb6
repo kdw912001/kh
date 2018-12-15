@@ -1,0 +1,10 @@
+package 형변환.테스트;
+
+public class TestCast {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

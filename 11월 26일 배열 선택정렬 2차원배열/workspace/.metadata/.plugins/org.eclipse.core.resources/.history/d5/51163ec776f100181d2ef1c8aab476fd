@@ -1,0 +1,14 @@
+package array.test;
+
+import array.sample.TwoArraySample;
+
+public class TestTwoArraySample {
+
+	public static void main(String[] args) {
+		// 자바 2차원 배열 테스트
+		TwoArraySample tsamp = new TwoArraySample();
+		tsamp.testTwoArray();
+
+	}
+
+}
