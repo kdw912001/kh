@@ -1,4 +1,4 @@
-package test.set;
+ï»¿package test.set;
 
 import java.util.*;
 
@@ -6,8 +6,8 @@ public class TestLinkedHashSet {
 
 	public static void main(String[] args) {
 		// LinkedHashSet test
-		// ÀúÀå¼ø¼­°¡ À¯ÁöµÇ´Â Set
-		// Áßº¹ Çã¿ë ¾È ÇÔ
+		// ì €ì¥ìˆœì„œê°€ ìœ ì§€ë˜ëŠ” Set
+		// ì¤‘ë³µ í—ˆìš© ì•ˆ í•¨
 		
 		LinkedHashSet lset = 
 				new LinkedHashSet();
@@ -21,16 +21,16 @@ public class TestLinkedHashSet {
 		System.out.println(lset);
 		
 		System.out.println("1 -------------");
-		//Ã¹¹øÂ° : ÀúÀåµÈ °´Ã¼ ¸ñ·Ï¸¸µé¾î
-		//ÇÏ³ª¾¿ ²¨³»±â
+		//ì²«ë²ˆì§¸ : ì €ì¥ëœ ê°ì²´ ëª©ë¡ë§Œë“¤ì–´
+		//í•˜ë‚˜ì”© êº¼ë‚´ê¸°
 		Iterator objIter = lset.iterator();
 		while(objIter.hasNext()) {
 			System.out.println(objIter.next());
 		}
 		
 		System.out.println("2 -------------");
-		//µÎ¹øÂ° : Object[] ¹è¿­·Î ¹Ù²Ù¾î
-		//ÇÏ³ª¾¿ ²¨³»±â
+		//ë‘ë²ˆì§¸ : Object[] ë°°ì—´ë¡œ ë°”ê¾¸ì–´
+		//í•˜ë‚˜ì”© êº¼ë‚´ê¸°
 		Object[] objArr = lset.toArray();
 		for(Object obj : objArr) {
 			System.out.println(obj);

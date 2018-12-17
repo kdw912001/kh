@@ -1,4 +1,4 @@
-package test.list;
+ï»¿package test.list;
 
 import java.util.*;
 
@@ -8,15 +8,15 @@ public class TestArrayList {
 		// ArrayList test
 		ArrayList alist = new ArrayList();
 		
-		//ÀúÀå¼ø¼­°¡ index ·Î ¸Å°ÜÁü
-		//°´Ã¼ Áßº¹ ÀúÀå °¡´ÉÇÔ
+		//ì €ì¥ìˆœì„œê°€ index ë¡œ ë§¤ê²¨ì§
+		//ê°ì²´ ì¤‘ë³µ ì €ì¥ ê°€ëŠ¥í•¨
 		alist.add("java");
 		alist.add("oracle");
 		alist.add("jdbc");
 		alist.add("java");
 		
 		System.out.println(alist);
-		System.out.println("ÀúÀå °´Ã¼¼ö : "
+		System.out.println("ì €ì¥ ê°ì²´ìˆ˜ : "
 				+ alist.size());
 		
 		for(int i = 0; i < alist.size(); i++) {
@@ -24,22 +24,22 @@ public class TestArrayList {
 					alist.get(i));
 		}
 		
-		//ÀúÀå¼ø¹øÀÌ ÀÖ´Â ¹è¿­ÀÌ³ª ¸®½ºÆ®´Â
-		//for each ¹® »ç¿ë °¡´ÉÇÔ
+		//ì €ì¥ìˆœë²ˆì´ ìˆëŠ” ë°°ì—´ì´ë‚˜ ë¦¬ìŠ¤íŠ¸ëŠ”
+		//for each ë¬¸ ì‚¬ìš© ê°€ëŠ¥í•¨
 		for(Object obj : alist) {
 			System.out.println(obj);
 		}
 
-		//add(¼ø¹ø, °´Ã¼)
+		//add(ìˆœë²ˆ, ê°ì²´)
 		alist.add(1, "html5");
 		System.out.println(alist);
 		
-		//set(index, º¯°æÇÒ °´Ã¼)
+		//set(index, ë³€ê²½í•  ê°ì²´)
 		alist.set(3, "css3");
 		System.out.println(alist);
 		
-		//remove(»èÁ¦ÇÒ °´Ã¼) 
-		//Set °è¿­ ¸Ş¼Òµå¿Í µ¿ÀÏÇÔ
+		//remove(ì‚­ì œí•  ê°ì²´) 
+		//Set ê³„ì—´ ë©”ì†Œë“œì™€ ë™ì¼í•¨
 		alist.remove("java");
 		System.out.println(alist);
 		

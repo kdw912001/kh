@@ -1,4 +1,4 @@
-package test.set;
+ï»¿package test.set;
 
 import java.util.*;
 
@@ -11,22 +11,22 @@ public class TestHashSet {
 		System.out.println(hset.isEmpty());
 		System.out.println(hset.size());
 		
-		//°´Ã¼¸¸ ÀúÀåÇÒ ¼ö ÀÖÀ½.
+		//ê°ì²´ë§Œ ì €ì¥í•  ìˆ˜ ìˆìŒ.
 		hset.add(new String("apple"));
 		hset.add("banana");
 		hset.add(new Integer(123));
-		//data(°ª) --> instance(°´Ã¼) : Boxing
-		//Wrapper Å¬·¡½º »ç¿ë
-		hset.add(456);  //Auto Boxing Ã³¸®µÊ
-		hset.add(new Double(54.7)); //Boxing Ã³¸®
+		//data(ê°’) --> instance(ê°ì²´) : Boxing
+		//Wrapper í´ë˜ìŠ¤ ì‚¬ìš©
+		hset.add(456);  //Auto Boxing ì²˜ë¦¬ë¨
+		hset.add(new Double(54.7)); //Boxing ì²˜ë¦¬
 		hset.add(3.15);  //Auto Boxing 
-		//±âº»ÀÚ·áÇü °ª¿¡ ´ëÇØ¼­´Â
-		//ÄÃ·º¼Ç¿¡ ÀúÀå½Ã ÀÚµ¿ boxing Ã³¸®µÊ
+		//ê¸°ë³¸ìë£Œí˜• ê°’ì— ëŒ€í•´ì„œëŠ”
+		//ì»¬ë ‰ì…˜ì— ì €ì¥ì‹œ ìë™ boxing ì²˜ë¦¬ë¨
 		
-		//ºÎ¸ğÅ¬·¡½º¿¡ toString() ¿À¹ö¶óÀÌµùµÇ¾î ÀÖÀ½
+		//ë¶€ëª¨í´ë˜ìŠ¤ì— toString() ì˜¤ë²„ë¼ì´ë”©ë˜ì–´ ìˆìŒ
 		System.out.println(hset/*.toString()*/);
-		//ÀúÀå¼ø¼­°¡ À¯Áö ¾È µÊ 
-		//Áßº¹ Çã¿ë ¾È ÇÔ
+		//ì €ì¥ìˆœì„œê°€ ìœ ì§€ ì•ˆ ë¨ 
+		//ì¤‘ë³µ í—ˆìš© ì•ˆ í•¨
 		
 		hset.add("apple");
 		hset.add("banana");
@@ -43,10 +43,10 @@ public class TestHashSet {
 		/*hset.clear();
 		System.out.println(hset.isEmpty());*/
 		
-		//ÀúÀåµÈ °´Ã¼ Á¤º¸¸¦ ÇÏ³ª¾¿ ²¨³»¼­
-		//»ç¿ëÇÏ´Â ¹æ¹ı
-		//Ã¹¹øÂ° : ÀúÀåµÈ °´Ã¼ÀÇ ¸ñ·Ï¸¸µé±â
-		//¸ñ·Ï : iterator ¶ó°í ÇÔ
+		//ì €ì¥ëœ ê°ì²´ ì •ë³´ë¥¼ í•˜ë‚˜ì”© êº¼ë‚´ì„œ
+		//ì‚¬ìš©í•˜ëŠ” ë°©ë²•
+		//ì²«ë²ˆì§¸ : ì €ì¥ëœ ê°ì²´ì˜ ëª©ë¡ë§Œë“¤ê¸°
+		//ëª©ë¡ : iterator ë¼ê³  í•¨
 		System.out.println("1 -------------");
 		Iterator iter = hset.iterator();
 		while(iter.hasNext()) {
@@ -54,14 +54,14 @@ public class TestHashSet {
 			System.out.println(obj);
 		}
 		
-		//µÎ¹øÂ° : Object[] ·Î ¹Ù²Ù¾î ²¨³»±â
+		//ë‘ë²ˆì§¸ : Object[] ë¡œ ë°”ê¾¸ì–´ êº¼ë‚´ê¸°
 		System.out.println("2 ----------------");
 		Object[] objArr = hset.toArray();
 		for(int i = 0; i < objArr.length; i++) {
 			System.out.println(objArr[i]);
 		}
 		
-		//¼¼¹øÂ°, toArray(T[] a) »ç¿ëÇÏ´Â ¹æ¹ı
+		//ì„¸ë²ˆì§¸, toArray(T[] a) ì‚¬ìš©í•˜ëŠ” ë°©ë²•
 		Object[] objArr2 = new Object[hset.size()];
 		hset.toArray(objArr2);
 		System.out.println("3 -------------");

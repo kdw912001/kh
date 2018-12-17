@@ -1,4 +1,4 @@
-package io.test;
+ï»¿package io.test;
 
 import java.util.Scanner;
 import io.silsub1.MyNote;
@@ -6,7 +6,7 @@ import io.silsub1.MyNote;
 public class TestMyNote {
 
 	public static void main(String[] args) {
-		// ÀÔÃâ·Â ½Ç½À¹®Á¦1
+		// ì…ì¶œë ¥ ì‹¤ìŠµë¬¸ì œ1
 		MyNote note = new MyNote();
 		Scanner sc = new Scanner(System.in);
 		int no;
@@ -14,22 +14,22 @@ public class TestMyNote {
 		do{
 		System.out.println("******   MyNote  *******");
 		System.out.println();
-		System.out.println("1. ³ëÆ® »õ·Î ¸¸µé±â");		//MyNoteÀÇ fileSave()
-		System.out.println("2. ³ëÆ® ¿­±â");		//MyNoteÀÇ fileOpen()
-		System.out.println("3. ³ëÆ® ¿­¾î¼­ ¼öÁ¤ÇÏ±â");	//MyNoteÀÇ fileEdit()
-		System.out.println("4. ³¡³»±â");		//main() À¸·Î ¸®ÅÏ
+		System.out.println("1. ë…¸íŠ¸ ìƒˆë¡œ ë§Œë“¤ê¸°");		//MyNoteì˜ fileSave()
+		System.out.println("2. ë…¸íŠ¸ ì—´ê¸°");		//MyNoteì˜ fileOpen()
+		System.out.println("3. ë…¸íŠ¸ ì—´ì–´ì„œ ìˆ˜ì •í•˜ê¸°");	//MyNoteì˜ fileEdit()
+		System.out.println("4. ëë‚´ê¸°");		//main() ìœ¼ë¡œ ë¦¬í„´
 		System.out.println();
-		System.out.print("¸Ş´º ¼±ÅÃ : ");
+		System.out.print("ë©”ë‰´ ì„ íƒ : ");
 		no = sc.nextInt();
 		
 		switch(no){
 		case 1:	note.fileSave();   break;
 		case 2:	note.fileOpen();   break;
 		case 3:  note.fileEdit();    break;
-		case 4:  System.out.println("MyNote ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.");
+		case 4:  System.out.println("MyNote í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.");
 		        return;
-		default:	System.out.println("¹øÈ£ ¼±ÅÃÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.");
-		        System.out.println("´Ù½Ã ¼±ÅÃÇÏ½Ê½Ã¿À.\n");
+		default:	System.out.println("ë²ˆí˜¸ ì„ íƒì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.");
+		        System.out.println("ë‹¤ì‹œ ì„ íƒí•˜ì‹­ì‹œì˜¤.\n");
 		}
 		
 		}while(no != 4);

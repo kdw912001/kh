@@ -1,23 +1,23 @@
-package test.chario;
+ï»¿package test.chario;
 
 import java.io.*;
 
 public class TestByteToCharStream {
 
 	public static void main(String[] args) {
-		// ¹ÙÀÌÆ®½ºÆ®¸²À» ¹®ÀÚ½ºÆ®¸²À¸·Î ¹Ù²Ù±â
-		// ÀĞ±â¿ë ½ºÆ®¸²¿¡¸¸ Àû¿ëÇÒ ¼ö ÀÖÀ½
-		//±âº»½ºÆ®¸²Àº InputStream ÀÓ
-		//º¸Á¶½ºÆ®¸²ÀÌ Reader ÀÓ
+		// ë°”ì´íŠ¸ìŠ¤íŠ¸ë¦¼ì„ ë¬¸ììŠ¤íŠ¸ë¦¼ìœ¼ë¡œ ë°”ê¾¸ê¸°
+		// ì½ê¸°ìš© ìŠ¤íŠ¸ë¦¼ì—ë§Œ ì ìš©í•  ìˆ˜ ìˆìŒ
+		//ê¸°ë³¸ìŠ¤íŠ¸ë¦¼ì€ InputStream ì„
+		//ë³´ì¡°ìŠ¤íŠ¸ë¦¼ì´ Reader ì„
 		
-		//Å°º¸µå ÀåÄ¡ : System.in 
+		//í‚¤ë³´ë“œ ì¥ì¹˜ : System.in 
 		//public static final InputStream in;
 		BufferedReader br = 
 			new BufferedReader(
 				new InputStreamReader(
 						System.in));
 		
-		System.out.println("ÀÔ·ÂÇÒ ³»¿ë : ");
+		System.out.println("ì…ë ¥í•  ë‚´ìš© : ");
 		StringBuilder sb = new StringBuilder();
 		String str = null;
 		try {

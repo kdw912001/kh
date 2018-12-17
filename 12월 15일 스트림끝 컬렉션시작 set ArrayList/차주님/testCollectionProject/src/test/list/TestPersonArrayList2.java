@@ -1,11 +1,11 @@
-package test.list;
+ï»¿package test.list;
 
 import java.util.*;
 
 public class TestPersonArrayList2 {
 
 	public static void main(String[] args) {
-		// Generic »ç¿ë Å×½ºÆ®
+		// Generic ì‚¬ìš© í…ŒìŠ¤íŠ¸
 		ArrayList<Person> list;		
 		
 		list = addMethod();
@@ -16,9 +16,9 @@ public class TestPersonArrayList2 {
 		ArrayList<Person> list = 
 			new ArrayList<Person>();
 		
-		list.add(new Person("È«±æµ¿", 25, 1537.5));
-		list.add(new Person("ÀÌ¼ø½Å", 49, 15789.0));
-		list.add(new Person("½Å»çÀÓ´ç", 55, 34567.4));
+		list.add(new Person("í™ê¸¸ë™", 25, 1537.5));
+		list.add(new Person("ì´ìˆœì‹ ", 49, 15789.0));
+		list.add(new Person("ì‹ ì‚¬ì„ë‹¹", 55, 34567.4));
 		//list.add(new String("test"));
 		
 		return list;
@@ -32,7 +32,7 @@ public class TestPersonArrayList2 {
 			totalPoint += p.getPoint();
 		}
 		
-		System.out.println("Æ÷ÀÎÆ®ÃÑÇÕ : "
+		System.out.println("í¬ì¸íŠ¸ì´í•© : "
 				+ totalPoint);
 	}
 

@@ -1,4 +1,4 @@
-package test.set;
+ï»¿package test.set;
 
 import java.util.*;
 
@@ -6,8 +6,8 @@ public class TestTreeSet {
 
 	public static void main(String[] args) {
 		// TreeSet test
-		// Áßº¹ Çã¿ë ¾È ÇÔ
-		// °´Ã¼¸¦ ÀÚµ¿ ¿À¸§Â÷¼øÁ¤·ÄÇÏ¸é¼­ ÀúÀåÇÔ
+		// ì¤‘ë³µ í—ˆìš© ì•ˆ í•¨
+		// ê°ì²´ë¥¼ ìë™ ì˜¤ë¦„ì°¨ìˆœì •ë ¬í•˜ë©´ì„œ ì €ì¥í•¨
 		TreeSet tset = new TreeSet();
 		//Set tset = new TreeSet():
 		
@@ -32,7 +32,7 @@ public class TestTreeSet {
 			System.out.println(obj);
 		}
 		
-		//3. ³»¸²Â÷¼øÁ¤·ÄµÈ ¸ñ·Ï ¸¸µé±â
+		//3. ë‚´ë¦¼ì°¨ìˆœì •ë ¬ëœ ëª©ë¡ ë§Œë“¤ê¸°
 		//descendingIterator()
 		System.out.println("3 ---------------");
 		Iterator descIter = tset.descendingIterator();
@@ -41,7 +41,7 @@ public class TestTreeSet {
 		}
 		
 		//4. descendingSet() 
-		//³»¸²Â÷¼øÁ¤·ÄµÈ Set ¸¸µé±â
+		//ë‚´ë¦¼ì°¨ìˆœì •ë ¬ëœ Set ë§Œë“¤ê¸°
 		System.out.println("4 ----------");
 		Set descSet = tset.descendingSet();
 		System.out.println(descSet);

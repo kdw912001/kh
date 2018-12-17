@@ -1,4 +1,4 @@
-package io.silsub1;
+ï»¿package io.silsub1;
 
 import java.util.*;
 import java.io.*;
@@ -12,16 +12,16 @@ public class MyNote {
 		StringBuilder sb = new StringBuilder();
 		
 		System.out.println(
-			"ÆÄÀÏ¿¡ ÀúÀåÇÒ ³»¿ëÀ» ÀÔ·ÂÇÏ½Ã¿À");
+			"íŒŒì¼ì— ì €ì¥í•  ë‚´ìš©ì„ ì…ë ¥í•˜ì‹œì˜¤");
 		while(true){			
 			String s = sc.nextLine();			
 			if(s.equals("exit"))	break;			
 			sb.append(s + "\n");
 		}
 		
-		System.out.println("ÀúÀåÇÏ½Ã°Ú½À´Ï±î? (y/n) : ");			
+		System.out.println("ì €ì¥í•˜ì‹œê² ìŠµë‹ˆê¹Œ? (y/n) : ");			
 		if(sc.next().toUpperCase().charAt(0) == 'Y'){			
-			System.out.println("ÀúÀåÇÒ ÆÄÀÏ¸í : ");
+			System.out.println("ì €ì¥í•  íŒŒì¼ëª… : ");
 			String fileName = sc.next();
 			
 			try(BufferedWriter bw = 
@@ -30,7 +30,7 @@ public class MyNote {
 				bw.write(sb.toString());
 				bw.flush();
 				System.out.println(fileName 
-					+ "ÆÄÀÏ¿¡ ¼º°øÀûÀ¸·Î ÀúÀåÇÏ¿´½À´Ï´Ù.");
+					+ "íŒŒì¼ì— ì„±ê³µì ìœ¼ë¡œ ì €ì¥í•˜ì˜€ìŠµë‹ˆë‹¤.");
 				System.out.println();
 			}catch(IOException e){
 				e.printStackTrace();
@@ -40,7 +40,7 @@ public class MyNote {
 	}
 	
 	public void fileOpen(){
-		System.out.println("¿­±âÇÒ ÆÄÀÏ¸í : ");
+		System.out.println("ì—´ê¸°í•  íŒŒì¼ëª… : ");
 		String fileName = sc.next();
 		try(BufferedReader br = 
 			new BufferedReader(
@@ -51,7 +51,7 @@ public class MyNote {
 				System.out.println(line);
 			}
 			System.out.println("\n" + 
-				fileName + " ÀĞ±â ¿Ï·á...\n");
+				fileName + " ì½ê¸° ì™„ë£Œ...\n");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -60,7 +60,7 @@ public class MyNote {
 	public void fileEdit(){
 		StringBuilder sb = new StringBuilder();
 		
-		System.out.println("¼öÁ¤ÇÒ ÆÄÀÏ¸í : ");
+		System.out.println("ìˆ˜ì •í•  íŒŒì¼ëª… : ");
 		String fileName = sc.next();
 		
 		try(BufferedReader br = 
@@ -69,21 +69,21 @@ public class MyNote {
 			BufferedWriter bw = 
 				new BufferedWriter(
 				new FileWriter(fileName, true));) {
-			//ÆÄÀÏÀÇ ³»¿ë ÀĞ±â
+			//íŒŒì¼ì˜ ë‚´ìš© ì½ê¸°
 			String line;
 			while((line = br.readLine()) != null)
 				sb.append(line + "\n");
 			
-			//Ãß°¡ÇÒ ³»¿ë ÀÔ·Â¹Ş±â
-			System.out.println("ÆÄÀÏ¿¡ Ãß°¡ÇÒ ³»¿ëÀ» ÀÔ·ÂÇÏ½Ã¿À." );
+			//ì¶”ê°€í•  ë‚´ìš© ì…ë ¥ë°›ê¸°
+			System.out.println("íŒŒì¼ì— ì¶”ê°€í•  ë‚´ìš©ì„ ì…ë ¥í•˜ì‹œì˜¤." );
 			while(!(line = sc.nextLine()).equals("exit")){
 				sb.append(line + "\n");
 			}
 			
-			System.out.println("º¯°æµÈ ³»¿ëÀ» ÆÄÀÏ¿¡ Ãß°¡ÇÏ½Ã°Ú½À´Ï±î? (y/n) : ");
+			System.out.println("ë³€ê²½ëœ ë‚´ìš©ì„ íŒŒì¼ì— ì¶”ê°€í•˜ì‹œê² ìŠµë‹ˆê¹Œ? (y/n) : ");
 			if(sc.next().toUpperCase().charAt(0) == 'Y'){
 				bw.write(sb.toString());
-				System.out.println(fileName + " ÆÄÀÏÀÇ ³»¿ëÀÌ º¯°æµÇ¾ú½À´Ï´Ù.");
+				System.out.println(fileName + " íŒŒì¼ì˜ ë‚´ìš©ì´ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -1,16 +1,16 @@
-package test.list;
+ï»¿package test.list;
 
 import java.util.*;
 
 public class TestPersonArrayList {
 
 	public static void main(String[] args) {
-		// Person ÀúÀå¿ë ArrayList »ç¿ë
+		// Person ì €ì¥ìš© ArrayList ì‚¬ìš©
 		ArrayList list = new ArrayList();
 
-		list.add(new Person("È«±æµ¿", 25, 1537.5));
-		list.add(new Person("ÀÌ¼ø½Å", 49, 15789.0));
-		list.add(new Person("½Å»çÀÓ´ç", 55, 34567.4));
+		list.add(new Person("í™ê¸¸ë™", 25, 1537.5));
+		list.add(new Person("ì´ìˆœì‹ ", 49, 15789.0));
+		list.add(new Person("ì‹ ì‚¬ì„ë‹¹", 55, 34567.4));
 		
 		System.out.println(list);
 		
@@ -18,14 +18,14 @@ public class TestPersonArrayList {
 			System.out.println(obj);
 		}
 		
-		//°¢ °´Ã¼°¡ °¡Áø Æ÷ÀÎÆ® °ªÀÇ ÇÕ°è¸¦ ±¸ÇÔ
+		//ê° ê°ì²´ê°€ ê°€ì§„ í¬ì¸íŠ¸ ê°’ì˜ í•©ê³„ë¥¼ êµ¬í•¨
 		double totalPoint = 0.;
 		for(int i = 0; i < list.size(); i++) {
 			Person p = (Person)list.get(i);
 			totalPoint += p.getPoint();
 		}
 		
-		System.out.println("Æ÷ÀÎÆ® ÃÑÇÕ : " +
+		System.out.println("í¬ì¸íŠ¸ ì´í•© : " +
 				totalPoint);
 	}
 

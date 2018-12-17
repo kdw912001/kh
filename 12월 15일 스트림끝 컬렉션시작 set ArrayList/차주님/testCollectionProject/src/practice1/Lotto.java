@@ -1,9 +1,9 @@
-package practice1;
+ï»¿package practice1;
 
 import java.util.*;
 
 public class Lotto {
-	//ÄÃ·º¼Ç ½Ç½À¹®Á¦1
+	//ì»¬ë ‰ì…˜ ì‹¤ìŠµë¬¸ì œ1
 	public static void lottoDisplay(){
 		TreeSet lottoNumbers = 
 				new TreeSet();
