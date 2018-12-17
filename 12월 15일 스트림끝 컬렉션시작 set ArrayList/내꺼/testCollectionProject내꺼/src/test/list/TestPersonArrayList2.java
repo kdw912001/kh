@@ -34,5 +34,6 @@ public class TestPersonArrayList2 {
 			System.out.println(p);
 			totalPoint += p.getPoint();
 		}
+		System.out.println("포인트총합 : "+ totalPoint);
 	}
 }
