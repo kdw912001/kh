@@ -32,6 +32,7 @@ public class Lotto {
 		
 		for(int i=0; i<ar.length;i++) {
 			ar[i] = (Integer)numbers[i]; //Object를 Integer로 형변환
+			//Auto unboxing
 			System.out.print(ar[i]+"\t");
 		}
 		System.out.println();

@@ -32,9 +32,9 @@ public class TestTreeSet {
 		//3. 내림차순 정렬된 목록 만들기
 		//descendingIterator()
 		System.out.println("3---------------------");
-		Iterator it2 = tset.descendingIterator();
-		while(it2.hasNext())
-			System.out.println(it2.next());
+		Iterator descIter = tset.descendingIterator();
+		while(descIter.hasNext()) 
+			System.out.println(descIter.next());
 		
 		//4. descendingSet()
 		//내림차순 정렬된 Set 만들기
