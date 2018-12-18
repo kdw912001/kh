@@ -76,6 +76,10 @@ public class TestMapGeneric {
 			//제네릭 명시 했으니 형변환 필요 없음
 			System.out.println(key+"="+b);
 		}
-		
 	}
+	/* 원래 static은 멤버변수나 메소드에 사용할 수 있었는데
+	 * public static interface Map.Entry<K,V>
+	 * 내부에 있는 거라 static 사용 가능
+	 * 
+	 */
 }
