@@ -1,8 +1,0 @@
-package controll.sample;
-
-public class MultiIfSample {
-		//다중 if문 테스트용
-	public void testMulti1() {
-		
-	}
-}
