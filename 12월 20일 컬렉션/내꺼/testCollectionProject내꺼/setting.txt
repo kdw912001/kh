@@ -1,0 +1,6 @@
+#jdcb driver setting file
+#Thu Dec 20 17:50:03 KST 2018
+user=user007
+password=pass007
+url=jdbc\:oracle\:thin\:@127.0.0.1\:1521\:xe
+driver=oracle.jdbc.driver.OracleDriver

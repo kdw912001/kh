@@ -1,0 +1,5 @@
+#sample.txt
+name=È«±æµ¿
+age=25
+gender=³²
+height=185.5

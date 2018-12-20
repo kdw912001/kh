@@ -1,0 +1,5 @@
+#sample.txt
+name=홍길동
+age=25
+gender=남
+height=185.5
