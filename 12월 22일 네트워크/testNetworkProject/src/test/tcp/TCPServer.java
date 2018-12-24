@@ -1,52 +1,52 @@
-package test.tcp;
+ï»¿package test.tcp;
 
 import java.net.*;
 import java.io.*;
 
 public class TCPServer {
 	public static void serverStart() {
-		//1. port ¹øÈ£ Á¤ÇÏ±â
+		//1. port ë²ˆí˜¸ ì •í•˜ê¸°
 		int port = 7777;
 		ServerSocket server = null;
 		BufferedReader br = null;
 		PrintWriter pw = null;
 		
 		try {
-			//2. ¼­¹ö¿ë ¼ÒÄÏ °´Ã¼ ¸¸µé±â
+			//2. ì„œë²„ìš© ì†Œì¼“ ê°ì²´ ë§Œë“¤ê¸°
 			server = new ServerSocket(port);
 		
-			//3. Å¬¶óÀÌ¾ğÆ®·Î ºÎÅÍ ¿¬°á ¿äÃ»À» ±â´Ù¸².
+			//3. í´ë¼ì´ì–¸íŠ¸ë¡œ ë¶€í„° ì—°ê²° ìš”ì²­ì„ ê¸°ë‹¤ë¦¼.
 			while(true) {
-				System.out.println("Å¬¶óÀÌ¾ğÆ® ¿äÃ»À» ±â´Ù¸®°í ÀÖ½À´Ï´Ù....");
+				System.out.println("í´ë¼ì´ì–¸íŠ¸ ìš”ì²­ì„ ê¸°ë‹¤ë¦¬ê³  ìˆìŠµë‹ˆë‹¤....");
 				
-				//4. ¿¬°á ¿äÃ»ÇÑ Å¬¶óÀÌ¾ğÆ®ÀÇ ¿äÃ»À» ¼ö¶ôÇÔ
-				//ÇØ´ç Å¬¶óÀÌ¾ğÆ®ÀÇ Á¤º¸¸¦ ÀúÀåÇÑ ¼ÒÄÏ °´Ã¼ »ı¼ºÇÔ
+				//4. ì—°ê²° ìš”ì²­í•œ í´ë¼ì´ì–¸íŠ¸ì˜ ìš”ì²­ì„ ìˆ˜ë½í•¨
+				//í•´ë‹¹ í´ë¼ì´ì–¸íŠ¸ì˜ ì •ë³´ë¥¼ ì €ì¥í•œ ì†Œì¼“ ê°ì²´ ìƒì„±í•¨
 				Socket client = server.accept();
 				
 				System.out.println(client.getInetAddress().getHostAddress()
-						+ "°¡ ¿¬°á ¿äÃ»ÇÔ...");
+						+ "ê°€ ì—°ê²° ìš”ì²­í•¨...");
 				
-				//5. ÇØ´ç Å¬¶óÀÌ¾ğÆ®¿Í ÀÔÃâ·Â ½ºÆ®¸² »ı¼ºÇÔ
+				//5. í•´ë‹¹ í´ë¼ì´ì–¸íŠ¸ì™€ ì…ì¶œë ¥ ìŠ¤íŠ¸ë¦¼ ìƒì„±í•¨
 				InputStream is = client.getInputStream();
 				OutputStream os = client.getOutputStream();
 				
-				//¼º´É ¶Ç´Â »ç¿ë °³¼±À» À§ÇØ
-				//º¸Á¶½ºÆ®¸²À» Ãß°¡·Î ¿¬°áÇÒ ¼öµµ ÀÖÀ½
-				//¹ÙÀÌÆ®½ºÆ®¸²À» ¹®ÀÚ½ºÆ®¸²À¸·Î ¹Ù²Ü ¼öµµ ÀÖÀ½
+				//ì„±ëŠ¥ ë˜ëŠ” ì‚¬ìš© ê°œì„ ì„ ìœ„í•´
+				//ë³´ì¡°ìŠ¤íŠ¸ë¦¼ì„ ì¶”ê°€ë¡œ ì—°ê²°í•  ìˆ˜ë„ ìˆìŒ
+				//ë°”ì´íŠ¸ìŠ¤íŠ¸ë¦¼ì„ ë¬¸ììŠ¤íŠ¸ë¦¼ìœ¼ë¡œ ë°”ê¿€ ìˆ˜ë„ ìˆìŒ
 				br = new BufferedReader(
 						new InputStreamReader(is));
 				pw = new PrintWriter(os);
 				
-				//6. ¸Ş¼¼Áö¸¦ ÁÖ°í ¹ŞÀ½
-				//Å¬¶óÀÌ¾ğÆ®°¡ º¸³½ ¸Ş¼¼Áö ÀĞ¾î¼­ Ãâ·Â
+				//6. ë©”ì„¸ì§€ë¥¼ ì£¼ê³  ë°›ìŒ
+				//í´ë¼ì´ì–¸íŠ¸ê°€ ë³´ë‚¸ ë©”ì„¸ì§€ ì½ì–´ì„œ ì¶œë ¥
 				String message = br.readLine();
-				System.out.println("¹ŞÀº ¸Ş¼¼Áö : "
+				System.out.println("ë°›ì€ ë©”ì„¸ì§€ : "
 						+ message);
-				//¼­¹ö°¡ ´äÀ» º¸³¿
-				pw.println("¼­¹ö°¡ ¸Ş¼¼Áö Àß ¹Ş¾ÒÀ½...");
+				//ì„œë²„ê°€ ë‹µì„ ë³´ëƒ„
+				pw.println("ì„œë²„ê°€ ë©”ì„¸ì§€ ì˜ ë°›ì•˜ìŒ...");
 				pw.flush();
 				
-				//7. ½ºÆ®¸² ¹İ³³ÇÔ
+				//7. ìŠ¤íŠ¸ë¦¼ ë°˜ë‚©í•¨
 				pw.close();
 				br.close();
 				client.close();
@@ -66,7 +66,7 @@ public class TCPServer {
 	}
 
 	public static void main(String[] args) {
-		// TCP Server Ãø ÇÁ·Î±×·¥
+		// TCP Server ì¸¡ í”„ë¡œê·¸ë¨
 		serverStart();
 
 	}

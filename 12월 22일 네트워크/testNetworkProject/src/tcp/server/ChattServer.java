@@ -1,4 +1,4 @@
-package tcp.server;
+ï»¿package tcp.server;
 
 import java.net.*;
 import java.io.*;
@@ -6,7 +6,7 @@ import java.io.*;
 public class ChattServer {
 
 	public static void main(String[] args) {
-		// ¼­¹ö¿ë ÇÁ·Î±×·¥
+		// ì„œë²„ìš© í”„ë¡œê·¸ë¨
 		chattServerStart();		
 	}
 	
@@ -19,8 +19,8 @@ public class ChattServer {
 			server = new ServerSocket(port);
 			serverIP = server.getInetAddress().getHostAddress();
 
-			while (true) { // °è¼Ó ´ë±â»óÅÂ·Î ¸¸µê
-				System.out.println("Á¢¼Ó ´ë±â »óÅÂ...");
+			while (true) { // ê³„ì† ëŒ€ê¸°ìƒíƒœë¡œ ë§Œë“¦
+				System.out.println("ì ‘ì† ëŒ€ê¸° ìƒíƒœ...");
 				clientAccess(server);
 			}
 		} catch (Exception e) {
@@ -45,7 +45,7 @@ public class ChattServer {
 					pw.println(serverIP + " : recieve success...");
 					pw.flush();
 				}
-				// quit Àü¼ÛÀ¸·Î Á¤»óÀûÀÎ Á¾·á½Ã
+				// quit ì „ì†¡ìœ¼ë¡œ ì •ìƒì ì¸ ì¢…ë£Œì‹œ
 				pw.print(serverIP + " : disconnected...");
 				pw.flush();
 				System.out.println(clientIP + " : quited....");
@@ -54,8 +54,8 @@ public class ChattServer {
 				client.close();
 
 			} catch (SocketException e) {
-				// quit Àü¼ÛÇÏÁö ¾Ê°í ºñÁ¤»óÀûÀ¸·Î Á¾·áÇÑ °æ¿ì
-				System.out.println(clientIP + " : ºñÁ¤»óÀûÀ¸·Î Á¾·áÇÏ¿´À½...");
+				// quit ì „ì†¡í•˜ì§€ ì•Šê³  ë¹„ì •ìƒì ìœ¼ë¡œ ì¢…ë£Œí•œ ê²½ìš°
+				System.out.println(clientIP + " : ë¹„ì •ìƒì ìœ¼ë¡œ ì¢…ë£Œí•˜ì˜€ìŒ...");
 				pw.print(serverIP + " : disconnected...");
 				br.close();
 				pw.close();

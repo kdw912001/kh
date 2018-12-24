@@ -1,4 +1,4 @@
-package test.iphost;
+ï»¿package test.iphost;
 
 import java.net.*;
 import java.util.*;
@@ -10,13 +10,13 @@ public class TestInetAddress3 {
 		String hostName = "";
 		
 		try {
-			System.out.print("Á¶È¸ÇÒ È£½ºÆ®¸í : ");
+			System.out.print("ì¡°íšŒí•  í˜¸ìŠ¤íŠ¸ëª… : ");
 			hostName = sc.next();
 			
 			InetAddress[] inets = 
 				InetAddress.getAllByName(hostName);
 			
-			System.out.println("Á¶È¸ÇÑ È£½ºÆ®ÀÇ ¼­¹ö °¹¼ö : "
+			System.out.println("ì¡°íšŒí•œ í˜¸ìŠ¤íŠ¸ì˜ ì„œë²„ ê°¯ìˆ˜ : "
 					+ inets.length);
 			
 			for(int i = 0; i < inets.length; i++)
@@ -28,9 +28,9 @@ public class TestInetAddress3 {
 	}
 	
 	public static void main(String[] args) {
-		// Å°º¸µå·Î µµ¸ŞÀÎ¸íÀ» ÀÔ·Â¹Ş¾Æ
-		// ÇØ´ç È£½ºÆ® ¼­¹öÀÇ ¸ğµç ip ÁÖ¼Ò Á¶È¸
-		// Á¶È¸µÈ ip ÁÖ¼Ò¿Í È£½ºÆ®¸í Ãâ·Â Ã³¸®
+		// í‚¤ë³´ë“œë¡œ ë„ë©”ì¸ëª…ì„ ì…ë ¥ë°›ì•„
+		// í•´ë‹¹ í˜¸ìŠ¤íŠ¸ ì„œë²„ì˜ ëª¨ë“  ip ì£¼ì†Œ ì¡°íšŒ
+		// ì¡°íšŒëœ ip ì£¼ì†Œì™€ í˜¸ìŠ¤íŠ¸ëª… ì¶œë ¥ ì²˜ë¦¬
 		searchIP();
 	}
 

@@ -1,4 +1,4 @@
-package test.tcp;
+ï»¿package test.tcp;
 
 import java.net.*;
 import java.io.*;
@@ -6,8 +6,8 @@ import java.io.*;
 public class TCPClient {
 	
 	public static void clientStart() {
-		//1. ¼­¹ö°¡ Á¤ÇÑ Æ÷Æ®¹øÈ£¿Í
-		//¼­¹öÀÇ ipÁÖ¼Ò°¡ ÇÊ¿äÇÔ
+		//1. ì„œë²„ê°€ ì •í•œ í¬íŠ¸ë²ˆí˜¸ì™€
+		//ì„œë²„ì˜ ipì£¼ì†Œê°€ í•„ìš”í•¨
 		int port = 7777;
 		
 		BufferedReader br = null;
@@ -18,29 +18,29 @@ public class TCPClient {
 			String serverIP = InetAddress.getLocalHost().getHostAddress();
 			//String serverIP = "192.168.30.28";
 			
-			//2. Å¬¶óÀÌ¾ğÆ® ÀÚ½ÅÀÇ ¼ÒÄÏ °´Ã¼ »ı¼ºÇÔ
+			//2. í´ë¼ì´ì–¸íŠ¸ ìì‹ ì˜ ì†Œì¼“ ê°ì²´ ìƒì„±í•¨
 			socket = new Socket(serverIP, port);
-			//°´Ã¼ »ı¼º°ú µ¿½Ã¿¡ ¼­¹ö¿Í ¿¬°áµÊ.
-			//¼­¹ö¿Í ¿¬°á ½ÇÆĞ½Ã null ¸®ÅÏµÊ.
+			//ê°ì²´ ìƒì„±ê³¼ ë™ì‹œì— ì„œë²„ì™€ ì—°ê²°ë¨.
+			//ì„œë²„ì™€ ì—°ê²° ì‹¤íŒ¨ì‹œ null ë¦¬í„´ë¨.
 			
 			if(socket != null) {
-				//¼­¹ö¿Í ¿¬°áÀÌ µÇ¾ú´Ù¸é
+				//ì„œë²„ì™€ ì—°ê²°ì´ ë˜ì—ˆë‹¤ë©´
 				
-				//3. ¼­¹ö¿Í Å¬¶óÀÌ¾ğÆ® °£ÀÇ ½ºÆ®¸² »ı¼ºÇÔ
+				//3. ì„œë²„ì™€ í´ë¼ì´ì–¸íŠ¸ ê°„ì˜ ìŠ¤íŠ¸ë¦¼ ìƒì„±í•¨
 				br = new BufferedReader(
 						new InputStreamReader(
 							socket.getInputStream()));
 				pw = new PrintWriter(
 						socket.getOutputStream());
 			
-				//4. ¸Ş¼¼Áö ÁÖ°í ¹Ş±â
-				//¼­¹ö·Î ¸ÕÀú º¸³»°í
-				pw.println("¾È³çÇÏ¼¼¿ä....");
+				//4. ë©”ì„¸ì§€ ì£¼ê³  ë°›ê¸°
+				//ì„œë²„ë¡œ ë¨¼ì € ë³´ë‚´ê³ 
+				pw.println("ì•ˆë…•í•˜ì„¸ìš”....");
 				pw.flush();
 				
-				//´ä ¹Ş±â
+				//ë‹µ ë°›ê¸°
 				String recieveMsg = br.readLine();
-				System.out.println("¼­¹ö°¡ º¸³½ ´ä : "
+				System.out.println("ì„œë²„ê°€ ë³´ë‚¸ ë‹µ : "
 						+ recieveMsg);
 				
 			}
@@ -59,7 +59,7 @@ public class TCPClient {
 	}
 
 	public static void main(String[] args) {
-		// TCP Client Ãø ÇÁ·Î±×·¥
+		// TCP Client ì¸¡ í”„ë¡œê·¸ë¨
 		clientStart();
 	}
 

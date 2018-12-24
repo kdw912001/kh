@@ -1,4 +1,4 @@
-package test.iphost;
+ï»¿package test.iphost;
 
 import java.net.*;
 import java.util.*;
@@ -6,12 +6,12 @@ import java.util.*;
 public class TestInetAddress4 {
 
 	public static void searchIP() {
-		//Å°º¸µå·Î È£½ºÆ®¸íÀ» ÀÔ·Â¹Ş¾Æ
-		//ÇØ´ç È£½ºÆ®°¡ °¡Áø ip ÁÖ¼Ò 
-		//¸ğµÎ Ãâ·Â Ã³¸® ¹İº¹½ÇÇàÇÔ
-		//"none" ÀÔ·Â½Ã Á¾·áµÇ°Ô ÇÔ
+		//í‚¤ë³´ë“œë¡œ í˜¸ìŠ¤íŠ¸ëª…ì„ ì…ë ¥ë°›ì•„
+		//í•´ë‹¹ í˜¸ìŠ¤íŠ¸ê°€ ê°€ì§„ ip ì£¼ì†Œ 
+		//ëª¨ë‘ ì¶œë ¥ ì²˜ë¦¬ ë°˜ë³µì‹¤í–‰í•¨
+		//"none" ì…ë ¥ì‹œ ì¢…ë£Œë˜ê²Œ í•¨
 		do{
-			System.out.print("È£½ºÆ®¸í (Á¾·á: none) : ");
+			System.out.print("í˜¸ìŠ¤íŠ¸ëª… (ì¢…ë£Œ: none) : ");
 			String host = new Scanner(System.in).next();
 			
 			if(host.equals("none") != true){
@@ -22,8 +22,8 @@ public class TestInetAddress4 {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				System.out.println(host + "°¡ °¡Áø ip´Â " + 
-						ips.length + "°³ ÀÔ´Ï´Ù.");
+				System.out.println(host + "ê°€ ê°€ì§„ ipëŠ” " + 
+						ips.length + "ê°œ ì…ë‹ˆë‹¤.");
 				for(InetAddress ip : ips)
 					System.out.println(ip.getHostAddress());
 				

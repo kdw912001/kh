@@ -1,4 +1,4 @@
-package test.url;
+ï»¿package test.url;
 
 import java.net.*;
 
@@ -6,18 +6,18 @@ public class TestURL {
 
 	public static void main(String[] args) {
 		// java.net.URL class test
-		// URL °´Ã¼´Â url Á¤º¸¸¦ °¡Áö°í ÀÖÀ½
+		// URL ê°ì²´ëŠ” url ì •ë³´ë¥¼ ê°€ì§€ê³  ìˆìŒ
 		String urlStr = "https://www.oracle.com/technetwork/java/javase/downloads/index.html";
 
 		try {
 			URL url = new URL(urlStr);
-			System.out.println("ÇÁ·ÎÅäÄİ : " + url.getProtocol());
-			System.out.println("È£½ºÆ®¸í : " + url.getHost());
-			System.out.println("°æ·ÎÁ¤º¸ : " + url.getPath());
-			System.out.println("¿¬°áµÈ ÆÄÀÏ : " + url.getFile());
-			System.out.println("Æ÷Æ®¹øÈ£ : " + url.getPort());
-			System.out.println("Äõ¸®½ºÆ®¸µ : " + url.getQuery());
-			System.out.println("ÂüÁ¶ÀÌ¸§ : " + url.getRef());
+			System.out.println("í”„ë¡œí† ì½œ : " + url.getProtocol());
+			System.out.println("í˜¸ìŠ¤íŠ¸ëª… : " + url.getHost());
+			System.out.println("ê²½ë¡œì •ë³´ : " + url.getPath());
+			System.out.println("ì—°ê²°ëœ íŒŒì¼ : " + url.getFile());
+			System.out.println("í¬íŠ¸ë²ˆí˜¸ : " + url.getPort());
+			System.out.println("ì¿¼ë¦¬ìŠ¤íŠ¸ë§ : " + url.getQuery());
+			System.out.println("ì°¸ì¡°ì´ë¦„ : " + url.getRef());
 			
 			String host = url.getHost();
 			InetAddress[] ipes = 
@@ -26,7 +26,7 @@ public class TestURL {
 				System.out.println(inet.toString());
 			
 		} catch (MalformedURLException | UnknownHostException e) {
-			System.out.println("Àß¸øµÈ url ÀÔ´Ï´Ù.");
+			System.out.println("ì˜ëª»ëœ url ì…ë‹ˆë‹¤.");
 		}
 	}
 

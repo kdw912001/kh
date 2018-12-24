@@ -1,4 +1,4 @@
-package test.iphost;
+ï»¿package test.iphost;
 
 import java.net.*;
 
@@ -12,13 +12,13 @@ public class TestInetAddress1 {
 		InetAddress neverIP = 
 				InetAddress.getByName(
 						"www.naver.com");
-		System.out.println("³×ÀÌ¹ö À¥¼­¹öÀÇ ipÁÖ¼Ò : "
+		System.out.println("ë„¤ì´ë²„ ì›¹ì„œë²„ì˜ ipì£¼ì†Œ : "
 				+ neverIP.getHostAddress());
 		
 		InetAddress[] googles = 
 				InetAddress.getAllByName(
 						"www.google.com");
-		System.out.println("google À¥¼­¹ö °¹¼ö : "
+		System.out.println("google ì›¹ì„œë²„ ê°¯ìˆ˜ : "
 				+ googles.length);
 		for(InetAddress inet : googles) {
 			System.out.println(inet.getHostAddress());
@@ -27,19 +27,19 @@ public class TestInetAddress1 {
 		InetAddress[] navers = 
 				InetAddress.getAllByName(
 						"www.naver.com");
-		System.out.println("³×ÀÌ¹ö À¥¼­¹ö °¹¼ö : "
+		System.out.println("ë„¤ì´ë²„ ì›¹ì„œë²„ ê°¯ìˆ˜ : "
 				+ navers.length);
 		for(InetAddress ipes : navers) {
 			System.out.println(ipes.getHostAddress());
 		}
 		
 		InetAddress myIp = InetAddress.getLocalHost();
-		System.out.println("³» ÄÄÇ»ÅÍ ip ÁÖ¼Ò : "
+		System.out.println("ë‚´ ì»´í“¨í„° ip ì£¼ì†Œ : "
 				+ myIp.getHostAddress());
 		
 		}catch(UnknownHostException e) {
-			System.out.println("µµ¸ŞÀÎ¸íÀÌ Æ²·È½À´Ï´Ù.");
-			System.out.println("È®ÀÎÇÏ°í ´Ù½Ã ½ÇÇàÇÏ¼¼¿ä.");
+			System.out.println("ë„ë©”ì¸ëª…ì´ í‹€ë ¸ìŠµë‹ˆë‹¤.");
+			System.out.println("í™•ì¸í•˜ê³  ë‹¤ì‹œ ì‹¤í–‰í•˜ì„¸ìš”.");
 		}
 	}
 }

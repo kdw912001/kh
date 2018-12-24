@@ -1,4 +1,4 @@
-package test.iphost;
+ï»¿package test.iphost;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -7,11 +7,11 @@ public class TestInetAddress2 {
 
 	public static void main(String[] args) 
 			throws UnknownHostException {
-		// ip ÁÖ¼Ò·Î È£½ºÆ®¸í ¾Ë¾Æ³»±â
+		// ip ì£¼ì†Œë¡œ í˜¸ìŠ¤íŠ¸ëª… ì•Œì•„ë‚´ê¸°
 		byte[] naverIP = {125, (byte)209, (byte)222, (byte)141};
 		InetAddress naverInet = 
 			InetAddress.getByAddress(naverIP);
-		System.out.println("¾Ë¾Æ³½ È£½ºÆ®¸í : "
+		System.out.println("ì•Œì•„ë‚¸ í˜¸ìŠ¤íŠ¸ëª… : "
 				+ naverInet.getHostName());
 		System.out.println("host name : "
 				+ naverInet.getCanonicalHostName());

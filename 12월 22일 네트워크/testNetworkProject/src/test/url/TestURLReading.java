@@ -1,4 +1,4 @@
-package test.url;
+ï»¿package test.url;
 
 import java.net.*;
 import java.io.*;
@@ -6,7 +6,7 @@ import java.io.*;
 public class TestURLReading {
 
 	public static void main(String[] args) {
-		// url ÀÇ ÆÄÀÏÀ» ÀĞ¾î¿Í¼­ ÄÜ¼Ö¿¡ Ãâ·Â
+		// url ì˜ íŒŒì¼ì„ ì½ì–´ì™€ì„œ ì½˜ì†”ì— ì¶œë ¥
 		String urlStr = "https://www.oracle.com/technetwork/java/javase/downloads/index.html";
 		BufferedReader br = null;
 		

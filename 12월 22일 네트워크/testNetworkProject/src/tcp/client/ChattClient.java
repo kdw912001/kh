@@ -1,4 +1,4 @@
-package tcp.client;
+ï»¿package tcp.client;
 
 import java.util.*;
 import java.net.*;
@@ -7,7 +7,7 @@ import java.io.*;
 public class ChattClient {
 
 	public static void main(String[] args) {
-		// Å¬¶óÀÌ¾ğÆ®¿ë ÇÁ·Î±×·¥
+		// í´ë¼ì´ì–¸íŠ¸ìš© í”„ë¡œê·¸ë¨
 		chattClientStart();
 	}
 	
@@ -18,14 +18,14 @@ public class ChattClient {
 
 		try {
 			Socket socket = new Socket("127.0.0.1", 9000);
-			// °´Ã¼°¡ »ı¼ºµÇ¸é ÀÚµ¿À¸·Î ¼­¹ö¿Í ¿¬°áµÊ
+			// ê°ì²´ê°€ ìƒì„±ë˜ë©´ ìë™ìœ¼ë¡œ ì„œë²„ì™€ ì—°ê²°ë¨
 
-			// ½ºÆ®¸² »ı¼ºÇÏ°í, ÀÔÃâ·Â Ã³¸®ÇÔ
+			// ìŠ¤íŠ¸ë¦¼ ìƒì„±í•˜ê³ , ì…ì¶œë ¥ ì²˜ë¦¬í•¨
 			br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			pw = new PrintWriter(socket.getOutputStream());
 
 			do {
-				System.out.print("Àü¼ÛÇÒ ¸Ş¼¼Áö : ");
+				System.out.print("ì „ì†¡í•  ë©”ì„¸ì§€ : ");
 				String sendMessage = sc.nextLine();
 				// sc.nextLine();
 
