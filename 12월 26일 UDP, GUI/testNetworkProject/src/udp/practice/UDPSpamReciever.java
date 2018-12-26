@@ -1,13 +1,13 @@
-package udp.practice;
+ï»¿package udp.practice;
 
 import java.net.*;
 import java.io.*;
 
 public class UDPSpamReciever {
-	//¹«ÀÛÀ§·Î Àü¼ÛµÈ ½ºÆÔ¸Ş¼¼Áö ¹Ş¾Æ¼­
-	//Ãâ·ÂÇÏ´Â ÇÁ·Î±×·¥
-	//¹«ÇÑ·çÇÁ·Î Àü¼Û¿Â ÆĞÅ¶ Á¤º¸¸¦
-	//°è¼Ó ¹Ş¾Æ Ãâ·ÂÇÏ´Â ÇÁ·Î±×·¥ÀÓ.
+	//ë¬´ì‘ìœ„ë¡œ ì „ì†¡ëœ ìŠ¤íŒ¸ë©”ì„¸ì§€ ë°›ì•„ì„œ
+	//ì¶œë ¥í•˜ëŠ” í”„ë¡œê·¸ë¨
+	//ë¬´í•œë£¨í”„ë¡œ ì „ì†¡ì˜¨ íŒ¨í‚· ì •ë³´ë¥¼
+	//ê³„ì† ë°›ì•„ ì¶œë ¥í•˜ëŠ” í”„ë¡œê·¸ë¨ì„.
 	public static void reciever() {
 		try {
 			DatagramSocket reciever = 
@@ -22,7 +22,7 @@ public class UDPSpamReciever {
 				reciever.receive(packet);
 				System.out.println(
 						packet.getAddress().getHostAddress() + 
-						" °¡ º¸³½ ½ºÆÔ : " + 
+						" ê°€ ë³´ë‚¸ ìŠ¤íŒ¸ : " + 
 						new String(packet.getData()));
 			}
 			

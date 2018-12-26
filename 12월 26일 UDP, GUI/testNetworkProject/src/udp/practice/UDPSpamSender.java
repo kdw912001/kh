@@ -1,4 +1,4 @@
-package udp.practice;
+ï»¿package udp.practice;
 
 import java.net.*;
 import java.io.*;
@@ -6,8 +6,8 @@ import java.util.*;
 
 public class UDPSpamSender {
 	//192.168.30.* 
-	//¹«ÀÛÀ§·Î 10°³ÀÇ ip ¿¡
-	//½ºÆÔ ¸Ş¼¼Áö¸¦ Àü¼ÛÇÏ´Â ÇÁ·Î±×·¥ ÀÛ¼º
+	//ë¬´ì‘ìœ„ë¡œ 10ê°œì˜ ip ì—
+	//ìŠ¤íŒ¸ ë©”ì„¸ì§€ë¥¼ ì „ì†¡í•˜ëŠ” í”„ë¡œê·¸ë¨ ì‘ì„±
 	public static void sender() {
 		String[] ip = new String[10];
 		
@@ -19,7 +19,7 @@ public class UDPSpamSender {
 			DatagramPacket packet = null;
 			
 			String spam = InetAddress.getLocalHost().getHostName() + 
-					" ÀÌ º¸³½ ½ºÆÔÀÔ´Ï´Ù...¤¾¤¾";
+					" ì´ ë³´ë‚¸ ìŠ¤íŒ¸ì…ë‹ˆë‹¤...ã…ã…";
 			byte[] spamMessage = spam.getBytes();
 			
 			for(int i = 0; i < ip.length; i++){
@@ -27,7 +27,7 @@ public class UDPSpamSender {
 						spamMessage.length, InetAddress.getByName(ip[i]),
 						4000);
 				sender.receive(packet);
-				System.out.println(ip[i] + "·Î º¸³¿...");
+				System.out.println(ip[i] + "ë¡œ ë³´ëƒ„...");
 			}
 			
 			sender.close();
