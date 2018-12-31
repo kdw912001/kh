@@ -1,0 +1,32 @@
+데이터베이스 11g Express Edition
+
+설치 후 cmd-sqlplus입력 후 엔터
+
+user-name에 system입력 비밀번호(입력하는게 안 보임) oracle 입력 
+show user - 현재 접속 되어있는 계정 확인
+quit or exit - db연결 종료
+user-name 입력시 system/oracle 입력하면 바로 접속 가능
+
+cmd 실행 후 sqlplus system/oracle 입력해도 접속 가능
+
+접속상태에서 disconnect(disconn)를 입력하면 계정 연결만 끊음
+이 상태에서 connect(conn) system/oracle 입력하면 연결 가능(여러 사용자 접속 시)
+
+scott 계정은 10버전에서 사라지고 HR계정이 공부용 계정임(미리 샘플 데이터 있음)
+conn hr/hr     //계정이 locked  //에러가 발생하면 자동 disconn
+
+lock풀려면 관리자 계정(system)으로 들어가야 함
+
+
+ID와 PASSword는 대소문자 구분 그 외는 대소문자 구분X
+
+오류 SESSION은 로그인 시 오류->권한을 부여해야 함
+권한 부여시 student 계정을 만든 계정(즉 system)에서 권한 부여해야 함.
+
+
+hr은 권한만 주어지면 안에 기본적인 예제 들어 있음.
+student계정은 # 실습스크립트 폴더 안에 실습용_스크립트
+
+sql developer에 들어가서 관리자 계정, hr계정, 수업용계정(student) 만듦
+관리자 계정에 homework계정 create, grant로 만듦
+homework 계정에서 -열기-과제폴더에 workbook_script 그 이후 스크립트실행(F5)
