@@ -1,0 +1,6 @@
+--시스템 계정에서 SCOTT계정 생성
+CREATE USER scott IDENTIFIED BY tiger;
+
+GRANT CONNECT , RESOURCE TO scott;
+
+실습테이블orscott&tiger.sql   열고 f5
