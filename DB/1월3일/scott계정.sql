@@ -27,7 +27,7 @@ ORDER BY SAL DESC;
 -- 급여가 같을 경우 커미션을 내림차순 정렬 조회
 SELECT *
 FROM EMP
-ORDER BY SAL,COMM DESC;--급여가 같을 경우????
+ORDER BY SAL, COMM DESC;--급여가 같을 경우????
 
 
 -- EMP 테이블에서 사원번호, 사원명,직급, 입사일 조회
