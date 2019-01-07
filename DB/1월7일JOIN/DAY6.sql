@@ -1,4 +1,4 @@
--- DAY 6
+﻿-- DAY 6
 
 /*
 조인(JOIN)
@@ -40,11 +40,11 @@ FROM EMPLOYEE
 INNER JOIN DEPARTMENT USING(DEPT_ID);
 --USING (컬럼명) : 두 테이블의 컬렴명이 같을 경우
 
---ON : 두 테이블의 연결할 컬럼명이 다를 때, 값은 값을 사용하는 있음
+--ON : 두 테이블의 연결할 컬럼명이 다를 경우,(같은 값을 사용하고 있음)
 SELECT *
 FROM DEPARTMENT
 INNER JOIN LOCATION ON (LOC_ID = LOCATION_ID);
---오라클 전용구문 JOIN와 동일하게 출력됨
+--오라클 전용구문 JOIN과 동일하게 출력됨
 
 --오라클 전용구문으로
 SELECT *
@@ -66,7 +66,7 @@ INNER JOIN JOB USING (JOB_ID);
 SELECT *
 FROM EMPLOYEE2
 JOIN DEPARTMENT USING (DEPT_ID, LOC_ID);
---USING에 2개의 컬렴이면 두 컬럼의 값을 한 개의 값으로 인식하여 일치하는 값을 찾아 
+--USING에 2개의 컬럼이면 두 컬럼의 값을 한 개의 값으로 인식하여 일치하는 값을 찾아 
 --JOIN을 함. 일치하지 않는 값은 JOIN 되지 않음(10 A1) (20 A1)
 --DEPARTMENT 데이터에서 (50 A1) (60 A1) 등이 없고 (10 A1), (20 A1)은 있으니 JOIN됨
 
@@ -116,7 +116,7 @@ WHERE E.DEPT_ID(+) = D.DEPT_ID(+);--ERROR
 
 SELECT *
 FROM EMPLOYEE
---FULL OUTER JOIN DEPARTMENT USIN (DEPT_ID);
+--FULL OUTER JOIN DEPARTMENT USING (DEPT_ID);
 FULL JOIN DEPARTMENT USING (DEPT_ID);
 
 
@@ -171,7 +171,7 @@ JOIN JOB USING (JOB_ID)
 JOIN DEPARTMENT USING (DEPT_ID)
 JOIN LOCATION ON(LOC_ID = LOCATION_ID)
 JOIN COUNTRY USING (COUNTRY_ID);
---순서대로 조인해야 함, PDF 3에 P7에 ERD있음
+--순서대로 조인해야 함, PDF 3에 P7에 ERD있고 테이블 MODEL봐도 됨.
 
 
 --JOIN 연습문제
