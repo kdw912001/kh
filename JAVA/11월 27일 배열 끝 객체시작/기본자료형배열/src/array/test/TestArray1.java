@@ -1,11 +1,11 @@
-package array.test;
+ï»¿package array.test;
 
 import array.sample.ArraySample;
 
 public class TestArray1 {
 
 	public static void main(String[] args) {
-		// ±âº»ÀÚ·áÇü 1Â÷¿ø ¹è¿­ Å×½ºÆ®¿ë
+		// ê¸°ë³¸ìë£Œí˜• 1ì°¨ì› ë°°ì—´ í…ŒìŠ¤íŠ¸ìš©
 		
 		ArraySample samp = new ArraySample();
 //		samp.testArray1();

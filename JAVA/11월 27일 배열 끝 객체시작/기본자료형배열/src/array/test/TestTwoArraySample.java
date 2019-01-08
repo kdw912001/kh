@@ -1,11 +1,11 @@
-package array.test;
+ï»¿package array.test;
 
 import array.sample.TwoArraySample;
 
 public class TestTwoArraySample {
 
 	public static void main(String[] args) {
-		// ÀÚ¹Ù 2Â÷¿ø ¹è¿­ Å×½ºÆ®
+		// ìë°” 2ì°¨ì› ë°°ì—´ í…ŒìŠ¤íŠ¸
 		TwoArraySample tsamp = new TwoArraySample();
 		//tsamp.testTwoArray();
 //		tsamp.testTwoArray2();

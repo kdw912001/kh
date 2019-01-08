@@ -1,4 +1,4 @@
-package array.sample;
+ï»¿package array.sample;
 
 public class ArraySample2 {
 	public void lotto() {
@@ -8,7 +8,7 @@ public class ArraySample2 {
 			numbers[i] = (int)(Math.random()*45)+1;
 			
 			if(i > 0) {
-				//Áßº¹ Ã¼Å© Ã³¸®
+				//ì¤‘ë³µ ì²´í¬ ì²˜ë¦¬
 				for(int j=0; j < i; j++) {
 					if(numbers[j] == numbers[i]) {
 						i--;
@@ -18,13 +18,13 @@ public class ArraySample2 {
 			}
 		}
 		
-		//Ãâ·Â È®ÀÎ
+		//ì¶œë ¥ í™•ì¸
 		
 		for(int i=0; i<numbers.length;i++)
 			System.out.print(numbers[i]+"  ");
 		System.out.println();
 		
-		//¼±ÅÃÁ¤·Ä ³»¸²Â÷¼ø
+		//ì„ íƒì •ë ¬ ë‚´ë¦¼ì°¨ìˆœ
 		for(int i=0; i<numbers.length-1;i++) {
 			for(int j=i+1; j<numbers.length;j++) {
 				if(numbers[i]<numbers[j]) {
@@ -34,11 +34,11 @@ public class ArraySample2 {
 				}
 			}
 		}
-		//³»¸²Â÷¼ø Ãâ·Â
+		//ë‚´ë¦¼ì°¨ìˆœ ì¶œë ¥
 		for(int i=0; i<numbers.length;i++)
 			System.out.print(numbers[i]+"  ");
 		
-		//¼±ÅÃÁ¤·Ä ¿À¸§Â÷¼ø
+		//ì„ íƒì •ë ¬ ì˜¤ë¦„ì°¨ìˆœ
 		for(int i=0; i<numbers.length-1;i++) {
 			for(int j=i+1;j<numbers.length;j++) {
 				if(numbers[i]>numbers[j]) {
@@ -49,7 +49,7 @@ public class ArraySample2 {
 			}
 		}
 		System.out.println();
-		//¼±ÅÃÁ¤·Ä ¿À¸§Â÷¼ø Ãâ·Â
+		//ì„ íƒì •ë ¬ ì˜¤ë¦„ì°¨ìˆœ ì¶œë ¥
 		for(int i=0; i<numbers.length;i++)
 			System.out.print(numbers[i]+"  ");
 	}
@@ -57,23 +57,23 @@ public class ArraySample2 {
 	public void sortDecending() {
 		int[] iar = new int[10];
 		
-		//°ª ±â·Ï
+		//ê°’ ê¸°ë¡
 		for(int i=0; i<iar.length;i++) {
 			
 			iar[i] = (int)(Math.random()*100)+1;
 		}
 		
-		//Á¤·ÄÀü È®ÀÎ Ãâ·Â
+		//ì •ë ¬ì „ í™•ì¸ ì¶œë ¥
 		System.out.print("iar : ");
 		for(int i=0; i<iar.length; i++) {
 			System.out.print(iar[i]+"  ");
 		}
 		System.out.println();
 		
-		//select sort ¹æ½ÄÀÇ ³»¸²Â÷¼ø Á¤·Ä Ã³¸®
+		//select sort ë°©ì‹ì˜ ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬ ì²˜ë¦¬
 		for(int i=0; i<iar.length-1;i++) {
 			for(int j=i+1; j<iar.length;j++) {
-				if(iar[i] < iar[j]) {  //ºÎµîÈ£¸¸ ¹Ù²Ù¸é ¿À¸§Â÷¼ø Á¤·Ä
+				if(iar[i] < iar[j]) {  //ë¶€ë“±í˜¸ë§Œ ë°”ê¾¸ë©´ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬
 					int tmp = iar[i];
 					iar[i]=iar[j];
 					iar[j]=tmp;
@@ -81,7 +81,7 @@ public class ArraySample2 {
 			}
 		}
 		
-		//Á¤·ÄÈÄ È®ÀÎ Ãâ·Â
+		//ì •ë ¬í›„ í™•ì¸ ì¶œë ¥
 		System.out.print("iar : ");
 		for(int i=0; i<iar.length; i++) {
 			System.out.print(iar[i]+"  ");
@@ -93,19 +93,19 @@ public class ArraySample2 {
 		
 		int[] iar = new int[10];
 			
-		//°ª ±â·Ï
+		//ê°’ ê¸°ë¡
 		for(int i=0; i<iar.length;i++) {
 			iar[i] = (int)(Math.random()*100)+1;
 		}
 			
-		//Á¤·ÄÀü È®ÀÎ Ãâ·Â
+		//ì •ë ¬ì „ í™•ì¸ ì¶œë ¥
 		System.out.print("iar : ");
 		for(int i=0; i<iar.length; i++) {
 			System.out.print(iar[i]+"  ");
 		}
 		System.out.println();
 				
-		//select sort ¹æ½ÄÀÇ ¿À¸²Â÷¼ø Á¤·Ä Ã³¸®
+		//select sort ë°©ì‹ì˜ ì˜¤ë¦¼ì°¨ìˆœ ì •ë ¬ ì²˜ë¦¬
 		for(int i=0; i<iar.length-1;i++) {
 			for(int j=i+1; j<iar.length;j++) {
 					if(iar[i] >  iar[j]) {
@@ -116,7 +116,7 @@ public class ArraySample2 {
 				}
 			}
 				
-			//Á¤·ÄÈÄ È®ÀÎ Ãâ·Â
+			//ì •ë ¬í›„ í™•ì¸ ì¶œë ¥
 			System.out.print("iar : ");
 			for(int i=0; i<iar.length; i++) {
 				System.out.print(iar[i]+"  ");

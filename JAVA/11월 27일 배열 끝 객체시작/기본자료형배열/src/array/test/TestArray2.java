@@ -1,4 +1,4 @@
-package array.test;
+﻿package array.test;
 
 import array.sample.ArraySample2;
 

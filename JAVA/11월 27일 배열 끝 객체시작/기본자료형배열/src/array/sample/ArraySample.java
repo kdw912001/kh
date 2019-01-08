@@ -1,34 +1,34 @@
-package array.sample;
+ï»¿package array.sample;
 
 import java.util.Random;
 import java.util.Scanner;
 
-//±âº»(Primitive) ÀÚ·áÇü ¹è¿­ Å×½ºÆ®¿ë
+//ê¸°ë³¸(Primitive) ìë£Œí˜• ë°°ì—´ í…ŒìŠ¤íŠ¸ìš©
 public class ArraySample {
 	public void testArray1() {
-		//1. ¹è¿­ ¼±¾ğ
-		//¹è¿­°ø°£ÀÇ ÁÖ¼Ò±â·Ï¿ë ·¹ÆÛ·±½ºº¯¼ö ¸¸µé±â
-		//ÀÚ·áÇü[] ¹è¿­¸í;
-		//¹è¿­¸í == ·¹ÆÛ·±½º º¯¼ö
+		//1. ë°°ì—´ ì„ ì–¸
+		//ë°°ì—´ê³µê°„ì˜ ì£¼ì†Œê¸°ë¡ìš© ë ˆí¼ëŸ°ìŠ¤ë³€ìˆ˜ ë§Œë“¤ê¸°
+		//ìë£Œí˜•[] ë°°ì—´ëª…;
+		//ë°°ì—´ëª… == ë ˆí¼ëŸ°ìŠ¤ ë³€ìˆ˜
 		int[] ar;
 		int []arr;
 		int ar2[];
 		
-		//2. ¹è¿­»ı¼º
-		//Èü¿¡ ¹è¿­°ø°£ ¸¸µé°í, ½ÃÀÛÁÖ¼Ò¸¦ 
-		//·¹ÆÛ·±½º¿¡ ±â·Ï Ã³¸®
-		//¹è¿­·¹ÆÛ·±½º = new ÀÚ·áÇü[°¹¼ö];
+		//2. ë°°ì—´ìƒì„±
+		//í™ì— ë°°ì—´ê³µê°„ ë§Œë“¤ê³ , ì‹œì‘ì£¼ì†Œë¥¼ 
+		//ë ˆí¼ëŸ°ìŠ¤ì— ê¸°ë¡ ì²˜ë¦¬
+		//ë°°ì—´ë ˆí¼ëŸ°ìŠ¤ = new ìë£Œí˜•[ê°¯ìˆ˜];
 		ar = new int[5];
 		
-		System.out.println("ar ÀÌ °¡Áø ÁÖ¼Ò : "+ar.hashCode());
-		System.out.println("arÀÌ ÂüÁ¶ÇÏ´Â À§Ä¡ÀÇ ¹è¿­¹æÀÇ °¹¼ö : "+ar.length);
+		System.out.println("ar ì´ ê°€ì§„ ì£¼ì†Œ : "+ar.hashCode());
+		System.out.println("arì´ ì°¸ì¡°í•˜ëŠ” ìœ„ì¹˜ì˜ ë°°ì—´ë°©ì˜ ê°¯ìˆ˜ : "+ar.length);
 	
 		for(int index = 0; index < ar.length; index++) {
 			System.out.println("ar[" + index + "] :" + ar[index]);
 		}
 		
-		//1~100»çÀÌÀÇ ÀÓÀÇÀÇ Á¤¼ö¸¦
-		//ÀÎµ¦½º ¼ø¼­´ë·Î ±â·ÏÇØ ³ÖÀ½
+		//1~100ì‚¬ì´ì˜ ì„ì˜ì˜ ì •ìˆ˜ë¥¼
+		//ì¸ë±ìŠ¤ ìˆœì„œëŒ€ë¡œ ê¸°ë¡í•´ ë„£ìŒ
 		
 		Random r = new Random();
 		/*ar[0] = r.nextInt(100) + 1;
@@ -53,27 +53,27 @@ public class ArraySample {
 			sum+=ar[i];
 		}
 		
-		//Ãâ·ÂÈ®ÀÎ
+		//ì¶œë ¥í™•ì¸
 		System.out.print("ar : ");
 		for(i=0; i<ar.length; i++) {
 			System.out.print(ar[i]+ "  ");
 		}
 		System.out.println();
-		System.out.println("ÇÕ°è : "+ sum);
+		System.out.println("í•©ê³„ : "+ sum);
 	}
 	
 	public void test2() {
 		int[]ar=new int[10];
 		int max, min, i;
 		
-		//°ª ±â·Ï
+		//ê°’ ê¸°ë¡
 		for(i=0;i<ar.length;i++) {
 			ar[i]=(int)(Math.random()*100)+1;		
 			System.out.print(ar[i]+" ");
 		}
 		
 		max = min = ar[0];
-		// °¡Àå Å« °ª°ú °¡Àå ÀÛÀº °ª Ã£±â
+		// ê°€ì¥ í° ê°’ê³¼ ê°€ì¥ ì‘ì€ ê°’ ì°¾ê¸°
 		System.out.println();
 		for(i=1;i<ar.length;i++) {
 			if(ar[i]>max)
@@ -100,7 +100,7 @@ public class ArraySample {
 				sum+=ar[i];
 		}
 		System.out.println();
-		System.out.println("Â¦¼öµéÀÇ ÇÕ : "+sum);
+		System.out.println("ì§ìˆ˜ë“¤ì˜ í•© : "+sum);
 		
 	}
 	
@@ -116,8 +116,8 @@ public class ArraySample {
 	    System.out.println(sum);
 	}
 	
-	public void test44() { //°­»ç´Ô ÇÏ½Å°Í
-		System.out.print("¹®ÀÚ¿­ ÀÔ·Â : ");
+	public void test44() { //ê°•ì‚¬ë‹˜ í•˜ì‹ ê²ƒ
+		System.out.print("ë¬¸ìì—´ ì…ë ¥ : ");
 		String numbers = new Scanner(System.in).next();
 		
 		char[] numChars = numbers.toCharArray(); //String->Char
@@ -129,29 +129,29 @@ public class ArraySample {
 			sum+=numChars[i]-48;
 		}
 		System.out.println();
-		System.out.println("ÇÕ°è : "+sum);
+		System.out.println("í•©ê³„ : "+sum);
 	}
-	//¹è¿­ ½Ç½À¹®Á¦5
+	//ë°°ì—´ ì‹¤ìŠµë¬¸ì œ5
 	public void test5() {
-		//¼ıÀÚ·Î µÈ ¹®ÀÚ¿­ ÀÔ·Â¹ŞÀ½
-		System.out.print("¼ıÀÚ·Î µÈ ¹®ÀÚ¿­ ÀÔ·Â : ");
+		//ìˆ«ìë¡œ ëœ ë¬¸ìì—´ ì…ë ¥ë°›ìŒ
+		System.out.print("ìˆ«ìë¡œ ëœ ë¬¸ìì—´ ì…ë ¥ : ");
 		String numbers = new Scanner(System.in).next();
-		//ÀÔ·ÂµÈ ±ÛÀÚ°¹¼ö¸¸Å­ char[] ÇÒ´çÇÔ
+		//ì…ë ¥ëœ ê¸€ìê°¯ìˆ˜ë§Œí¼ char[] í• ë‹¹í•¨
 		char[] car = new char[numbers.length()];
-		//¹®ÀÚ¿­°ª ÇÏ³ª¾¿À» char[]¿¡ ±â·ÏÇÔ
-		//char charAt(index) »ç¿ëÇÔ
+		//ë¬¸ìì—´ê°’ í•˜ë‚˜ì”©ì„ char[]ì— ê¸°ë¡í•¨
+		//char charAt(index) ì‚¬ìš©í•¨
 		for(int i=0; i<car.length; i++) {
 			car[i] = numbers.charAt(i);
 		}
-		//char[]°¹¼ö¸¸Å­ int[] ÇÒ´çÇÏ°í
-		//char[]¿¡ ±â·ÏµÈ ¼ıÀÚ¹®ÀÚ¸¦ ÇÏ³ª¾¿
-		//int[]¿¡ ¼ıÀÚ·Î ¿Å°Ü ±â·ÏÇÔ
+		//char[]ê°¯ìˆ˜ë§Œí¼ int[] í• ë‹¹í•˜ê³ 
+		//char[]ì— ê¸°ë¡ëœ ìˆ«ìë¬¸ìë¥¼ í•˜ë‚˜ì”©
+		//int[]ì— ìˆ«ìë¡œ ì˜®ê²¨ ê¸°ë¡í•¨
 		//'2'->2
 		int[] iar = new int[car.length];
 		for(int i=0;i<iar.length;i++) {
 			iar[i]=car[i]-48;
 		}
-		//int[]¿¡ ±â·ÏµÈ °ª°ú ÇÕ°è¸¦ ±¸ÇÔ
+		//int[]ì— ê¸°ë¡ëœ ê°’ê³¼ í•©ê³„ë¥¼ êµ¬í•¨
 		int sum=0;
 		for(int i=0; i<iar.length; i++) {
 			System.out.print(iar[i]+" ");
@@ -159,10 +159,10 @@ public class ArraySample {
 		}
 		System.out.println();
 		
-		System.out.println("ÇÕ°è : "+sum);
+		System.out.println("í•©ê³„ : "+sum);
 		
-		/*³»°¡ ÇÑ°Å
-		 * System.out.print("¹®ÀÚ¿­ ÀÔ·Â : ");
+		/*ë‚´ê°€ í•œê±°
+		 * System.out.print("ë¬¸ìì—´ ì…ë ¥ : ");
 		String str = new Scanner(System.in).next();
 		char[] ch = new char[str.length()];
 		int i;
@@ -178,13 +178,13 @@ public class ArraySample {
 		}*/
 	}
 	
-	//¹è¿­ÀÇ ÃÊ±âÈ­ Å×½ºÆ®¿ë
+	//ë°°ì—´ì˜ ì´ˆê¸°í™” í…ŒìŠ¤íŠ¸ìš©
 	public void testArrayInit() {
-		//ÀÚ·áÇü[] ¹è¿­·¹ÆÛ·±½º = {°ª, °ª, °ª, °ª};
+		//ìë£Œí˜•[] ë°°ì—´ë ˆí¼ëŸ°ìŠ¤ = {ê°’, ê°’, ê°’, ê°’};
 		//int[] iar = {12,5,34,17,55};
-		int[] iar = new int[] {12,5,34,17,55};//new int[]¿¡¼­ []»çÀÌ¿¡ °ª ³ÖÀ¸¸é ¿¡·¯³²
+		int[] iar = new int[] {12,5,34,17,55};//new int[]ì—ì„œ []ì‚¬ì´ì— ê°’ ë„£ìœ¼ë©´ ì—ëŸ¬ë‚¨
 		
-		System.out.println("¹æ °¹¼ö : "+iar.length);
+		System.out.println("ë°© ê°¯ìˆ˜ : "+iar.length);
 		for(int i=0;i<iar.length;i++) {
 			System.out.println(iar[i]);
 		}
@@ -203,13 +203,13 @@ public class ArraySample {
 		System.out.println("a : "+a+", b :"+b);
 		
 	}
-	/*10°³ÀÇ Á¤¼ö¸¦ ±â·ÏÇÒ ¹è¿­ °ø°£ ÇÒ´ç,
-	 * 1~100»çÀÌÀÇ ³­¼ö¸¦ ¹è¿­°ø°£¿¡ ±â·Ï,
-	 * Á¤¼ö¸¦ ÇÏ³ª ÀÔ·Â¹Ş¾Æ,
-	 * ¹è¿­ ¾È¿¡ ÀÔ·Â°ªÀÌ Á¸ÀçÇÏ´ÂÁö °Ë»öÇÔ.
-	 * ÀÏÄ¡ÇÏ´Â ÀÖÀ¸¸é,"¸î¹øÂ° À§Ä¡¿¡ ±â·Ï"
-	 * ´Ù °Ë»öÇß´Âµ¥ ÀÏÄ¡ÇÏ´Â °ªÀÌ ¾øÀ¸¸é
-	 * "°ªÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù."Ãâ·ÂÃ³¸®
+	/*10ê°œì˜ ì •ìˆ˜ë¥¼ ê¸°ë¡í•  ë°°ì—´ ê³µê°„ í• ë‹¹,
+	 * 1~100ì‚¬ì´ì˜ ë‚œìˆ˜ë¥¼ ë°°ì—´ê³µê°„ì— ê¸°ë¡,
+	 * ì •ìˆ˜ë¥¼ í•˜ë‚˜ ì…ë ¥ë°›ì•„,
+	 * ë°°ì—´ ì•ˆì— ì…ë ¥ê°’ì´ ì¡´ì¬í•˜ëŠ”ì§€ ê²€ìƒ‰í•¨.
+	 * ì¼ì¹˜í•˜ëŠ” ìˆìœ¼ë©´,"ëª‡ë²ˆì§¸ ìœ„ì¹˜ì— ê¸°ë¡"
+	 * ë‹¤ ê²€ìƒ‰í–ˆëŠ”ë° ì¼ì¹˜í•˜ëŠ” ê°’ì´ ì—†ìœ¼ë©´
+	 * "ê°’ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤."ì¶œë ¥ì²˜ë¦¬
 	 */
 	public void test6() {
 		int[] ar=new int[10];
@@ -218,28 +218,28 @@ public class ArraySample {
 			System.out.print(ar[i]+"  ");
 		}
 		System.out.println();
-		System.out.print("¸î ¹øÂ° À§Ä¡¿¡ ÀÖ´ÂÁö È®ÀÎÇÒ °ª: ");
+		System.out.print("ëª‡ ë²ˆì§¸ ìœ„ì¹˜ì— ìˆëŠ”ì§€ í™•ì¸í•  ê°’: ");
 		int num = new Scanner(System.in).nextInt();
 		for(int i=0; i<ar.length;i++) {
 			
 			if(ar[i]==num) {
-				System.out.println(i+"¹øÂ° À§Ä¡");
+				System.out.println(i+"ë²ˆì§¸ ìœ„ì¹˜");
 				break;
 			}
 			else {
 				if(i==ar.length-1)
-					System.out.println("°ªÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+					System.out.println("ê°’ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 		
 			}
 		}
 	}
 	
-	/*¹®ÀÚ¿­À» ÀÔ·Â¹Ş¾Æ char[]·Î ¹Ù²Ş
-	 * Å°º¸µå·Î index(¼ø¹ø)À» ÀÔ·Â¹Ş¾Æ,
-	 * ¼ø¹ø À§Ä¡ÀÇ ¹®ÀÚÀÇ À¯´ÏÄÚµå¸¦ Ãâ·Â
-	 * ´Ü, ¸¶Áö¸· ÀÎµ¦½º¸¦ ÃÊ°úÇÑ Á¤¼ö°¡
-	 * ÀÔ·ÂµÇ¸é "¹è¿­ ÀÎµ¦½º ¹üÀ§¸¦ ÃÊ°úÇÔ"
-	 * Ãâ·ÂµÇ°ÔÇÔ.
+	/*ë¬¸ìì—´ì„ ì…ë ¥ë°›ì•„ char[]ë¡œ ë°”ê¿ˆ
+	 * í‚¤ë³´ë“œë¡œ index(ìˆœë²ˆ)ì„ ì…ë ¥ë°›ì•„,
+	 * ìˆœë²ˆ ìœ„ì¹˜ì˜ ë¬¸ìì˜ ìœ ë‹ˆì½”ë“œë¥¼ ì¶œë ¥
+	 * ë‹¨, ë§ˆì§€ë§‰ ì¸ë±ìŠ¤ë¥¼ ì´ˆê³¼í•œ ì •ìˆ˜ê°€
+	 * ì…ë ¥ë˜ë©´ "ë°°ì—´ ì¸ë±ìŠ¤ ë²”ìœ„ë¥¼ ì´ˆê³¼í•¨"
+	 * ì¶œë ¥ë˜ê²Œí•¨.
 	 * 
 	 */
 	public void test7() {
@@ -250,9 +250,9 @@ public class ArraySample {
 		
 		
 		if(index>=str.length())
-			System.out.println("¹è¿­ ÀÎµ¦½º ¹üÀ§¸¦ ÃÊ°úÇÔ");
+			System.out.println("ë°°ì—´ ì¸ë±ìŠ¤ ë²”ìœ„ë¥¼ ì´ˆê³¼í•¨");
 		else
-			System.out.println("["+index+"]"+"À§Ä¡ÀÇ ¹®ÀÚÀÇ À¯´ÏÄÚµå´Â"+(int)ch[index]);
+			System.out.println("["+index+"]"+"ìœ„ì¹˜ì˜ ë¬¸ìì˜ ìœ ë‹ˆì½”ë“œëŠ”"+(int)ch[index]);
 	}
 	
 	

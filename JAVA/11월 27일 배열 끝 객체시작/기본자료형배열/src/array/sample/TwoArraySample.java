@@ -1,45 +1,45 @@
-package array.sample;
+ï»¿package array.sample;
 
 public class TwoArraySample {
 	public void testTwoArray() {
-		//1. 2Â÷¿ø ¹è¿­¿¡ ´ëÇÑ ·¹ÆÛ·±½º ¼±¾ğ
+		//1. 2ì°¨ì› ë°°ì—´ì— ëŒ€í•œ ë ˆí¼ëŸ°ìŠ¤ ì„ ì–¸
 		int[][] tar;
 		
-		//2. 2Â÷¿ø ¹è¿­ °ø°£À» Èü¿¡ ÇÒ´ç
+		//2. 2ì°¨ì› ë°°ì—´ ê³µê°„ì„ í™ì— í• ë‹¹
 		tar = new int[3][];
 		
 		System.out.println("tar.length: "+tar.length);
 		
-		//ÇàÀÇ °¹¼ö´Â ·¹ÆÛ·±½º ¹è¿­ °¹¼ö´Ù.
-		//·¹ÆÛ·±½º º¯¼öµéÀÇ ¹­À½
-		//ÁÖ¼Ò º¸°ü¿ë º¯¼ö 3°³¸¦ ¹è¿­·Î ÇÒ´ç.
-		//Èü¿¡ ÇÒ´çµÈ ÂüÁ¶º¯¼öÀÇ ±âº»°ªÀº nullÀÓ.
+		//í–‰ì˜ ê°¯ìˆ˜ëŠ” ë ˆí¼ëŸ°ìŠ¤ ë°°ì—´ ê°¯ìˆ˜ë‹¤.
+		//ë ˆí¼ëŸ°ìŠ¤ ë³€ìˆ˜ë“¤ì˜ ë¬¶ìŒ
+		//ì£¼ì†Œ ë³´ê´€ìš© ë³€ìˆ˜ 3ê°œë¥¼ ë°°ì—´ë¡œ í• ë‹¹.
+		//í™ì— í• ë‹¹ëœ ì°¸ì¡°ë³€ìˆ˜ì˜ ê¸°ë³¸ê°’ì€ nullì„.
 		for(int row=0; row<tar.length;row++) {
 			System.out.println("tar["+row+"] : "+tar[row]);
 		}
 		
-		//°¢ ·¹ÆÛ·±½º¿¡ ÁÖ¼Ò¸¦ ±â·ÏÇÔ
-		//°¢ 1Â÷¿ø¹è¿­À» ÇÒ´çÇÏ°í ±× ÁÖ¼Ò¸¦ ±â·ÏÇÔ
+		//ê° ë ˆí¼ëŸ°ìŠ¤ì— ì£¼ì†Œë¥¼ ê¸°ë¡í•¨
+		//ê° 1ì°¨ì›ë°°ì—´ì„ í• ë‹¹í•˜ê³  ê·¸ ì£¼ì†Œë¥¼ ê¸°ë¡í•¨
 		tar[0] = new int[5];
 		tar[1] = new int[4];
 		tar[2] = new int[7];
 		
-		//°¢ ·¹ÆÛ·±½º¿¡ ÁÖ¼Ò ±â·Ï È®ÀÎ
+		//ê° ë ˆí¼ëŸ°ìŠ¤ì— ì£¼ì†Œ ê¸°ë¡ í™•ì¸
 		for(int row=0; row<tar.length;row++) {
 			System.out.println("tar["+row+"] : "+tar[row].hashCode());
-																//hashCode() : ÁÖ¼Ò¸¦10Áø¼ö·Î Ã³¸®
+																//hashCode() : ì£¼ì†Œë¥¼10ì§„ìˆ˜ë¡œ ì²˜ë¦¬
 		}
 		
-		//°¢ 1Â÷¿ø ¹è¿­¿¡ °ª ±â·Ï
+		//ê° 1ì°¨ì› ë°°ì—´ì— ê°’ ê¸°ë¡
 		for(int r=0; r<tar.length; r++) {
-			//°¢ ·¹ÆÛ·±½º°¡ ÂüÁ¶ÇÏ´Â 1Â÷¿ø ¹è¿­µé Ã³¸®
+			//ê° ë ˆí¼ëŸ°ìŠ¤ê°€ ì°¸ì¡°í•˜ëŠ” 1ì°¨ì› ë°°ì—´ë“¤ ì²˜ë¦¬
 			System.out.println("tar["+r+"].length : " + tar[r].length);
 			for(int c=0; c<tar[r].length;c++) {
 				tar[r][c] = (int)(Math.random()*100)+1;
 			}
 		}
 		
-		//2Â÷¿ø ¹è¿­ °¢ ¹æÀÇ °ª È®ÀÎ
+		//2ì°¨ì› ë°°ì—´ ê° ë°©ì˜ ê°’ í™•ì¸
 		for(int i=0; i<tar.length;i++) {
 			for(int j=0; j<tar[i].length;j++) {
 				System.out.print(tar[i][j]+"   ");
@@ -58,7 +58,7 @@ public class TwoArraySample {
 		System.out.println(tar[1].length);
 		System.out.println(tar[2].length);
 		
-		//2Â÷¿ø ¹è¿­ °¢ ¹æÀÇ °ª È®ÀÎ
+		//2ì°¨ì› ë°°ì—´ ê° ë°©ì˜ ê°’ í™•ì¸
 		for(int i=0; i<tar.length;i++) {
 			for(int j=0; j<tar[i].length;j++) {
 				System.out.print(tar[i][j]+"   ");
@@ -67,16 +67,16 @@ public class TwoArraySample {
 		}
 	}
 	
-	//2Â÷¿ø ¹è¿­ ÃÊ±âÈ­
+	//2ì°¨ì› ë°°ì—´ ì´ˆê¸°í™”
 	public void testIniTwoArray() {
 		int[][] tar = {{1, 2, 3, 4, 5},
 					{10, 20, 30, 40},
 					{15, 25 ,34}};
 		
-		System.out.println("Çà°¹¼ö : "+tar.length);
+		System.out.println("í–‰ê°¯ìˆ˜ : "+tar.length);
 		
 		for(int i=0; i<tar.length; i++) {
-			System.out.println(i+"Çà -> ¹æ°¹¼ö : "+tar[i].length);
+			System.out.println(i+"í–‰ -> ë°©ê°¯ìˆ˜ : "+tar[i].length);
 			for(int j=0; j<tar[i].length; j++) {
 				System.out.print(tar[i][j]+"  ");
 			}
