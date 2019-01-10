@@ -1,4 +1,4 @@
--- DAY8
+﻿-- DAY8
 
 --다중행 서브쿼리에 사용할 수 있는 연산자
 --IN/NOT IN, ANY, ALL
@@ -49,13 +49,7 @@ WHERE SALARY IN (SELECT TRUNC(AVG(SALARY),-5)
                 GROUP BY JOB_ID
                 );
                 
-SELECT EMP_NAME, JOB_TITLE, SALARY
-FROM EMPLOYEE
-LEFT JOIN JOB USING (JOB_ID)
-WHERE SALARY IN (SELECT TRUNC(AVG(SALARY), -5)
-                FROM EMPLOYEE
-                GROUP BY JOB_ID
-                );
+
 --상호연관     
 SELECT EMP_NAME, JOB_TITLE, SALARY
 FROM EMPLOYEE E 
