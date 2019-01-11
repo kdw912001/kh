@@ -136,6 +136,7 @@ SELECT EMP_ID, SALARY,
                          ORDER BY EMP_ID
                          ROWS BETWEEN UNBOUNDED PRECEDING
                          AND UNBOUNDED FOLLOWING) "WIN1", 
+                         
 -- 급여의 합계를 첫 행부터 마지막 행까지 구해서 "WIN1" 에, 
 -- 윈도우의 첫 행 : UNBOUNDED PRECEDING
 -- 윈도우의 마지막 행 : UNBOUNDED FOLLOWING
@@ -151,3 +152,65 @@ SELECT EMP_ID, SALARY,
 -- 현재 위치에서 윈도우의 마지막 행까지의 합계를 구해서 "WIN3"에 조회
 FROM EMPLOYEE
 WHERE DEPT_ID = '60';
+
+
+
+SELECT EMP_ID, SALARY, 
+       SUM(SALARY) OVER (PARTITION BY DEPT_ID
+                         ORDER BY EMP_ID
+                         ROWS BETWEEN 1 PRECEDING
+                         AND 1 FOLLOWING) "WIN1", 
+                         
+-- 급여의 합계를 현재 행을 중심으로 이전 행과 다음 행까지 구해서 "WIN1" 에, 
+-- 1 PRECEDING AND 1 FOLLOWING
+       SUM(SALARY) OVER (PARTITION BY DEPT_ID
+                         ORDER BY EMP_ID
+                         ROWS BETWEEN 1 PRECEDING
+                         AND CURRENT ROW) "WIN2",
+-- 윈도우의 이전 행과 현재 위치 (CURRENT ROW) 까지의 합계를 구해서 "WIN2"에
+-- 1 PRECEDING AND CURRENT ROW
+       SUM(SALARY) OVER (PARTITION BY DEPT_ID
+                         ORDER BY EMP_ID
+                         ROWS BETWEEN CURRENT ROW
+                         AND 1 FOLLOWING) "WIN3"
+-- 현재 위치에서 윈도우의 다음 행까지의 합계를 구해서 "WIN3"에 조회
+--CURRENT ROW AND 1 FOLLOWING
+FROM EMPLOYEE
+WHERE DEPT_ID = '60';
+
+--RATIO_TO_REPORT() ****************************
+--해당 구간에서 차지하는 비율을 리턴하는 함수
+
+--직원들의 총 급여를 2천만원 증가 시킬 때, 
+--기존 급여 비율을 적용해서 각 직원의 급여 인상분 조회
+SELECT EMP_NAME, SALARY, 
+       LPAD(TRUNC(RATIO_TO_REPORT(SALARY) OVER() * 100, 0), 5) 
+        || ' %' 급여비율,
+       TO_CHAR(TRUNC(RATIO_TO_REPORT(SALARY) OVER() * 20000000,0),'L00,999,999')급여인상분
+FROM EMPLOYEE;
+
+--LAG(조회할 범위, 이전 위치, 기준 현재 위치)
+--지정하는 컬럼의 현재 행을 기준으로 이전 행(위쪽 행)의 값을 조회함
+SELECT EMP_NAME, DEPT_ID, SALARY,
+       LAG(SALARY, 1, 0) OVER(ORDER BY SALARY) "조회1",
+       -- 1 : 바로 위의 행의 값, 0 : 이전 행이 없으면 0 처리 함
+       LAG(SALARY, 1, SALARY) OVER (ORDER BY SALARY)"조회2",
+       -- 이전 행이 없으면, 현재 행의 값을 출력
+       LAG(SALARY, 1, SALARY) OVER (PARTITION BY DEPT_ID
+                                    ORDER BY SALARY) "조회3"
+       -- 부서 그룹 안에서의 이전 행 값 출력
+FROM EMPLOYEE;
+
+-- LEAD(조회할 범위, 다음 행 수, 0 또는 컬럼명)
+-- 다음 행의 값 조회
+SELECT EMP_NAME, DEPT_ID, SALARY,
+       LEAD(SALARY, 1, 0) OVER(ORDER BY SALARY) "조회1",
+       -- 1 : 다음 행의 값, 0 : 다음 행이 없으면 0 처리 함
+       LEAD(SALARY, 1, SALARY) OVER (ORDER BY SALARY)"조회2",
+       -- 다음 행이 없으면, 현재 행의 값을 출력
+       LEAD(SALARY, 1, SALARY) OVER (PARTITION BY DEPT_ID
+                                    ORDER BY SALARY) "조회3"
+       -- 부서 그룹 안에서의 다음 행 값 출력
+FROM EMPLOYEE
+ORDER BY DEPT_ID;--조회3을 하기 위한 ORDER BY 조회1,2확인하기위해선 삭제
+
