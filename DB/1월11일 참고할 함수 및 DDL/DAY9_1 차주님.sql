@@ -1,19 +1,19 @@
--- DAY9_1
+ï»¿-- DAY9_1
 
--- DDL (Data Definition Language) : µ¥ÀÌÅÍ Á¤ÀÇ¾î
+-- DDL (Data Definition Language) : ë°ì´í„° ì •ì˜ì–´
 -- CREATE, ALTER, DROP 
--- µ¥ÀÌÅÍº£ÀÌ½º °´Ã¼ ¸¸µé°í ¼öÁ¤ÇÏ°í »èÁ¦ÇÏ´Â ±¸¹®
--- Å×ÀÌºí(TABLE), ºä(VIEW), ÀÎµ¦½º(INDEX), ½ÃÄö½º(SEQUENCE),
--- »ç¿ëÀÚ(USER), ·Ñ(ROLE), ÇÁ·Î½ÃÀú(PROCEDURE), ÇÔ¼ö(FUNCTION),
--- Æ®¸®°Å(TRIGGER), µ¿ÀÇ¾î(SYNONYM) 
+-- ë°ì´í„°ë² ì´ìŠ¤ ê°ì²´ ë§Œë“¤ê³  ìˆ˜ì •í•˜ê³  ì‚­ì œí•˜ëŠ” êµ¬ë¬¸
+-- í…Œì´ë¸”(TABLE), ë·°(VIEW), ì¸ë±ìŠ¤(INDEX), ì‹œí€€ìŠ¤(SEQUENCE),
+-- ì‚¬ìš©ìž(USER), ë¡¤(ROLE), í”„ë¡œì‹œì €(PROCEDURE), í•¨ìˆ˜(FUNCTION),
+-- íŠ¸ë¦¬ê±°(TRIGGER), ë™ì˜ì–´(SYNONYM) 
 
--- Å×ÀÌºí ¸¸µé±â
+-- í…Œì´ë¸” ë§Œë“¤ê¸°
 /*
-CREATE TABLE Å×ÀÌºí¸í (
-    ÄÃ·³¸í  ÀÚ·áÇü(»çÀÌÁî)  DEFAULT ±âº»°ª  Á¦¾àÁ¶°Ç,
-    ÄÃ·³¸í  ÀÚ·áÇü(»çÀÌÁî),
+CREATE TABLE í…Œì´ë¸”ëª… (
+    ì»¬ëŸ¼ëª…  ìžë£Œí˜•(ì‚¬ì´ì¦ˆ)  DEFAULT ê¸°ë³¸ê°’  ì œì•½ì¡°ê±´,
+    ì»¬ëŸ¼ëª…  ìžë£Œí˜•(ì‚¬ì´ì¦ˆ),
     ....,
-    ÄÃ·³¿¡ ÁöÁ¤ÇÒ Á¦¾àÁ¶°Ç
+    ì»¬ëŸ¼ì— ì§€ì •í•  ì œì•½ì¡°ê±´
 );
 */
 
@@ -25,28 +25,28 @@ CREATE TABLE TEST2 (
     ADDRESS VARCHAR2(50)
 );
 
--- Å×ÀÌºí ±¸Á¶ È®ÀÎ : DESC / DESCRIBE Å×ÀÌºí¸í;
+-- í…Œì´ë¸” êµ¬ì¡° í™•ì¸ : DESC / DESCRIBE í…Œì´ë¸”ëª…;
 DESC TEST2;
 
 SELECT * FROM TEST2;
 
 INSERT INTO TEST2 (ID, NAME, ADDRESS)
-VALUES (12345, 'È«±æµ¿', '¼­¿ï½Ã °­³²±¸ ¿ª»ïµ¿ 77');
+VALUES (12345, 'í™ê¸¸ë™', 'ì„œìš¸ì‹œ ê°•ë‚¨êµ¬ ì—­ì‚¼ë™ 77');
 
 SELECT * FROM TEST2;
 
 INSERT INTO TEST2
-VALUES (11111, 'ÀÌ¼ø½Å', '°æ³² Åë¿µ½Ã 5959');
+VALUES (11111, 'ì´ìˆœì‹ ', 'ê²½ë‚¨ í†µì˜ì‹œ 5959');
 
 SELECT * FROM TEST2;
 
 INSERT INTO TEST2 (ID, NAME)
-VALUES (33333, 'À¯°ü¼ø');
+VALUES (33333, 'ìœ ê´€ìˆœ');
 
 SELECT * FROM TEST2;
 
 INSERT INTO TEST2
-VALUES (1212, '±èÀ¯½Å', NULL);
+VALUES (1212, 'ê¹€ìœ ì‹ ', NULL);
 
 SELECT * FROM TEST2;
 
@@ -61,22 +61,22 @@ CREATE TABLE ORDERS (
     QUANTITY  NUMBER
 );
 
-COMMENT ON COLUMN ORDERS.ORDERNO IS 'ÁÖ¹®¹øÈ£';
-COMMENT ON COLUMN ORDERS.CUSTNO IS '°í°´¹øÈ£';
-COMMENT ON COLUMN ORDERS.ORDERDATE IS 'ÁÖ¹®ÀÏÀÚ';
-COMMENT ON COLUMN ORDERS.SHIPDATE IS '¹è¼ÛÀÏÀÚ';
-COMMENT ON COLUMN ORDERS.SHIPADDRESS IS '¹è¼ÛÁÖ¼Ò';
-COMMENT ON COLUMN ORDERS.QUANTITY IS 'ÁÖ¹®¼ö·®';
+COMMENT ON COLUMN ORDERS.ORDERNO IS 'ì£¼ë¬¸ë²ˆí˜¸';
+COMMENT ON COLUMN ORDERS.CUSTNO IS 'ê³ ê°ë²ˆí˜¸';
+COMMENT ON COLUMN ORDERS.ORDERDATE IS 'ì£¼ë¬¸ì¼ìž';
+COMMENT ON COLUMN ORDERS.SHIPDATE IS 'ë°°ì†¡ì¼ìž';
+COMMENT ON COLUMN ORDERS.SHIPADDRESS IS 'ë°°ì†¡ì£¼ì†Œ';
+COMMENT ON COLUMN ORDERS.QUANTITY IS 'ì£¼ë¬¸ìˆ˜ëŸ‰';
     
 /*
-  °øÁö»çÇ× Á¤º¸¸¦ ÀúÀåÇÒ Å×ÀÌºí : NOTICE
-  ÄÃ·³ : 
-  ±Û¹øÈ£(¼ýÀÚ), ±ÛÁ¦¸ñ(°¡º¯¹®ÀÚ 30¹ÙÀÌÆ®), ÀÛ¼ºÀÚ¾ÆÀÌµð(°¡º¯¹®ÀÚ 15¹ÙÀÌÆ®), 
-  ÀÛ¼º³¯Â¥(³¯Â¥), ÀÛ¼º³»¿ë(°¡º¯¹®ÀÚ 2000¹ÙÀÌÆ®), Ã·ºÎÆÄÀÏ°æ·Î¸í(°¡º¯¹®ÀÚ 50¹ÙÀÌÆ®)
-  ÄÃ·³¸í : 
+  ê³µì§€ì‚¬í•­ ì •ë³´ë¥¼ ì €ìž¥í•  í…Œì´ë¸” : NOTICE
+  ì»¬ëŸ¼ : 
+  ê¸€ë²ˆí˜¸(ìˆ«ìž), ê¸€ì œëª©(ê°€ë³€ë¬¸ìž 30ë°”ì´íŠ¸), ìž‘ì„±ìžì•„ì´ë””(ê°€ë³€ë¬¸ìž 15ë°”ì´íŠ¸), 
+  ìž‘ì„±ë‚ ì§œ(ë‚ ì§œ), ìž‘ì„±ë‚´ìš©(ê°€ë³€ë¬¸ìž 2000ë°”ì´íŠ¸), ì²¨ë¶€íŒŒì¼ê²½ë¡œëª…(ê°€ë³€ë¬¸ìž 50ë°”ì´íŠ¸)
+  ì»¬ëŸ¼ëª… : 
   NOTICE_NO, NOTICE_TITLE, NOTICE_WRITER, NOTICE_DATE, 
   NOTICE_CONTENT, FILE_PATH
-  ÀÛ¼º³¯Â¥ÀÇ ±âº»°ªÀº SYSDATE
+  ìž‘ì„±ë‚ ì§œì˜ ê¸°ë³¸ê°’ì€ SYSDATE
 */
 
 CREATE TABLE NOTICE(
@@ -88,25 +88,25 @@ CREATE TABLE NOTICE(
   FILE_PATH   VARCHAR2(50)
 );
 
--- Ã¹¹øÂ° ±Û Ãß°¡ : 
---1, 'Ã¹¹øÂ° °øÁö±Û', 'user01', '¾È³çÇÏ¼¼¿ä. °øÁö»çÇ×À» ¾Ë·Áµå¸³´Ï´Ù.'
+-- ì²«ë²ˆì§¸ ê¸€ ì¶”ê°€ : 
+--1, 'ì²«ë²ˆì§¸ ê³µì§€ê¸€', 'user01', 'ì•ˆë…•í•˜ì„¸ìš”. ê³µì§€ì‚¬í•­ì„ ì•Œë ¤ë“œë¦½ë‹ˆë‹¤.'
 INSERT INTO NOTICE
-VALUES (1, 'Ã¹¹øÂ° °øÁö±Û', 'user01', DEFAULT, 
-        '¾È³çÇÏ¼¼¿ä. °øÁö»çÇ×À» ¾Ë·Áµå¸³´Ï´Ù.', NULL);
+VALUES (1, 'ì²«ë²ˆì§¸ ê³µì§€ê¸€', 'user01', DEFAULT, 
+        'ì•ˆë…•í•˜ì„¸ìš”. ê³µì§€ì‚¬í•­ì„ ì•Œë ¤ë“œë¦½ë‹ˆë‹¤.', NULL);
 
---  µÎ¹øÂ° ±Û Ãß°¡ : 
--- ±Û¹øÈ£ÀÇ °¡Àå Å« °ª + 1, 'µÎ¹øÂ° °øÁö±Û', 'user02', '¾Ë¸³´Ï´Ù. µÎ¹øÂ°'
+--  ë‘ë²ˆì§¸ ê¸€ ì¶”ê°€ : 
+-- ê¸€ë²ˆí˜¸ì˜ ê°€ìž¥ í° ê°’ + 1, 'ë‘ë²ˆì§¸ ê³µì§€ê¸€', 'user02', 'ì•Œë¦½ë‹ˆë‹¤. ë‘ë²ˆì§¸'
 INSERT INTO NOTICE
 VALUES ((SELECT MAX(NOTICE_NO) FROM NOTICE) + 1, 
-        'µÎ¹øÂ° °øÁö±Û', 'user02', DEFAULT, '¾Ë¸³´Ï´Ù. µÎ¹øÂ° °øÁö±ÛÀÔ´Ï´Ù.',
+        'ë‘ë²ˆì§¸ ê³µì§€ê¸€', 'user02', DEFAULT, 'ì•Œë¦½ë‹ˆë‹¤. ë‘ë²ˆì§¸ ê³µì§€ê¸€ìž…ë‹ˆë‹¤.',
         NULL);
 
 SELECT * FROM NOTICE;
 
--- DML (Data Manipulation Language) : µ¥ÀÌÅÍ Á¶ÀÛ¾î
+-- DML (Data Manipulation Language) : ë°ì´í„° ì¡°ìž‘ì–´
 -- INSERT, UPDATE, DELETE, TRUNCATE
--- Å×ÀÌºí¿¡ µ¥ÀÌÅÍ¸¦ Ãß°¡ ±â·ÏÇÏ°Å³ª, ±â·ÏµÈ °ªÀ» ¼öÁ¤ÇÏ°Å³ª
--- ÇàÀ» »èÁ¦ÇÏ´Â ±¸¹®
+-- í…Œì´ë¸”ì— ë°ì´í„°ë¥¼ ì¶”ê°€ ê¸°ë¡í•˜ê±°ë‚˜, ê¸°ë¡ëœ ê°’ì„ ìˆ˜ì •í•˜ê±°ë‚˜
+-- í–‰ì„ ì‚­ì œí•˜ëŠ” êµ¬ë¬¸
 
 /*
 
@@ -120,11 +120,11 @@ CREATE TABLE DEPT (
 
 SELECT COUNT(*) FROM DEPT;  -- 0
 
-INSERT INTO DEPT VALUES ('20', 'È¸°èÆÀ');
+INSERT INTO DEPT VALUES ('20', 'íšŒê³„íŒ€');
 
 SELECT COUNT(*) FROM DEPT;  -- 1
 
-INSERT INTO DEPT VALUES ('10', 'ÀÎ»çÆÀ');
+INSERT INTO DEPT VALUES ('10', 'ì¸ì‚¬íŒ€');
 
 SELECT COUNT(*) FROM DEPT; -- 2
 
