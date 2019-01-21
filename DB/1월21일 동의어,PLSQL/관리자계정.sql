@@ -1,0 +1,37 @@
+GRANT CREATE SYNONYM TO student;
+
+GRANT SELECT ON SCOTT.EMP TO student;
+
+CREATE USER USER55 IDENTIFIED BY PASS55;
+
+GRANT CONNECT TO USER55;
+
+GRANT CONNECT, RESOURCE TO USER55;
+
+--관리자가 사용자에게 부여한 롤 정보 확인
+SELECT * FROM DICT
+WHERE TABLE_NAME LIKE '%ROLE%';
+
+CREATE ROLE MYROLE;
+
+GRANT CREATE SESSION, CREATE TABLE, CREATE VIEW TO MYROLE;
+
+CREATE USER MYMY IDENTIFIED BY MYMY;
+GRANT MYROLE TO MYMY;
+
+--[연습]--------------------------
+--로그인 : system
+--롤이름 : MYROLE02
+--롤에 부여할 객체 권한 : STUDENT.EMPLOYEE 테이블에 대한 SELECT
+--롤 부여할 사용자 : MYMY
+-- =>MYMY 로그인 해서(SQLPLUS에서 로그인) EMPLOYEE 테이블에 대한 SELECT 실행 확인
+-- ---------------------------------------------
+
+CREATE ROLE MYROLE02;
+GRANT SELECT ON student.EMPLOYEE TO MYROLE02;
+
+GRANT MYROLE02 TO MYMY;
+
+--cmd sqlplus에서  MYMY/MYMY로 접속해서 select * from student.EMPLOYEE;
+
+REVOKE MYROLE02 FROM MYMY;
