@@ -1,0 +1,10 @@
+JDBC 환경설정
+JAVA 다운시 JAVA EE 
+개발환경을 OPEN PERSPECTIVE에서 JAVA EE->JAVA
+WINDOW-SHOWVIEW-PROJECT VIEW, CONSOLE
+WINDOW->PREFERENCES->general->workspace->Text file encoding->UTF-8->Apply
+preferences->general->editors->text editors->spelling->encoding->Default(UTF-8)
+
+appearance- color and fonts (선생님은 고딕 추천)
+
+oracle에서 employee 테이블의 column_name, data_type 복사
