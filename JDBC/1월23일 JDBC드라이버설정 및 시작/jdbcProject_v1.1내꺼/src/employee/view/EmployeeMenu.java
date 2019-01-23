@@ -97,7 +97,7 @@ public class EmployeeMenu {
 	//직급코드 입력용
 	public String inputJobId() {
 		System.out.print("\n직급코드 : ");
-		return sc.next();
+		return sc.next().toUpperCase();
 	}
 
 	//사번 입력받아 리턴

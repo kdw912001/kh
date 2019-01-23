@@ -45,7 +45,7 @@ public class EmployeeDao {
 			//하나씩 꺼내서 변수|필드에 옮겨 담기
 			while(rset.next()) {
 				Employee emp = new Employee();
-				emp.setEmpID(rset.getString("EMP_ID"));
+				emp.setEmpId(rset.getString("EMP_ID"));
 				emp.setEmpName(rset.getString("EMP_NAME"));
 				emp.setEmpNo(rset.getString("EMP_NO"));
 				emp.setEmail(rset.getString("EMAIL"));
@@ -102,7 +102,7 @@ public class EmployeeDao {
 			
 			if(rset.next()) {
 				emp = new Employee();
-				emp.setEmpID(rset.getString("EMP_ID"));
+				emp.setEmpId(rset.getString("EMP_ID"));
 				emp.setEmpName(rset.getString("EMP_NAME"));
 				emp.setEmpNo(rset.getString("EMP_NO"));
 				emp.setEmail(rset.getString("EMAIL"));
@@ -150,7 +150,7 @@ public class EmployeeDao {
 			rset = stmt.executeQuery(query);
 			while(rset.next()) {
 				Employee emp = new Employee();
-				emp.setEmpID(rset.getString("EMP_ID"));
+				emp.setEmpId(rset.getString("EMP_ID"));
 				emp.setEmpName(rset.getString("EMP_NAME"));
 				emp.setEmpNo(rset.getString("EMP_NO"));
 				emp.setEmail(rset.getString("EMAIL"));
@@ -199,7 +199,7 @@ public class EmployeeDao {
 			rset = stmt.executeQuery(query);
 			while(rset.next()) {
 				Employee emp = new Employee();
-				emp.setEmpID(rset.getString("EMP_ID"));
+				emp.setEmpId(rset.getString("EMP_ID"));
 				emp.setEmpName(rset.getString("EMP_NAME"));
 				emp.setEmpNo(rset.getString("EMP_NO"));
 				emp.setEmail(rset.getString("EMAIL"));
@@ -240,9 +240,9 @@ public class EmployeeDao {
 				+ emp.getEmail()+ "', '"
 				+ emp.getPhone()+ "', '"
 				+ emp.getHireDate()+ "', '"
-				+ emp.getJobId() + "', '"
-				+ emp.getSalary() + "', '"
-				+ emp.getBonusPct() + "', '"
+				+ emp.getJobId() + "', "
+				+ emp.getSalary() + ", "
+				+ emp.getBonusPct() + ", '"
 				+ emp.getMarriage() + "', '"
 				+ emp.getMgrId() + "', '"
 				+ emp.getDeptId() + "')";
@@ -253,7 +253,6 @@ public class EmployeeDao {
 			conn = DriverManager.getConnection(
 					"jdbc:oracle:thin:@127.0.0.1:1521:xe", "student", "student");
 			conn.setAutoCommit(false);//DB에서 자동 commit 못하게 함
-			
 			//3.
 			stmt = conn.createStatement();
 			//4.

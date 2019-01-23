@@ -6,7 +6,7 @@ import java.sql.Date;
 public class Employee implements Serializable{
 	private static final long serialVersionUid = 7L;  
 	
-	private String empID;
+	private String empId;
 	private String empName;
 	private String empNo;
 	private String email;
@@ -21,10 +21,10 @@ public class Employee implements Serializable{
 	
 	public Employee() {}
 
-	public Employee(String empID, String empName, String empNo, String email, String phone, Date hireDate, String jobId,
+	public Employee(String empId, String empName, String empNo, String email, String phone, Date hireDate, String jobId,
 			int salary, double bonusPct, String marriage, String mgrId, String deptId) {
 		super();
-		this.empID = empID;
+		this.empId = empId;
 		this.empName = empName;
 		this.empNo = empNo;
 		this.email = email;
@@ -38,12 +38,12 @@ public class Employee implements Serializable{
 		this.deptId = deptId;
 	}
 
-	public String getEmpID() {
-		return empID;
+	public String getEmpId() {
+		return empId;
 	}
 
-	public void setEmpID(String empID) {
-		this.empID = empID;
+	public void setEmpId(String empId) {
+		this.empId = empId;
 	}
 
 	public String getEmpName() {
@@ -140,7 +140,7 @@ public class Employee implements Serializable{
 
 	@Override
 	public String toString() {
-		return empID + ", " + empName + ", " + empNo + ", " + email + ", " + phone + ", " + hireDate + ", " + jobId
+		return empId + ", " + empName + ", " + empNo + ", " + email + ", " + phone + ", " + hireDate + ", " + jobId
 				+ ", " + salary + ", " + bonusPct + ", " + marriage + ", " + mgrId + ", " + deptId;
 	}
 
