@@ -1,0 +1,13 @@
+C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib
+에 오라클 jdbc파일이 있음 11버전에 대한건 6버전임
+
+ojdbc6.jar 복사->C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext 안에 붙여넣기
+
+자바프로젝트를 jdbc드라이버 연결하려면 프로젝트 마다
+ 마우스오른쪽- properties -java build path-libraries-add external jars
+
+여러 사람이 프로젝트를 하려면 동일한 폴더 위치에 jdk library를 저장하고 그 위치에
+ojdbc6을 저장함
+
+D:\GitHub\kh\JDBC\3_JDBC\JDBC_1\요약 
+안에 JDBC_eclipse_환경셋팅.txt 를 참고
