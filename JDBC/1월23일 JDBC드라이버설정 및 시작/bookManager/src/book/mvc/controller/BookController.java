@@ -9,7 +9,6 @@ import book.mvc.view.BookMenu;
 public class BookController {
 	
 	BookDao bdao = new BookDao();
-	
 	public BookController() {}
 	
 	public void insertBook(Book b) {
@@ -17,8 +16,8 @@ public class BookController {
 		if(result > 0 ) {
 			System.out.println("\n새 도서정보 등록 성공!");
 		}else {
-			System.out.println("\n새 도서정보 등록 실패!");
-			System.out.println("확인하고 다시 시도 하십시오.");
+			System.out.println("\n새 도서정보 등록 실패!\n확인하고 다시 시도 하십시오.");
+			
 		}
 		System.out.println("result chect : "+result);
 		return;
