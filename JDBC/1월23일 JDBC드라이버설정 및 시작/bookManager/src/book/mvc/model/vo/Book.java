@@ -1,7 +1,7 @@
 package book.mvc.model.vo;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.*;
 
 public class Book implements Serializable{
 	
@@ -9,22 +9,21 @@ public class Book implements Serializable{
 	private int bookId;
 	private String title;
 	private String author;
+	private String publisher;
 	private Date publishDate;
 	private int price;
 	
 	public Book() {}
 
-	public Book(int bookId, String title, String author, Date publishDate, int price) {
-		super();
+	public Book(int bookId, String title, String author, String publisher, Date publishDate, int price) {
 		this.bookId = bookId;
 		this.title = title;
 		this.author = author;
+		this.publisher = publisher;
 		this.publishDate = publishDate;
 		this.price = price;
 	}
 
-	
-	
 	public int getBookId() {
 		return bookId;
 	}
@@ -49,6 +48,14 @@ public class Book implements Serializable{
 		this.author = author;
 	}
 
+	public String getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+
 	public Date getPublishDate() {
 		return publishDate;
 	}
@@ -71,8 +78,11 @@ public class Book implements Serializable{
 
 	@Override
 	public String toString() {
-		return bookId + ", " + title + ", " + author + ", " + publishDate + ", " + price;
+		return bookId + ", " + title + ", " + author + ", " + publisher + ", " + publishDate + ", " + price;
 	}
+
+	
+
 	
 	
 	
