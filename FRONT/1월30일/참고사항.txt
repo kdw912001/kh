@@ -1,0 +1,66 @@
+﻿웹 참고사항
+1. Java EE 버전이어야 함
+
+2. 이클립스 - open perspective - Java EE (default)
+*window - showview - console,navigator,projectexploer,problems(other-general)에 있음
+아래 뷰 : servers, console,problems
+data source explorer 은 애매
+*servers는 navigator 아래에 위치하게
+
+3. 톰캣 다운받아야함 (자바 버전에 맞게 다운 받아야 함.)
+*현재 jdk 8버전 쓰고 있기 때문에 톰캣 8버전( 8.5.37 Core - 64비트 윈도우 버전)
+
+4. Preferences 작업 --자바에서 문자 인코딩 utf-8적용
+*general - workspace - utf-8적용
+* general - editors - text editors -spelling - utf-8적용
+*JSON - JSON Files - Encoding - UTF-8(ISO 10646)
+*Web  - CSS,HTML,JSP Files - Encoding - UTF-8적용
+
+*server - Runtime Environment - add - Tomcat v8.5 - next ->
+-> name은 아무렇게, directory 를 지정 (폴더안에 들어가야 finish할 수 있음)
+-> html test server, css test server 만듦
+
+5. servers에서 파란색 글씨 클릭
+ * server name : htmlProject server(아무렇게 해도 상관없음) - finish ->Navigator에 Servers 추가 됨.
+ * servers 에서 클릭 후 start 버튼 실행하여 테스트 - 처음 실행시 포트번호 8080에러 뜸(8080은 오라클에서 사용)
+ ** 톰캣의 포트번호를 변경해야 함 -> servers 더블 클릭 -> ports 에서 3개 다 바꿔야 함. ->8555,8888,8999(다른 포트와 충돌이 안나게)
+ ** ->server Options 에 첫 옵션 체크 해야 함 (server moduls without publishing) --나중에 백엔드 작업시
+
+6. 새 프로젝트
+* dynamic web project 선택 -> targetruntime ( html test server) --targetruntime이 none일 경우 톰캣 연결 안됨 --3.1은 서블릿 버전
+next->next-> generate web.xml deployment descriptor를 꼭 체크 , 
+->Content directory를 web(실제경로)으로 변경,  
+->context root :  testh -- testh는 web(실제경로)까지의 경로를 포함하는 가짜 경로
+--Content directory가 web이 아닐 경우 html404에러 뜸.
+
+7. ***********(프로젝트 만들 때마다 설정해야 함) htmlProject 내의 web폴더는 root폴더임. 
+   build 폴더의 classes를 web폴더로 지정
+*프로젝트 오른쪽 클릭  Properties -> java build path -> source -> default output folder 의 browser버튼 
+-> web/WEB-INF/classes 지정(htmlProject/web/WEB-INF/classes) --classes폴더를 생성해야 함
+* Navigator에서 web/WEB-INF/classes 폴더 생성됐는지 확인 후 build폴더는 삭제
+
+8. ************ web/WEB-INF 내에 web.xml파일 열어서 
+ <welcome-file>index.html</welcome-file>  만 남기고 <welcome-file>에서 필요없는건 삭제
+ index.html 은 홈페이지 첫 화면
+--wecome 파일의 위치는 반드시 content directory(web)
+* web 폴더에서 마우스 오른쪽 new -other - html 파일 생성 (index.html)
+*** 프로젝트 -> 마우스 오른쪽 -> new 에서 보이는 걸 수정
+ --window -> perspective -> customize perspective -> shortcuts ->XML, Web, JavaScript, Java 를 체크 ->apply
+
+9. *servers 누르고 마우스 오른쪽 ->add and remove ->available에서 하나의 프로젝트를 add하여 Configured 로 옮김
+->Configured 에는 반드시 하나의 프로젝트만 있어야 함. ->finish
+->화살표 눌러보면 htmlProject가 추가되어있는지 확인 후 ->서버 정상 구동되는지 확인(server startup 멘트 뜨는지 확인)
+-> 항상 서버가 구동되어야 함.
+10. http://127.0.0.1:8888/testh/   
+
+
+11. editplus 5.1 버전 다운로드 64비트 
+*도구 ->기본설정->파일->기본인코딩을 UTF-8적용, 저장시 백업파일 생성 해제
+*한글이 깨질경우 editplus에서 파일->모두닫기 후 이클립스에서 수정후에 editplus에서 열기 
+
+12. 수업파일에서 images,mulit 폴더 복사 ->
+  web폴더에서 resources폴더 생성 후 그 안에 images,multi폴더 붙여넣기
+
+13. web폴더 안에 views 폴더 생성
+htmlPoject 에서 src폴더 안에 mvc, common 패키지 생성-> web/classes 안에 src에서 만든 패키지가 보여야 함.
+
