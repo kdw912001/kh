@@ -2,9 +2,112 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>page_2</title>
+<style type="text/css">
+	div {
+		border : 1px solid orange;
+		background-color: yellow;
+	}
+</style>
 </head>
 <body>
-html 태그 연습2 : 글자 관련 태그
+<!-- html 주석 태그임. 문서 안 아무데나 사용 가능함 -->
+<h1>제목글자 출력용 태그 : h숫자 태그, 숫자는 1~6까지 사용.</h1>
+<h2>제목글자 출력용 태그 : h숫자 태그, 숫자는 1~6까지 사용.</h2>
+<h3>제목글자 출력용 태그 : h숫자 태그, 숫자는 1~6까지 사용.</h3>
+<h4>제목글자 출력용 태그 : h숫자 태그, 숫자는 1~6까지 사용.</h4>
+<h5>제목글자 출력용 태그 : h숫자 태그, 숫자는 1~6까지 사용.</h5>
+<h6>제목글자 출력용 태그 : h숫자 태그, 숫자는 1~6까지 사용.</h6>
+<!-- h는 headline 의 줄임말임. h숫자 태그는 자동 줄바꿈됨
+h1이 가장 크고, h6이 가장 작음 
+h숫자 태그에 사용할 수 있는 속성은 align="left/center/right" -->
+<h3>제목글자 : 기본이 왼쪽정렬임</h3>
+<h3 align="center">제목글자 : 가운데정렬</h3>
+<h3 align="left">제목글자 : 왼쪽정렬</h3>
+<h3 align="right">제목글자 : 오른쪽정렬</h3>
+<!-- hr 태그 : horizental 의 줄임말, 가로선 출력
+페이지의 내용간 구분을 위한 용도로 사용함.
+기본은 브라우저 화면 전체 너비로 선이 표시됨.
+선굵기는 1px, 선색은 검정색, 선종류는 실선이 기본임 -->
+<hr>
+<hr><hr>
+<!-- hr 태그의 속성
+size="숫자" : 선굵기 지정, 기본 단위는 픽셀(pixel)임.
+width="숫자/숫자%" : 선의 가로 너비 지정, 기본 단위는 픽셀(px)임.
+퍼센트로 표시할 수도 있음.브라우저 가로너비의 몇%로 처리됨.
+color="색이름/#RRGGBB" : 선생 지정
+noshade : 선의 음영제거
+align="left/center/right" : 선의 정렬 위치, 기본은 왼쪽정렬임. 
+닫기 태그 없는 단일 태그임-->
+<br><br>
+<hr size="3" width="50%" color="red" noshade align="center">
+<br><br>
+<hr size="5" width="600" color="#00ff00" align="right">
+<br><br>
+<p align="center">문장들을 작성해서 하나의 문단을 영역 지을 때 사용하는 태그임
+<br>
+p는 paragraph (문단/단락)의 줄임말임. <br>
+p 태그 다음은 한 줄 정도의 줄 간격이 벌어지는 것이 br 태그와 다른 점임.
+</p>
+<p align="right">
+문장들을 작성해서 하나의 문단을 영역 지을 때 사용하는 태그임
+<br>
+p는 paragraph (문단/단락)의 줄임말임. <br>
+p 태그 다음은 한 줄 정도의 줄 간격이 벌어지는 것이 br 태그와 다른 점임.
+사용할 수 있는 속성은 align="left/center/right" 임.
+</p>
+p 태그를 문단 표시 외에 줄간격 벌이기 용도로 사용할 수도 있음
+<p/>
+<!-- 시작태그명 뒤에 /를 붙이면 닫기태그를 생략한다는 의미임
+xml 언어 표현 방식임.
+html 4 버전의 다음 버전이 xhtml 1 임.
+xhtml 은 xml + html 이라는 뜻임.
+현재는 xhtml 1.0 의 다음 버전인 html5 이므로,
+html 태그에 xml 적인 표현을 사용할 수도 있음. -->
+그냥 p만 사용해도 된다.<p>
+<center>
+center 태그는 모든 element 들을 가운데로 배치시킬 때 사용함.
+<br>
+<img src="../resources/images/flower1.jpg" width="150" height="150">
+<!-- 상대경로 : 현재 페이지에서 어떤 자원을 찾아가기 위한 경로
+../ 는 한단계 위로(상위폴더로)를 의미하며,
+./ 는 현재 폴더를 의미함.
+현재 views 폴더에서 빠져나가서, resources 폴더 안의
+images 폴더 안의 이미지 파일을 찾아가기 위한 경로 표시는
+../resources/images/파일명.확장자   임.-->
+</center>
+<br>
+<!-- div 태그는 division 의 줄임말임.
+구역(영역) 지정에 사용되는 태그임.
+속성은 align="left/center/right" 사용할 수 있음. -->
+<div id="section1" align="left">
+해당 구역에 표시될 글자나 그림, 태그들을 배치함
+</div><p>
+<div id="section2" align="center">
+모든 태그들은 한 줄에 한 개의 태그만 배치 됨 
+</div><p>
+<div id="section3" align="right">
+모든 태그들은 사각형 영역을 가짐. css로 영역을 표시할 수 있음.
+</div><p>
+<!-- id 속성은 모든 태그에 사용할 수 있음.
+id="아이디명" 아이디명은 현재 페이지 안에서 한 개만 존재해야 함.
+같은 종류의 태그를 아이디로 구분할 수 있음.
+주로 자바스크립트와 스타일시트(css)에서 이용하기 위해 지정함.-->
+<hr>
+     *
+    ***
+   *****
+    ***
+     *
+<p> <!-- 브라우저에서는 공백과 줄바꿈을 인식하지 못함.
+공백은 한 개만 기본으로 표시됨. -->
+<hr>
+<pre> <!-- 입력한 내용 그대로 표시하는 태그임. -->
+     *
+    ***
+   *****
+    ***
+     *
+</pre>
 </body>
 </html>

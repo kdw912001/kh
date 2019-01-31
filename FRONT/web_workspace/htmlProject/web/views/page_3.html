@@ -2,9 +2,72 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>page_3</title>
 </head>
 <body>
-html 태그 연습3 : 글자 관련 태그
+<div id="header">
+<h1>목록 관련 태그 연습</h1>
+<h3>목록 태그는 ol(order list : 순번있는 목록)과 
+ul(unorder list : 순번없는 목록)과 dl(define list : 정의목록)이 있음.</h3>
+</div>
+<hr>
+<div id="section1">
+<h4>순번이 매겨지는 목록 : OL 태그</h4>
+<!-- 속성 : type="1/A/a/I/i" 순번 표시 유형 지정 -->
+<!-- <ol type="1"> -->
+<!-- <ol type="A"> -->
+<!-- <ol type="a"> -->
+<!-- <ol type="I"> -->
+<ol type="i">
+	<li>자바</li> 
+	<!-- li : list 의 줄임말, 목록 하나를 표시함 -->
+	<li>오라클</li>
+	<li>JDBC</li>
+	<li>HTML5</li>
+	<li>CSS3</li>
+</ol>
+</div>
+<HR width="50%" size="2">
+<div id="section2">
+<h4>순번이 없는 목록 : UL 태그, 뷸릿기호로 표시 됨</h4>
+
+<!-- type="circle/square/disc" 로 뷸릿기호를 바꿀 수 있음
+더 다양한 그림을 뷸릿으로 사용하려면 css를 사용하면 됨.-->
+<!-- <ul type="circle"> -->
+<!-- <ul type="square"> -->
+<ul type="disc"><!-- 기본값임. -->
+	<li>자바스크립트</li>
+	<li>제이쿼리</li>
+	<li>서블릿</li>
+	<li>JSP</li>
+	<li>ajax</li>
+</ul>
+</div>
+<HR width="50%" size="2">
+<div id="section3">
+<h4>용어와 용어 설명을 목록으로 표현하는 태그 : dl</h4>
+<dl><!-- dl 태그는 dt 태그와 dd 태그로 구성됨. -->
+<dt>HTML5</dt> 
+<!-- dt : definition title 줄임말, 용어나 제목 -->
+<dd>W3C (세계 웹표준협회)에서 웹서비스에 사용되는 문서 제작에
+ 사용하는 표준언어로 지정한 마크업(Markup) 언어이다.</dd>
+ <!-- dd : define definition 용어에 대한 설명 -->
+<dt>CSS3</dt>
+<dd>HTML5와 함께 새로운 웹표준으로 지정된 스타일시트 언어이며,
+태그로 표현된 웹 문서에 디자인을 입히는 용도로 사용된다.</dd>
+<dt>JavaScript</dt>
+<dd>전세계 모든 웹브라우저에 내장된 스크립트 언어로써,
+html 문서 안에서 작성되며 정적인 태그에 동적인 효과를 주는 목적으로 사용된다.</dd>
+</dl>
+</div>
+<hr>
+<div id="footer">
+<center>
+<font color="gray" size="2">
+copyright@kh.org 2019-01-31 태그 연습 페이지 제작<br>
+tel : 02-1234-1234 fax : 02-3333-4444
+</font>
+</center>
+</div>
 </body>
 </html>
