@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>testForm</title>
+</head>
+<body>
+<h1>새로 추가된 html5 입력양식 태그 테스트</h1>
+<hr>
+<form method="post" action="">
+이메일 : <input type="email" name="email"> <br>
+<label for="weburl">등록할 웹주소 : </label>
+<input type="url" name="url" id="weburl"> <br>
+<label>수량 : <input type="number" min="2" max="30" 
+step="2" value="10"></label> <br>
+<fieldset>
+<legend>주문 내용</legend>
+<ol>
+	<li>
+		<label for="p">상품명</label>
+		<input id="p" type="text" size="25"> 
+	</li>
+	<li>
+		<label for="level">등급</label>
+		<input id="level" type="range" min="1" max="10" 
+		value="5" step="2">
+	</li>
+	<li>
+		<label>도착날짜 : <input type="date"></label>
+	</li>
+	<li>
+		<label>주문색상 : <input type="color"></label>
+	</li>
+</ol>
+</fieldset>
+<input type="submit">
+</form>
+
+
+
+
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>page_5</title>
+</head>
+<body>
+<h2>표(table) 태그 연습 페이지</h2>
+<h4>table 태그는 내용의 규칙적인 배치를 위해 주로 사용됨.</h4>
+<h5>테이블 속성</h5>
+<ul>
+	<li>width 속성 : 테이블의 가로 너비 지정
+	<li>height : 테이블 세로 높이
+	<li>border : 테두리선
+	<li>align : 테이블 위치
+	<li>cellspacing : 칸과 칸(셀:cell) 사이의 간격
+	<li>cellpadding : 칸 안 여백
+</ul>
+<table border="1" width="500" height="150" align="center" 
+cellspacing="0" cellpadding="10">
+<!-- tr(table row) : 줄(행:row)을 표현하는 태그임 -->
+<!-- td(table division) : 한 칸을 뜻하는 태그임 / 
+    th(table headline) : 제목행 표시용 칸 
+    html 에서 테이블의 줄별 칸수는 반드시 같아야 함.
+    줄 별로 칸 수를 다르게 설정 못 함.(에러임)
+    칸 안에 값을 입력해야 표가 보여짐.
+-->
+<tr align="center" bgcolor="orange"><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+<tr><td bgcolor="gray" align="right" valign="bottom">6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr>
+<tr><th>11</th><td>12</td><td>13</td><td>14</td><td>15</td></tr>
+</table>
+<hr>
+<table width="500" height="200" border="1" cellspacing="0" 
+cellpadding="0">
+<tr>
+	<td colspan="3" align="center" valign="middle" 
+	bgcolor="yellow">1</td>	
+	<td>4</td>
+	<td rowspan="4" bgcolor="orange" align="center" 
+	valign="middle">5</td>
+</tr>
+<tr>
+	<td rowspan="3" bgcolor="green">6</td>
+	<td colspan="3" bgcolor="pink">7</td>	
+</tr>
+<tr>	
+	<td rowspan="2" bgcolor="blue">12</td>
+	<td>13</td>
+	<td>14</td>	
+</tr>
+<tr>		
+	<td colspan="2" bgcolor="magenta">18</td>
+</tr>
+</table>
+<hr>
+<h3>테이블 이용한 그림과 글자 배치</h3>
+<table width="500" height="500" cellspacing="20" 
+cellpadding="0">
+<tr height="150">
+	<td><img src="../resources/images/flower1.jpg" width="100" height="150" border="0" alt=""></td>
+	<td><img src="../resources/images/flower1.jpg" width="100" height="150" border="0" alt=""></td>
+	<td><img src="../resources/images/flower1.jpg" width="100" height="150" border="0" alt=""></td>
+	<td><img src="../resources/images/flower1.jpg" width="100" height="150" border="0" alt=""></td>
+</tr>
+<tr height="50" align="center">
+	<td>꽃사진</td>
+	<td>꽃사진</td>
+	<td>꽃사진</td>
+	<td>꽃사진</td>
+</tr>
+<tr height="150">
+	<td><img src="../resources/images/flower1.jpg" width="100" height="150" border="0" alt=""></td>
+	<td><img src="../resources/images/flower1.jpg" width="100" height="150" border="0" alt=""></td>
+	<td><img src="../resources/images/flower1.jpg" width="100" height="150" border="0" alt=""></td>
+	<td><img src="../resources/images/flower1.jpg" width="100" height="150" border="0" alt=""></td>
+</tr>
+<tr height="50" align="center">
+	<td>꽃사진</td>
+	<td>꽃사진</td>
+	<td>꽃사진</td>
+	<td>꽃사진</td>
+</tr>
+</table>
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+

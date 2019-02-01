@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>testCanvas</title>
+<style type="text/css">
+	canvas {
+		border: 1px solid black;
+	}
+</style>
+<script type="text/javascript">
+	function draw_m(){
+		var m_canvas = document.getElementById("m");
+		var m_ctx = m_canvas.getContext("2d");
+		m_ctx.fillStyle = "rgb(200, 0, 0)";
+		m_ctx.fillRect(10, 10, 100, 100);
+	}
+</script>
+</head>
+<body>
+<h1>canvas 태그 테스트</h1>
+<hr>
+<button onclick="draw_m();">사각형 그리기</button>
+<canvas id="m" width="500" height="400"></canvas>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
