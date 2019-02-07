@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>testCss_2</title>
+<style type="text/css">
+	* { margin: 5px; }
+
+	div{
+		border: 1px solid red;
+		width: 300px;
+		height: 150px;
+	}
+	
+	div#d1 {
+		background-color: red;
+		position: absolute; /*절대좌표로 위치 지정한다는 의미임*/
+		left: 150px;
+		top: 300px;
+		z-index: 2;
+	}
+	
+	div#d2 {
+		background-color: green;
+		position: relative; /*상대좌표로 지정한다는 의미임*/
+		/*해당 태그가 표시될 위치에서 움직이는 거리를 지정함*/
+		left: 300px;
+		top: -50px;
+	}
+	
+	div#d3{
+		background-color: blue;
+		position: fixed;/*위치 고정 : 화면이 스크롤될 때*/
+		z-index: 1;
+	}
+	a:link {
+		font-size: 16pt;
+		text-weight: bold;
+		text-decoration: none;
+		text-shadow: 2px 2px 3px black;
+		color: orange;
+	}
+	
+	a:hover{
+		cursor: default;
+		background-color: yellow;
+		color: navy;
+	}
+	
+	a:active{/*마우스 왼쪽 눌렀을 때*/
+		color: cyan;
+	}
+	
+	a:visited{/*한번 a태그 갔다온 후*/
+		font-family: 휴먼매직체;
+		font-size: 5pt;
+		color: navy;
+	}
+</style>
+<script type="text/javascript">
+	visibleToggle = true;
+	function showHide(){
+		var d3 = document.getElementById("d3");
+		
+		if(visibleToggle){
+			d3.style.visibility = "hidden";
+			visibleToggle = false;
+		}else{
+			d3.style.visibility = "visible";
+			visibleToggle = true;
+		}
+	}
+</script>
+</head>
+<body>
+<h1>위치 관련 태그 테스트</h1>
+<hr>
+<div id="d1"></div>
+<div id="d2"></div>
+<div id="d3"></div>
+<button onclick="showHide();">보이기/숨기기</button><br>
+<a href="testCss_1.html">연결된 링크문자</a><p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+line<p>
+</body>
+</html>

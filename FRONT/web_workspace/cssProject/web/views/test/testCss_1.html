@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>testCss_1</title>
+<link href="../../resources/css/sample_1.css" rel="stylesheet" type="test/css">
+<style type="text/css">
+	/*태그명 {속성:값;}*/
+	body {
+		color: #000080;
+		font-size: 9pt;
+		background: #ffff00;
+		opacity: 0.5;
+	}
+	
+	/*여러 종류의 태그를 선택하는 방법
+	  태그명, 태그명, 태그명 {속성: 값; }*/
+	header, section, footer{
+		border: 2px solid blue;
+	}
+	
+	/*태그 안에 사용된 태그의 선택
+	 태그명 태그명 { 속성: 값; }*/
+	header h1 {
+		font-family: Jokerman Arial Black;
+		background-image: url("../../resources/images/back_2.gif");
+	}
+	/* id명으로 선택하는 경우
+	   #아이디명 { 속성: 값; }
+	   태그명#아이디명 { 속성: 값; } */
+	/* section  */#s1 {
+		background: rgba(64, 128, 191, 0.5);	
+	}
+	
+	/*class 명으로 선택하는 방법
+	  .클래스명 { 속성: 값; } 
+	  태그명.클래스명 { 속성: 값; } */
+	.c1{
+		font-style: italic;
+		font-weight: bold;
+		letter-spacing: 5px;
+		text-decoration: overline;
+	}
+	
+	footer{
+		text-align: center;
+		line-height: 2em;
+		text-transform
+		: uppercase;
+	}
+	
+	#s3{
+		background-image: url("../../resources/images/back_1.gif");
+		width: 500px;
+		height: 250px;
+		background-repeat: no-repeat;
+	}
+	
+</style>
+</head>
+<body style="margin:0px;">
+<header>
+	<h1>태그 안에 사용된 태그</h1>
+	<hgroup>
+		<h1>CSS 연습 1</h1>
+	</hgroup>
+</header>
+<hr>
+<section id="s1">
+	<h1>본문영역 1</h1>
+</section>
+<section id="s2">
+	<h1 class="c1">본문영역 2</h1>
+</section>
+<section id="s3" class="c1">
+	<h1>본문영역 3</h1>
+</section>
+<footer class="c1">
+	copyright@iei.or.kr developer : 홍길동<br>
+	서울시 강남구 역삼동 Tel : 02-1234-5678
+</footer>
+</body>
+</html>
