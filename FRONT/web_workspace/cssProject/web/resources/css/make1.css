@@ -1,0 +1,84 @@
+﻿@charset "UTF-8";
+
+html, body, h1, h2, h3, h4, h5, h6, section, header, aside, footer, nav, article, 
+figure, fieldset, p, ul, ol, li,dl, dt, dd, form {margin: 0;padding: 0;}
+
+body {font: .8em Arial, sans-serif;}
+html {background: #ddd}
+
+.mission_a h1 a {
+	text-decoration: none;
+	position: absolute;
+}
+.mission_a h1 a:hover::after{
+	content:'HTML5! CSS3! 실습입니다.';
+	font: .7em Helvetica sans-serif;
+	color:#fff;
+	display: block;
+	margin-left: 90px;
+	top: 0;
+	padding: 10px;
+	background: #222;
+	border: 1px solid #555;
+	-webkit-border-radius: 8px;
+	-webkit-box-shadow: #ddd 0 0 10px, #ccc 0 0px 5px inset;
+}
+
+.mission_b{
+	position: relative;
+	top: 10px; left: 10px;
+	border: 1px solid #ccc;
+	width: 70px; height: 70px;
+}
+
+.mission_b img {
+	opacity: .31;
+	-webit-transition: opacity .3s ease-out;
+}
+
+.mission_b img:hover {
+	opacity: .9;
+}
+
+.mission_c ul{
+	position: relative;
+	top: 10px;
+	left: 10px;
+}
+
+.mission_c li{
+	list-style: none;
+}
+
+.mission_c li a{
+	color: #000;
+	font-size: 2em;
+	font-weight: normal;
+	display: block;
+	height: 50px;
+	margin: 10px 0;
+	padding: 10px;
+	text-decoration: none;
+	text-shadow: rgba(255,255,255,.5) 1px 1px 2px;
+	width:200px;
+	-webkit-border-top-right-radius: 25px;
+	-webkit-border-bottom-right-radius: 25px;
+	-webkit-transition: width .7s ease-out;
+}
+
+.mission_c li a:hover {
+	color: #FFFF00;
+}
+.mission_c li a:hover{
+	text-shadow: rgba(0,0,0 .7) 1px 1px 1px;
+	width: 230px;
+	-webkit-box-shadow: rgba(0,0,0, .3) 3px 3px 5px;
+	-webkit-transition: width .3s ease-out;
+}
+
+.mission_c li.ab a:hover{background:rgba(153,0,204,.1);}
+.mission_c li.ac a:hover{background:rgba(153,0,204, .2);}
+.mission_c li.ad a:hover{background:rgba(153,0,204, .3);}
+.mission_c li.ae a:hover{background:rgba(153,0,204, .4);}
+.mission_c li.af a:hover{background:rgba(153,0,204, .5);}
+.mission_c li.ag a:hover{background:rgba(153,0,204, .6);}
