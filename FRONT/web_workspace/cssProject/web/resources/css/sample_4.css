@@ -1,0 +1,52 @@
+/* sample_4.css => testCss3_selector.html 적용 */
+
+@charset "UTF-8";
+
+@font-face{
+	font-family: TESTF;
+	src: url("/testc/resources/fonts/FZSong_Super.TTF") format("truetype");
+}
+
+img[src$="_s.jpg"] {
+	opacity: 0.3;
+	border: 3px solid #f00;
+}
+
+/* *:not(img) {
+	border: 3px dashed #00f;
+} */
+
+li{
+	list-style-type: none;
+	margin-right: 30px;
+	float: left;
+	font-size: 48px;
+	/* font-family: Arial, Helvitica, sans-serif; */
+	font-family: TESTF;
+}
+li:nth-child(odd) {
+	color: #900;
+	font-weight: bold;
+}
+li:nth-child(4n) {
+	color: blue;
+	background-color: hsl(200, 50%, 85%);
+}
+
+li:nth-child(2){
+	color: green;
+	/* font-family: proxy1, Ms, serif, */
+	font-family: TESTF;
+}
+
+div.mcol{
+	column-count: 3;
+	column-gap: 20px;
+	column-rule: 1px dotted #f06;
+	-webkit-column-count: 3;
+	column-gap: 20px;
+	column-rule: 1px dotted #f06;
+	-moz-column-count: 3;
+	column-gap: 20px;
+	column-rule: 1px dotted #f06;
+}
