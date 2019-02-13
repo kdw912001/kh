@@ -10,3 +10,4 @@ function testShow(){
 function changeImage(){
 	document.getElementById("Image1").src = "/testj/resources/images/Android.gif";
 }
+

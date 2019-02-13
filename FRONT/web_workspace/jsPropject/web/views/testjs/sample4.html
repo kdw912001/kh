@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>sample4</title>
+</head>
+<body>
+<h1>자바스크립트 document 객체가 제공하는 메소드 중
+태그(element) 정보를 얻기 위한 메소드 사용 테스트</h1>
+<ol>
+	<li>var 태그객체변수 = document.getElementById("아이디명");</li>
+	<button onclick="getId();">아이디로 태그 정보 얻기</button>
+	<div id="box" style="background:orange; width:200px; height:100px;">
+	box영역입니다...</div>
+	<script type="text/javascript">
+		function getId(){
+			var boxDiv = document.getElementById("box");
+			boxDiv.style.backgroundColor = "olive";
+			alert("div 태그안에 기록된 문자열 : " + boxDiv.innerHTML + "\n배경색 : "
+											+ boxDiv.style.backgroundColor);
+			boxDiv.innerHTML = "자바스크립트에서 값 바꿨음.";
+		}
+	</script>
+	<hr>
+	<li>var 태그배열변수 = document.getElementsByName("name 속성에 지정한 이름");
+	</li>
+	<p>
+		<input type="checkbox" name="icecream" value="브라보콘">브라보콘 &nbsp;
+		<input type="checkbox" name="icecream" value="구구콘">구구콘 &nbsp;
+		<input type="checkbox" name="icecream" value="자유시간콘">자유시간콘 &nbsp;
+		<input type="checkbox" name="icecream" value="월드콘">월드콘 &nbsp;
+	</p>
+	<button onclick="showValues();">이름으로 접근</button>
+	<script type="text/javascript">
+		function showValues(){
+			var iceCream = document.getElementsByName("icecream");
+			console.log("조회된 태그 갯수 : " + iceCream.length);
+			//태그 배열 처리
+			for(var i = 0; i < iceCream.length; i++){
+				console.log(i + " : " + iceCream[i].value);
+			}
+		}
+	</script>
+	<hr>
+	<li>var 태그배열변수 = 
+	document.getElementsByTagName("태그명");</li>
+	<button onclick="showList();">태그명으로 접근</button>
+	<div id="box2" style="width:500px;height:400px;border:2px solid red;">
+	</div>
+	<script type="text/javascript">
+		function showList(){
+			var liTags = document.getElementsByTagName("li");
+			var box2 = document.getElementById("box2");
+			
+			console.log("li 태그 수 : " + liTags.length);
+			
+			for(var i = 0; i < liTags.length; i++){
+				box2.innerHTML += liTags[i].innerHTML + "<br>";
+			}
+		}
+	</script>
+</ol>
+</body>
+</html>

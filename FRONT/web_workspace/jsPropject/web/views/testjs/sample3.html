@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>sample3</title>
+<script type="text/javascript" src="../../resources/js/main2.js"></script>
+</head>
+<body>
+<h1>자바스크립트에서 데이터 입력받는 방법</h1>
+<h2>자바스크립트에서 제공되는 다이얼로그 확인</h2>
+<ol>
+	<li>확인 버튼과 메시지 출력하는 alert 창</li>
+	<button onclick="showAlert();">확인</button>
+	<li>확인, 취소 버튼과 메시지 출력하는 confirm 창</li>
+	<button onclick="showConfirm();">확인</button>
+	<li>메시지, 텍스트필드, 확인, 취소 버튼 제공하는 prompt 창</li>
+	<button onclick="showPrompt();">확인</button>
+</ol>
+<p id="result"></p>
+<hr>
+<h2>form태그의 input 양식을 통해서 값을 입력받는 방법</h2>
+<form action="">
+<label for="username">이름 : </label>
+<input type="text" id="username" name="username" size="30">
+<br>
+<input type="submit" value="확인" onclick="inputValue();">
+</form>
+<hr>
+<h2>문자열을 숫자로 바꾸기 : 간단 계산기</h2>
+첫번째 값 : <input type="number" id="n1"> <br>
+두번째 값 : <input type="number" id="n2"> <br>
+<input type="button" value="+" onclick="calculator('+');"> &nbsp;
+<input type="button" value="-" onclick="calculator('-');"> &nbsp;
+<input type="button" value="*" onclick="calculator('*');"> &nbsp;
+<input type="button" value="/" onclick="calculator('/');"> &nbsp;
+<input type="button" value="%" onclick="calculator('%');"> &nbsp;
+<br>
+계산결과 : <p id="calc" style="border:1px solid black;"></p>
+<hr>
+<h2>자바스크립트 연산자 : === 연산자, !== 연산자</h2>
+<h3> == : 값이 일치하는지 비교함, === : 값과 자료형 둘 다 일치하는지 비교함.</h3>
+<button onclick="equalCheck();">확인</button>
+<br>
+<hr>
+<h3>switch 문의 case 에 조건식 사용 가능함</h3>
+<button onclick="switchCheck();">확인</button>
+<br>
+<hr>
+<h3>짧은 조건문 사용 가능함</h3>
+<button onclick="logicCheck();">확인</button>
+</body>
+</html>

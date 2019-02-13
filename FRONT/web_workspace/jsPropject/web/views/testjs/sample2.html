@@ -1,15 +1,78 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>sample2</title>
+<script type="text/javascript" src="../../resources/js/main.js"></script>
 </head>
 <body>
 <h1>자바스크립트에서 데이터 출력하는 방법</h1>
 <ol>
-	<li></li>
-	<button></button>
+	<li>자바스크립트 내장객체 중 최상위 객체인 window 객체가 
+	제공하는 alert() 메소드를 이용하여 출력</li>
+	<button onclick="testShow();">클릭! alert() 출력</button>
 	<hr>
+	<li>window 객체의 후손인 document 객체가 제공하는 
+	write() or writeln() 메소드로 body에 출력하는 방법</li>
+	<script type="text/javascript">
+		document.write("자바스크립트에서 직접 body에 출력함.");
+	</script>
+	<hr>
+	<li>태그 객체(element)의 innerHTML 속성을 사용해서 태그 안의 값으로 출력하는 방법</li>
+	<button onclick="this.innerHTML='*^^*';">클릭하면 글자가 바뀝니다.</button>
+	<hr>
+	<li>개발자 도구의 console 뷰에 출력하는 방법</li>
+	<button onclick="showMessage();">클릭!</button>
+	<script type="text/javascript">
+		function showMessage(){
+			console.log("개발자도구 콘솔뷰에 메세지 출력 확인.");
+		}
+	</script>
+	<hr>
+	<li>폼(form) 태그의 입력양식(input) 에 값을 출력하거나,
+	입력된 값을 읽는 경우</li>
+	<input type="number" id="num1" value="0"> +
+	<input type="number" id="num2" value="0"> =
+	<input type="number" id="result" value="0"> <br>
+	<p id="demo4" style="border: 1px solid black; background:yellow;">
+	더하기 결과 : 	</p>
+	<input type="button" value="계산하기" onclick="calculate();">
+	<script type="text/javascript">
+		function calculate(){
+			var num1 = document.getElementById("num1").value;
+			var num2 = document.getElementById("num2").value;
+			//자바스크립트 내장함수 : typeof(값 | 계산식)
+			// => 자료형 확인용 함수임
+			console.log("num1 : " + typeof(num1) + "\n");
+			console.log("num2 : " + typeof(num2) + "\n");
+			
+			//자바스크립트 내장함수 : Number(문자열숫자)
+			// => 숫자로 파싱함
+			var result = Number(num1) + Number(num2);
+
+			document.getElementById("result").value = result;
+			//input 태그는 .value 사용, 그 외의 태그는 .innerHTML를 사용
+			document.getElementById("demo4").innerHTML = 
+				"결과확인<BR>" + result;
+		}
+	</script>
+	<hr>
+	<li>자료형 확인 
+	<button onclick="checkType();">확인</button></li>
+	<script type="text/javascript">
+		function checkType(){
+			console.log(typeof("apple") + "\n"
+					+ typeof(123) + "\n"
+					+ typeof(2.45) + "\n"
+					+ typeof('A') + "\n"
+					+ typeof("7" + 12) + "\n"
+					+ typeof(34 + "5") + "\n"
+					+ typeof(3 == 4) + "\n"
+					+ typeof(val) + "\n");
+		}
+	</script>
+	
 </ol>
 
 </body>
