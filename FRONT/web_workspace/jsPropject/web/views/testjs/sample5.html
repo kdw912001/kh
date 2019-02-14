@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>sample5</title>
+<script type="text/javascript">
+	//한 줄 주석 : script 태그영역 안에서만 사용함
+	/*
+		여러 줄 주석문 처리에 사용함
+		script 태그영역 안에서만 사용함
+	*/
+	
+	//전역변수(Global Variable) : 
+	//	자동 window 객체의 멤버변수가 됨.
+	//	함수 밖에서 선언된 변수
+	var name = "홍길동";
+	age = 25;
+	
+	function testFn(){
+		/* alert("이름 : " + window.name + "\n나이 : "
+				+ this.age); */
+		 alert("이름 : " + name + "\n나이 : " + age);
+		
+		 //지역변수(Local Variable)
+		 //함수 안에서 선언된 변수
+		 //반드시 변수명 앞에 var 붙여야 함
+		 var email = "admin@iei.or.kr";
+		 //함수 안에서 var 없이 변수 선언한 경우
+		 address = "서울시 강남구 역삼동 123"; //var를 안 붙이면 자동 전역변수가 됨.
+		 
+		 document.getElementById("area").innerHTML = 
+			 "이름 : " + name + "<br>나이 : "+ age +
+			 "<br>이메일 : " + email  + "<br>주소 : " +address;
+		testFn2();
+	}
+	
+	function testFn2(){
+		document.getElementById("area2").innerHTML = 
+			 "이름 : " + name + "<br>나이 : "+ age +
+			 "<br>주소 : " +address;
+	}
+	
+	//웹서버에서 전송된 문서가 브라우저에서 읽어들이기가 완료되면
+	window.onload = testFn;//함수 이름만 쓰고 ()쓰지 않음
+	
+</script>
+</head>
+<!-- <body onload=testFn();> -->
+<body>
+<!-- html 주석태그임 : 브라우저 상에 보이지 않음.
+	 페이지소스 보기로 다 볼 수 있음 -->
+<h1>주석문, 변수, 연산자, 자료형 테스트</h1>
+<div id="area" style="width:300px;height:100px;border:1px solid blue;"></div>
+<hr>
+<div id="area2" style="width:300px;height:100px;border:1px solid red;"></div>
+<hr>
+<h3>문자열과 숫자의 + 연산</h3>
+<p>문자열 + 숫자 => 문자열이 됨.<br>
+숫자 + 숫자 + 문자열 => 숫자 2개가 먼저 계산되고 나서, 문자열과 합쳐짐.</p>
+<script type="text/javascript">
+	document.write("apple" + 20 + 30);
+	document.write("<br>");
+	document.write(20 + 30 + "banana");
+</script>
+<hr>
+<h3>자바스크립트에서 문자열 다루기 : 내장된 string 객체의 메소드 사용함</h3>
+<script type="text/javascript">
+	var str = "javascript";
+	document.write("str : " + str + "<br>");
+	document.write("글자갯수 : " + str.length + "<br>");
+	document.write("대문자로 변환 : " + str.toUpperCase() + "<br>");
+	document.write("4번째 인덱스 위치의 문자 : " + str.charAt(4) + "<br>");
+	document.write("r 문자의 위치를 : " + str.indexOf('r') + "<br>");
+	document.write("0번째부터 3번째까지 분리 추출 : " + str.substring(0, 4));
+</script>
+<hr>
+<h3>자바스크립트에서 숫자데이터 처리 : 내장된 Math 객체의 메소드 사용함</h3>
+<script type="text/javascript">
+	var value = Math.random();
+	document.write("value : " + value + "<br>");
+	document.write("-5의 절대값 : " + Math.abs(-5) + "<br>");
+	document.write("소수점 둘째자리까지 반올림 처리 : " + (Math.round(value * 100) / 100) + "<br>")
+</script>
+<hr>
+<h3>용어 정리</h3>
+<script type="text/javascript">
+	var value1 = 10;
+	var value2 = "orange";
+	
+	document.write("value1 : " + value1 + ", 자료형 : " + (typeof value1) + "<br>");
+	document.write("value2 : " + value2 + ", 자료형 : " + (typeof value2) + "<br>");
+	document.write(value1 + "3" + "<br>");
+	document.write(value1 + Number("3") + "<br>");
+	document.write(value1 + parseInt("3") + "<br>");
+	
+</script>
+</body>
+</html>

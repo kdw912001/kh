@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>sample8</title>
+<script type="text/javascript">
+	function changeBg(color){
+		document.body.style.backgroundColor = color;
+	}
+	//이벤트에 대한 콜백함수 처리는 반드시 
+	//window.onload 이벤트 콜백함수 안에서 작성해야 함
+	window.onload = function(){
+		//range 에 대한 이벤트 처리
+		var range = document.getElementById("fntSize");
+		range.onchange = function(){
+			document.getElementById("h1").style.fontSize 
+				= range.value + "pt";
+		};
+		//DOM Model2 방식의 이벤트 처리
+		var okBtn = document.getElementById("okBtn");
+		//인터넷 익스플로러일 때
+		if(okBtn.attachEvent){
+			//해당 브라우저에서 메소드가 제공되면 true 임.
+			okBtn.attachEvent("onclick", function(){
+				document.getElementById("hh").innerHTML
+				= "IE : " + document.getElementById("newText").value;
+			});
+		}else{ //IE 가 아닌 다른 브라우저라면
+			okBtn.addEventListener("click", function(){
+				document.getElementById("hh").innerHTML
+				= document.getElementById("newText").value;
+			});
+		}
+		
+		
+	};	//window.onload
+</script>
+</head>
+<body>
+<h1 id="h1">자바스크립트에서 이벤트 다루기</h1>
+<h2>실습1 : select 에서 색이름을 선택하면, body 의 배경색이 바뀌게 함.</h2>
+배경색 : 
+<select onchange="changeBg(this.value);">
+	<option value="white" selected>흰색
+	<option value="yellow">노란색
+	<option value="pink">핑크색
+	<option value="orange">오렌지색
+	<option value="olive">올리브색
+</select> <br>
+<hr>
+<h2>실습 : range 의 값이 변경되면 h1 태그의 글자크기가 변경됨.</h2>
+<input type="range" min="10" max="100" step="10" id="fntSize">
+<br>
+<hr>
+<h2>실습3 : 값을 입력하고 확인 버튼을 누르면 입력값으로 제목글자가 바뀌게 함</h2>
+<h1 id="hh">제목글자를 바꿔주세요.</h1>
+<input type="text" id="newText"> <br>
+<input type="button" value="확인" id="okBtn"> <br>
+</body>
+</html>

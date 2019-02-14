@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>sample6</title>
+</head>
+<body>
+<h1>자바스크립트에서 배열 다루기</h1>
+<p>
+<script type="text/javascript">
+	var arr1 = new Array(5);
+	var arr2 = new Array("red", "yellow", "blue");
+	var arr3 = new Array();
+	
+	//arr1이 참조하는 배열 공간에 값 기록
+	for(var i = 0; i < arr1.length; i++){
+		arr1[i] = (i + 1) * 100;
+		arr3.push(arr1[i]);
+	}
+	document.write("arr3.length : " + arr3.length + "<br>");
+	
+	//arr2 가 참조하는 배열공간의 기록 값 출력 확인
+	for(var i = 0; i < arr2.length; i++){
+		document.write(arr2[i] + "<br>");
+	}
+	
+	//arr3이 참조하는 배열공간의 기록 값 출력 확인
+	document.write("arr3이 참조하는 배열공간의 기록값 확인<br>");
+	//push()로 기록한 값은 반드시 pop()으로 추출함
+	//배열공간의 값의 갯수가 하나씩 줄게 됨
+	var count = arr3.length;
+	for(var i = 0; i < count; i++){
+		document.write(arr3.pop() + "<br>");
+	}
+	
+	document.write("arr3이 참조하는 배열공간의 기록값 확인 : " + arr3.length);
+</script>
+</p>
+<hr>
+<h2>자바스크립트에서 배열 초기화</h2>
+<ul>
+	<li>java</li>
+	<li>oracle</li>
+	<li>web client</li>
+	<li>web server</li>
+	<li>framework</li>
+</ul>
+<p>
+<script type="text/javascript">
+	var arr1 = new Array("apple", "banana", "orange", "melon");
+	var arr2 = [111, 222, 333, 444, 555];
+	//태그 목록을 배열로 받는 경우
+	var list = document.getElementsByTagName("li");
+	document.write("arr1 의 값들 <br>");
+	for(var i = 0; i < arr1.length; i++){
+		document.write(i + " : " + arr1[i] + "<br>");
+	}
+	document.write("arr2 의 값들 <br>");
+	for(var i = 0; i < arr2.length; i++){
+		document.write(i + " : " + arr2[i] + "<br>");
+	}
+	document.write("li 태그에 기록된 문자열 <br>");
+	for(var i = 0; i < list.length; i++){
+		document.write(i + " : " + list[i].innerHTML + "<br>");
+	}
+	
+	document.write("li 태그에 기록된 문자열 <br>");
+	//for(var i = 0; i < list.length; i++){
+	for(var i in list){
+		document.write(i + " : " + list[i].innerHTML + "<br>");
+	}
+
+</script>
+</p>
+<hr>
+<h2>내장된 Array 객체가 제공하는 메소드와 속성(멤버변수)</h2>
+<p>
+<script type="text/javascript">
+	var array = ["java", "oracle", "jdbc", "html5", "css3",
+			"javascript","jquery", "web api", "servlet", "jsp",
+			"ajax"];
+	document.write("array : " + array.toString() + "<br>");
+	document.write("indexOf : " + array.indexOf("css3")	+ "<br>");
+	document.write("reverse : " + array.reverse() + "<br>");
+	document.write("shift : " + array.shift() + "<br>");
+	document.write("array : " + array.toString() + "<br>");
+	document.write("sort : " + array.sort().toString() + "<br>");
+</script>
+</p>
+</body>
+</html>

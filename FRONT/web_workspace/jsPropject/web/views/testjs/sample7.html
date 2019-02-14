@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>sample7</title>
+</head>
+<body>
+<h1>자바스크립트에서 함수 다루기</h1>
+<h2>function 함수명([매개변수]){ 처리내용 구문작성 
+}</h2>
+<button onclick="test1()">실행확인</button>
+<p id="p1"></p>
+<script type="text/javascript">
+	function test1(){
+		document.getElementById("p1").innerHTML = 
+			"test1() 함수 실행됨...<br>";
+	}
+</script>
+<hr>
+<h2>함수참조변수 = function([매개변수]){ 구문작성 };
+  =>익명함수 : 이벤트핸들러</h2>
+ <button onclick="test2();">실행확인2</button>
+ <p id="p2"></p>
+ <script type="text/javascript">
+ 	test2 = function(){
+ 		document.getElementById("p2").innerHTML = 
+ 			"test2 가 참조하는 익명함수 실행됨...<br>";
+ 	};
+ </script>
+ <hr>
+ <h2>스스로 실행하는 함수 : (function(){ 구문작성 })();</h2>
+ <p id="p3"></p>
+ <script type="text/javascript">
+ 	(function(){
+ 		document.getElementById("p3").innerHTML = 
+ 			"자동으로 혼자실행됨...<br>";
+ 	})();
+ </script>
+ <hr>
+ <h2>함수의 전달인자(argument)와 매개변수(parameter)</h2>
+ <button id="btn1">실행확인</button>
+ <p id="p4"></p>
+ <script type="text/javascript">
+ 	function test4(value){
+ 		document.getElementById("p4").innerHTML = 
+ 			"test4() 로 전달온 값 확인 : " + value;
+ 	}
+ 	document.getElementById("btn1").onclick = function(){
+ 		test4(window.prompt("고객의 이름을 입력하세요."));
+ 	};
+ </script>
+ <hr>
+ <h2>함수의 리턴 처리</h2>
+ <button id="btn2">실행확인</button>
+ <p id="p5"></p>
+ <script type="text/javascript">
+ 	function returnValue(){
+ 		return Math.floor(Math.random() * 100) + 1;
+ 	}
+ 	
+ 	document.getElementById("btn2").onclick = function(){
+ 		var value = returnValue();
+ 		document.getElementById("p5").innerHTML = 
+ 			"1~100사이의 임의의 난수 발생 : " + value;
+ 	};
+ 	
+ </script>
+</body>
+</html>
