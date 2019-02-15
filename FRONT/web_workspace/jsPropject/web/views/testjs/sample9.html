@@ -6,95 +6,91 @@
 </head>
 <body>
 <h1>자바스크립트에서 객체(json) 다루기</h1>
-<h2>function(){ 멤버구성 } </h2>
+<h2>function 객체명(){ 멤버 구성  }</h2>
 <button onclick="testObject();">실행확인</button>
 <p id="p1">
-	함수명은 소문자로 시작하고 객체명은 대문자로 시작함.<br>
+함수명은 소문자로 시작, 객체명은 대문자로 시작.<br>
 </p>
 <script type="text/javascript">
-	function Book(){
-		//객체 정의이면서, 생성자 정의가 됨.
-		//필드(field) == 속성(property) == 멤버변수
-		//this.속성명 = 초기값;
-		this.title = null;
-		this.author = null;
-		this.price = 0;
+	function Book() {
+		//객체 정의이자 생성자 정의
+		//필드(field)==속성(property)==멤버변수
+		//this.속성명=초기값;
+		this.title=null;
+		this.author=null;
+		this.price=0;
 		
-		//멤버함수 == 메소드(method)
-		//this.메소드명 = function([매개변수]){ 소스작성 };
-		this.setBook = function(t, a, p){
-			this.title = t;
-			this.author = a;
-			this.price = p;
+		//멤버함수==메소드(method)
+		//this.메소드명=function([매개변수]) { 소스작성 }
+		this.setBook=function(t,a,p){
+			this.title=t;
+			this.author=a;
+			this.price=p;
 		};
-		this.display = function(){
-			document.getElementById("p1").innerHTML = 
-				this.title + ", " + this.author + ", " + 
-				this.price + "<br>";
-		};
-	}	//Book object
-	
+		this.display=function() {
+			document.getElementById("p1").innerHTML+=this.title+", "+this.author+", "+this.price+"<br>";
+		}
+	}
 	function testObject(){
-		var book = new Book();
-		book.setBook("자바스크립트 정복", "홍길동", 25000);
+		var book=new Book();
+		book.setBook("자바스크립트 정복","홍길동",43000);
 		book.display();
 	}
 </script>
 <hr>
-<h2>버튼 누르면 p2 영역에 div 태그가 추가되게 함</h2>
+<h2>버튼을 누르면 p2영역에 div태그가 추가되게 함</h2>
 <button onclick="addDiv();">div 추가</button>
-<p id="p2"></p>
+<p id="p2">
 <script type="text/javascript">
-	//div 태그 생성 객체 만들기
-	function MkDiv(){
-		this.element = null;
-		this.make = function(id, w, h, c){
-			this.element = document.createElement("div");
-			this.element.id = id;
-			this.element.style.width = w + "px";
-			this.element.style.height = h + "px";
-			this.element.style.backgroundColor = c;
+	//div tag생성 객체 만들기
+	function MkDiv() {
+		this.element=null;
+		this.make=function(id,w,h,c){
+			this.element=document.createElement("div");
+			this.element.id=id;
+			this.element.style.width=w+"px";
+			this.element.style.height=h+"px";
+			this.element.style.backgroundColor=c;
 			
-			return this.element;			
+			return this.element;
 		};
-	}  //MkDiv object
-	
-	function addDiv(){
-		document.getElementById("p2").appendChild(
-				new MkDiv().make("d2", 30, 100, "red"));
+	}
+	function addDiv() {
+		document.getElementById("p2").appendChild(new MkDiv().make("d2",30,20,"blue"));
 	}
 </script>
+</p>
 <hr>
-<h2>실습 : 무지개색 스펙트럼 만들기</h2>
+<h2>실습:무지개 스펙트럼 만들기</h2>
 <button onclick="makeRainbow();">실행</button>
-<p id="p3"></p>
+<p id="p3">
 <script type="text/javascript">
 	function makeRainbow(){
-		var md = new MkDiv();
-		var colors = ["Red","Orange","Yellow","Green","Blue","Navy","Violet"];
-		for(var i=0; i<7; i++){
-			var newDiv = md.make("id"+i,50,300,colors[i]);
-			newDiv.style.float = "left";
+		var md=new MkDiv();
+		var colors=["Red","Orange","Yellow","Green","Blue","Navy","Violet"];
+		for(var i=0; i<colors.length; i++){
+			var newDiv=md.make("id"+i,50,20,colors[i]);
+			newDiv.style.float="left";
 			document.getElementById("p3").appendChild(newDiv);
 		}
-	}
+	};
 </script>
-<hr style="clear:left;">
-<h2>실습 : 폼 입력양식에 값을 입력하고, 추가버튼을 누르면 입력값들을 읽어서 아래의 테이블에 추가되게 함</h2>
+</p>
+<hr style="clear: left;">
+<h2>실습:폼 입력양식에 값을 입력하고, 추가버튼을 누르면 입력값들을 읽어서 아래의 테이블에 추가되게 함</h2>
 <form>
-이름 : <input type="text" id="name"> <br>
-나이 : <input type="number" id="age"> <br>
-성별 : <input type="radio" name="gender" value="남"> 남
-	 <input type="radio" name="gender" value="여"> 여 <br>
-전화번호 : <input type="tel" id="phone"> <br>
-이메일 : <input type="email" id="email"> <br>
-취미 :
-<input type="checkbox" name="hobby" value="영화보기"> 영화보기
-<input type="checkbox" name="hobby" value="음악듣기"> 음악듣기
-<input type="checkbox" name="hobby" value="운동"> 운동
-<input type="checkbox" name="hobby" value="독서"> 독서
-<input type="checkbox" name="hobby" value="등산"> 등산
-<input type="button" value="추가하기" onclick="addUser();"> 
+이름 : <input type="text" id="name"><br>
+나이 : <input type="number" id="age"><br>
+성별 : <input type="radio" name="gender"  value="남"> 남
+	 <input type="radio" name="gender"  value="여"> 여 <br>
+전화번호 : <input type="tel" id="phone"><br>
+이메일 : <input type="email" id="email"><br>
+취미 : <input type="checkbox" name="hobby" value="영화보기">영화보기
+	 <input type="checkbox" name="hobby" value="독서">독서
+	 <input type="checkbox" name="hobby" value="음악듣기">음악듣기
+	 <input type="checkbox" name="hobby" value="산책">산책
+	 <input type="checkbox" name="hobby" value="게임">게임<br>
+<input type="button" value="추가하기" onclick="addUser();">
 </form>
 <br>
 <p id="p4">
@@ -107,68 +103,65 @@
 	<th>이메일</th>
 	<th>취미</th>
 </tr>
-<!-- 폼의 입력값들을 새로운 행을 추가함 -->
+<!-- 폼의 입력값들의 새로운 행 추가 -->
 </table>
 </p>
 <script type="text/javascript">
-	//폼에 입력된 사용자 정보 처리용 객체
+//폼에 입력된 사용자 정보 처리용 객체
 	function User(){
-		//필드(속성)
-		this.name = null;
-		this.age = 0;
-		this.gender = null;
-		this.phone = null;
-		this.email = null;
-		this.hobby = null;
+		//필드
+		this.name=null;
+		this.age=0;
+		this.gender=null;
+		this.phone=null;
+		this.email=null;
+		this.hobby=null;
 		
-		//메소드
-		this.setUser = function(n, a, g, p, e, h){
-			this.name = n;
-			this.age = a;
-			this.gender = g;
-			this.phone = p;
-			this.email = e;
-			this.hobby = h;
+		this.setUser=function(n,a,g,p,e,h){
+			this.name=n;
+			this.age=a;
+			this.gender=g;
+			this.phone=p;
+			this.email=e;
+			this.hobby=h;
 		};
-		
-		this.makeRow = function(){
-			var trStr = "<tr><td>" + this.name +
-						"</td><td>" + this.age +
-						"</td><td>" + this.gender +
-						"</td><td>" + this.phone +
-						"</td><td>" + this.email +
-						"</td><td>" + this.hobby +
-						"</td></tr>";
+		this.makeRow=function(){
+			var trStr="<tr><td>"+this.name+"</td><td>"+this.age+"</td><td>"+
+					  this.gender+"</td><td>"+this.phone+"</td><td>"+
+					  this.email+"</td><td>"+this.hobby+
+					  "</td></tr>"
 			return trStr;
 		};
-	}//User object
-	
-	function addUser(){
-		//이름
-		var name = document.getElementById("name").value;
-		var age = document.getElementById("age").value;
-		var genders = document.getElementsByName("gender");
-		var gender = "";
-		if(genders[0].checked == true)
-			gender = genders[0].value;
-		else if(genders[1].checked == true)
-			gender = genders[1].value;
-		var phone = document.getElementById("phone").value;
-		var email = document.getElementById("email").value;
+	} //User object
+	function addUser() {
+		var name=document.getElementById("name").value;
+		var age=document.getElementById("age").value;
+		var genders=document.getElementsByName("gender");
 		
-		//취미는 체크된 값들을 하나의 문자열로 만듦
-		var hobby = document.getElementsByName("hobby");
-		var hobbyList = "";
+		var gender="";
+		if(genders[0].checked==true)
+			gender=genders[0].value;
+		else if(genders[1].checked==true)
+			gender=genders[1].value;
+		
+		var phone=document.getElementById("phone").value;
+		var email=document.getElementById("email").value;
+		
+		var hobby=document.getElementsByName("hobby");
+		var hobbyList="";
 		for(var i in hobby){
-			if(hobby[i].checked == true)
-				hobbyList += hobby[i].value + " ";
+			if(hobby[i].checked==true)
+				hobbyList+=hobby[i].value+" ";
 		}
-				
-		var user = new User();
-		user.setUser(name,age,gender,phone,email,hobbyList);
-		document.getElementById("tbl").innerHTML += user.makeRow();
-
+		
+		var aa = new User();
+		aa.setUser(name,age,gender,phone,email,hobbyList);
+		
+		console.log(aa.makeRow());
+		document.getElementById("tbl").innerHTML+=aa.makeRow();	
+		
 	}
+	//document.getElementById("p4").appendChild(addUser);
 </script>
 
 </body>

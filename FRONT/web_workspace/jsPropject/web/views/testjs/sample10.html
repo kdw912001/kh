@@ -3,8 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <title>sample10</title>
+<script type="text/javascript">
+	function execute(){
+		//아이디가 first, second 인 입력양식의 값을 읽어서
+		//입력된 값이 숫자인지 확인하고 나서
+		//둘 다 숫자가 맞으면 계산해서 result 에 출력하기
+		var first = document.getElementById("first");
+		var second = document.getElementById("second");
+
+		//정규표현식을 이용한 숫자검사와 유효성 체크처리
+		/*
+		정규식 작성방법
+		1. var 변수명 = /정규표현식/;
+		2. var 변수명 = new RegExp
+		*/
+		//입력양식에 기록된 값이 숫자인지 확인
+		var re = /^[0-9]+$/;
+		if(!re.test(first.value)){
+			alert("숫자만 입력하세요.");
+			first.value = "";
+			first.focus();
+			return;
+		}
+		
+		//자바스크립트 내장함수 : inNaN(값)
+		//NaN(Not a Number) : 숫자가 아닌지 물어보는 함수임
+		if(isNaN(second.value)){
+			//숫자가 아니면
+			alert("숫자만 입력하세요");
+			second.value = ";"
+			second.focus();
+			return;
+		}
+		
+		var result = Number(first.value) + Number(second.value);
+		document.getElementById("result").innerHTML = result;
+	}
+	function validate(){
+		var userid = document.getElementById("userid");
+		var pwd1 = document.getElementById("userpwd1");
+		var pwd2 = document.getElementById("userpwd2");
+		
+		if(pwd1.value != pwd2.value){
+			alert("암호와 암호 확인이 일치하지 않습니다.\n"
+					+ "다시 입력하십시오.");
+			pwd1.select();
+			return false;
+		}
+		//아이디 검사
+		/*
+			첫글자는 반드시 영문소문자로 시작하고,
+			4글자이상 12글자이하로 이루어지고 
+			숫자가 하나이상 포함되어야 한다.
+			\d ==[0-9] 과 같음
+			{3, 7} : 글자수로 3에서 7글자를 의미함
+		*/
+		if(!check(/^[a-z][a-z\d]{3,11}$/, userid,
+				"첫글자는 반드시 영어소문자로, 4~12글자로 입력하세요")){
+			return false;
+		}
+		//이름검사 : 한글로만 2글자 이상
+		var name = document.getElementById("username");
+		if(!check(/^[가-힝]{2,}$/,name,"한글로만 2글자 이상 입력하세요.")){
+			return false;
+		}
+		
+		/*
+			이메일 검사 : 
+			4글자이상{4,}
+			영어소문자, 대문자, 숫자로 구성(\w == [a-zA-Z0-9])
+			@ 표시 다음에 . 문자가 1~3번 반복(+)
+		*/
+		var email = document.getElementById("email");
+		if(!check(/^[\w]{4,}@[\w]+(\.[\w]+){1,3}$/, email, "이메일 입력양식이 잘못되었습니다.")){
+			return false;
+		}
+			
+		return true;
+	}
+		function check(re, element, message){
+			if(re.test(element.value)){
+				return true;
+			}
+			alert(message);
+			element.value = "";
+			element.focus();
+			return false;
+		}
+	
+</script>
 </head>
 <body>
-<h1>입력 값에 대한 유효성 검사와</h1>
+<h1>입력 값에 대한 유효성 검사와 정규표현식 적용 연습</h1>
+<h3>form 안에 input에 입력된 전송값에 대한 유효성 검사란,
+서버로 전송하기 전에 클라이언트 브라우저에서 이상이 없는지
+검사하고 나서 서버로 보내는 과정을 말한다.(validation)</h3>
+<input type="button" value="결과확인" onclick="execute();">
+<input type="text" id="first"> + <input type="text" id="second">
+=<span id="result"></span><br>
+<hr>
+<h2>회원가입 유효성 체크</h2>
+<form action="" method="post" onsubmit="validate();">
+*아이디 : <input type="text" id="userid" name="userid" required> <br>
+*암 호 : <input type="password" id="userpwd1" name="namepwd" required> <br>
+*암호확인 : <input type="password" id="userpwd2" required> <br>
+*이 름 : <input type="text" id="username" name="username" required> <br>
+*이메일 :  <input type="email" id="email" name="email" required> <br>
+전화번호 : <input type="tel" id="phone" name="phone"> <br>
+직 업 : 
+<select id="job">
+	<option value="dba">데이터베이스 관리자</option>
+	<option value="wdp">웹 개발자</option>
+	<option value="da">빅데이터 분석가</option>
+</select><br>
+성 별 : <input type="radio" name="gender" value="M"> 남자
+<input type="radio" name="gender" value="F"> 여자 <br>
+생 일 : <input type="date" name="birth" id="birth"> <br>
+취 미 : 
+<input type="checkbox" name="hobby" value="독서">독서 
+<input type="checkbox" name="hobby" value="등산">등산 
+<input type="checkbox" name="hobby" value="음악">음악 
+<input type="checkbox" name="hobby" value="영화">영화 
+<input type="checkbox" name="hobby" value="게임">게임 
+<input type="checkbox" name="hobby" value="기타">기타
+<input type="reset" value="입력취소"> &nbsp;
+<input type="submit" value="전송"> 
+</form>
 </body>
 </html>
