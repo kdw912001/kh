@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>select1</title>
+<script type="text/javascript" src="/testq/resources/js/jquery-3.3.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("li:eq(0)").css("color","red");
+		$("li:eq(1)").css("color","orange");
+		$("li:eq(2)").css("color","green");
+		$("li:eq(3)").css("color","blue");
+		$("li:eq(4)").css("color","#9933ff");
+		$("li:eq(5)").css("color","#660099");		
+		/*선생님 코드
+		$("ol > li.first:eq(0)").css("color", "red");
+		$("ol > li.second").css("color", "orange");
+		$("ol li:last").css("color", "green");
+		
+		$(".third:first").css("color", "blue");
+		$(".second:eq(1)").css("color", "blueviolet");
+		$(".third:odd").css("color", "purple"); */
+	});
+</script>
+</head>
+<body>
+	<ol>
+		<li class="first"><h2>1-1</h2></li>
+		<li class="second"><h2>1-2</h2></li>
+		<li class="first"><h2>1-3</h2></li>
+	</ol>
+	<ul>
+		<li class="third"><h2>2-1</h2></li>
+		<li class="second"><h2>2-2</h2></li>
+		<li class="third"><h2>203</h2></li>
+	</ul>
+</body>
+</html>

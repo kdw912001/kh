@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>select1</title>
+<script type="text/javascript" src="/testq/resources/js/jquery-3.3.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("h1").css("color","red");
+		$("#text").css("color","orange");
+		$("h1:nth-child(3)").css("color","yellow");
+		$(".text").css("color","green");
+	});
+</script>
+</head>
+<body>
+	<h1>text1</h1>
+	<h1 id="text">text2</h1>
+	<h1 name="text">text3</h1>
+	<h1 class="text">text4</h1>
+</body>
+</html>

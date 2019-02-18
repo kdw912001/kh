@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>baseSelector</title>
+<script type="text/javascript" src="/testq/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#p1").css("color", "green");
+		$("li.item").css("background-color", "orange");
+		$("li.item.select").css("font-family", "궁서체");
+		$("li > h3").css("color","red");
+		$("li h4").css("color","blue");
+		//공백은 해당 태그 안에 모든 h4 태크를 의미함
+		//태그의 속성 값으로 선택할 수도 있음
+		$("input[type=text]").val("이름 입력");
+		//input 태그의 type 속성값을 필터선택자로 선택할 수도 있음
+		$("input:button").val("Click Me!");
+		//상태에 따라 선택할 수도 있다.
+		$("#box").css("background-color",$("select > option:selected").val());
+		//태그 사용 순서로 선택할 수도 있음.
+		$("span:first").css("color","blue");
+		$("span:last").css("color","magenta");
+		//짝수번째 : 2, 4, 6번째
+		$("span:odd").css("background-color", "orange");
+		//홀수번째 : 1, 3, 5번째
+		$("span:even").css("background-color", "pink");
+	});
+</script>
+</head>
+<body>
+<h1>jQuery 기본 선택자 연습</h1>
+<p id="p1">
+jQuery 는 줄여서 $로 표현할 수 있다<br>
+태그에 설정한 id 속성의 아이디명으로도 선택할 수 있다.
+</p>
+<ul>
+	<li class="item">목록1</li>
+	<li><h4>목록2</h4></li>
+	<li class="item select">목록3</li>
+	<li><h3>목록4</h3></li>
+	<li class="item">목록5</li>
+</ul>
+
+<hr>
+<input type="text"> <br>
+<input type="password"> <br>
+<input type="radio"> <br>
+<input type="checkbox"> <br>
+<input type="button"> <br>
+<select>
+	<option value="red">red</option>
+	<option value="yellow" selected>yellow</option>
+	<option value="green">green</option>
+	<option value="blue">blue</option>
+	<option value="black">black</option>
+</select>
+<div id="box" style="width:100px;height:100px;border:1px solid black;"></div>
+<span>one</span>
+<span>two</span>
+<span>three</span>
+<span>four</span>
+<span>five</span>
+<span>six</span>
+<span>seven</span>
+</body>
+</html>

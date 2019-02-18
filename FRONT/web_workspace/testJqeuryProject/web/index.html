@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>testq</title>
+<!-- 상대경로로 지정한 경우 -->
+<!-- <script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script> -->
+<!-- 절대경로로 지정한 경우
+	"/cntext root명 -->
+<script type="text/javascript" src="/testq/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	//브라우저에서 문서 읽어들이기가 완료되면
+	/* window.onload = function(){
+		window.alert("문서 로딩 완료됨.");
+	} */
+	/* jQuery(document).ready(function(){
+		window.alert("jQeury start...");
+	}); */
+	/* $(document).ready(function(){ */
+	$(function(){
+		//window.alert("jQeury start...");
+		
+		//jquery method 사용법
+		//jQuery("선택자").적용할메소드명([전달인자,...]);
+		//$("선택자").메소드명(적용할 ㄱ밧);
+		//선택자는 css 선택자 그대로 사용할 수 있다.
+		$("*").css("color", "blue");
+		$("h1").css("background-color", "yellow");
+		$("h1, h3").css("text-shadow", "2px 2px 4px black");
+	});
+</script>
+</head>
+<body>
+<h1>jQuery test</h1>
+<!-- 기본 선택자 연습 -->
+<h3 style="float:left;margin-right:10px;">
+<a href="/testq/views/test/baseSelector.html">기본선택자 연습</a><br>
+</h3>
+<h3 style="float:left;margin-right:10px;">
+<a href="/testq/views/practice/select1.html">기본선택자 실습1</a><br>
+</h3>
+<h3 style="float:left;margin-right:10px;">
+<a href="/testq/views/practice/select2.html">기본선택자 실습2</a><br>
+</h3>
+<h3 style="float:left;margin-right:10px;">
+<a href="/testq/views/practice/select3.html">기본선택자 실습3</a><br>
+</h3>
+<!-- filter 선택자와 filter() 메소드 연습 -->
+<h3 style="float:left;margin-right:10px;">
+<a href="/testq/views/test/filterMethod.html">filter() 실습</a><br>
+</h3>
+<h3>
+<a href="/testq/views/test/prac.html">연습</a><br>
+</h3>	
+</body>
+</html>

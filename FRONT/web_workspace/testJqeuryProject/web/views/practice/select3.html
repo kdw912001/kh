@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>select1</title>
+<script type="text/javascript" src="/testq/resources/js/jquery-3.3.1.min.js"></script>
+<script>
+	function clear(){
+		$("table *").removeAttr("style");
+	}
+	function click1(){
+		$("td:eq(1)").css("color","yellow");
+		$("td:eq(2)").css("color","yellow");
+	}
+	function click2(){
+		$("td:eq(4)").css("color","yellow");
+		$("td:eq(5)").css("color","yellow");
+	}
+	function click3(){
+		$("td:eq(1)").css("color","yellow");
+		$("td:eq(4)").css("color","yellow");
+	}
+	function click4(){
+		$("td:eq(2)").css("color","yellow");
+		$("td:eq(5)").css("color","yellow");
+	}
+	/*선생님코드
+	function click1() {
+		clear();
+		$("tr:eq(1) td:not(td:eq(0))").css("color", "yellow");
+	}
+
+	function click2() {
+		clear();
+		$("tr:eq(2) td:not(td:eq(0))").css("color", "yellow");
+	}
+
+	function click3() {
+		clear();
+		$("td:nth-child(3n+2):lt(2)").css("color", "yellow");
+	}
+
+	function click4() {
+		clear();
+		$("td:nth-child(3n):lt(2)").css("color", "yellow");
+	}
+
+	*/
+	
+</script>
+</head>
+<body>
+	<table border="1">	
+	<tr>
+		<th>구분</th>
+		<th>A</th>
+		<th>B</th>
+	</tr>
+	<tr>
+		<td>가</td>
+		<td>10</td>
+		<td>10</td>
+	</tr>
+	<tr>
+		<td>나</td>
+		<td>20</td>
+		<td>20</td>
+	</tr>
+	<tr>
+		<td>계</td>
+		<td>30</td>
+		<td>30</td>
+	</tr>
+	</table>
+	<input type="button" value="[가]색 변경" onclick="click1()"/>
+	<input type="button" value="[나]색 변경" onclick="click2()"/>
+	<input type="button" value="[A]색 변경" onclick="click3()"/>
+	<input type="button" value="[B]색 변경" onclick="click4()"/>
+	
+</body>
+</html>
