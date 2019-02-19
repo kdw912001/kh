@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>method1</title>
+	<script type="text/javascript" src="/testq/resources/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
+		function addFile(){
+			$(document).ready(function(){
+				$("body").append('<div><input type="file"><div>');
+				
+				//선생님 코드
+				/* var addHtml = '<div><input type="file" /></div>';
+				$("body").append(addHtml); */
+			});
+		}
+		function delFile(){
+			$(document).ready(function(){
+				$("div").last().remove();
+			});
+		}
+	</script>
+</head>
+
+<body>
+	<div>
+		<input type="file">
+		<input type="button" value="추가" onclick="addFile()">
+		<input type="button" value="삭제" onclick="delFile()">
+	</div>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Method</title>
+<style type="text/css">
+.highlight_0 {
+	background: red;
+}
+
+.highlight_1 {
+	background: yellow;
+}
+
+.highlight_2 {
+	background: orange;
+}
+
+.highlight_3 {
+	background: green;
+}
+
+.highlight_4 {
+	background: blue;
+}
+
+.highlight_5 {
+	background: magenta;
+}
+</style>
+<script type="text/javascript"
+	src="/testq/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//배열 초기화
+		var array = [
+			{name: "네이버", link: "http://www.naver.com"},
+			{name: "제이쿼리", link: "http://api.jquery.com"},
+			{name: "w3c", link: "http://w3.com"},
+			{name: "구글", link: "http://	www.google.com"}];
+		//1.
+		$.each(array, function(index, item){
+			var appendStr = "";
+			appendStr += "<a href='" + item.link + "'>"
+						+ item.name + "</a><br>";
+			document.body.innerHTML += appendStr;
+		});
+		
+		//2. addClass("추가할 클래스명")
+		$("h3").each(function(index, item){
+			$(item).addClass("highlight_" + index);
+		});
+		
+		//3. css("스타일시트속성") : get 조회임. 속성값 조회
+		//  css("스타일시트속성", "값") : set 변경임, 속성값 변경
+		document.body.innerHTML += $(".highlight_0").css("background-color");
+		$("body").html($("body").html() + $(".highlight_1").css("background-color"));
+		
+		//html() 메소드
+		console.log($("h1").html());
+		console.log($("h1").text());
+		
+		//html() 메소드와 text() apthemdml ckdlwja
+		$("div#area1").html("<h1>html 메소드로 적용</h1>");
+		$("div#area2").text("<h1>html 메소드로 적용</h1>");
+	});
+</script>
+</head>
+<body>
+	<h1>jQuery 배열 처리 : each() 메소드</h1>
+	<h2>1. $.each() 사용</h2>
+	<h2>2. $("선택자").each() 사용</h2>
+	<h3>headline_0</h3>
+	<h3>headline_1</h3>
+	<h3>headline_2</h3>
+	<h3>headline_3</h3>
+	<h3>headline_4</h3>
+	<h3>headline_5</h3>
+	<button onclick="removeTest()">class 속성 제거</button>
+<script type="text/javascript">
+	function removeTest(){
+		$("h3").each(function(index, item){
+			$(item).removeClass("highlight_" + index);
+		});
+	}
+</script>
+<br>
+<img src="/testq/resources/images/photo1.jpg"><br>
+<button onclick="changeSize();">100 X 50</button> &nbsp;
+<button onclick="removeSize();">원래 크기로</button> <br>
+<script type="text/javascript">
+	function changeSize(){
+		//attr("속성명", "값") : 태그에 속성 추가
+		$("img").attr("width",100).attr("height", 50);
+	}
+	
+	function removeSize(){
+		//removeAttr("속성명") : 태그에서 속성 제거
+		$("img").removeAttr("width").removeAttr("height");
+	}
+</script>
+<br>
+<div id="area1"></div>
+<div id="area2"></div>
+<div id="area3" style="border:1px solid red;width=200px;height:200px;">
+	<h2>area3 안의 후손 객체</h2>
+	<ul>
+		<li>항목1</li>
+		<li>항목1</li>
+		<li>항목1</li>
+		<li>항목1</li>
+	</ul>
+</div>
+<button onclick="removeOne();">한 개만 지우기</button>
+<br>
+<button onclick="emptyTest();">모두 지우기 </button>
+<br>
+<script type="text/javascript">
+	function removeOne(){
+		$("h3").first().remove();
+	}
+	function emptyTest(){
+		$("div#area3").empty();
+	}
+</script>
+</body>
+</html>

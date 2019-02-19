@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>filter2</title>
+<script type="text/javascript" src="/testq/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	function selectBtn(){
+		$("option").each(function(){
+			if(this.selected){
+				console.log(this.value+"번")
+			}
+			/*
+				if($(this).is(".selected")){
+					console.log($(this).val() + "번");
+				}
+			*/
+		});
+	}
+</script>
+</head>
+<body>
+	<select>
+		<option value="1" selected="selected">1번</option>
+		<option value="2">2번</option>
+		<option value="3">3번</option>
+	</select>
+	<br/>
+	<input type="button" value="Select 버튼 확인" onclick="selectBtn()"/>
+</body>
+</html>
