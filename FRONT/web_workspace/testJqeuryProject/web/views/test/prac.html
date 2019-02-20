@@ -7,19 +7,26 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("button").click(function(){
-			$("div").animate({
-				height: 'toggle'
-			});
-		});
+			$("p").remove(".test, .demo");
+		})
 	});
 </script>
+<style>
+.test{
+	color: red;
+	font-size: 20px;
+}
+.demo{
+	color: green;
+	font-size: 25px;
+}
+</style>
 </head>
 <body>
-<button>Start Animation</button>
-<p>By default, all HTML elements have a static position, and cannot be moved.
-To manipulate the position,
-remember to first set the CSS position perperty of the element to relative,
-fixd, or absolute!</p>
-<div style="background:#98bf21;height:100px;width:100px;position:absolute;"></div>
+<p>This is a paragraph.</p>
+<p class="test">This is another</p>
+<p class="test">This is another</p>
+<p class="demo">This is a</p>
+<button>Remove all p elements with class="test"</button>
 </body>
 </html>

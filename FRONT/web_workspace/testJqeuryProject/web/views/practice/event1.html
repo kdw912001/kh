@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>event1</title>
+<script type="text/javascript" src="/testq/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var len = $("#number").children().length;
+		console.log("length : " + len);
+		$(document).on("mouseenter","#number",function(){
+			$(this).children().each(function(){
+				console.log($(this).attr("class"));
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<ul id="number">
+		<li class="n1">1</li>
+		<li class="n2">2</li>
+		<li class="n3">3</li>
+	</ul>
+</body>
+</html>

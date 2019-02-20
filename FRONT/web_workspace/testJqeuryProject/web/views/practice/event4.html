@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>event1</title>
+<script type="text/javascript" src="/testq/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	/* $("tr:eq(1)").on("click",function(){
+		clear();
+		$("#s1").html($("td:eq(0)").text());
+		$("#s2").html($("td:eq(1)").text());
+		$("#s3").html($("td:eq(2)").text());
+		$("#s4").html($("td:eq(3)").text());
+		$("tr:eq(1)").css("background-color","red");
+	});
+	$("tr:eq(2)").on("click",function(){
+		clear();
+		$("#s1").html($("td:eq(4)").text());
+		$("#s2").html($("td:eq(5)").text());
+		$("#s3").html($("td:eq(6)").text());
+		$("#s4").html($("td:eq(7)").text()); 
+		$("tr:eq(2)").css("background-color","red");
+	});
+	$("tr:eq(3)").on("click",function(){
+		clear();
+		$("#s1").html($("td:eq(8)").text());
+		$("#s2").html($("td:eq(9)").text());
+		$("#s3").html($("td:eq(10)").text());
+		$("#s4").html($("td:eq(11)").text()); 
+		$("tr:eq(3)").css("background-color","red");
+	});
+	function clear(){
+		$("table *").removeAttr("style");		
+	} */
+	//선생님코드
+	$("table").on("click", "tr", function() {
+		if(!$(this).is($("tr").eq(0))) {//첫번째 행을 제외
+			$("table tr").removeAttr("style");
+			$(this).css("background", "red");
+			//var str = "";
+			$(this).children().each(function(index, item) {
+				$("#s" + (index + 1)).text($(this).text());
+			});
+		}	
+	});
+});
+</script>
+</head>
+<body>
+	<table border="1">
+		<tr><th>번호</th><th>제목</th>
+			<th>조회수</th><th>작성일자</th></tr>
+		<tr><td>3</td><td>3번제목</td>
+			<td>0</td><td>11-07-13</td></tr>
+		<tr><td>2</td><td>2번제목</td>
+			<td>0</td><td>11-07-12</td></tr>
+		<tr><td>1</td><td>1번제목</td>
+			<td>0</td><td>11-07-11</td></tr>
+	</table>
+	<span id="s1"></span> / <span id="s2"></span>
+	/ <span id="s3"></span> / <span id="s4"></span>
+</body>
+</html>

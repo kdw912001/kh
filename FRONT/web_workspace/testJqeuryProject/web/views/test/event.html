@@ -61,6 +61,22 @@ div {
 			var h1Text = $("#wrap h1").html();
 			$("#wrap").append("<h1>"+h1Length+"-"+h1Text+"</h1>");
 		});
+		//mouseenter 와 mouseover의 차이
+		//mouseenter : 밖에서 대상 위로 갈 때만 반응함
+		$("#outer").on("mouseenter",function(){
+			console.log("enter....");
+		});
+		
+		//mouseover : 밖에서든 안에서든 대상 위에만 가면 반응
+		
+		$("#outer").on("mouseover",function(){
+			console.log("over....");
+		});
+		
+		$("textarea").on("keyup", function(){
+			$("#count").html($("#count").html()-1);
+		})
+		
 	}); //document ready
 </script>
 </head>
@@ -101,5 +117,64 @@ div {
 	<div id="wrap">
 		<h1>Header</h1>
 	</div>
+<hr>
+<center>
+<div id="outer" style="width:200px;height:200px;border:1px solid blue;background:orange;padding:50px;">
+	<div id="inner" style="width:100%;height:100%;background:pink;border:1px solid green;"></div>
+</div>
+</center>
+<h1 id="count">150</h1>
+<textarea cols="70" rows="5"></textarea>
+<br>
+<hr>
+<!-- 입력양식 이벤트 확인용 -->
+<form id="loginform">
+아이디 : <input type="text" name="userid" id="userid" required><br>
+암 호 : <input type="password" name="userpwd" id="userpwd" required><br>
+<input type="submit" value="로그인">
+</form>
+<script type="text/javascript">
+	$(function(){
+		//form 에 사용되는 submit 이벤트는 주로 
+		//전송할 값의 유효성 검사를 위해 사용됨
+		$("#loginform").on("submit",function(event){
+			var userid = $("#userid").val();
+			var userpwd = $("#userpwd").val();
+			
+			if(!(userid.length >= 12 && userid.length <= 15)){
+				alert("아이디는 12글자이상 15글자이하여야 합니다.");
+				$("#userid").select();
+				//return false;	//이벤트 발생을 취소함
+				//또는 발생한 이벤트를 제거함
+				event.preventDefault();
+			}
+			if(!(userpwd.length >=12 && userpwd.length <= 15)){
+				alert("암호도 12글자이상 15글자이하여야 합니다.");
+				$("#userpwd").select();
+				event.preventDefault();
+			}
+			//change 이벤트 :
+			//checkbox, radio, select, input 의 값이 변경되었을 때
+			$("#all").on("change", function(){
+				if(this.checked == true){
+					$("#items input[type=checkbox]").attr("checked", true);
+				}else{
+					$("#items input[type=checkbox]").attr("checked", false);
+				}
+			});			
+		});		
+	})
+</script>
+<hr>
+<input type="checkbox" id="all"> 전체 선택 <br><br>
+<div id="items">
+	<input type="checkbox"> 항목1 <br>
+	<input type="checkbox"> 항목2 <br>
+	<input type="checkbox"> 항목3 <br>
+	<input type="checkbox"> 항목4 <br>
+	<input type="checkbox"> 항목5 <br>
+</div>
+
+
 </body>
 </html>

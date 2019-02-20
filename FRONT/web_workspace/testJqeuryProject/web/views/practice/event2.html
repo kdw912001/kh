@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>event1</title>
+<script type="text/javascript" src="/testq/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(document).on("change","select[name=number]",function(){
+			$("#selNum").text($("select[name=number]").val()+"번");
+			return false;
+		});
+		//선생님코드
+		/* $("body").on("change", "select[name=number]", function() {
+			$(this).children().each(function() {
+				if($(this).is(":selected")) {
+					$("#selNum").text($(this).text());
+				}
+			});
+		}); */
+	});
+</script>
+</head>
+<body>
+	<select name="number">
+		<option value="">== 선택 ==</option>
+		<option value="1">1번</option>
+		<option value="2">2번</option>
+		<option value="3">3번</option>
+		<option value="4">4번</option>
+	</select>
+	<span id="selNum"></span>
+</body>
+</html>

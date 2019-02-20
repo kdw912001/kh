@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>effect1</title>
+<style type="text/css">
+	#target {
+		color: rgb(255, 255, 255); 
+		width: 150px; 
+		height: 100px; 		
+		border: 1px solid rgb(34, 34, 34); 
+		background-color: rgb(34, 139, 34); 
+		margin: 10px; 
+		padding: 5px; 
+	}
+	
+	input {	
+		width: 500px;
+		margin: 0px;
+		padding: 0px;
+	}
+	
+</style>
+<script type="text/javascript" src="/testq/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("input[type=submit]").on("click",function(){
+			if(invalidCharacter($("input[name=loginId]").val())){
+				alert("아이디가 입력되지 않았습니다.");
+				/* $("input[name=loginId]").focus(function(){
+					$(this).css("background-color", "#cccccc");
+				}); */
+				$("input[name=loginId]").focus();			
+			}else{
+				 if($("input[name=loginId]").val().length >= 6 && $("input[name=loginId]").val().length<=10){
+					
+				 } else{
+					 alert("입력된 글자수가 6글자이상 10글자이하여야 합니다.");
+					 $("input[name=loginId]").select();
+				 }
+				 
+			}
+			//alert($("input[name=loginId]").val().length);
+		})
+		/* if(invalidCharacter(value))
+			alert(1); */
+	});
+	function deligate(){
+		$("#target").on("click",function(){
+			$(this).css("background-color",'#'+ ('000000' + Math.floor(Math.random()*16777215).toString(16)).slice(-6))
+		}); 
+		/* $(document).ready(function(){
+			 var back = ["#ff0000","blue","gray"];
+			 var rand = back[Math.floor(Math.random() * back.length)];
+		 	 $('div').css('background',rand);
+		}) */
+	}
+	//실습2 사용함수	
+	function invalidCharacter(value){
+		var invalidChar = true;
+		for(var i = 0; i < value.length; i++){
+			var c = value.charAt(i);
+			if((c >='A' && c <= 'Z') || 
+			   (c >= 'a' && c <= 'z') || 
+			   (c >= '0' && c <= '9') || 
+			   (c == '#' || c == '_' || c == '!' || c == '*')){
+				invalidChar = false;
+				
+				break;
+			}
+			
+		}
+		return invalidChar;
+	}	
+		
+	//실습3 사용함수	
+	function makeColor(){
+		var red = $('#rvalue').val();
+		var green = $('#gvalue').val();
+		var blue = $('#bvalue').val();
+
+		return 'rgb(' + red + ", " + green + ", " + blue + ')';
+	}	
+</script>
+</head>
+<body>
+<h1>효과 실습</h1>
+<!-- 실습1
+ - body에 div 추가함
+  * 아이디명 적용 : target
+  * 스타일 적용 : 너비-150, 높이-100, 테두리선표시, 
+  			배경색지정,글자색지정, 바깥여백-10, 안쪽여백-5
+ - jQuery의 deligate() 메소드로 클릭시, 배경색이 바뀌게 지정함
+	* 단, 배경색은 계속 다른 색이 지정되게 함.
+  * div 안에 샘플 글자 입력 : #target -->
+	<div id="target" onclick=deligate();>
+		#target
+	</div>  
+  
+
+<!-- 실습2
+ - body 에 form 태그 추가
+   * form 에 아이디 지정 : loginForm
+   * submit 이벤트 연결함
+   * 처리내용 : id 입력 텍스트필드와 패스워드 입력 택스트필드에 입력된 값에 대한 체크 처리
+	=> 로그인할 아이디가 입력되지 않았으면, 
+	  alert 출력하고 해당 텍스트필드에 focus 처리함
+	=> 아이디가 입력되었다면, 
+	  입력된 글자수가 6글자이상 10글자이하인지 체크하고 , 틀리면 
+	  alert 출력하고 해당 텍스트필드에 select 처리함
+	=> 아이디의 입력글자는 맞는데, 
+	  입력문자가 영문자, 숫자, 허용된 기호문자(_, #, *, !)가 아니면, 
+	  alert 출력하고 해당 텍스트필드에 select 처리함
+	=> 암호도 동일하게 처리함
+	=> 모든 조건을 만족하면, submit 처리함 
+	  : loginSuccess.html 연결됨
+	=> 이벤트 설정을 해제함 -->
+	
+<h2>로그인</h2>
+  <form id="loginForm" ><!-- method="post" action="loginSuccess.html" -->
+	아이디 : <input type="text" name="loginId"><br>
+	암 &nbsp; 호 : <input type="password" name="loginPwd"><br>
+	<input type="submit" value="로그인" onclick="invalidCharacter();">
+  </form>	
+
+<!-- 실습3
+ - body에 div 1개와 입력양식 range 3개 추가함
+ - div 아이디명 : colorPan
+   range 각 아이디명 : red, green, blue
+ - range의 값은 0~255, 1씩 증가됨, 기본값은 0
+ - change 이벤트 처리 : 각 슬라이더의 값이 바뀌면, 
+	그 값을 배경색에 적용해서 colorPan에 스타일 변경되게 함
+
+	color : rgb(125, 24, 137)  <---- p 태그
+	div <-- 모서리 둥글게 처리
+	red : 색상값	 <-- p 태그
+	range : 배경색 빨간색 적용
+	green : 색상값 	<-- p 태그
+	range : 배경색 초록색 적용
+	blue : 색상값 	<-- p 태그
+	range : 배경색 파란색 적용 -->
+	
+<h2>실습3 : slider 엘리먼트에 change 이벤트 적용 테스트</h2>
+  <p id="rgb">Color : rgb(0, 0, 0)</p>
+  <div id="colorPan" style="width:120px; height:120px; border-radius:20px; border:2px solid black;">	
+  </div>
+  <p id="red">Red : 0</p>
+  <input type="range" id="rvalue" min=0 max=255 value=0 step=1 />
+  <p id="green">Green : 0</p>
+  <input type="range" id="gvalue" min=0 max=255 value=0 step=1 />
+  <p id="blue">Blue : 0</p>
+  <input type="range" id="bvalue" min=0 max=255 value=0 step=1 />
+
+
+</body>
+</html>

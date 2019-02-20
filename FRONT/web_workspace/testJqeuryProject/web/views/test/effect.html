@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>effect</title>
+<style>
+	div.box{
+		width: 50px;
+		height: 50px;
+		position: relative;
+		background: orange;
+		margin: 10px;
+	}
+</style>
+<script type="text/javascript" src="/testq/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("input[type=button]").eq(0).click(function(){
+			$("img").first().show();
+		});
+		$("input[type=button]").eq(1).click(function(){
+			$("img").first().hide();
+		});
+		$("input[type=button]").eq(2).click(function(){
+			$("img").first().toggle(1000);
+		});
+		$("#slide").mouseover(function(){
+			$("img").eq(1).slideDown("slow");
+		}).mouseover(function(){
+			$("img").eq(1).slideUp("fast");
+		});
+		$("img").eq(2).mouseover(function(){
+			$(this).fadeOut("normal");
+		}).mouseout(function(){
+			$(this).fadeIn("normal");
+		});
+		$("div.box").hover(function(){
+			$(this).animate({ left: 500 }, "slow");
+		}, function(){
+			$(this).animate({left: 0}, "slow");
+		});
+		//다시 클릭하면 원래크기로 돌아옴
+		var clickFlag = true;
+		$("img").last().click(function(){
+			if(clickFlag == true){
+				//원래 크기 상태라면
+				var w = $(this).css("width");
+				var h = $(this).css("height");
+				
+				$(this).animate({
+					width: parseInt(w) * 2,
+					height: parseInt(h) * 2
+				},"slow");
+				clickFlag = false; //두배로 커진 상태임
+			}else{
+				var w = $(this).css("width");
+				var h = $(this).css("height");
+				
+				$(this).animate({
+					width: parseInt(w) / 2,
+					height: parseInt(h) / 2
+				},"slow");
+				clickFlag = true;
+			}
+		});
+	});
+</script>
+</head>
+<body>
+<h1>effect method 연습</h1>
+<h2>보이기(show), 안보이기(hide), 보였다 안보였다 하기(toggle)</h2>
+<img src="/testq/resources/images/photo1.jpg" width="150" height="150" border="0"><br>
+<input type="button" value="show"> &nbsp;
+<input type="button" value="hide"> &nbsp;
+<input type="button" value="toggle"> &nbsp;
+<hr>
+<div id="slide"
+style="margin-bottom:0px;border:1px solid #630;background:#960;border-radius:20px 20px 0 0;width:300px;height:70px;padding:30px">
+여기에 마우스 오버하면 그림이 펼쳐집니다.<br>
+마우스 아웃하면 그림이 접어집니다.
+</div>
+<img src="/testq/resources/images/photo2.jpg" width="365"
+height="300" border="0" style="margin:0px; padding:0px">
+<br>
+<hr>
+
+<img src="/testq/resources/images/d7.jpg" width="400" height="300"> <br>
+<hr>
+
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<hr>
+<img src="/testq/resources/images/button.jpg" width="150"
+height="100" border="0">
+</body>
+</html>
