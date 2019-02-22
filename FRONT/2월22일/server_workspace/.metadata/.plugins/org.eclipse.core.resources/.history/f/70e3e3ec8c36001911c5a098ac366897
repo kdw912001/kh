@@ -1,0 +1,26 @@
+package common;
+
+import java.sql.*;
+
+public class JDBCTemplate {
+	public static Connection getConnection() {}
+	
+	public static void commit(Connection conn) {}
+	
+	public static void rollback(Connection conn) {}
+	
+	public static void close(Connection conn) {}
+	
+	public static void close(Statement stmt) {}
+	
+	public static void close(ResultSet rset) {}
+}
+
+
+
+
+
+
+
+
+

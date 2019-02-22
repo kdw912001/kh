@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>welcome</title>
+<script src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+	//XMLHttpRequest 객체를 생성하는 함수
+	function createRequest() {
+	    try {
+	        return new XMLHttpRequest();
+	    } catch (exception) {
+	        var versions = [
+	            'Msxml2.XMLHTTP.6.0',
+	            'Msxml2.XMLHTTP.5.0',
+	            'Msxml2.XMLHTTP.4.0',
+	            'Msxml2.XMLHTTP.3.0',
+	            'Msxml2.XMLHTTP',
+	            'Microsoft.XMLHttp'
+	        ];
+	        for (var i = 0; i < versions.length; i++) {
+	            try {
+	                return new ActiveXObject(versions[i]);
+	            } catch (e) { }
+	        }
+	    }
+	}
+	
+	window.onload = function () {
+        document.getElementById('get').onclick = function () {
+            // Ajax를 수행합니다.
+            //1. XMLHttpRequest 객체 생성
+            var request = createRequest();
+            //2. 서버에 데이터를 요청하거나, 전송하기 위해 대상을 정함
+            request.open('GET', 'products?dummy=' + new Date().getTime(), false);
+            //3. 연결된 서버상의 대상으로 부터 데이터를 전송받기 위한 신호를 보냄
+            request.send();
+
+            // 출력합니다.
+            document.getElementById('output').value = request.responseText;
+        };
+
+        document.getElementById('post').onclick = function () {
+            // 변수를 선언합니다.
+            var name = document.getElementById('name').value;
+            var price = document.getElementById('price').value;
+
+            // Ajax를 수행합니다.
+            var request = createRequest();
+            request.open('POST', 'products', false);
+            request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            request.send('name=' + name + '&price=' + price);
+
+            // 출력합니다.
+            document.getElementById('output').value = request.responseText;
+        };
+
+        document.getElementById('put').onclick = function () {
+            // 변수를 선언합니다.
+            var name = document.getElementById('name').value;
+            var price = document.getElementById('price').value;
+
+            // Ajax를 수행합니다.
+            var request = createRequest();
+            //request.open('PUT', 'products', false);
+            request.open('PUT', 'products?name=' + name +
+            		'&price=' + price, false);
+            request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            //request.send('name=' + name + '&price=' + price);
+			//alert("price : " + price);
+			request.send();
+            // 출력합니다.
+            document.getElementById('output').value = request.responseText;
+        };
+
+        document.getElementById('delete').onclick = function () {
+            // Ajax를 수행합니다.
+            var request = createRequest();
+            request.open('DELETE', 'products', false);
+            request.send();
+
+            // 출력합니다.
+            document.getElementById('output').value = request.responseText;
+        };
+    };
+</script>
+<!-- 로그인 처리용 ajax 코드 -->
+<script type="text/javascript">
+	//jquery의  ajax로 아이디와 암호를 login 서블릿으로 post
+	//방식으로 전송하고, 해당 회원의 이름을 받아서 uname에
+	//출력되게 함 : submit 이벤트 발생시 실행되게 함
+	
+	
+	
+	
+	
+</script>
+</head>
+<body>
+	<header>
+	<div id="login">
+	로그인 
+	<div id="uname"></div>
+	<form id="loginForm">
+		<label for="loginId">아이디 : </label>
+		<input type="text" id="loginId"><p/>
+		<label for="loginPwd">암 &nbsp; 호 : </label>
+		<input type="password" id="loginPwd"><p/>
+		<input type="submit" value="로그인">
+	</form>
+
+	</div>
+	</header>
+<hr>
+
+	<h2>클라이언트 브라우저 페이지에서 서버로 데이터를 보내고 받기</h2>
+	<button id="get">GET</button>
+    <button id="post">POST</button>
+    <button id="put">PUT</button>
+    <button id="delete">DELETE</button>
+    <h1>input</h1>
+    <input id="name" />
+    <input id="price" />
+    <h1>output</h1>
+    <textarea id="output" disabled="disabled" cols="40" rows="5"></textarea>
+    <br/>
+    <hr/>
+    <h2><a href="ajax_test.html">jQuery로 Ajax 테스트하기</a></h2>
+</body>
+</html>

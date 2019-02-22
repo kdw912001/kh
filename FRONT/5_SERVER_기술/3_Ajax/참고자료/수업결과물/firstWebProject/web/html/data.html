@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>데이터처리</title>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+
+</head>
+<body>
+	<h1>로그인 폼에서 보낸 데이터 받은 결과 확인</h1>
+	<script type="text/javascript">
+	//변수를 선언합니다.
+	var items = [{
+	    name: '우유',
+	    price: '2000'
+	}, {
+	    name: '홍차',
+	    price: '5000'
+	}, {
+	    name: '커피',
+	    price: '5000'
+	}];
+	
+	
+    var output = '';
+    
+    items.forEach(function (item) {
+        output += '<div>';
+        output += '    <h1>' + item.name + '</h1>';
+        output += '    <h2>' + item.price + '</h2>';
+        output += '</div>';
+    });
+    
+    document.body.innerHTML += output;
+	
+</script>
+</body>
+</html>

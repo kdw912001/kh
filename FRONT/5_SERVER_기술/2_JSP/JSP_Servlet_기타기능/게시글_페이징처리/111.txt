@@ -1,0 +1,77 @@
+-- rownum : ResultSet에 생기는 컬럼으로 행번호 값을 가진다
+-- ceil(rownum/10) : 각행이 포함될 page 번호 (10 - page당 보여질 데이터(row) 수 )
+
+select ceil(rownum/10) page, customer_id, customer_name from customer where page = 2
+-- 실행 안되는 이유 : sql은 from부터 순으로 조회하는데, where의 page를 모르기 때문 (select보다 where절이 먼저 실행되기 때문에)
+
+select num,customer_id,customer_name
+from(  
+	select rownum num,
+		   ceil(rownum/10) page,
+	   	   customer_id,
+	       customer_name 
+	from customer
+)
+where page = 5
+
+
+
+-- ceil(rownum/10)을 page로 알리아스 줌 (alias)
+-- 결과가 1은 나오는데(data가져올때 rownum 1은 자동으로 붙어서) 2부터 안나옴, 1초과하는걸로 조회 하면 안나옴
+-- 이유 : 조건에 안맞으면 계속 날려버리고 새로운걸 들여오는데, 이러면 rownum이 계속 1이기 때문에  
+
+
+-- select 문 (구문 작성 순서)
+	-- select 컬럼명, 컬럼명, [,컬럼명]
+	-- from [조회컬럼이 있는]테이블명
+	-- where [row에 대한]제약조건
+	-- group by [한단위로 묶을 기준]컬럼명
+	-- having [grouping된 값과 관련된]제약조건
+	-- order by 정렬조건
+
+
+-- ex: select id,name,age from customer wherer address='서울' 
+-- ex: select 연봉 from 직원 where address='서울' group by 부서 having avg(연봉) < 20000000 
+
+
+-- SQL문 실행순서
+	-- 1. from (테이블부터 조회)
+	-- 2. where절
+	-- 3. group by
+	-- 4. having
+	-- 5. select
+	-- 6. order by
+	
+
+
+--최종 쿼리문
+
+select page, customer_id, customer_passwrod, customer_name, customer_email,customer_mileage
+from(
+	select ceil(rownum/10) page,customer_id, customer_password, customer_name, customer_email, customer_mileage
+	from(
+
+			select customer_id, customer_password, customer_name, customer_email, customer_mileage
+			from customer
+			order by customer_mileage -- 정렬을 위한 쿼리
+	)--page
+)
+where page = 1;
+
+
+select : 원하는 페이지만 보기 위해서 (page = n의 조건을 넣기 위해서, 가장 바깥쪽 쿼리)
+  - select : 각 row에 page(번호) 컬럼 만들기 위해 -> rownum 쓰기위해(정렬한 다음에!)
+     - select : 원하는 조건으로 정렬하기 위해 (제일안쪽 쿼리)
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
