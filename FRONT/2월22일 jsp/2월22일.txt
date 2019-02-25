@@ -1,0 +1,21 @@
+﻿*이클립스에서 설정
+workspace, JSON, CSS Files, HTMLFiles, JSP Files ->UTF-8
+서버추가하기-server
+
+*왼쪽하단에 servers 추가
+
+
+*window-customize Perspective
+xml, web, javascript(javascript sourceFile만), java, EJB 체크 해제
+
+*프로젝트 만들 때한글로 만들면 안됨
+context root-first
+content directory(루트로사용할 폴더명)-
+
+*
+C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib에 6을 lib폴더 안에 넣기
+또는
+프로젝트 -properties - java build path - libraries - add external jars-ojdbc6.jar 를 찾아서 추가
+
+
+*web.xml과 class 작업은 서버를 중단하고 해야 함
