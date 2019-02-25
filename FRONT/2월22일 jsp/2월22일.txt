@@ -18,4 +18,5 @@ C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib에 6을 lib폴더 안에 �
 프로젝트 -properties - java build path - libraries - add external jars-ojdbc6.jar 를 찾아서 추가
 
 
+
 *web.xml과 class 작업은 서버를 중단하고 해야 함
