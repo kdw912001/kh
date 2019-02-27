@@ -1,18 +1,23 @@
 package member.model.dao;
 
-import java.sql.*;
-import static common.JDBCTemplate.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import member.model.vo.Member;
+import static common.JDBCTemplate.*;
 
 public class MemberDao {
 	public MemberDao() {}
 
-	public Member selectLogin(Connection conn, String userId, String userPwd) {
+	public Member selectLogin(
+		Connection conn, String userId, String userPwd) {
 		Member loginUser = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "select * from member where userid = ? and userpwd = ?";
+		
+		String query = "select * from member "
+				+ "where userid = ? and userpwd = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -33,17 +38,26 @@ public class MemberDao {
 				loginUser.setEmail(rset.getString("email"));
 				loginUser.setHobby(rset.getString("hobby"));
 				loginUser.setEtc(rset.getString("etc"));
-				loginUser.setEnroll_date(rset.getDate("enroll_date"));
-				loginUser.setLastmodified(rset.getDate("lastmodified"));
+				loginUser.setEnrollDate(rset.getDate("enroll_date"));
+				loginUser.setLastModified(rset.getDate("lastmodified"));				
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
+		}finally {
 			close(rset);
 			close(pstmt);
 		}
 		
 		return loginUser;
 	}
+	
+	
 }
+
+
+
+
+
+
+

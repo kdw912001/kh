@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+</head>
+<style>
+   ul, li {list-style:none;padding:0;margin:0;}
+   #ac{
+      width:200px;
+      font-family:  Georgia;
+      text-align:center;
+   }
+   #ac .m1 {
+      background:black;
+      color:snow;
+      cursor:pointer;
+   }
+
+   #ac .m2{
+      background:gray;
+      display:none;
+   }
+</style>
+<body>
+   <h1>아코디언메뉴</h1>
+   <ul id="ac">
+      <li class="m1">
+      About us
+         <ul class="m2">
+            <li>회사소개</li>
+            <li>연혁</li>
+            <li>팀 도그집사</li>
+            <li>오시는 길</li>
+         </ul>
+      </li>
+   </ul>
+   <ul id="ac">
+      <li class="m1">
+      펫시터찾기
+         
+      </li>
+   </ul>
+   <ul id="ac">
+      <li class="m1">
+      게시판
+         <ul class="m2">
+            <li>공지사항</li>
+            <li>자유게시판</li>
+            <li>팁</li>
+         </ul>
+      </li>
+   </ul>
+   
+   <ul id="ac">
+      <li class="m1">
+      고객센터
+         <ul class="m2">
+            <li>FAQ</li>
+            <li>이용방법</li>
+            <li>1:1문의</li>
+         </ul>
+      </li>
+   </ul>
+   
+   <ul id="ac">
+      <li class="m1">
+      마이페이지
+         <ul class="m2">
+            <li>정보수정</li>
+            <li>이용내역/예약확인</li>
+            <li>펫시터신청</li>
+            <li>사전문의확인</li>
+         </ul>
+      </li>
+   </ul>
+   <script>
+      $('.m1').click(function(){
+         if($(this).children('.m2').is(':visible')){
+            $(this).children('.m2').slideUp();
+         } else {
+            $(this).children('.m2').slideDown();
+         }
+         
+      });
+   </script>
+</body>
+</html>

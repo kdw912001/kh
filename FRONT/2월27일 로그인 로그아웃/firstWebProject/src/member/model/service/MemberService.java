@@ -1,10 +1,12 @@
 package member.model.service;
 
-import member.model.dao.MemberDao;
-import member.model.vo.Member;
-import static common.JDBCTemplate.*;
+import static common.JDBCTemplate.close;
+import static common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
+
+import member.model.dao.MemberDao;
+import member.model.vo.Member;
 
 public class MemberService {
 	private MemberDao mdao = new MemberDao();
@@ -13,8 +15,18 @@ public class MemberService {
 
 	public Member selectLogin(String userId, String userPwd) {
 		Connection conn = getConnection();
-		Member loginUser = mdao.selectLogin(conn, userId, userPwd);
+		Member loginUser = 
+				mdao.selectLogin(conn, userId, userPwd);
 		close(conn);
 		return loginUser;
 	}
 }
+
+
+
+
+
+
+
+
+
