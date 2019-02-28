@@ -1,0 +1,49 @@
+package member.model.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import member.model.vo.Member;
+
+public class MemberDao {
+	public MemberDao() {}
+
+	public Member selectLogin(
+		Connection conn, String userId, String userPwd) {
+		Member loginUser = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String query = "select * from member "
+				+ "where userid = ? and userpwd = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userPwd);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return loginUser;
+	}
+	
+	
+}
+
+
+
+
+
+
+

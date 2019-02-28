@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<script type="text/javascript" src="/first/resources/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<section>
+	<h2 align="center">회원 가입 페이지</h2>
+	<br>
+	<form action="/first/minsert">
+	
+	</form>
+</section>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

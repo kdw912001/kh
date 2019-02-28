@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<style type="text/css">
+	section form table th {
+		background: orange;
+		color: navy;
+		font-weight: bold;
+	}
+</style>
+<script type="text/javascript" src="/first/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	function checkId(){
+		//서버로 입력된 아이디값을 전송해서 존재하는 아이디인지
+		//확인 요청하고, 결과를 받아서 사용여부 처리하는 함수임.
+		
+	}
+</script>
+</head>
+<body>
+<section>
+	<h2 align="center">회원 가입 페이지</h2>
+	<br>
+	<h5 align="center">* 표시 항목은 필수입력 항목입니다.</h5>
+	<form action="/first/minsert" method="post">
+	<table width="650" align="center">
+	<tr height="40">
+		<th width="150">*아이디</th>
+		<td><input type="text" name="userid" id="userid" required> 
+		&nbsp; <button onclick="return checkId();">중복확인</button></td>
+	</tr>
+	<tr height="40">
+		<th width="150">*이 름</th>
+		<td><input type="text" name="username" required></td>
+	</tr>
+	<tr height="40">
+		<th width="150">*암 호</th>
+		<td><input type="password" id="userpwd1" name="userpwd" required></td>
+	</tr>
+	<tr height="40">
+		<th width="150">*암호확인</th>
+		<td><input type="password" id="userpwd2" required></td>
+	</tr>
+	<tr height="40">
+		<th width="150">*성 별</th>
+		<td></td>
+	</tr>
+	<tr height="40">
+		<th width="150">*나 이</th>
+		<td></td>
+	</tr>
+	<tr height="40">
+		<th width="150">전화번호</th>
+		<td></td>
+	</tr>
+	<tr height="40">
+		<th width="150">이메일</th>
+		<td></td>
+	</tr>
+	<tr height="40">
+		<th width="150">취 미</th>
+		<td></td>
+	</tr>
+	<tr height="40">
+		<th width="150">하고싶은말</th>
+		<td></td>
+	</tr>
+	<tr height="40">
+		<th colspan="2">
+		<input type="submit" value="가입하기"> &nbsp; 
+		<input type="reset" value="작성취소"> &nbsp; 
+		<a href="/first/index.jsp">시작페이지로 이동</a>
+		</th>		
+	</tr>
+	</table>
+	</form>
+</section>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

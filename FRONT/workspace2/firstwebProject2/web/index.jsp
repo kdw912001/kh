@@ -29,7 +29,7 @@
 	<th colspan="2">
 		<input type="submit" value="로그인"> 
 		&nbsp; &nbsp; 
-		<a href="">회원가입</a>
+		<a href="/first/views/member/enroll.html">회원가입</a>
 	</th>
 </tr>
 <tr>

@@ -1,0 +1,11 @@
+﻿member/controller 에 new servlet-LoginServlet 입력-next->
+*URL mappings 는 URL을 덮어서 가림.
+/LoginServlet 클릭후 Edit.... 
+->/login->OK->next->Finish
+
+
+**view단 손 볼 때는 서버 restart할 필요 없음
+
+*클래스단 손 볼 때는 서버 stop 시키고 하기 
+
+*웹 에러 났을 때에 대처방법 만들기
