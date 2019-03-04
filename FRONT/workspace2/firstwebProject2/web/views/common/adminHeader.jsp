@@ -30,6 +30,7 @@ header nav ul li a:hover{
 </style>
 </head>
 <body>
+<header>
 <nav>
 <ul>
 	<li><a href="/first/index.jsp">home</a></li>
@@ -39,5 +40,6 @@ header nav ul li a:hover{
 	<li><a href="">메뉴</a></li>
 </ul>
 </nav>
+</header>
 </body>
 </html>
