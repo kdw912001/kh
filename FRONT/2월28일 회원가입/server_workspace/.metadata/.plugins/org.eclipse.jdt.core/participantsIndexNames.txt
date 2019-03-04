@@ -1,5 +1,0 @@
-INDEX VERSION 1.131
-D:\수업자료\server_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\66457690.index
-\firstWebProject\src
-D:\수업자료\server_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3341583287.index
-\firstWebProject\src
