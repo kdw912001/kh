@@ -1,11 +1,12 @@
 package member.model.service;
 
-import member.model.dao.MemberDao;
-import member.model.vo.Member;
 import static common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+
+import member.model.dao.MemberDao;
+import member.model.vo.Member;
 
 public class MemberService {
 	private MemberDao mdao = new MemberDao();
@@ -14,7 +15,8 @@ public class MemberService {
 
 	public Member selectLogin(String userId, String userPwd) {
 		Connection conn = getConnection();
-		Member loginUser = mdao.selectLogin(conn, userId, userPwd);
+		Member loginUser = 
+				mdao.selectLogin(conn, userId, userPwd);
 		close(conn);
 		return loginUser;
 	}
@@ -39,7 +41,8 @@ public class MemberService {
 
 	public Member selectMember(String userId) {
 		Connection conn = getConnection();
-		Member member = mdao.selectMember(conn, userId);
+		Member member = 
+				mdao.selectMember(conn, userId);
 		close(conn);
 		return member;
 	}
@@ -72,6 +75,13 @@ public class MemberService {
 		close(conn);
 		return list;
 	}
-
-	
 }
+
+
+
+
+
+
+
+
+
