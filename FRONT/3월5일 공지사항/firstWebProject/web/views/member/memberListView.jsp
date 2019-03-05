@@ -3,7 +3,7 @@
 <%
 	Member loginUser = (Member)session.getAttribute("loginUser");
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
-%>
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,9 +34,8 @@
 	<th>취미</th>
 	<th>기타사항</th>
 	<th>가입날짜</th>
-	<th>마지막 정보수정 날짜</th>
-	<th>로그인</th>
-	<th>로그인권한 제한</th>
+	<th>마지막 정보 수정 날짜</th>
+	<th>로그인 권한 제한</th>
 	<th>강제 탈퇴 처리</th>
 </tr>
 <% for(int i = 0; i < list.size(); i++){ %>
@@ -50,15 +49,26 @@
 	<td><%= list.get(i).getEmail() %></td>
 	<td><%= list.get(i).getHobby() %></td>
 	<td><%= list.get(i).getEtc() %></td>
-	<td><%= list.get(i).getEnroll_date() %></td>
-	<td><%= list.get(i).getLastmodified() %></td>
-	<td><button>로그인제한</button>&nbsp;</td>
-	<td>	<button>로그인허용</button>	</td>
+	<td><%= list.get(i).getEnrollDate() %></td>
+	<td><%= list.get(i).getLastModified() %></td>
+	<td><button>로그인제한</button> &nbsp; 
+		<button>로그인허용</button></td>
 	<td><button>강제탈퇴처리</button></td>
 </tr>
 <% } %>
 </table>
+
+
+
 <hr>
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>
+
+
+
+
+
+
+
+
