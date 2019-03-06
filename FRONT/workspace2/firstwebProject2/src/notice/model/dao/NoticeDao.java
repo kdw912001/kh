@@ -80,11 +80,42 @@ public class NoticeDao {
 
 	public int insertNotice(Connection conn, Notice notice) {
 		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "insert into notice values ((select max(noticeno) + 1 from notice), ?, default, ?, ?, ?, ?)";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, notice.getNoticeTitle());
+			pstmt.setString(2, notice.getNoticeWriter());
+			pstmt.setString(3, notice.getNoticeContent());
+			pstmt.setString(4, notice.getOriginalFilePath());
+			pstmt.setString(5, notice.getRenameFilePath());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
 		return result;
 	}
 
 	public int updateNotice(Connection conn, Notice notice) {
 		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "update notice set noticetitle=?, noticecontent = ?, original_filepath = ?, rename_filepath = ? where noticeno = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, notice.getNoticeTitle());
+			pstmt.setString(2, notice.getNoticeContent());
+			pstmt.setString(3, notice.getOriginalFilePath());
+			pstmt.setString(4, notice.getRenameFilePath());
+			pstmt.setInt(5, notice.getNoticeNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
 		return result;
 	}
 

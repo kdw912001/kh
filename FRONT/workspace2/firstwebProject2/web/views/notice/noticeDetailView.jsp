@@ -55,7 +55,7 @@ function deleteNotice(){
 		<button onclick="moveUpdatePage();">수정페이지로 이동</button> &nbsp;
 		<button onclick="deleteNotice();">글삭제</button> &nbsp;
 	<% } %>
-	<button onclick="history.go(-1); return false;">목록</button>
+	<button onclick="location.href='/first/nlist'; return false;">목록</button>
 	</th>
 </tr>
 </table>

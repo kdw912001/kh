@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>CSS Layouts - 2 Column Layout - 03</title>
+<link rel="stylesheet" type="text/css" href="main.css" />
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+<div id="wrapper">
+
+   <div id="header">
+      This is my Header
+   </div>
+   
+   <div id="navbar">
+      <a href="#">로그인/회원가입</a>
+   </div>
+   
+   
+   <div id="leftcolumn"> 
+<ul id="ac">
+      <li class="m1">
+      About us
+         <ul class="m2">
+            <li>회사소개</li>
+            <li>연혁</li>
+            <li>팀 도그집사</li>
+            <li>오시는 길</li>
+         </ul>
+      </li>
+   </ul>
+   <ul id="ac">
+      <li class="m1">
+      펫시터찾기
+         
+      </li>
+   </ul>
+   <ul id="ac">
+      <li class="m1">
+      게시판
+         <ul class="m2">
+            <li>공지사항</li>
+            <li>자유게시판</li>
+            <li>팁</li>
+         </ul>
+      </li>
+   </ul>
+   
+   <ul id="ac">
+      <li class="m1">
+      고객센터
+         <ul class="m2">
+            <li>FAQ</li>
+            <li>이용방법</li>
+            <li>1:1문의</li>
+         </ul>
+      </li>
+   </ul>
+   
+   <ul id="ac">
+      <li class="m1">
+      마이페이지
+         <ul class="m2">
+            <li>정보수정</li>
+            <li>이용내역/예약확인</li>
+            <li>펫시터신청</li>
+            <li>사전문의확인</li>
+         </ul>
+      </li>
+   </ul>
+   <script>
+      $('.m1').click(function(){
+         if($(this).children('.m2').is(':visible')){
+            $(this).children('.m2').slideUp();
+         } else {
+            $(this).children('.m2').slideDown();
+         }
+         
+      });
+   </script>
+
+	</div>
+   
+   <div id="centercolumn">
+      <p>This Column is My Main Content Area</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p align="center">&nbsp;</p>
+      <p align="center">&nbsp;</p>
+      <p align="center">&nbsp;</p>
+      <p>&nbsp;</p>
+   </div>
+   <div id="footer">Footer</div>
+   
+</div>
+   
+</body>
+</html>
