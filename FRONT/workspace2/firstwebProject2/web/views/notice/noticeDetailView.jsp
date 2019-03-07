@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" errorPage="noticeError.jsp"%>
 <%@ page import="notice.model.vo.Notice, member.model.vo.Member" %>
 <%
 	Notice notice = (Notice)request.getAttribute("notice");

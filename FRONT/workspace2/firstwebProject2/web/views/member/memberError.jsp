@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ pasge import="member.model.vo.Member" %>
+    pageEncoding="UTF-8" isErrorPage="true"%>
+<%@ page import="member.model.vo.Member"%>
  <%
 	//스크립트릿(scriptlet) 태그 영역
 	//자바 코드 작성 영역임
@@ -25,7 +25,11 @@
 <hr style="clear:left;">
 
 <h1>회원서비스 오류</h1>
-메세지 : <%= message %><br>
+<% if(exception != null){ %>
+JSP 예외발생 : <%= exception.getMessage() %> <br>
+<% }else{ %>
+서블릿이 전달한 메세지 : <%= message %><br>
+<% } %>
 <br>
 <a href="/first/index.jsp">시작페이지로 이동</a><br>
 <%@ include file="../common/footer.jsp" %>

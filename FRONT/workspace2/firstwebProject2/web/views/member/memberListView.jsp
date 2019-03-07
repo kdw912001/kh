@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="member.model.vo.Member, java.util.ArrayList" %>
+    pageEncoding="UTF-8" errorPage="memberError.jsp" import="member.model.vo.Member, java.util.ArrayList" %>
 <%
 	Member loginUser = (Member)session.getAttribute("loginUser");
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");

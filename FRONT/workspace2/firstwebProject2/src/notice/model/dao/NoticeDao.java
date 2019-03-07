@@ -1,6 +1,7 @@
 package notice.model.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -135,5 +136,105 @@ public class NoticeDao {
 			close(pstmt);
 		}
 		return result;
+	}
+
+	public HashMap<Integer, Notice> selectSearchTitle(Connection conn, String noticeTitle) {
+		HashMap<Integer, Notice> list = new HashMap<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select * from notice where noticetitle like ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%"+noticeTitle+"%");
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Notice notice = new Notice();
+				
+				notice.setNoticeNo(rset.getInt("noticeno"));
+				notice.setNoticeTitle(rset.getString("noticetitle"));
+				notice.setNoticeDate(rset.getDate("noticedate"));
+				notice.setNoticeWriter(rset.getString("noticewriter"));
+				notice.setNoticeContent(rset.getString("noticecontent"));
+				notice.setOriginalFilePath(rset.getString("original_filepath"));
+				notice.setRenameFilePath(rset.getString("rename_filepath"));
+				
+				list.put(notice.getNoticeNo(), notice);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
+	public HashMap<Integer, Notice> selectSearchWriter(Connection conn, String noticeWriter) {
+		HashMap<Integer, Notice> list = new HashMap<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select * from notice where noticewriter like ? ";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%"+noticeWriter+"%");
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Notice notice = new Notice();
+				
+				notice.setNoticeNo(rset.getInt("noticeno"));
+				notice.setNoticeTitle(rset.getString("noticetitle"));
+				notice.setNoticeDate(rset.getDate("noticedate"));
+				notice.setNoticeWriter(rset.getString("noticewriter"));
+				notice.setNoticeContent(rset.getString("noticecontent"));
+				notice.setOriginalFilePath(rset.getString("original_filepath"));
+				notice.setRenameFilePath(rset.getString("rename_filepath"));
+				
+				list.put(notice.getNoticeNo(), notice);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
+	public HashMap<Integer, Notice> selectSearchDate(Connection conn, Date beginDate, Date endDate) {
+		HashMap<Integer, Notice> list = new HashMap<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select * from notice where noticedate between ? and ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setDate(1, beginDate);
+			pstmt.setDate(2, endDate);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Notice notice = new Notice();
+				
+				notice.setNoticeNo(rset.getInt("noticeno"));
+				notice.setNoticeTitle(rset.getString("noticetitle"));
+				notice.setNoticeDate(rset.getDate("noticedate"));
+				notice.setNoticeWriter(rset.getString("noticewriter"));
+				notice.setNoticeContent(rset.getString("noticecontent"));
+				notice.setOriginalFilePath(rset.getString("original_filepath"));
+				notice.setRenameFilePath(rset.getString("rename_filepath"));
+				
+				list.put(notice.getNoticeNo(), notice);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
 	}
 }
