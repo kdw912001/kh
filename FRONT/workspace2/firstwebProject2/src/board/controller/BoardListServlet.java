@@ -3,6 +3,7 @@ package board.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,7 +50,36 @@ public class BoardListServlet extends HttpServlet {
 		
 		//현재 페이지에 출력할 목록 조회
 		ArrayList<Board> list = bservice.selectList(currentPage, limit);
-		System.out.println("list : " + list);
+		//System.out.println("list : " + list);
+		
+		//총 페이지 수 계산 : 목록이 마지막 1개일 때 1페이지로 처리
+		int maxPage = (int)((double)listCount / limit + 0.9);
+		//현재 페이지 그룹(10개 페이지를 한 그룹으로 처리)에
+		//보여줄 시작 페이지 수
+		//현재 페이지가 13이면 그룹은 11~20이 보여지게 함
+		int startPage = (((int)((double)currentPage / limit + 0.9)) - 1) * limit + 1;
+		int endPage = startPage + limit -1;
+		
+		if(maxPage  < endPage) {
+			endPage = maxPage;
+		}
+		response.setContentType("text/html; charset=utf-8");
+		RequestDispatcher view = null;
+		if(list.size() > 0) {
+			view = request.getRequestDispatcher("views/board/boardListView.jsp");
+			request.setAttribute("list", list);
+			request.setAttribute("currentPage", currentPage);
+			request.setAttribute("maxPage", maxPage);
+			request.setAttribute("startPage", startPage);
+			request.setAttribute("endPage", endPage);
+			request.setAttribute("listCount", listCount);
+			
+			view.forward(request, response);
+		}else {
+			view = request.getRequestDispatcher("views/board/boardError.jsp");
+			request.setAttribute("message", currentPage + "에 대한 목록 조회 실패");
+			view.forward(request, response);
+		}
 	}
 
 	/**

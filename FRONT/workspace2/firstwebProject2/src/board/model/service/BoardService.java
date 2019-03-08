@@ -25,4 +25,23 @@ public class BoardService {
 		close(conn);
 		return list;
 	}
+
+	public void addReadCount(int boardNum) {
+		Connection conn = getConnection();
+		int result = bdao.addReadCount(conn, boardNum);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+	}
+
+	public Board selectBoard(int boardNum) {
+		Connection conn= getConnection();
+		Board board = bdao.selectBoard(conn, boardNum);
+		close(conn);
+		return board;
+	}
 }
