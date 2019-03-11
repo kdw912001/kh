@@ -43,7 +43,7 @@ public class BoardDao {
 				"BOARD_ORIGINAL_FILENAME,BOARD_RENAME_FILENAME,BOARD_REF," + 
 				"BOARD_REPLY_REF,BOARD_REPLY_LEV,BOARD_REPLY_SEQ,BOARD_READCOUNT,BOARD_DATE " + 
 				"FROM (SELECT * FROM BOARD " + 
-				"      ORDER BY BOARD_REF DESC, BOARD_REPLY_REF DESC, BOARD_REPLY_LEV ASC, BOARD_REPLY_SEQ ASC)) " + 
+				"      ORDER BY BOARD_REF DESC, BOARD_REPLY_REF ASC, BOARD_REPLY_LEV ASC, BOARD_REPLY_SEQ ASC)) " + 
 				"WHERE RNUM >= ? AND RNUM <= ?";
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -122,6 +122,81 @@ public class BoardDao {
 			close(pstmt);
 		}
 		return board;
+	}
+
+	public int insertBoard(Connection conn, Board board) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "insert into board values ((select max(board_num) + 1 from board),?,?,?,?,?, (select max(board_num) + 1 from board), 0,0,0, default, default)";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, board.getBoardWriter());
+			pstmt.setString(2, board.getBoardTitle());
+			pstmt.setString(3, board.getBoardContent());
+			pstmt.setString(4, board.getBoardOriginalFileName());
+			pstmt.setString(5, board.getBoardRenameFileName());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int updateReplySeq(Connection conn, Board replyBoard) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String query = "update board set board_reply_seq = board_reply_seq + 1 where board_ref = ? and board_reply_lev = ? and board_reply_ref = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, replyBoard.getBoardRef());
+			pstmt.setInt(2, replyBoard.getBoardReplyLev());
+			pstmt.setInt(3, replyBoard.getBoardReplyRef());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int insertReply(Connection conn, Board replyBoard) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = null;
+		//원글의 댓글일 때
+		if(replyBoard.getBoardReplyLev() == 1) {
+			query = "insert into board values ((select max(board_num) + 1 from board),?,?,?,NULL,NULL,?, (select max(board_num) + 1 from board), 1,?, default, default)";
+		}
+		
+		//댓글의 댓글일 때
+		if(replyBoard.getBoardReplyLev() == 2) {
+			query = "insert into board values ((select max(board_num) + 1 from board),?,?,?,NULL,NULL, ?, ?,2,?, default, default)";
+		}
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, replyBoard.getBoardWriter());
+			pstmt.setString(2, replyBoard.getBoardTitle());
+			pstmt.setString(3, replyBoard.getBoardContent());
+			pstmt.setInt(4, replyBoard.getBoardRef());
+			if(replyBoard.getBoardReplyLev() == 1) {
+				pstmt.setInt(5, replyBoard.getBoardReplySeq());
+			}	
+			if(replyBoard.getBoardReplyLev() == 2) {
+				pstmt.setInt(5, replyBoard.getBoardReplyRef());
+				pstmt.setInt(6, replyBoard.getBoardReplySeq());
+			}
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 
 }

@@ -16,7 +16,7 @@
 <body>
 <%@ include file="../common/header.jsp" %>
 <hr style="clear:both;">
-<h2 align="center"><%=board.getBoardNum() %>번 공지글 상세조회</h2>
+<h2 align="center"><%=board.getBoardNum() %>번 글 상세조회</h2>
 <br>
 <table align="center" cellpadding="10" cellspacing="0" border="1" width="500">
 <tr>

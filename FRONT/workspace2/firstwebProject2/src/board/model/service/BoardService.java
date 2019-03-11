@@ -44,4 +44,38 @@ public class BoardService {
 		close(conn);
 		return board;
 	}
+
+	public int insertBoard(Board board) {
+		Connection conn = getConnection();
+		int result = bdao.insertBoard(conn, board);
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
+	public void updateReplySeq(Board replyBoard) {
+		Connection conn = getConnection();
+		int result = bdao.updateReplySeq(conn, replyBoard);
+		if(result>0)
+			commit(conn);
+		else
+			rollback(conn);
+		close(conn);
+		
+	}
+
+	public int insertReply(Board replyBoard) {
+		Connection conn = getConnection();
+		int result = bdao.insertReply(conn, replyBoard);
+		if(result>0)
+			commit(conn);
+		else
+			rollback(conn);
+		close(conn);
+		return result;
+	}
 }
