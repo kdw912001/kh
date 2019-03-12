@@ -1,6 +1,7 @@
 package board.model.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -197,6 +198,203 @@ public class BoardDao {
 			close(pstmt);
 		}
 		return result;
+	}
+
+	public int updateReply(Connection conn, Board board) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "update board set board_title = ?, board_content = ? where board_num = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, board.getBoardTitle());
+			pstmt.setString(2, board.getBoardContent());
+			pstmt.setInt(3, board.getBoardNum());
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int updateBoard(Connection conn, Board board) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "update board set board_title = ?, board_content = ?, board_original_filename = ?, board_rename_filename = ? where board_num = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, board.getBoardTitle());
+			pstmt.setString(2, board.getBoardContent());
+			pstmt.setString(3, board.getBoardOriginalFileName());
+			pstmt.setString(4, board.getBoardRenameFileName());
+			pstmt.setInt(5, board.getBoardNum());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int deleteBoard(Connection conn, int boardNum) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "delete from board where board_num = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, boardNum);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public ArrayList<Board> selectTitleList(Connection conn, String title, int currentPage, int limit) {
+		ArrayList<Board> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		//해당 페이지에 출력할 목록의 시작행과 끝행
+		int startRow = (currentPage - 1) * limit + 1;
+		int endRow = startRow + limit -1;
+		String query = "SELECT * " + 
+				"FROM (SELECT ROWNUM RNUM, BOARD_NUM, BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, " + 
+				"BOARD_ORIGINAL_FILENAME,BOARD_RENAME_FILENAME,BOARD_REF," + 
+				"BOARD_REPLY_REF,BOARD_REPLY_LEV,BOARD_REPLY_SEQ,BOARD_READCOUNT,BOARD_DATE " + 
+				"FROM (SELECT * FROM BOARD where board_title like ? " + 
+				"      ORDER BY BOARD_REF DESC, BOARD_REPLY_REF ASC, BOARD_REPLY_LEV ASC, BOARD_REPLY_SEQ ASC)) " + 
+				"WHERE RNUM >= ? AND RNUM <= ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%"+title+"%");
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+		
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Board board = new Board();
+				board.setBoardNum(rset.getInt("board_num"));
+				board.setBoardWriter(rset.getString("board_writer"));
+				board.setBoardTitle(rset.getString("board_title"));
+				board.setBoardContent(rset.getString("board_content"));
+				board.setBoardOriginalFileName(rset.getString("BOARD_ORIGINAL_FILENAME"));
+				board.setBoardRenameFileName(rset.getString("BOARD_RENAME_FILENAME"));
+				board.setBoardRef(rset.getInt("board_ref"));
+				board.setBoardReplyRef(rset.getInt("BOARD_REPLY_REF"));
+				board.setBoardReplyLev(rset.getInt("BOARD_REPLY_LEV"));
+				board.setBoardReplySeq(rset.getInt("BOARD_REPLY_SEQ"));
+				board.setBoardReadCount(rset.getInt("board_readcount"));
+				board.setBoardDate(rset.getDate("board_date"));
+				
+				list.add(board);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	public ArrayList<Board> selectWriterList(Connection conn, String writer, int currentPage, int limit) {
+		ArrayList<Board> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		//해당 페이지에 출력할 목록의 시작행과 끝행
+		int startRow = (currentPage - 1) * limit + 1;
+		int endRow = startRow + limit -1;
+		String query = "SELECT * " + 
+				"FROM (SELECT ROWNUM RNUM, BOARD_NUM, BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, " + 
+				"BOARD_ORIGINAL_FILENAME,BOARD_RENAME_FILENAME,BOARD_REF," + 
+				"BOARD_REPLY_REF,BOARD_REPLY_LEV,BOARD_REPLY_SEQ,BOARD_READCOUNT,BOARD_DATE " + 
+				"FROM (SELECT * FROM BOARD where board_writer like ?" + 
+				"      ORDER BY BOARD_REF DESC, BOARD_REPLY_REF ASC, BOARD_REPLY_LEV ASC, BOARD_REPLY_SEQ ASC)) " + 
+				"WHERE RNUM >= ? AND RNUM <= ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%"+writer+"%");
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Board board = new Board();
+				board.setBoardNum(rset.getInt("board_num"));
+				board.setBoardWriter(rset.getString("board_writer"));
+				board.setBoardTitle(rset.getString("board_title"));
+				board.setBoardContent(rset.getString("board_content"));
+				board.setBoardOriginalFileName(rset.getString("BOARD_ORIGINAL_FILENAME"));
+				board.setBoardRenameFileName(rset.getString("BOARD_RENAME_FILENAME"));
+				board.setBoardRef(rset.getInt("board_ref"));
+				board.setBoardReplyRef(rset.getInt("BOARD_REPLY_REF"));
+				board.setBoardReplyLev(rset.getInt("BOARD_REPLY_LEV"));
+				board.setBoardReplySeq(rset.getInt("BOARD_REPLY_SEQ"));
+				board.setBoardReadCount(rset.getInt("board_readcount"));
+				board.setBoardDate(rset.getDate("board_date"));
+				
+				list.add(board);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	public ArrayList<Board> selectDateList(Connection conn, Date begin, Date end, int currentPage, int limit) {
+		ArrayList<Board> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		//해당 페이지에 출력할 목록의 시작행과 끝행
+		int startRow = (currentPage - 1) * limit + 1;
+		int endRow = startRow + limit -1;
+		String query = "SELECT * " + 
+				"FROM (SELECT ROWNUM RNUM, BOARD_NUM, BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, " + 
+				"BOARD_ORIGINAL_FILENAME,BOARD_RENAME_FILENAME,BOARD_REF," + 
+				"BOARD_REPLY_REF,BOARD_REPLY_LEV,BOARD_REPLY_SEQ,BOARD_READCOUNT,BOARD_DATE " + 
+				"FROM (SELECT * FROM BOARD where board_date between ? and ?" + 
+				"      ORDER BY BOARD_REF DESC, BOARD_REPLY_REF ASC, BOARD_REPLY_LEV ASC, BOARD_REPLY_SEQ ASC)) " + 
+				"WHERE RNUM >= ? AND RNUM <= ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setDate(1, begin);
+			pstmt.setDate(2, end);
+			pstmt.setInt(3, startRow);
+			pstmt.setInt(4, endRow);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Board board = new Board();
+				board.setBoardNum(rset.getInt("board_num"));
+				board.setBoardWriter(rset.getString("board_writer"));
+				board.setBoardTitle(rset.getString("board_title"));
+				board.setBoardContent(rset.getString("board_content"));
+				board.setBoardOriginalFileName(rset.getString("BOARD_ORIGINAL_FILENAME"));
+				board.setBoardRenameFileName(rset.getString("BOARD_RENAME_FILENAME"));
+				board.setBoardRef(rset.getInt("board_ref"));
+				board.setBoardReplyRef(rset.getInt("BOARD_REPLY_REF"));
+				board.setBoardReplyLev(rset.getInt("BOARD_REPLY_LEV"));
+				board.setBoardReplySeq(rset.getInt("BOARD_REPLY_SEQ"));
+				board.setBoardReadCount(rset.getInt("board_readcount"));
+				board.setBoardDate(rset.getDate("board_date"));
+				
+				list.add(board);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
 	}
 
 }

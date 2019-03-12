@@ -31,7 +31,7 @@
 	<th>첨부파일</th>
 	<td>
 		<% if(board.getBoardOriginalFileName() != null){ %>
-			<a href="/first/bfdown?ofile=<%=board.getBoardOriginalFileName()%>&rfile<%=board.getBoardRenameFileName()%>"><%= board.getBoardOriginalFileName() %></a>
+			<a href="/first/bfdown?ofile=<%= board.getBoardOriginalFileName()%>&rfile=<%= board.getBoardRenameFileName() %>"><%= board.getBoardOriginalFileName() %></a>
 		<% }else{ %>
 			첨부파일 없음
 		<% } %>
@@ -43,7 +43,7 @@
 </tr>
 <tr>
 	<th colspan="2">
-	<% if(loginUser != null){ %>
+	<% if(loginUser != null && board.getBoardReplyLev() < 2){ %>
 		<a href="/first/views/board/boardReplyForm.jsp?bnum=<%=board.getBoardNum()%>&page=<%=currentPage%>">[댓글달기]</a>
 		<!-- jsp파일에서 jsp파일로 전송할 수 있음 boardreplyform.jsp에서 getparameter로 값을 꺼냄 -->
 	<% } %>

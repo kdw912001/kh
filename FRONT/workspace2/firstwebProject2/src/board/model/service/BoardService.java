@@ -6,6 +6,7 @@ import board.model.vo.Board;
 import static common.JDBCTemplate.*;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.util.ArrayList;
 public class BoardService {
 	private BoardDao bdao = new BoardDao();
@@ -77,5 +78,58 @@ public class BoardService {
 			rollback(conn);
 		close(conn);
 		return result;
+	}
+
+	public int updateReply(Board board) {
+		Connection conn = getConnection();
+		int result = bdao.updateReply(conn, board);
+		if(result > 0)
+			commit(conn);
+		else
+			rollback(conn);
+		close(conn);
+		return result;
+		
+	}
+
+	public int updateBoard(Board board) {
+		Connection conn = getConnection();
+		int result = bdao.updateBoard(conn, board);
+		if(result>0)
+			commit(conn);
+		else
+			rollback(conn);
+		close(conn);
+		return result;
+	}
+
+	public int deleteBoard(int boardNum) {
+		Connection conn = getConnection();
+		int result = bdao.deleteBoard(conn, boardNum);
+		if(result>0)
+			commit(conn);
+		else
+			rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+	public ArrayList<Board> boardSearchTitle(String title, int currentPage, int limit){
+		Connection conn = getConnection();
+		ArrayList<Board> list = bdao.selectTitleList(conn, title, currentPage, limit);
+		close(conn);
+		return list;
+	}
+	public ArrayList<Board> boardSearchWriter(String writer, int currentPage, int limit){
+		Connection conn = getConnection();
+		ArrayList<Board> list = bdao.selectWriterList(conn, writer, currentPage, limit);
+		close(conn);
+		return list;
+	}
+	public ArrayList<Board> boardSearchDate(Date begin, Date end, int currentPage, int limit){
+		Connection conn = getConnection();
+		ArrayList<Board> list = bdao.selectDateList(conn, begin, end, currentPage, limit);
+		close(conn);
+		return list;
 	}
 }
