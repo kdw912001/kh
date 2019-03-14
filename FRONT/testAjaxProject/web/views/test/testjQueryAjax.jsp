@@ -88,9 +88,76 @@
 									writer : $("#writer").val(),
 									content : $("#content").val()
 			});
-		});
+			
+			//$.ajax 사용시
+			$.ajax({
+				url : "/testa/t3.do",
+				data : { title : $("#title").val(),
+						 writer : $("#writer").val(),
+						 content : $("#content").val()},
+				type : "post"
+			});
+			
+			//input 값 지우기
+			$("#title").val('');
+			$("#writer").val('');
+			$("#content").val('');
+		});	//click
 	});//ready
 </script>
-
+<hr>
+<h2>4. 서버로 값 보내고, 결과로 JSON 으로 받아 출력 처리하는 방법 : get 방식</h2>
+번호 : <input type="number" id="no"> <br>
+<p id="p4" style="width:500px; height:150px;border:1px solid red;"></p>
+<button id="test4">테스트</button>
+<script type="text/javascript">
+	$(function(){
+		$("#test4").click(function(){
+			//jQuery.getJSON()과 jQuery.ajax() 중 선택사용
+			//$.getJSON() 사용시
+			$.getJSON("/testa/t4.do",
+					  {no : $("#no").val() },
+					  function(data){//data는 서블릿이 보낸 JSON
+						  	console.log(data);
+					  		//한 개의 json 객체가 문자열 형태로 
+					  		//전송이 왔을 때는 받아서 바로 사용함
+					  		//한글 깨짐을 막기위해 문자 인코딩 처리한 값은
+					  		//디코딩 처리함 : 자바스크립트 내장함수인
+					  		//decodeURIComponent() 사용함
+					  		$("#p4").text(data.no + ", " + data.userid + ", " + data.userpwd + ", " + decodeURIComponent(data.username) + ", " + data.age + ", " + data.email + ", " + data.phone);
+					  });
+			//$.ajax() 사용시
+			$.ajax({
+				url: "/testa/t4.do",
+				data: {no : $("#no").val() },
+				type: "get",
+				dataType: "json",
+				success: function(data){
+					$("#p4").html($("#p4").text() + "<br>" +data.no + ", " + data.userid + ", " + data.userpwd + ", " + decodeURIComponent(data.username) + ", " + data.age + ", " + data.email + ", " + data.phone);
+				}
+			});
+			
+		});//click
+	});//ready
+</script>
+<hr>
+<h2>5. 서버로 값 보내고, 결과로 list나 map을 json 배열로 받아 출력 처리하는 방법 : get 방식</h2>
+번호 : <input type="number" id="no2"> <br>
+<p id="p5" style="width:500px; height:300px;border:1px solid red;"></p>
+<button id="test5">테스트</button>
+<script type="text/javascript">
+	$(function(){
+		$("#test5").click(function(){
+			//jQuery.getJSON()과 jQuery.ajax() 중 선택사용
+			//$.getJSON() 사용시
+			
+			//$.ajax() 사용시
+			
+			
+			
+			
+		});	//click
+	});	//ready
+</script>
 </body>
 </html>
