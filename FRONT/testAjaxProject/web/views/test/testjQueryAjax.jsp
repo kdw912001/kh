@@ -74,6 +74,23 @@
 </script>
 <hr>
 <h2>3. 서버로 여러 개의 값들을 보내고, 결과를 안 받는 경우 : post 방식</h2>
-<button id="test3"></button>
+제목 : <input type="text" id="title"><br>
+작성자 : <input type="text" id="writer"><br>
+내용 : <textarea rows="5" cols="50" id="content"></textarea>
+<button id="test3">테스트</button>
+<script type="text/javascript">
+	$(function(){
+		$("#test3").click(function(){
+		//전송방식을 post로 할 경우
+		//jQuery.post() 와 jQuery.ajax() 중 선택 사용
+		//$.post() 사용시
+			$.post("/testa/t3.do", {title : $("#title").val(),
+									writer : $("#writer").val(),
+									content : $("#content").val()
+			});
+		});
+	});//ready
+</script>
+
 </body>
 </html>
