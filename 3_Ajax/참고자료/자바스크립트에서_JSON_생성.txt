@@ -1,0 +1,447 @@
+JavaScript에서 json을 생성 하는 방식입니다.
+
+* JavaScript 에서 JSON Parse 하시려는 분은 여기 참고 => http://huskdoll.tistory.com/49
+
+* JAVA 에서 JSON 생성 하시려는 분은 여기 참고 => http://huskdoll.tistory.com/38
+
+* JAVA에서 JSONParser 사용 하시려는 분은 여기 참고 => http://huskdoll.tistory.com/6
+
+json은 key : value 방식 으로 되어 있는데요. value 안에 다시 json 형식의 데이터를 넣어 봤습니다.
+
+말로 설명하기 좀 어려운데 아래 소스를 실행해 보시기 바랍니다.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Home</title>
+      <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+      <script>
+       
+      $(function() {
+         
+        $("#checkJson").click(function() {
+           
+          //사람 정보
+          var personArray = new Array();
+             
+          var personInfo = new Object();
+           
+          personInfo.name = "송강호";
+          personInfo.age = "25";
+          personInfo.gender = "남자";
+          personInfo.nickname = "남궁민수";
+             
+          personArray.push(personInfo);
+           
+           
+          personInfo = new Object();
+           
+          personInfo.name = "전지현";
+          personInfo.age = "21";
+          personInfo.gender = "여자";
+          personInfo.nickname = "예니콜";
+           
+          personArray.push(personInfo);
+           
+          //책 정보
+          var bookArray = new Array();
+           
+          bookInfo = new Object();
+           
+          bookInfo.name = "사람은 무엇으로 사는가?";
+          bookInfo.writer = "톨스토이";
+          bookInfo.price = "100";
+          bookInfo.genre = "소설";
+          bookInfo.publisher = "톨스토이 출판사";
+           
+          bookArray.push(bookInfo);
+           
+           
+          bookInfo = new Object();
+           
+          bookInfo.name = "홍길동전";
+          bookInfo.writer = "허균";
+          bookInfo.price = "300";
+          bookInfo.genre = "소설";
+          bookInfo.publisher = "허균 출판사";
+           
+          bookArray.push(bookInfo);
+           
+           
+          bookInfo = new Object();
+           
+          bookInfo.name = "레미제라블";
+          bookInfo.writer = "빅토르 위고";
+          bookInfo.price = "900";
+          bookInfo.genre = "소설";
+          bookInfo.publisher = "빅토르 위고 출판사";
+           
+          bookArray.push(bookInfo);
+           
+          //사람, 책 정보를 넣음
+          var totalInfo = new Object();
+           
+          totalInfo.persons = personArray;
+          totalInfo.books = bookArray;
+           
+          var jsonInfo = JSON.stringify(totalInfo);
+          console.log(jsonInfo); //브라우저 f12개발자 모드에서 confole로 확인 가능
+          alert(jsonInfo);
+     
+        });
+         
+      });
+       
+      </script>
+    </head>
+    <body>
+        <br>
+        <br>
+        <a id="checkJson" style="cursor:pointer">확인</a>
+    </body>
+</html>
+
+
+
+이런 형식이 됩니다.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+{
+    "persons":[
+                        {"name":"송강호","age":"25","gender":"남자","nickname":"남궁민수"},
+                        {"name":"전지현","age":"21","gender":"여자","nickname":"예니콜"}
+                     ],
+ 
+ 
+    "books":[
+                     {"name":"사람은 무엇으로 사는가?","writer":"톨스토이","price":"100","genre":"소설","publisher":"톨스토이 출판사"},
+                     {"name":"홍길동전","writer":"허균","price":"300","genre":"소설","publisher":"허균 출판사"},
+                     {"name":"레미제라블","writer":"빅토르 위고","price":"900","genre":"소설","publisher":"빅토르 위고 출판사"}
+                 ]
+}
+완성된 JSON 데이터는 여기에서 (http://jsonlint.com/) 검증 및 정렬 해보시면 됩니다.
+
+
+
+* 여기 아래부터는 제가 프로젝트에서 사용한 소스의 일부분 인데 나중에 다시 보기 위해 적었습니다.
+
+위와 동일한 방식이지만 데이터 넣는 부분을 HashMap 처리 해 보았습니다.
+
+간단한 방식은 위에 소스를 참고 해주세요.
+
+일단 JavaScript에서 HashMap 처럼 사용하기 위해 함수를 하나 생성 하자요. (JSON 부분만 보실분은 확인 안하셔도 됩니다.)
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+HashMap = function(){   
+    this.map = new Array(); 
+};   
+HashMap.prototype = {   
+    put : function(key, value){   
+        this.map[key] = value; 
+    },   
+    get : function(key){   
+        return this.map[key]; 
+    },   
+    getAll : function(){   
+        return this.map; 
+    },   
+    clear : function(){   
+        this.map = new Array(); 
+    },   
+    isEmpty : function(){     
+         return (this.map.size() == 0); 
+    }, 
+    remove : function(key){     
+         delete this.map[key]; 
+    }, 
+    toString : function(){ 
+        var temp = ''; 
+        for(i in this.map){   
+            temp = temp + ',' + i + ':' +  this.map[i]; 
+        } 
+        temp = temp.replace(',',''); 
+          return temp; 
+    }, 
+    keySet : function(){   
+        var keys = new Array();   
+        for(i in this.map){   
+            keys.push(i); 
+        }   
+        return keys; 
+    } 
+}; 
+
+
+HashMap에 값을 넣습니다.
+
+1
+2
+3
+4
+var channelInfoMap = new HashMap();
+channelInfoMap.put(keyChannelId, channelImgType+"`"+channelType+"`"+channelTypeSeq);
+var connectionConfMap = new HashMap();
+connectionConfMap.put(conn[i].id, cStatus+"`"+cDay+"`"+cHour);
+
+
+그리고 생성한 HashMap를 가져와 데이터를 추출 하고 JSON 형식으로 만듭니다.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+var channelInfoConf = channelInfoMap.getAll(); 
+ 
+      
+//채널 정보를 JSON 형식으로 생성
+var channelArrayArg = new Array();
+ 
+for(i in channelInfoConf){
+  var jsonArg = new Object();
+  jsonArg.name = i;
+  jsonArg.type = channelInfoMap.get(i).split("`")[0];
+  jsonArg.channelType = channelInfoMap.get(i).split("`")[1];
+  jsonArg.channelTypeSeq = channelInfoMap.get(i).split("`")[2];
+  
+  channelArrayArg.push(jsonArg);
+  
+}
+ 
+//커넥션 정보를 JSON 형식으로 생성
+var connectionArrayArg = new Array();
+var connectionVal = connectionMap.getAll();
+ 
+for(i in connectionVal){
+  var jsonArg = new Object();
+  jsonArg.name = i;
+  jsonArg.from = connectionMap.get(i).split("`")[0];
+  jsonArg.to = connectionMap.get(i).split("`")[1];
+  
+  jsonArg.status = connectionConfMap.get(i).split("`")[0];
+  jsonArg.day = connectionConfMap.get(i).split("`")[1];
+  jsonArg.hour = connectionConfMap.get(i).split("`")[2];
+  
+  connectionArrayArg.push(jsonArg);
+  
+}
+ 
+var totalAutoPlanInfo = new Object();
+         
+totalAutoPlanInfo.channelInfo = channelArrayArg;
+totalAutoPlanInfo.connectionInfo = connectionArrayArg;
+ 
+alert(JSON.stringify(totalAutoPlanInfo));
+ 
+/* 아래와 같이 만들어 진다. 값은 뭐.... 넣은대로
+{
+"channelInfo":
+[
+    {"name":"channelWindow2","type":"M","channelType":"10","channelTypeSeq":"1"},                       
+    {"name":"channelWindow3","type":"P","channelType":"07","channelTypeSeq":"1"}
+],
+ 
+"connectionInfo":
+[
+    {"name":"con_31","from":"channelWindow1","to":"channelWindow2","status":"s","day":"1","hour":"1"},
+    {"name":"con_39","from":"channelWindow2","to":"channelWindow3","status":"s","day":"2","hour":"2"}
+]
+}
+*/

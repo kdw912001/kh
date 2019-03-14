@@ -1,0 +1,89 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>첫페이지</title>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<style type="text/css">
+	h1 { text-align: center; }
+	#frm {
+		text-align: center;
+	}
+	#frm > form { 
+		width: 300px;  height: 80px; 
+		background: beige;
+		padding-top: 10px;
+		position: relative;
+		left: 350px; 
+		border: 1px solid gray; 
+	}
+		
+</style>
+<script type="text/javascript">
+	//XMLHttpRequest 객체를 생성하는 함수
+	function createRequest() {
+	    try {
+	        return new XMLHttpRequest();
+	    } catch (exception) {
+	    	//IE 6 이하 브라우저일 경우
+	        var versions = [
+	            'Msxml2.XMLHTTP.6.0',
+	            'Msxml2.XMLHTTP.5.0',
+	            'Msxml2.XMLHTTP.4.0',
+	            'Msxml2.XMLHTTP.3.0',
+	            'Msxml2.XMLHTTP',
+	            'Microsoft.XMLHttp'
+	        ];
+	        for (var i = 0; i < versions.length; i++) {
+	            try {
+	                return new ActiveXObject(versions[i]);
+	            } catch (e) { }
+	        }
+	    }
+	}
+
+	$(function(){
+		/* $('#loginForm').submit(function(event){
+			var output = $(this).serialize();
+			$('<h1></h1>').text(output).appendTo('#wrap');
+			//$('#wrap').html(output);
+			
+			//csv 방식으로 된 값을 속성: 값 형식으로 바꾸어 출력되게 함
+			var items = output.split('&');
+			
+			for(var i = 0; i < items.length; i++)
+			{
+				var values = items[i].split('=');					
+				$('#wrap').append(values[0] + " : " + values[1] + "<br/>");
+			}			
+			
+			event.preventDefault();
+		}); */
+		
+		var request = createRequest();
+		$('#wrap').append(request.readyState);
+		request.open('GET', 'data.html', false);
+		$('#wrap').append(request.readyState);
+	});
+</script>
+</head>
+<body>
+	<h1>Welcome Page!!!</h1>
+	<hr/>
+	<div id="frm">
+	로그인<br/>	
+	<form id="loginForm" action="" method="post">
+	<label for="uid">아이디 : </label>
+	<input id="uid" type="text" name="loginId" /><br/>
+	<label for="upwd">암 &nbsp;&nbsp; 호 : </label>
+	<input id="upwd" type="password" name="loginPwd"><br/>
+	<input type="submit" value="로그인" />
+	</form><br/>
+	<a href="" target="_blank">회원가입</a>&nbsp; &nbsp;
+	<a href="" target="_blank">아이디/암호조회</a><br/>
+	</div>
+	<hr/>
+	<div id="wrap">출력 문자열</div>
+</body>
+</html>

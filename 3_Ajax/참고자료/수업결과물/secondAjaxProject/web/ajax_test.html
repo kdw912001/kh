@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <title>XMLHttpRequest</title>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#get').click(function () {
+                $.ajax({
+                    url: 'products',
+                    type: 'get',
+                    dataType: 'text',
+                    data: {
+                    	dummy:	new Date().getTime()
+                    },
+                    success: function (data) {
+                        $('#output').val(data);
+                    }
+                });
+            });
+
+            $('#post').click(function () {
+                $.ajax({
+                    url: 'products',
+                    type: 'post',
+                    dataType: 'text',
+                    data: {
+                        name: $('#name').val(),
+                        price: $('#price').val()
+                    },
+                    success: function (data) {
+                        $('#output').val(data);
+                    }
+                });
+            });
+
+            $('#put').click(function () {
+            	var name = $('#name').val();
+            	var price = $('#price').val();
+            	
+                $.ajax({
+                    url: 'products?name='+ name + '&price='+ price,
+                    type: 'put',
+                    dataType: 'text',                    
+                    success: function (data) {
+                        $('#output').val(data);
+                    }
+                });
+            });
+
+            $('#delete').click(function () {
+                $.ajax({
+                    url: 'products',
+                    type: 'delete',
+                    dataType: 'text',
+                    success: function (data) {
+                        $('#output').val(data);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+	<h2>jQuery로 Ajax 테스트 하기</h2>
+    <button id="get">GET</button>
+    <button id="post">POST</button>
+    <button id="put">PUT</button>
+    <button id="delete">DELETE</button>
+    <h1>input</h1>
+    <input id="name" />
+    <input id="price" />
+    <h1>output</h1>
+    <textarea id="output" disabled="disabled" cols="40" rows="5"></textarea>
+</body>
+</html>

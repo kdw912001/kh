@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>전송값 받음</title>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+<script>
+        // XMLHttpRequest 객체를 생성하는 함수
+        function createRequest() {
+            try {
+                return new XMLHttpRequest();
+            } catch (exception) {
+                var versions = [
+                    'Msxml2.XMLHTTP.6.0',
+                    'Msxml2.XMLHTTP.5.0',
+                    'Msxml2.XMLHTTP.4.0',
+                    'Msxml2.XMLHTTP.3.0',
+                    'Msxml2.XMLHTTP',
+                    'Microsoft.XMLHttp'
+                ];
+                for (var i = 0; i < versions.length; i++) {
+                    try {
+                        return new ActiveXObject(versions[i]);
+                    } catch (e) { }
+                }
+            }
+        }
+
+        // XMLHttpRequest 객체를 생성합니다.
+        var request = createRequest();
+        request.onreadystatechange = function (event) {
+            if (request.readyState == 4) {
+                if (request.status == 200) {
+                	//document.body.innerHTML = '전송되어 온 값 출력 확인<p/>';
+                    //document.body.innerHTML += request.responseText;
+                
+                	//data.json 파일의 내용을 객체로 바꾸어 body에 출력 처리함
+                	document.body.innerHTML = request.responseText + '<p/>';
+                	//전송 받은 문자열을 객체 배열로 바꿈
+                	var jsonValues = eval('(' + request.responseText + ')');
+                	document.body.innerHTML += jsonValues + '<p/>';
+                	
+                	//객체 배열의 객체들을 각각 처리함
+                	//jsonValues == 배열임
+                	for(var i = 0; i < jsonValues.length; i++){
+                		var obj = jsonValues[i];
+                		//자바스크립트 for in 문 사용
+                		//객체 안의 속성과 값을 차례대로 연속 처리함
+                		for(var key in obj){
+                			document.body.innerHTML += key + " : " + obj[key] + "<br/>";
+                		}
+                	}
+                };
+            };
+        };
+        request.open('GET', 'json/data.json', true);
+        request.send();
+    </script>
+</body>
+</html>

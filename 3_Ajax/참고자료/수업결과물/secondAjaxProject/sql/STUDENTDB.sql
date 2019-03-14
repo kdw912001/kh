@@ -1,0 +1,13 @@
+CREATE TABLE USERS(
+  USERID  VARCHAR2(10)  CONSTRAINT PK_UID PRIMARY KEY,
+  USERPWD VARCHAR2(10)  NOT NULL,
+  USERNAME VARCHAR2(20) NOT NULL
+);
+
+INSERT INTO USERS VALUES ('user01', 'pass01', 'È«±æµ¿');
+INSERT INTO USERS VALUES ('user02', 'pass02', '¹Ú¹®¼ö');
+INSERT INTO USERS VALUES ('user03', 'pass03', '±èÃ¶¼ö');
+
+commit;
+
+select * from users;
