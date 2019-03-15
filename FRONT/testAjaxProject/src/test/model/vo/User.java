@@ -23,6 +23,16 @@ public class User implements java.io.Serializable{
 		this.email = email;
 		this.phone = phone;
 	}
+	
+	public User(String userId, String userPwd, String userName, int age, String email, String phone) {
+		super();
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.age = age;
+		this.email = email;
+		this.phone = phone;
+	}
 
 	public int getNo() {
 		return no;

@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import notice.model.vo.Notice;
@@ -235,6 +236,31 @@ public class NoticeDao {
 			close(pstmt);
 		}
 		
+		return list;
+	}
+
+	public ArrayList<Notice> selectTop5Write(Connection conn) {
+		ArrayList<Notice> list = new ArrayList<>();
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query = "select * from (select rownum rnum, noticeno, noticetitle, noticedate from (select * from notice order by noticedate desc)) where rnum >= 1 and rnum <=5";
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			while(rset.next()) {
+				Notice notice = new Notice();
+				notice.setNoticeNo(rset.getInt("noticeno"));
+				notice.setNoticeTitle(rset.getString("noticetitle"));
+				notice.setNoticeDate(rset.getDate("noticedate"));
+				list.add(notice);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
 		return list;
 	}
 }

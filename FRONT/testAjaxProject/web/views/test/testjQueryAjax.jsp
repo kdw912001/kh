@@ -150,9 +150,45 @@
 		$("#test5").click(function(){
 			//jQuery.getJSON()과 jQuery.ajax() 중 선택사용
 			//$.getJSON() 사용시
-			
+			$.getJSON("/testa/t5.do", {no: $("#no2").val()},
+					function(data){
+						console.log(data);	//object 출력됨
+						//배열객체를 문자열 형태로 바꿈
+						var jsonStr = JSON.stringify(data);
+						//바뀐 문자열을 json 객체로 바꿈
+						var json = JSON.parse(jsonStr);
+						
+						var values = "";
+						for(var i in json.list){
+							//한글깨짐 막으려고 문자 인코딩 처리한
+							//json 객체 안의 값은 
+							//decodeURIComponent() 로 디코딩함
+							values += json.list[i].userid + ", " + json.list[i].userpwd+ ", "
+								+ decodeURIComponent(json.list[i].username) + ", " + json.list[i].age + ", "
+								+ json.list[i].email + ", " + json.list[i].phone + "<br>";
+						} //for in
+						
+						$("#p5").html(values);
+			});
 			//$.ajax() 사용시
-			
+			$.ajax({
+				url: "/testa/t5.do",
+				data: {no : $("#no2").val()},
+				type : "post",
+				dataType: "json",
+				success: function(data){
+					var jsonStr = JSON.stringify(data);
+					var json = JSON.parse(jsonStr);
+					
+					var values = $("#p5").html() + "<br>";
+					for(var i in json.list){
+						values += json.list[i].userid + ", " + json.list[i].userpwd+ ", "
+						+ decodeURIComponent(json.list[i].username) + ", " + json.list[i].age + ", "
+						+ json.list[i].email + ", " + json.list[i].phone + "<br>";
+					} //for in
+					$("#p5").html(values);
+				}
+			});
 			
 			
 			

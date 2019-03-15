@@ -132,4 +132,11 @@ public class BoardService {
 		close(conn);
 		return list;
 	}
+
+	public ArrayList<Board> selectReadCountTop5() {
+		Connection conn = getConnection();
+		ArrayList<Board> list = bdao.selectReadCountTop5(conn);
+		close(conn);
+		return list;
+	}
 }

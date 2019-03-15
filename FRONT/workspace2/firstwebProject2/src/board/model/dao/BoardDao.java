@@ -397,4 +397,30 @@ public class BoardDao {
 		return list;
 	}
 
+	public ArrayList<Board> selectReadCountTop5(Connection conn) {
+		ArrayList<Board> list = new ArrayList<>();
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String query = "select * from (select rownum rnum, board_num, board_title, board_readcount from (select * from board where board_reply_lev = 0 order by board_readcount desc)) where rnum >= 1 and rnum <=5";
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			while(rset.next()) {
+				Board board = new Board();
+				board.setBoardNum(rset.getInt("board_num"));
+				board.setBoardTitle(rset.getString("board_title"));
+				board.setBoardReadCount(rset.getInt("board_readcount"));
+				
+				list.add(board);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		return list;
+	}
+
 }
