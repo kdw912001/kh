@@ -9,14 +9,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>first</title>
+<title>second</title>
 <script type="text/javascript">
 function moveUpdatePage(){
-	location.href = "/first/nupview?no=" + <%= notice.getNoticeNo() %>;
+	location.href = "/second/nupview?no=" + <%= notice.getNoticeNo() %>;
 }
 
 function deleteNotice(){
-	location.href = "/first/ndel?no=" + <%= notice.getNoticeNo() %>;
+	location.href = "/second/ndel?no=" + <%= notice.getNoticeNo() %>;
 }
 </script>
 </head>
@@ -39,7 +39,7 @@ function deleteNotice(){
 	<th>첨부파일</th>
 	<td>
 	<% if(notice.getOriginalFilePath() != null){ %>
-		<a href="/first/nfdown?ofile=<%= notice.getOriginalFilePath() %>&rfile=<%= notice.getRenameFilePath() %>"><%= notice.getOriginalFilePath() %></a>
+		<a href="/second/nfdown?ofile=<%= notice.getOriginalFilePath() %>&rfile=<%= notice.getRenameFilePath() %>"><%= notice.getOriginalFilePath() %></a>
 	<% }else{ %>
 		첨부파일 없음
 	<% } %>
@@ -55,7 +55,7 @@ function deleteNotice(){
 		<button onclick="moveUpdatePage();">수정페이지로 이동</button> &nbsp; 
 		<button onclick="deleteNotice();">글삭제</button> &nbsp;
 	<% } %>
-	<button onclick="location.href='/first/nlist'; return false;">목록</button>
+	<button onclick="location.href='/second/nlist'; return false;">목록</button>
 	</th>
 </tr>
 </table>
