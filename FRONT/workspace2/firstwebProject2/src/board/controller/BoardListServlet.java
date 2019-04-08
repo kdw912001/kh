@@ -73,7 +73,6 @@ public class BoardListServlet extends HttpServlet {
 			request.setAttribute("startPage", startPage);
 			request.setAttribute("endPage", endPage);
 			request.setAttribute("listCount", listCount);
-			
 			view.forward(request, response);
 		}else {
 			view = request.getRequestDispatcher("views/board/boardError.jsp");

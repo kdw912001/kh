@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="/first/resources/js/jquery-3.3.1.min.js"></script>
+<script>
+	$('form1').submit(
+		function(event) {
+			event.preventDefault();
+			ajax_login();
+		}	
+	); 
+	
+	function ajax_login() {
+		
+	}
+</script>
+</head>
+<body>
+<form id='form1'>
+	<div id='bx1'>
+		<input type='text' id='id1'/>
+		<input type='password' id='pw1'/>
+	</div>
+	<button id='logbtn1'>로그인</button>
+</form>
+</body>
+</html>

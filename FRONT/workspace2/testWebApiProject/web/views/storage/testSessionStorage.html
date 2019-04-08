@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="/test/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+function addItem(){
+	if(!window.sessionStorage){
+		alert("이 브라우저는sessionStorage api가 제공되지 않습니다.");
+	}
+	else{
+		sessionStorage.setItem($("#key").val(), $("#value").val());
+		$("#key").val("");
+		$("#value").val("");
+	}
+}
+function getValue(){
+	alert(sessionStorage.getItem($("#getKey").val()));
+}
+function getAll(){
+	console.log(sessionStorage);
+}
+function deleteItem(){
+	sessionStorage.removeItem($("#delKey").val());
+	$("#delKey").val("");
+}
+function clearAll(){
+	sessionStorage.clear();
+	console.log(sessionStorage);
+}
+
+</script>
+</head>
+<body>
+<h1>sessionStorage 테스트</h1>
+<h5>sessionStorage 저장방식은 sessionStorage와 같음
+도메인 별로 저장 공간을 할당함. 다른 점은 브라우저가 닫히면 저장된 정보는 자동 삭제됨.</h5>
+
+<h3>sessionStorage 에 값 추가하기</h3>
+키 : <input type="text" id="key"> <br>
+값 : <input type="text" id="value"> <br>
+<button onclick="addItem();">데이터 추가</button>
+
+<hr>
+<h3>sessionStorage 에 저장된 값 조회하기</h3>
+조회할 키 : <input type="text" id="getKey"><br>
+<button onclick="getValue();">값 조회</button>
+
+<hr>
+<h3>sessionStorage 에 저장된 값 모두 조회하기</h3>
+<button onclick="getAll();">모두 조회</button>
+
+<hr>
+<h3>sessionStorage 의 값 제거하기</h3>
+제거할 키 : <input type="type" id="delKey"><br>
+<button onclick="deleteItem();">값 제거</button>
+
+<br>
+<hr>
+<h3>sessionStorage 모두 비우기</h3>
+<button onclick="clearAll();">비우기</button>
+
+</body>
+</html>

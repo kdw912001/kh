@@ -1,0 +1,151 @@
+@charset "UTF-8";
+body,html {
+
+	height:100%;
+}
+
+#logo {
+	margin: 9px;
+}
+#doghouse1 {
+	position: absolute;
+	top: 50%;
+	left: 30%;
+}
+input[type="checkbox"]#menu_state {
+  display: none;
+}
+input[type="checkbox"]:checked ~ nav {/* 왼쪽 메뉴 크기  */
+  width: 200px;
+}
+input[type="checkbox"]:checked ~ nav label[for="menu_state"] i::before {
+  content: "\f053";
+}
+input[type="checkbox"]:checked ~ nav ul {
+  width: 100%;
+}
+input[type="checkbox"]:checked ~ nav ul li a i {
+  border-right: 1px solid #2f343e;
+}
+input[type="checkbox"]:checked ~ nav ul li a span {
+  opacity: 1;
+  transition: opacity 0.25s ease-in-out;
+}
+input[type="checkbox"]:checked ~ main {
+  left: 200px;
+}
+nav {/* 왼쪽 메뉴  */
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: #222;
+  color: #9aa3a8;
+  width: 50px;
+  transition: all 0.15s ease-in-out;
+  box-shadow: 5px 5px rgba(153,153,153,0.5);
+  
+}
+nav a{/* 회원가입,로그인 버튼 밑줄 삭제  */
+	text-decoration:none
+}
+
+nav ul {/* 왼쪽 메뉴 위치  */
+  overflow: hidden;
+  display: block;
+  width: 50px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  
+}
+nav ul li {/* 왼쪽 메뉴 border  */
+  border: 1px solid #2f343e;
+  position: relative;
+}
+
+nav ul li a {/* 메인메뉴 꾸밈  */
+  position: relative;
+  display: block;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #fff;
+  width: 100%;
+  transition: all 0.15s ease-in-out;
+}
+
+nav ul li a:hover {/* 메뉴에 마우스 올렸을 때  */
+  background: #4c515d;
+  color: #fff;
+}
+
+nav ul li a span {/* 작은 메뉴버튼을 접었을 때   */
+  padding-left: 10px; /* 메뉴 글자 왼쪽간격 */
+  opacity: 0;
+  line-height: 50px;/*  메뉴글자 높이 관련 */
+  transition: opacity 0.1s ease-in-out;
+}
+/* .icon은 아이콘 관련*/
+
+#icon1 span:before {
+	content: '\f015'; /*구글에 fontawesome 사이트 들어가면 나오는 아이콘의 고유번호*/
+	font-family: FontAwesome;
+	
+}
+#icon2 span:before {
+	content: '\f002';
+	font-family: FontAwesome;
+}
+#icon3 span:before {
+	content: '\f002';
+	font-family: FontAwesome;
+}
+#icon4 :before {
+	content: '\f0ca';
+	font-family: FontAwesome;
+}
+#icon5 :before {
+	content: '\f075';
+	font-family: FontAwesome;
+}
+#icon6 :before {
+	content: '\f075';
+	font-family: FontAwesome;
+}
+.m2{/* 주메뉴를 클릭했을 때 부메뉴 */
+	display: none;
+	text-align: center;
+	color: snow;
+	cursor: pointer;
+}
+.btn { /* 로그인,회원가입 버튼  */
+	border: none;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	display: inline-block;
+	margin: 5px 5px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+
+}
+
+.btn-1 { /*버튼 색 */
+	border: 3px solid #000;
+	color: #fff;
+}
+
+
+.btn-sign:hover,
+.btn-sign:active {
+	color: #ECDBA4;
+	border: 3px solid #ECDBA4;
+}
+
