@@ -1,0 +1,117 @@
+자바스크립트에서 당장 사용해야 할 5가지의 배열 메소드들 (Array)
+
+배열 메소드 들중에.. 평소에 잘 사용하지 않지만, 사용하면 생산성이 많이 올라가는 메소드 들이다.
+
+하지만 다시 리마인드 하는 의미로 정리하면, 도움이 될것 같다. 익숙한놈도 있고.. 초기에 JS 공부할때 알아뒀지만, 한번도 안써봤던,,(reduce) 같은 놈들은 다시 보니 어색 하기도 하고. 이번기회에 정리를 해보자
+
+아래는 이 포스팅의 원문이 되는 블로그
+
+http://colintoh.com/blog/5-array-methods-that-you-should-use-today?utm_source=javascriptweekly&utm_medium=email
+
+ 
+
+1. 배열에서특정값이 있는지 찾을때는 indexOf를 사용해라 
+
+대부분의 배열에서 indexOf 를 사용 하지 않으면, for loop 를 돌려서 찾을수 밖에 없다. 즉 아래와 같은 코드를 사용 하게 되는데.
+
+var isExist =false;
+for( var i = 0; max = array.length; i += 1 ) {
+ if( array[i] === "특정값" ){
+   isExist = true;
+ }
+}
+위와 같은 코드는 아래와 같이 간단하게 사용할 수 있다.
+
+var isExist = (array.indexOf(“특정값”)!== -1 )
+즉  간단하게 위의 for loop 를 한줄로 표현할 수 있으며, 이부분이 생산성이나, 코드 가독성에 도 옳은 영향을 끼친다.
+
+2. filter 를사용해보세요:)
+
+이건.. JSON 오브젝트로 이루어진 배열중에 특정 값만 filter 시킬때 유용하다.
+
+var arr = [    
+  {"name":"apple", "count": 2},    
+  {"name":"orange", "count": 5},    
+  {"name":"pear", "count": 3},    
+  {"name":"orange", "count": 16}
+];    
+var newArr = arr.filter(function(item){    
+  return item.name === "orange";
+});  
+console.log("Filter results:",newArr);
+위 값의 newArr 은 name이 orange 인 놈만 필터 되서 나온다.
+
+3. forEach()를쓰세요
+
+사실 개인적으로 for 루프가 더 성능 향상에 좋다고 해서..( 자바스크립트 성능 최적화에 나온다. ).for 로 풀어서 쓰는데  1ms 도 차이 안나니 그냥 forEach를 쓰라고 가이드 한다.
+
+사용법은 아래와 같다.
+
+var array = [1,2,3,4,5];
+array.forEach( function( v, i ){
+  if( v === 3 ){
+    console.log( v + ":" + i); // 3:2 가 나온다.
+  }
+});
+4. map을 잘 활용하자. 
+
+이전에 jsperf 에서 map이 forEach 보다 더 성능이 빨라서. 개인적으로 array에서 map을 주로 써왔다. 하지만 … map과 forEach는 용도가 미세하게 다른데.. map은 각 루프에서return을 할수있는 것이 특징이다.
+
+( return된 결과의 동일한 배열을 원하는것이 아니라면 forEach가 더 적합하다. )
+
+즉 map을 사용하면, 리턴값으로 같은 길이의 배열이 나오게 된다.
+
+예를들어 …
+
+var a = [1,2,3,4,5];
+var b = a.forEach( function(v, i){ console.log(v); return v+1;}});
+var c = a.map( function(v, i){ console.log(v); return v+1;});
+를 실행해보면차이점이 다르다.  b는 undefined 가 나오며 c 는 [2,3,4,5,6] 이라는 배열이 나온다.즉 배열을 가지고, 연산을 하고 길이가 같은 배열로 결과를 리턴받고 싶을때는 map을 쓰는것이 훨씬 유리하다.
+
+forEach와는 용도가 서로 다르다는것을 기억하자
+
+마지막으로 5번..
+
+5.reduce!! 를 사용하자 
+
+이놈은.. 인자를 어떻게 주냐에 따라 용도가 달라진다.
+
+array.reduce(f,n)
+var a= [1,2,3,4,5] //f는 함수 n은 두번째 인자 라고 가정
+n이 없을경우 array.reduce(f);를 살펴 보자 
+f의 
+(0) iteration 
+- 첫번째 인자 : 1
+- 두번째 인자 : 2
+(1) iteration
+- 첫번째 인자 : 1,2
+- 두번째 인자 : 3
+(2) iteration
+- 첫번째 인자 : 1,2,3
+- 두번째 인자 : 4
+(3) iteration
+- 첫번째 인자 : 1,2,3,4
+- 두번째 인자 : 5
+로 나오게 된다.
+즉 f 의 인자가 f( a,b,c,d) 라면
+a=이전값
+b= 현재값
+c= 인덱스
+d= 배열
+로 생각하면 된다.
+
+하지만 reduce 메소드를 불러올때  n을 주게 되면, f의 첫번째 인자가 n이 되게 되는데, 즉 이전초기값이 n으로 대체 된다. 
+
+var a= ["a","b","c","d","e","a","b","a","c","c","c"];
+var b = a.reduce(function(x,y){
+  console.log("x:", x);
+  console.log("y:", y);
+  x[y] = ++x[y]|| 1;
+  return x;
+},{});
+console.log(b);
+위 예제를 돌려보면 B 는 최종적으로
+
+Object {a: 3, b: 2, c: 4, d: 1, e: 1}
+
+로 리턴된다.

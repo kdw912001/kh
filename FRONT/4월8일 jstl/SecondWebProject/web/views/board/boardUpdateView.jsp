@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>second</title>
+<title>first</title>
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
@@ -17,7 +17,7 @@
 <h2 align="center"><%= board.getBoardNum() %>번 게시글 수정페이지</h2>
 <br>
 <% if(board.getBoardReplyLev() == 0){ //원글 수정 %>
-<form action="/second/boriginup" method="post" enctype="multipart/form-data">
+<form action="/first/boriginup" method="post" enctype="multipart/form-data">
 <input type="hidden" name="page" value="<%= currentPage %>">
 <input type="hidden" name="bnum" value="<%= board.getBoardNum() %>">
 <input type="hidden" name="ofile" value="<%= board.getBoardOriginalFileName() %>">
@@ -36,12 +36,12 @@
 <td><textarea rows="7" cols="50" name="bcontent"><%= board.getBoardContent() %></textarea></td></tr>
 <tr><th colspan="2">
 	<input type="submit" value="수정하기"> &nbsp;
-	<a href="/second/blist?page=<%= currentPage %>">[목록]</a>
+	<a href="/first/blist?page=<%= currentPage %>">[목록]</a>
 </th></tr>
 </table>
 </form>
 <% }else{ //댓글 수정 %>
-<form action="/second/breplyup" method="post">
+<form action="/first/breplyup" method="post">
 <input type="hidden" name="page" value="<%= currentPage %>">
 <input type="hidden" name="bnum" value="<%= board.getBoardNum() %>">
 <table align="center">
@@ -51,7 +51,7 @@
 <td><textarea rows="7" cols="50" name="bcontent"><%= board.getBoardContent() %></textarea></td></tr>
 <tr><th colspan="2">
 	<input type="submit" value="수정하기"> &nbsp;
-	<a href="/second/blist?page=<%= currentPage %>">[목록]</a>
+	<a href="/first/blist?page=<%= currentPage %>">[목록]</a>
 </th></tr>
 </table></form>
 <% } %>

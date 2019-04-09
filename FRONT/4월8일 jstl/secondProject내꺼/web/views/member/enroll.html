@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<style type="text/css">
+	section form table th {
+		background: orange;
+		color: navy;
+		font-weight: bold;
+	}
+</style>
+<script type="text/javascript" src="/second/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	function checkId(){
+		//서버로 입력된 아이디값을 전송해서 존재하는 아이디인지
+		//확인 요청하고, 결과를 받아서 사용여부 처리하는 함수임.
+		//jQuery.ajax() 사용
+		$.ajax({
+			url: "/second/chkid",
+			type: "post",
+			data: {userid: $("#userid").val() },
+			success: function(data){
+				console.log("success : " + data);
+				
+				if(data == "ok"){
+					alert("사용 가능한 아이디입니다.");
+					$("#username").focus();
+				}else{
+					alert("이미 사용중인 아이디입니다.\n"
+						+ "다시 입력하십시요.");
+					$("#userid").select();
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown){
+				console.log("error : " + jqXHR + ", " 
+						+ textStatus + ", " + errorThrown);
+			}
+		});
+		
+		return false;  //클릭 이벤트 전달막음
+	}
+	
+	$(function(){
+		//암호확인 입력상자가 focus가 사라졌을 때
+		$("#userpwd2").blur(function(){
+			console.log("포커스 사라짐.");
+			var pwd1 = $("#userpwd1").val();
+			var pwd2 = $("#userpwd2").val();
+			
+			if(pwd1 != pwd2){
+				alert("암호와 암호확인이 일치하지 않습니다.\n"
+					+ "다시 입력하십시요.");
+				$("#userpwd1").select();
+			}
+		});
+	});
+</script>
+</head>
+<body>
+<section>
+	<h2 align="center">회원 가입 페이지</h2>
+	<br>
+	<h5 align="center">* 표시 항목은 필수입력 항목입니다.</h5>
+	<form action="/second/minsert" method="get">
+	<table width="650" align="center">
+	<tr height="40">
+		<th width="150">*아이디</th>
+		<td><input type="text" name="userid" id="userid" required> 
+		&nbsp; <button onclick="return checkId();">중복확인</button></td>
+	</tr>
+	<tr height="40">
+		<th width="150">*이 름</th>
+		<td><input type="text" id="username" name="username" required></td>
+	</tr>
+	<tr height="40">
+		<th width="150">*암 호</th>
+		<td><input type="password" id="userpwd1" name="userpwd" required></td>
+	</tr>
+	<tr height="40">
+		<th width="150">*암호확인</th>
+		<td><input type="password" id="userpwd2" required></td>
+	</tr>
+	<tr height="40">
+		<th width="150">*성 별</th>
+		<td>
+			<input type="radio" name="gender" value="M"> 남자 &nbsp; 
+			<input type="radio" name="gender" value="F"> 여자
+		</td>
+	</tr>
+	<tr height="40">
+		<th width="150">*나 이</th>
+		<td>
+			<input type="number" name="age" min="20" 
+			max="100" required>
+		</td>
+	</tr>
+	<tr height="40">
+		<th width="150">전화번호</th>
+		<td><input type="tel" name="phone"></td>
+	</tr>
+	<tr height="40">
+		<th width="150">이메일</th>
+		<td><input type="email" name="email"></td>
+	</tr>
+	<tr height="40">
+		<th width="150">취 미</th>
+		<td>
+		<table>
+		<tr>
+			<td width="150"><input type="checkbox" name="hobby" value="game"> 게임</td>
+			<td width="150"><input type="checkbox" name="hobby" value="reading"> 독서</td>
+			<td width="150"><input type="checkbox" name="hobby" value="music"> 음악감상</td>
+		</tr>
+		<tr>
+			<td width="150"><input type="checkbox" name="hobby" value="climb"> 등산</td>
+			<td width="150"><input type="checkbox" name="hobby" value="sport"> 운동</td>
+			<td width="150"><input type="checkbox" name="hobby" value="movie"> 영화</td>
+		</tr>
+		<tr>
+			<td width="150"><input type="checkbox" name="hobby" value="travel"> 여행</td>
+			<td width="150"><input type="checkbox" name="hobby" value="cook"> 요리</td>
+			<td width="150"><input type="checkbox" name="hobby" value="etc"> 기타</td>
+		</tr>
+		</table>
+		</td>
+	</tr>
+	<tr height="40">
+		<th width="150">하고싶은말</th>
+		<td><textarea name="etc" rows="3" cols="30"></textarea></td>
+	</tr>
+	<tr height="40">
+		<th colspan="2">
+		<input type="submit" value="가입하기"> &nbsp; 
+		<input type="reset" value="작성취소"> &nbsp; 
+		<a href="/second/index.jsp">시작페이지로 이동</a>
+		</th>		
+	</tr>
+	</table>
+	</form>
+</section>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

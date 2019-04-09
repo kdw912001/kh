@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" errorPage="memberError.jsp"  %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    pageEncoding="UTF-8" errorPage="memberError.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>second</title>
+<title>first</title>
 <script type="text/javascript" src="/second/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -28,7 +28,7 @@ $(function(){
 <c:if test="${!empty loginUser and loginUser.userId eq 'admin' }">
 	<%@ include file="../common/adminHeader.jsp" %>
 </c:if>
-<c:if test="${empty sessionScope.loginUser or loginUser.userId ne 'admin'}">
+<c:if test="${empty loginUser or loginUser.userId ne 'admin' }">
 	<%@ include file="../common/header.jsp" %>
 </c:if>
 <hr style="clear:left;">
@@ -92,33 +92,34 @@ $(function(){
 		<td>
 		<c:forTokens items="${member.hobby }" delims="," var="hb">
 			<c:if test="${hb eq 'game' }">
-				<c:set var="checked0" value="checked"></c:set>
+				<c:set var="checked0" value="checked" />
 			</c:if>
 			<c:if test="${hb eq 'reading' }">
-				<c:set var="checked1" value="checked"></c:set>
+				<c:set var="checked1" value="checked" />
 			</c:if>
 			<c:if test="${hb eq 'music' }">
-				<c:set var="checked2" value="checked"></c:set>
+				<c:set var="checked2" value="checked" />
 			</c:if>
 			<c:if test="${hb eq 'climb' }">
-				<c:set var="checked3" value="checked"></c:set>
+				<c:set var="checked3" value="checked" />
 			</c:if>
 			<c:if test="${hb eq 'sport' }">
-				<c:set var="checked4" value="checked"></c:set>
+				<c:set var="checked4" value="checked" />
 			</c:if>
 			<c:if test="${hb eq 'movie' }">
-				<c:set var="checked5" value="checked"></c:set>
+				<c:set var="checked5" value="checked" />
 			</c:if>
 			<c:if test="${hb eq 'travel' }">
-				<c:set var="checked6" value="checked"></c:set>
+				<c:set var="checked6" value="checked" />
 			</c:if>
 			<c:if test="${hb eq 'cook' }">
-				<c:set var="checked7" value="checked"></c:set>
+				<c:set var="checked7" value="checked" />
 			</c:if>
 			<c:if test="${hb eq 'etc' }">
-				<c:set var="checked8" value="checked"></c:set>
+				<c:set var="checked8" value="checked" />
 			</c:if>
 		</c:forTokens>
+		
 		<table>
 		<tr>
 			<td width="150"><input type="checkbox" name="hobby" value="game" ${checked0 }> 게임</td>
@@ -135,7 +136,7 @@ $(function(){
 			<td width="150"><input type="checkbox" name="hobby" value="cook" ${checked7 }> 요리</td>
 			<td width="150"><input type="checkbox" name="hobby" value="etc" ${checked8 }> 기타</td>
 		</tr>
-		</table> 
+		</table>
 		</td>
 	</tr>
 	<tr height="40">

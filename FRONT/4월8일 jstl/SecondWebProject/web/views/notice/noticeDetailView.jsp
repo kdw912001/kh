@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>second</title>
+<title>first</title>
 <script type="text/javascript">
 function moveUpdatePage(){
 	location.href = "/second/nupview?no=" + <%= notice.getNoticeNo() %>;
@@ -56,7 +56,7 @@ function deleteNotice(){
 		<button onclick="deleteNotice();">글삭제</button> &nbsp;
 	<% } %>
 	<button onclick="location.href='/second/nlist'; return false;">목록</button>
-	</th>
+	</th>	
 </tr>
 </table>
 <hr>

@@ -15,7 +15,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>second</title>
+<title>first</title>
 <script type="text/javascript" src="/second/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 function moveWritePage(){

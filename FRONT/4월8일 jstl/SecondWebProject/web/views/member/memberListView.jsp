@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" errorPage="memberError.jsp" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>second</title>
+<title>first</title>
 <style type="text/css">
 	table, button { font-size: 11pt; }
 </style>
@@ -36,7 +36,7 @@
 	<th>로그인 권한 제한</th>
 	<th>강제 탈퇴 처리</th>
 </tr>
-<c:forEach items="${list }" var="m" varStatus="status">
+<c:forEach items="${ list }" var="m" varStatus="status">
 <tr>
 	<td>${status.count }</td>
 	<td>${m.userId }</td>
@@ -56,7 +56,7 @@
 </c:forEach>
 </table>
 
-
+/
 
 <hr>
 <%@ include file="../common/footer.jsp" %>

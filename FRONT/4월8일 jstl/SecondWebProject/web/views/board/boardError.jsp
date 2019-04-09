@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>second</title>
+<title>first</title>
 </head>
 <body>
 <h1>게시글 서비스 오류 발생</h1>

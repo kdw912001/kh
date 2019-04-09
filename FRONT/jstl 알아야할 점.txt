@@ -1,0 +1,2 @@
+﻿서블릿->jsp   : 서블릿에서 setAttribute한  ${변수}
+jsp->jsp : ${param.변수}
