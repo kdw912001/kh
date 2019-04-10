@@ -1,0 +1,46 @@
+<#{}xml version="1.0" encoding="utf-8"#{}>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+
+	<resultMap id="resultMember" type="Member">
+		<id property="userId" column="userid" /><!-- setUserId와 동일 property는 vo변수, column은 db 테이블 컬럼  -->
+		<result property="userPwd" column="userpwd" />
+		<result property="userName" column="username" />
+		<result property="gender" column="gender" />
+		<result property="age" column="age" />
+		<result property="phone" column="phone" />
+		<result property="email" column="email" />
+		<result property="hobby" column="hobby" />
+		<result property="etc" column="etc" />
+		<result property="enrollDate" column="enroll_date" />
+		<result property="lastModified" column="lastmodified" />
+	</resultMap>
+	
+	<select id="selectLogin" parameterType="Member" resultMap="resultMember">
+	<!-- resultType이나 resultMap이 똑같으면 resultType 하나는 생략해도 됨  -->
+		select * from member 
+				where userid = #{userId} and userpwd = #{userPwd}
+	</select><!-- parameterType이 Member일 경우 Member.java(vo)에 생성한 변수의 이름으로 하면 자동으로 getter불러옴  -->
+	<select id="selectCheckId" parameterType="string" resultType="_int">
+	select count(userid) from member where userid = #{userId}
+	</select>
+	<insert id="insertMember" parameterType="Member">
+	insert into member values (#{userId}, #{userPwd}, #{userName}, #{gender}, #{age}, #{phone}, #{email}, #{hobby}, #{etc}, sysdate, sysdate)
+	</insert>
+	<select id="selectMember" parameterType="string" resultType="Member"  resultMap="resultMember">
+		select * from member where userid = #{userId}
+	</select>
+	<update id="updateMember" parameterType="Member">
+		update member set userpwd = #{userPwd}, age = #{age}, email = #{email}, phone = #{phone}, etc = #{etc}, 
+				 hobby = #{hobby} where userid = #{userId}
+	</update>
+	<delete id="deleteMember" parameterType="string">
+		delete from member where userid = #{userId}
+	</delete>
+	<select id="selectList"  resultMap="resultMember">
+	<!-- insert,delete,update은 resultType에 _int할 필요없고 ArrayList 리턴은 resultType을 명시할 필요 없음  -->
+		select * from member
+	</select>
+</mapper>

@@ -1,0 +1,8 @@
+마이크로소프트 자바스크립트 참조
+ https://msdn.microsoft.com/ko-kr/library/aa155133.aspx
+? Introducing JSON
+> http://www.json.org/
+ JSON in JavaScript
+> http://www.json.org/js.html
+JSON in Java
+> http://www.json.org/java/index.html

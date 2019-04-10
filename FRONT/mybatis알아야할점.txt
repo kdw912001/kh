@@ -1,0 +1,8 @@
+﻿*web-inf/lib에 mybatis-3.5.1.jar 저장
+
+*수업폴더에 있는 mybatis-config.xml 를 src/mybatis 에 저장함
+-alias는 이미 vo만들고 해야함. 안그럼 톰캣오류 발생
+-environment는 db설정
+-<mapper resource="mappers/member-mapper.xml" />로 경로 수정
+
+*안에 수업폴더에 있는 mybatis-mapper.xml를 src/mappers 저장
