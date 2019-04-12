@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import notice.model.service.NoticeService;
 import notice.model.vo.Notice;
+import notice.model.vo.SearchDate;
 
 /**
  * Servlet implementation class NoticeSearchServlet
@@ -53,8 +54,8 @@ public class NoticeSearchServlet extends HttpServlet {
 				  break;
 		case "date": String beginDate = request.getParameter("begin");
 				   String endDate = request.getParameter("end");
-				   map = nservice.selectSearchDate(
-						   Date.valueOf(beginDate), Date.valueOf(endDate));
+				   SearchDate date = new SearchDate(Date.valueOf(beginDate), Date.valueOf(endDate));
+				   map = nservice.selectSearchDate(date);
 		}
 		
 		//4.

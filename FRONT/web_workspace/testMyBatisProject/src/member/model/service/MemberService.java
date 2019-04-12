@@ -35,58 +35,62 @@ public class MemberService {
 	
 	public Member selectLogin(Member member) {/*result를 한번밖에 못하니 변수를 통일하기 위해 Member로 묶음*/
 		SqlSession session = getSession();/* getConnection과 동일한 역할 */
-		Member loginUser = 
-				mdao.selectLogin(session, member);
+		Member loginUser = mdao.selectLogin(session, member);
 		session.close();
 		return loginUser;
 	}
 
 	public int selectCheckId(String userId) {
-		int result = mdao.selectCheckId(conn, userId);
-		close(conn);
+		SqlSession session = getSession();
+		int result = mdao.selectCheckId(session, userId);
+		session.close();
 		return result;
 	}
 
 	public int insertMember(Member member) {
-		int result = mdao.insertMember(conn, member);
+		SqlSession session = getSession();
+		int result = mdao.insertMember(session, member);
 		if(result > 0)
-			commit(conn);
+			session.commit();
 		else
-			rollback(conn);
-		close(conn);
+			session.rollback();
+		session.close();
 		return result;
 	}
 
 	public Member selectMember(String userId) {
-		Member member = 
-				mdao.selectMember(conn, userId);
-		close(conn);
+		SqlSession session = getSession();
+		Member member = mdao.selectMember(session, userId);
+		session.close();
 		return member;
 	}
 
 	public int updateMember(Member member) {
-		int result = mdao.updateMember(conn, member);
+		SqlSession session = getSession();
+		int result = mdao.updateMember(session, member);
 		if(result > 0)
-			commit(conn);
+			session.commit();
 		else
-			rollback(conn);
-		close(conn);
+			session.rollback();
+		session.close();
 		return result;
 	}
 
 	public int deleteMember(String userId) {
-		int result = mdao.deleteMember(conn, userId);
+		SqlSession session = getSession();
+		int result = mdao.deleteMember(session, userId);
 		if(result > 0)
-			commit(conn);
+			session.commit();
 		else
-			rollback(conn);
-		close(conn);
+			session.rollback();
+		session.close();
 		return result;
 	}
 
 	public ArrayList<Member> selectList() {
-		ArrayList<Member> list = mdao.selectList(conn);
-		close(conn);
+		SqlSession session = getSession();
+		ArrayList<Member> list = mdao.selectList(session);
+		session.close();
 		return list;
 	}
 }

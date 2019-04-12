@@ -1,0 +1,174 @@
+JSON은 무엇인가?
+JSON은 무엇인가?
+경량의 데이타 교환 포맷이다.
+> XML과 비교한다.
+간단한 포맷
+> 사람들을 위해 읽고 쓰기가 쉽다.
+> 기계들을 위해 분석과 생성이 쉽다.
+JSON은 텍스트 포맷이다.
+> 언어에 독립적으로 프로그래밍된다.
+> 프로그래머들에게 잘 알려진 C,C++,C#,Java,JavaScript,Perl,Pyton을 포함하는 C와 유사한 언어로 모여서 사용된다.
+XML을 넘어 왜 JSON인가?
+on-the-wire(선을 통한) 데이타 포맷인 XML보다 가볍고 빠르다.
+JSON 오브젝트는 XML 데이타가 타입이 없는데 비해 타입을 가진다.
+> JSON types : string, number, array, boolean
+> XML 데이타는 모두 String 이다.
+JavaScript 코드를 위해 Native 코드포맷이다.
+> Data는 사용자의 JavaScript코드 안에서 JSON 객체에 접근이 쉽다.
+XML 데이타가 해석과 장황한 DOM API를 통해 변수에 접근하는 것을 필요로 하는데 비해 
+> 회수한 값들은 사용자의 자바스크립트 안의 객체속성에서 읽기가 쉽다.
+JSON은 어디에서 사용되는가?
+구성정보를 나타낸다.
+통신 프로토콜을 실행한다.
+JSON Object
+JSON 구조
+name/value 쌍으로 구성된다.
+> 여러가지의 언어들에서 object, record, struct, dictionary, hashtable, 키를 가지는 리스트, 배열집합 처럼 얻어진다.
+값들이 리스트는 순서가 있다.
+> 대부분의 언어들에서 array, vector, list, sequence 처럼 얻어진다.
+JSON은 대부분의 지금의 언어를 통해 일반적인 데이타구조들이 지원된다.
+JSON Object 표기법
+JSON Object는 name/value 쌍의 set은 순서가 없다.
+JSON Object는 { 로 시작하고 } 로 끝난다.
+각각의 이름은 : 와 ,로 구분된 name/value 쌍의 형식을 따른다.
+JSON과 JavaScript
+JSON은 JavaScript의 객체 문자 표기의 부분집합이다.
+> JSON은 JavaScript안에서 혼란스럽거나 야단스럽지 않게 사용될 수 있다.
+JSON Object 예제
+ 
+
+var myJSONObject = {"bindings": [
+
+    {"ircEvent": "PRIVMSG", "method": "newURI", "regex": "^http://.*"},
+
+    {"ircEvent": "PRIVMSG", "method": "deleteURI", "regex": "^delete.*"},
+
+    {"ircEvent": "PRIVMSG", "method": "randomURI", "regex": "^random.*"}
+
+  ]
+
+};
+
+위의 예에서, JSON JavaScript 객체는 세개의 객체를 포함한 배열을 갖고있는, 각각은 "ircEvent","method","regex" 멤버들을 포함한 하나의 멤버 "bindings"를 포함하여 생성된다.
+멤버들은 점(.) 이나 그아래 지시자들로 회수 할수 있다.
+ 
+
+myJSONObject.bindings[0].method // "newURI"
+
+JavaScript 코드안에서 Text를 Object로 변환하기
+ 
+
+var myObject = eval('(' + myJSONtext + ')');
+
+eval() 함수를 사용하여, JSON text를 JSON 객체로 변환한다.
+> eval()은 JavaScript 컴파일러에서 실행한다.
+> JSON은 JavaScript의 서브셋으로 적합하다. 컴파일러는 text를 정확하게 변환하고, 객체 구조를 만든다.
+보안 & JSON Parser
+ 
+
+// Include http://www.json.org/json.js
+
+var myObject = myJSONtext.parseJSON();
+
+eval()은 컴파일 할 수 있고, 어떤 JavaScript 프로그램에서도 실행된다. 그래서 보안 이슈들(cross-site scripting)을 가질 수 있다.
+> 소스를 신뢰할 수 있을때, eval()을 사용해라.
+보안이 염려될 때 - 소스를 신뢰할 수 없을때 - JSON parser를 사용하는게 낫다.
+> JSON parser는 JSON text를 승인할 수 있다. 그래서 좀더 안전하다.
+Object를 Text로 변환하기
+ 
+
+var myJSONText = myObject.toJSONString();
+
+사용자는 JSON 객체를 JSON text로 변환할 수 있다.
+JSON은 주기적 데이타 구조를 지원하지 않는다.
+
+> Do not give cyclical structures to the JSON stringifier
+> 주기적 구조들을 JSON stringfier로 줄수 없다
+Java 안에서의 JSON
+자바 개발자를 위한 JSON Tools
+Parser
+> JSON text 파일들을 해석하고, 그들을 자바 모델로 변환한다.
+Renderer
+> 자바를 text로 표현하게 한다.
+Serializer
+> 알기쉬운 POJO clusters를 JSON 표현으로 나열한다.
+Validator
+> JSON 스키마를 사용하여 JSON 파일의 내용을 유효한지 체크한다.
+JSONObject 자바 클래스
+JSONObject의 name/value 쌍의 집합은 순서가 없다.
+put 메소드는 객체로 name/value쌍을 add 한다.
+text들은 JSON syntax rules을 정확히 따른 toString 메소드에 의해 만들어진다.
+ 
+
+myString = new JSONObject().put("JSON", "Hello, World!").toString();
+
+// myString is {"JSON": "Hello, World"}
+
+클라이언트와 서버사이드 양쪽에서 JSON 데이타를 주고 받는 방법
+서버사이드에서 JSON 데이타를 생성하고 보내는 방법
+JSONObject 자바 객체를 생성한다.
+put 메소드를 사용하여 name/value 쌍을 add한다.
+toString 메소드를 사용하여 String 타입으로 변환한다.
+그리고 "text/xml" 또는 "text/plain" 처럼 content-type과 함께 클라이언트로 보낸다.
+ 
+
+myString = new JSONObject().put("JSON",toString();
+
+// myString is {"JSON": "Hello, World"}
+
+클라이언트 사이드에서 JSON 데이타를 받는 방법
+JSON 데이타는 String 처럼 반환된다.
+JavaScript 코드안에서 JSON 객체를 만들수 있게 eval()을 호출한다.
+> var JSONdata = eval(req.response.Text);
+사용자는 한번 JSON 객체를 가질수 있고, 객체의 속성들에 접근하기 위해 . 을 사용할 수 있다.
+ 
+
+var name = JSONdata.name;
+
+var address = JSONdata.addresses[3];
+
+var streetname = JSONdata.addresses[3].street;
+
+클라이언트 사이드에서 JSON 데이타를 생성하고 보내는 방법
+JSON 자바스크립트 객체를 생성한다.
+XMLHttpRequest객체의 open 메소드 안에 "POST" HTTO 메소드를 사용한다.
+XMLHttpRequest객체의 send 메소드안에서 JSON 자바스크립트 객체를 패스한다.
+ 
+
+var carAsJSON = JSON.stringify(car);
+
+var url = "JSONExample?timeStamp=" + new Date().getTime();
+
+createXMLHttpRequest();
+
+xmlHttp.open("POST", url, true);
+
+xmlHttp.onreadystatechange = handleStateChange;
+
+xmlHttp.setRequestHeader("Content-Type",
+
+"application/x-www-form-urlencoded");
+
+xmlHttp.send(carAsJSON);
+
+서버사이드에서 JSON 데이타를 받는 방법
+String 타입처럼 JSON데이타를 읽는다.
+string으로부터 JSONObject 자바객체를 생성한다.
+ 
+
+String json = readJSONStringFromRequestBody(request);
+
+//Use the JSON-Java binding library to create a JSON object in Java
+
+JSONObject jsonObject = null;
+
+try {
+
+jsonObject = new JSONObject(json);
+
+}
+
+catch(ParseException pe) {
+
+}
+

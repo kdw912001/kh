@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>second</title>
-<script type="text/javascript" src="/second/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/testm/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function(){
 		//주기적으로 반복 실행되게 되게 하려면
@@ -26,7 +26,7 @@
 		
 		//게시글 조회수 많은 순으로 5개 조회 결과 출력 처리
 		$.ajax({
-			url: "/second/btop5",
+			url: "/testm/btop5",
 			type: "get",
 			dataType: "json",
 			success: function(data){
@@ -39,7 +39,7 @@
 				for(var i in json.list){
 					<c:if test="${ !empty loginUser }">
 						values += "<tr><td>" + json.list[i].bnum
-						+ "</td><td><a href='/second/bdetail?bnum=" 
+						+ "</td><td><a href='/testm/bdetail?bnum=" 
 						+ json.list[i].bnum + "&page=1'>" 
 						+ decodeURIComponent(json.list[i].btitle).replace(/\+/gi, " ")      
 						+ "</a></td><td>" + json.list[i].rcount
@@ -64,7 +64,7 @@
 		
 		//최근 등록된 공지글 5개 조회 출력 처리
 		$.ajax({
-			url: "/second/ntop5",
+			url: "/testm/ntop5",
 			type: "get",
 			dataType: "json",
 			success: function(data){
@@ -77,7 +77,7 @@
 				for(var i in json.list){
 					<c:if test="${!empty loginUser }">
 						values += "<tr><td>" + json.list[i].no 
-						+ "</td><td><a href='/second/ndetail?no="
+						+ "</td><td><a href='/testm/ndetail?no="
 						+ json.list[i].no + "'>"
 						+ decodeURIComponent(json.list[i].ntitle).replace(/\+/gi, " ")
 						+ "</a></td><td>" + json.list[i].ndate + "</td></tr>";
@@ -110,7 +110,7 @@
 <hr style="clear:left;">
 <c:if test="${empty loginUser }">
 <div style="float:left;">
-<form action="/second/login" method="post">
+<form action="/testm/login" method="post">
 <table>
 <tr>
 <th>아이디 : </th>
@@ -124,7 +124,7 @@
 	<th colspan="2">
 		<input type="submit" value="로그인"> 
 		&nbsp; &nbsp; 
-		<a href="/second/views/member/enroll.html">회원가입</a>
+		<a href="/testm/views/member/enroll.html">회원가입</a>
 	</th>
 </tr>
 <tr>
@@ -143,13 +143,13 @@
 	<table>
 	<tr>
 	<th>${sessionScope.loginUser.userName } 님</th>
-	<td><a href="/second/logout">로그아웃</a> </td>
+	<td><a href="/testm/logout">로그아웃</a> </td>
 	</tr>
 	<tr>
 		<th colspan="2">
 			<a href="">쪽지</a>
 			&nbsp; &nbsp;
-			<a href="/second/myinfo?userid=${loginUser.userId }">내 정보 보기</a>
+			<a href="/testm/myinfo?userid=${loginUser.userId }">내 정보 보기</a>
 		</th>
 	</tr>
 	</table>

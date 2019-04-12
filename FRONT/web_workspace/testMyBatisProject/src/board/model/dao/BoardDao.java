@@ -8,45 +8,33 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.ibatis.session.RowBounds;
+import org.apache.ibatis.session.SqlSession;
 
 import board.model.vo.Board;
 
 public class BoardDao {
 	public BoardDao() {}
 
-	public int getListCount(Connection conn) {
-		int listCount = 0;
-		Statement stmt = null;
-		ResultSet rset = null;
-		
-		String query = "select count(*) from board";
-		
-		try {
-			stmt = conn.createStatement();
-			rset = stmt.executeQuery(query);
-			
-			if(rset.next()) {
-				listCount = rset.getInt(1);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			close(rset);
-			close(stmt);
-		}
-		
-		return listCount;
+	public int getListCount(SqlSession session) {
+		return session.selectOne("boardMapper.getListCount");
 	}
 
-	public ArrayList<Board> selectList(
-			Connection conn, int currentPage, int limit) {
-		ArrayList<Board> list = new ArrayList<Board>();
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
+	public ArrayList<Board> selectList(SqlSession session, int currentPage, int limit) {
+		/*RowBounds rowBounds = new RowBounds(
+				currentPage, limit);
+		List<Board> list = session.selectList(
+				"boardMapper.selectList", rowBounds);		
+		return (ArrayList<Board>)list;*/
+		
+		RowBounds rowBounds = new RowBounds(currentPage, limit);
+		List<Board> list = session.selectList("boardMapper.selectList", rowBounds);
 		
 		//해당 페이지에 출력할 목록의 시작행과 끝행 계산
-		int startRow = (currentPage -1) * limit + 1;
-		int endRow = startRow + limit - 1;
+		/*int startRow = (currentPage -1) * limit + 1;
+		int endRow = startRow + limit - 1;*/
 		
 		String query = "SELECT * " + 
 				"FROM (SELECT ROWNUM RNUM, BOARD_NUM, BOARD_WRITER, " + 
@@ -62,7 +50,7 @@ public class BoardDao {
 				"WHERE RNUM >= ? AND RNUM <= ?";
 		
 		try {
-			pstmt = conn.prepareStatement(query);
+			pstmt = session.prepareStatement(query);
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
 			
@@ -94,102 +82,22 @@ public class BoardDao {
 			close(pstmt);
 		}
 		
-		return list;
+		return (ArrayList<Board>)list;
 	}
 
-	public int addReadCount(Connection conn, int boardNum) {
-		int result = 0;
-		PreparedStatement pstmt = null;
-		
-		String query = "update board "
-				+ "set board_readcount = board_readcount + 1 "
-				+ "where board_num = ?";
-		
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, boardNum);
-			
-			result = pstmt.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-		}
-		
-		return result;
+	public int addReadCount(SqlSession session, int boardNum) {
+		return session.update("boardMapper.addReadCount", boardNum);
 	}
 
-	public Board selectBoard(Connection conn, int boardNum) {
-		Board board = null;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String query = "select * from board "
-				+ "where board_num = ?";
-		
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, boardNum);
-			
-			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
-				board = new Board();
-				
-				board.setBoardNum(rset.getInt("board_num"));
-				board.setBoardTitle(rset.getString("board_title"));
-				board.setBoardWriter(rset.getString("board_writer"));
-				board.setBoardContent(rset.getString("board_content"));
-				board.setBoardDate(rset.getDate("board_date"));
-				board.setBoardOriginalFileName(rset.getString("board_original_filename"));
-				board.setBoardRenameFileName(rset.getString("board_rename_filename"));
-				board.setBoardReplyLev(rset.getInt("board_reply_lev"));
-				board.setBoardRef(rset.getInt("board_ref"));
-				board.setBoardReplyRef(rset.getInt("board_reply_ref"));
-				board.setBoardReplySeq(rset.getInt("board_reply_seq"));
-				board.setBoardReadCount(rset.getInt("board_readcount"));
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		return board;
+	public Board selectBoard(SqlSession session, int boardNum) {
+		return session.selectOne("boardMapper.selectBoard", boardNum);
 	}
 
-	public int insertBoard(Connection conn, Board board) {
-		int result = 0;
-		PreparedStatement pstmt = null;
-		
-		String query = "insert into board values "
-				+ "((select max(board_num) + 1 from board), "
-				+ "?, ?, ?, ?, ?, "
-				+ "(select max(board_num) + 1 from board), "
-				+ "0, 0, 0, default, default)";
-		
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, board.getBoardWriter());
-			pstmt.setString(2, board.getBoardTitle());
-			pstmt.setString(3, board.getBoardContent());
-			pstmt.setString(4, board.getBoardOriginalFileName());
-			pstmt.setString(5, board.getBoardRenameFileName());
-			
-			result = pstmt.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-		}
-		
-		return result;
+	public int insertBoard(SqlSession session, Board board) {
+		return session.insert("boardMapper.insertBoard", board);
 	}
 
-	public int insertReply(Connection conn, Board replyBoard) {
+	public int insertReply(SqlSession session, Board replyBoard) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
@@ -212,7 +120,7 @@ public class BoardDao {
 		}
 		
 		try {
-			pstmt = conn.prepareStatement(query);
+			pstmt = session.prepareStatement(query);
 			
 			pstmt.setString(1, replyBoard.getBoardWriter());
 			pstmt.setString(2, replyBoard.getBoardTitle());
@@ -238,112 +146,23 @@ public class BoardDao {
 		return result;
 	}
 
-	public int updateReplySeq(Connection conn, Board replyBoard) {
-		int result = 0;
-		PreparedStatement pstmt = null;
-		
-		String query = "update board "
-					+ "set board_reply_seq = board_reply_seq + 1 "
-					+ "where board_ref = ? "
-					+ "and board_reply_lev = ? "
-					+ "and board_reply_ref = ?";
-		
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, replyBoard.getBoardRef());
-			pstmt.setInt(2, replyBoard.getBoardReplyLev());
-			pstmt.setInt(3, replyBoard.getBoardReplyRef());
-			
-			result = pstmt.executeUpdate();
-			System.out.println("dao: " + result);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-		}
-		
-		return result;
+	public int updateReplySeq(SqlSession session, Board replyBoard) {
+		return session.update("boardMapper.updateReplySeq", replyBoard);
 	}
 
-	public int updateReply(Connection conn, Board board) {
-		int result = 0;
-		PreparedStatement pstmt = null;
-		
-		String query = "update board "
-				+ "set board_title = ?, board_content = ? "
-				+ "where board_num = ?";
-		
-		try {
-			pstmt = conn.prepareStatement(query);			
-			pstmt.setString(1, board.getBoardTitle());
-			pstmt.setString(2, board.getBoardContent());
-			pstmt.setInt(3, board.getBoardNum());
-			
-			result = pstmt.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-		}
-		
-		return result;
+	public int updateReply(SqlSession session, Board board) {
+		return session.update("boardMapper.updateReply", board);
 	}
 
-	public int updateBoard(Connection conn, Board board) {
-		int result = 0;
-		PreparedStatement pstmt = null;
-		
-		String query = "update board "
-				+ "set board_title = ?, "
-				+ "board_content = ?, "
-				+ "board_original_filename = ?, "
-				+ "board_rename_filename = ? "
-				+ "where board_num = ?";
-		
-		try {
-			pstmt = conn.prepareStatement(query);			
-			pstmt.setString(1, board.getBoardTitle());
-			pstmt.setString(2, board.getBoardContent());
-			pstmt.setString(3, board.getBoardOriginalFileName());
-			pstmt.setString(4, board.getBoardRenameFileName());
-			pstmt.setInt(5, board.getBoardNum());
-			
-			result = pstmt.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-		}
-		
-		return result;
+	public int updateBoard(SqlSession session, Board board) {
+		return session.update("boardMapper.updateBoard", board);
 	}
 
-	public int deleteBoard(Connection conn, int boardNum) {
-		int result = 0;
-		PreparedStatement pstmt = null;
-		
-		String query = "delete from board "
-				+ "where board_num = ?";
-		
-		try {
-			pstmt = conn.prepareStatement(query);				
-			pstmt.setInt(1, boardNum);
-			
-			result = pstmt.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-		}
-		
-		return result;
+	public int deleteBoard(SqlSession session, int boardNum) {
+		return session.delete("boardMapper.deleteBoard", boardNum);
 	}
 
-	public ArrayList<Board> selectDateList(Connection conn, Date begin, Date end, int currentPage, int limit) {
+	public ArrayList<Board> selectDateList(SqlSession session, Date begin, Date end, int currentPage, int limit) {
 		ArrayList<Board> list = new ArrayList<Board>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -366,7 +185,7 @@ public class BoardDao {
 				"WHERE RNUM >= ? AND RNUM <= ?";
 		
 		try {
-			pstmt = conn.prepareStatement(query);
+			pstmt = session.prepareStatement(query);
 			pstmt.setDate(1, begin);
 			pstmt.setDate(2, end);
 			pstmt.setInt(3, startRow);
@@ -403,7 +222,7 @@ public class BoardDao {
 		return list;
 	}
 
-	public ArrayList<Board> selectWriterList(Connection conn, String writer, int currentPage, int limit) {
+	public ArrayList<Board> selectWriterList(SqlSession session, String writer, int currentPage, int limit) {
 		ArrayList<Board> list = new ArrayList<Board>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -426,7 +245,7 @@ public class BoardDao {
 				"WHERE RNUM >= ? AND RNUM <= ?";
 		
 		try {
-			pstmt = conn.prepareStatement(query);
+			pstmt = session.prepareStatement(query);
 			pstmt.setString(1, writer);
 			pstmt.setInt(2, startRow);
 			pstmt.setInt(3, endRow);
@@ -462,102 +281,18 @@ public class BoardDao {
 		return list;
 	}
 
-	public ArrayList<Board> selectTitleList(Connection conn, String title, int currentPage, int limit) {
-		ArrayList<Board> list = new ArrayList<Board>();
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		//해당 페이지에 출력할 목록의 시작행과 끝행 계산
-		int startRow = (currentPage -1) * limit + 1;
+	public ArrayList<Board> selectTitleList(SqlSession session, String title, int currentPage, int limit) {
+		RowBounds rowBounds = new RowBounds(currentPage, limit);
+		List<Board> list = session.selectList("boardMapper.selectTitleList", title, rowBounds);
+		/*int startRow = (currentPage -1) * limit + 1;
 		int endRow = startRow + limit - 1;
-		
-		String query = "SELECT * " + 
-				"FROM (SELECT ROWNUM RNUM, BOARD_NUM, BOARD_WRITER, " + 
-				"BOARD_TITLE, BOARD_CONTENT, " + 
-				"BOARD_ORIGINAL_FILENAME, " + 
-				"BOARD_RENAME_FILENAME, BOARD_REF, " + 
-				"BOARD_REPLY_REF, BOARD_REPLY_LEV, " + 
-				"BOARD_REPLY_SEQ, BOARD_READCOUNT, " + 
-				"BOARD_DATE " + 
-				"FROM (SELECT * FROM BOARD where board_title like ? " + 
-				"ORDER BY BOARD_REF DESC, BOARD_REPLY_REF ASC, " + 
-				"BOARD_REPLY_LEV ASC, BOARD_REPLY_SEQ ASC))" + 
-				"WHERE RNUM >= ? AND RNUM <= ?";
-		
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, "%" + title + "%");
-			pstmt.setInt(2, startRow);
-			pstmt.setInt(3, endRow);
-			
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				Board board = new Board();
-				
-				board.setBoardNum(rset.getInt("board_num"));
-				board.setBoardTitle(rset.getString("board_title"));
-				board.setBoardWriter(rset.getString("board_writer"));
-				board.setBoardContent(rset.getString("board_content"));
-				board.setBoardDate(rset.getDate("board_date"));
-				board.setBoardOriginalFileName(rset.getString("board_original_filename"));
-				board.setBoardRenameFileName(rset.getString("board_rename_filename"));
-				board.setBoardReplyLev(rset.getInt("board_reply_lev"));
-				board.setBoardRef(rset.getInt("board_ref"));
-				board.setBoardReplyRef(rset.getInt("board_reply_ref"));
-				board.setBoardReplySeq(rset.getInt("board_reply_seq"));
-				board.setBoardReadCount(rset.getInt("board_readcount"));
-				
-				list.add(board);
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		return list;
+		*/
+		return (ArrayList<Board>)list;
 	}
 
-	public ArrayList<Board> selectReadCountTop5(Connection conn) {
-		ArrayList<Board> list = new ArrayList<Board>();
-		Statement stmt = null;
-		ResultSet rset = null;		
-		
-		String query = "SELECT * " + 
-				"FROM (SELECT ROWNUM RNUM, BOARD_NUM, BOARD_TITLE,  " + 
-				"BOARD_READCOUNT " + 
-				"FROM (SELECT * " + 
-				"FROM BOARD " + 
-				"WHERE BOARD_REPLY_LEV = 0 " + 
-				"ORDER BY BOARD_READCOUNT DESC)) " + 
-				"WHERE RNUM >= 1 AND RNUM <= 5";
-		
-		try {
-			stmt = conn.createStatement();		
-			
-			rset = stmt.executeQuery(query);
-			
-			while(rset.next()) {
-				Board board = new Board();
-				
-				board.setBoardNum(rset.getInt("board_num"));
-				board.setBoardTitle(rset.getString("board_title"));				
-				board.setBoardReadCount(rset.getInt("board_readcount"));
-				
-				list.add(board);
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			close(rset);
-			close(stmt);
-		}
-		
-		return list;
+	public ArrayList<Board> selectReadCountTop5(SqlSession session) {
+		List<Board> list = session.selectList("boardMapper.selectReadCountTop5");		
+		return (ArrayList<Board>)list;
 	}
 
 	

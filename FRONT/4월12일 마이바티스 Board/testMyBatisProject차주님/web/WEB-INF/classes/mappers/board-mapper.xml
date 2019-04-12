@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+
+	<resultMap id="resultBoard" type="Board">
+		<id property="boardNum" column="board_num" />
+		<result property="boardWriter" column="board_writer" />
+		<result property="boardTitle" column="board_title" />
+		<result property="boardContent" column="board_content" />
+		<result property="boardOriginalFileName" column="board_original_filename" />
+		<result property="boardRenameFileName" column="board_rename_filename" />
+		<result property="boardRef" column="board_ref" />
+		<result property="boardReplyRef" column="board_reply_ref" />
+		<result property="boardReplyLev" column="board_reply_lev" />
+		<result property="boardReplySeq" column="board_reply_seq" />
+		<result property="boardReadCount" column="board_readcount" />
+		<result property="boardDate" column="board_date" />
+	</resultMap>
+	
+	<!-- 비교연산자를 쿼리문에 그냥 사용하면 태그(element)의
+		꺽쇠(<, >, &)와 혼동하는 문제가 발생할 수 있음. 
+		이 문제를 미연에 방지하기 위해 xml 코드 중 
+		xml parser 에 의해 해석하지 말고, 문장 그대로
+		해석하라는 뜻으로 <![CDATA[쿼리문장]]> 사용함.-->
+	
+	<select id="selectTop3" resultMap="resultBoard">
+		<![CDATA[
+		select * 
+		from (select rownum rnum, board_num, 
+					board_title, board_writer, 
+					board_content, 
+					board_original_filename, 
+					board_rename_filename, 
+					board_date, board_readcount, 
+					board_reply_lev, board_ref, 
+					board_reply_ref, board_reply_seq 
+			  from (select * from board 
+					where board_reply_lev = 0 
+					order by board_readcount desc)) 
+		where rnum >= 1 and rnum <= 3
+		]]>
+	</select>
+	
+	<select id="selectListCount" resultType="_int">
+		select count(*) from board
+	</select>
+	
+	<select id="selectBoard" parameterType="int" resultMap="resultBoard">
+		select * from board 
+		where board_num = #{boardNum}
+	</select>	
+	
+	<select id="selectList" parameterType="Board" resultMap="resultBoard">
+		<![CDATA[
+		select * 
+		from (select rownum rnum, board_num, 
+				   board_title, board_writer, board_content, 
+				   board_original_filename, board_rename_filename,
+				   board_date, board_readcount, board_reply_lev,
+				   board_ref, board_reply_ref, board_reply_seq 
+			  from (select * 
+			  		from board 
+			  		order by board_ref desc, 
+			  				board_reply_ref desc, 
+			  				board_reply_lev asc, 
+			  				board_reply_seq asc)) 
+		where rnum >= #{offset} and rnum <= #{limit}
+		]]>
+	</select>
+	
+	<insert id="insertBoard" parameterType="Board" >
+		insert into board 
+		values ((select max(board_num) + 1 from board), 
+				#{boardWriter}, #{boardTitle}, 
+				#{boardContent}, #{boardOriginalFileName}, 
+				#{boardRenameFileName},  
+				(select max(board_num) + 1 from board), 
+				0, 0, 0, default, default)
+	</insert>
+	
+	<insert id="insertReply1" parameterType="Board">
+		insert into board 
+		values ((select max(board_num) + 1 from board), 
+				#{boardWriter}, #{boardTitle}, 
+				#{boardContent}, NULL, NULL, 
+				#{boardRef}, 
+				(select max(board_num) + 1 from board),
+				1, #{boardReplySeq}, 0, default)		
+	</insert>
+	
+	<insert id="insertReply2" parameterType="Board">
+		insert into board 
+		values ((select max(board_num) + 1 from board), 
+		#{boardWriter}, #{boardTitle}, #{boardContent}, 
+		NULL, NULL, #{boardRef}, #{boardReplyRef}, 2, 
+		#{boardReplySeq}, 0, default)
+	</insert>
+	
+	<delete id="deleteBoard" parameterType="int">
+		delete from board 
+		where board_num = #{boardNum}
+	</delete>
+	
+	<update id="addReadCount" parameterType="int">
+		update board 
+		set board_readcount = board_readcount + 1 
+		where board_num = #{boardNum}
+	</update>
+	
+	<update id="replySeq" parameterType="Board" >
+		update board 
+		set board_reply_seq = board_reply_seq + 1 
+		where board_ref = #{boardRef} 
+		and board_reply_lev = #{boardReplyLev} 
+		and board_reply_ref = #{boardReplyRef}		
+	</update>
+	
+	<update id="updateReply" parameterType="Board" >
+		update board 
+		set board_title = #{boardTitle}, 
+			board_content = #{boardContent} 
+		where board_num = #{boardNum}						
+	</update>
+	
+	<update id="updateBoard" parameterType="Board">
+		update board 
+		set board_title = #{boardTitle}, 
+			board_content = #{boardContent}, 
+			BOARD_ORIGINAL_FILENAME = #{boardOriginalFileName}, 
+			BOARD_RENAME_FILENAME = #{boardRenameFileName} 
+		where board_num = #{boardNum}
+	</update>
+
+</mapper>

@@ -1,96 +1,104 @@
 package notice.model.service;
 
-import java.sql.Connection;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
 import notice.model.dao.NoticeDao;
 import notice.model.vo.Notice;
-
-import static common.JDBCTemplate.*;
+import notice.model.vo.SearchDate;
 
 public class NoticeService {
 	private NoticeDao ndao = new NoticeDao();
 	
 	public NoticeService() {}
 	
+	private SqlSession getSession() {
+		SqlSession mybatis = null;
+		try {
+			mybatis = new SqlSessionFactoryBuilder().build(Resources.getResourceAsReader("mybatis/mybatis-config.xml")).openSession(false);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mybatis;
+	}
+	
 	public HashMap<Integer, Notice> selectMap(){
-		Connection conn = getConnection();
-		HashMap<Integer, Notice> list = ndao.selectMap(conn);
-		close(conn);
+		SqlSession session = getSession();
+		HashMap<Integer, Notice> list = ndao.selectMap(session);
+		session.close();
 		return list;
 	}
 	
 	public Notice selectOne(int noticeNo) {
-		Connection conn = getConnection();
-		Notice notice = ndao.selectOne(conn, noticeNo);
-		close(conn);
+		SqlSession session = getSession();
+		Notice notice = ndao.selectOne(session, noticeNo);
+		session.close();
 		return notice;
 	}
 	
 	public int insertNotice(Notice notice) {
-		Connection conn = getConnection();
-		int result = ndao.insertNotice(conn, notice);
+		SqlSession session = getSession();
+		int result = ndao.insertNotice(session, notice);
 		if(result > 0)
-			commit(conn);
+			session.commit();
 		else
-			rollback(conn);
-		close(conn);
+			session.rollback();
+		session.close();
 		return result;
 	}
 	
 	public int updateNotice(Notice notice) {
-		Connection conn = getConnection();
-		int result = ndao.updateNotice(conn, notice);
+		SqlSession session = getSession();
+		int result = ndao.updateNotice(session, notice);
 		if(result > 0)
-			commit(conn);
+			session.commit();
 		else
-			rollback(conn);
-		close(conn);
+			session.rollback();
+		session.close();
 		return result;
 	}
 	
 	public int deleteNotice(int noticeNo) {
-		Connection conn = getConnection();
-		int result = ndao.deleteNotice(conn, noticeNo);
+		SqlSession session = getSession();
+		int result = ndao.deleteNotice(session, noticeNo);
 		if(result > 0)
-			commit(conn);
+			session.commit();
 		else
-			rollback(conn);
-		close(conn);
+			session.rollback();
+		session.close();
 		return result;
 	}
 
 	public HashMap<Integer, Notice> selectSearchTitle(String noticeTitle) {
-		Connection conn = getConnection();
-		HashMap<Integer, Notice> map = ndao.selectSearchTitle(conn, noticeTitle);
-		close(conn);
+		SqlSession session = getSession();
+		HashMap<Integer, Notice> map = ndao.selectSearchTitle(session, noticeTitle);
+		session.close();
 		return map;
 	}
 
 	public HashMap<Integer, Notice> selectSearchWriter(
 			String noticeWriter) {
-		Connection conn = getConnection();
-		HashMap<Integer, Notice> map = 
-				ndao.selectSearchWriter(conn, noticeWriter);
-		close(conn);
+		SqlSession session = getSession();
+		HashMap<Integer, Notice> map = ndao.selectSearchWriter(session, noticeWriter);
+		session.close();
 		return map;
 	}
 
-	public HashMap<Integer, Notice> selectSearchDate(
-			Date beginDate, Date endDate) {
-		Connection conn = getConnection();
-		HashMap<Integer, Notice> map = 
-				ndao.selectSearchDate(conn, beginDate, endDate);
-		close(conn);
+	public HashMap<Integer, Notice> selectSearchDate(SearchDate date) {
+		SqlSession session = getSession();
+		HashMap<Integer, Notice> map = ndao.selectSearchDate(session, date);
+		session.close();
 		return map;
 	}
 
 	public ArrayList<Notice> selectTop5Write() {
-		Connection conn = getConnection();
-		ArrayList<Notice> list = ndao.selectTop5Write(conn);
-		close(conn);
+		SqlSession session = getSession();
+		ArrayList<Notice> list = ndao.selectTop5Write(session);
+		session.close();
 		return list;
 	}
 }

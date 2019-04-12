@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+
+	
+	<resultMap id="resultBoard" type="Board">
+		<id property="boardNum" column="board_num" />
+		<result property="boardWriter" column="BOARD_WRITER" />
+		<result property="boardTitle" column="BOARD_TITLE"/>
+		<result property="boardContent" column="BOARD_CONTENT"/>
+		<result property="boardOriginalFileName" column="BOARD_ORIGINAL_FILENAME"/>
+		<result property="boardRenameFileName" column="BOARD_RENAME_FILENAME"/>
+		<result property="boardRef" column="BOARD_REF"/>
+		<result property="boardReplyRef" column="BOARD_REPLY_REF"/>
+		<result property="boardReplyLev" column="BOARD_REPLY_LEV"/>
+		<result property="boardReplySeq" column="BOARD_REPLY_SEQ"/>
+		<result property="boardReadCount" column="BOARD_READCOUNT"/>
+		<result property="boardDate" column="BOARD_DATE"/>
+	</resultMap>
+	
+	<!-- 비교연산자를 쿼리문에 그냥 사용하면 태그(element)의
+		꺽쇠(<, >, &)와 혼동하는 문제가 발생할 수 있음. 
+		이 문제를 미연에 방지하기 위해 xml 코드 중 
+		xml parser 에 의해 해석하지 말고, 문장 그대로
+		해석하라는 뜻으로 <![CDATA[쿼리문장]]> 사용함.-->
+	
+	<select id="getListCount" resultType="_int">
+		select count(*) from board
+	</select>
+	<select id="selectList" parameterType="board.model.vo.BoardPage"  resultMap="resultBoard">
+	<![CDATA[
+		select * 
+		from (select rownum rnum, board_num, 
+				   board_title, board_writer, board_content, 
+				   board_original_filename, board_rename_filename,
+				   board_date, board_readcount, board_reply_lev,
+				   board_ref, board_reply_ref, board_reply_seq 
+			  from (select * 
+			  		from board 
+			  		order by board_ref desc, 
+			  				board_reply_ref desc, 
+			  				board_reply_lev asc, 
+			  				board_reply_seq asc)) 
+		where rnum >= #{offset} and rnum <= #{limit}
+		]]>
+	</select>
+	<update id="addReadCount" parameterType="_int">
+		update board set board_readcount = board_readcount + 1 where board_num = #{boardNum}
+	</update>
+	<select id="selectBoard" parameterType="_int" resultMap="resultBoard">
+		select * from board where board_num = #{boardNum}
+	</select>
+	<insert id="insertBoard" parameterType="Board">
+		insert into board values ((select max(board_num) + 1 from board), #{boardWriter}, #{boardTitle}, #{boardContent}, #{boardOriginalFileName}, #{boardRenameFileName}, (select max(board_num) + 1 from board), 0, 0, 0, default, default)
+	</insert>
+	<insert id="insertReply">
+		
+	</insert>
+	<update id="updateReplySeq" parameterType="Board">
+		update board set board_reply_seq = board_reply_seq + 1 where board_ref = #{boardRef} and board_reply_lev = #{boardReplyLev} and board_reply_ref = #{boardReplyRef}
+	</update>
+	<update id="updateReply" parameterType="Board">
+		update board set board_title = #{boardTitle}, board_content = #{boardContent} where board_num = #{boardNum}
+	</update>
+	<update id="updateBoard" parameterType="Board">
+		update board set board_title = #{boardTitle}, board_content = #{boardContent}, board_original_filename = #{boardOriginalFileName}, board_rename_filename = #{boardRenameFileName} where board_num = #{boardNum}
+	</update>
+	<delete id="deleteBoard" parameterType="_int">
+		delete from board where board_num = #{boardNum}
+	</delete>
+	<!-- <select id="selectDateList" para>
+		SELECT * FROM (SELECT ROWNUM RNUM, BOARD_NUM, BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_ORIGINAL_FILENAME, BOARD_RENAME_FILENAME, BOARD_REF,  
+				BOARD_REPLY_REF, BOARD_REPLY_LEV, BOARD_REPLY_SEQ, BOARD_READCOUNT, BOARD_DATE FROM (SELECT * FROM BOARD where board_date between ? and ?  
+				ORDER BY BOARD_REF DESC, BOARD_REPLY_REF ASC, BOARD_REPLY_LEV ASC, BOARD_REPLY_SEQ ASC)) WHERE RNUM >= ? AND RNUM <= ?
+	</select>
+	<select id="selectWriterList" para>
+		SELECT * FROM (SELECT ROWNUM RNUM, BOARD_NUM, BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_ORIGINAL_FILENAME, BOARD_RENAME_FILENAME, BOARD_REF,  
+				BOARD_REPLY_REF, BOARD_REPLY_LEV, BOARD_REPLY_SEQ, BOARD_READCOUNT, BOARD_DATE FROM (SELECT * FROM BOARD where board_writer like ?  
+				ORDER BY BOARD_REF DESC, BOARD_REPLY_REF ASC, BOARD_REPLY_LEV ASC, BOARD_REPLY_SEQ ASC)) WHERE RNUM >= ? AND RNUM <= ?
+	</select>
+	<select id="selectTitleList" para>
+		SELECT * FROM (SELECT ROWNUM RNUM, BOARD_NUM, BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_ORIGINAL_FILENAME, BOARD_RENAME_FILENAME, BOARD_REF,  
+				BOARD_REPLY_REF, BOARD_REPLY_LEV, BOARD_REPLY_SEQ, BOARD_READCOUNT, BOARD_DATE FROM (SELECT * FROM BOARD where board_title like ?  
+				ORDER BY BOARD_REF DESC, BOARD_REPLY_REF ASC, BOARD_REPLY_LEV ASC, BOARD_REPLY_SEQ ASC)) WHERE RNUM >= ? AND RNUM <= ?
+	</select> -->
+	<!-- <select id="selectReadCountTop5" resultMap="resultBoard">
+		SELECT * FROM (SELECT ROWNUM RNUM, BOARD_NUM, BOARD_TITLE,  BOARD_READCOUNT FROM (SELECT * FROM BOARD WHERE BOARD_REPLY_LEV = 0  
+				ORDER BY BOARD_READCOUNT DESC)) WHERE RNUM >= 1 AND RNUM <= 5
+	</select> -->
+	
+
+
+</mapper>
