@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import board.model.dao.BoardDao;
 import board.model.vo.Board;
+import notice.model.vo.SearchDate;
 
 public class BoardService {
 	private BoardDao bdao = new BoardDao();
@@ -138,9 +139,9 @@ public class BoardService {
 		return list;
 	}
 	
-	public ArrayList<Board> boardSearchDate(Date begin, Date end, int currentPage, int limit){
+	public ArrayList<Board> boardSearchDate(SearchDate date, int currentPage, int limit){
 		SqlSession session = getSession();
-		ArrayList<Board> list = bdao.selectDateList(session, begin, end, currentPage, limit);
+		ArrayList<Board> list = bdao.selectDateList(session, date, currentPage, limit);
 		session.close();
 		return list;
 	}

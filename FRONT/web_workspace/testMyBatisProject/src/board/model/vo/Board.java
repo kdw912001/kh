@@ -18,7 +18,7 @@ public class Board implements Serializable {
 	private int boardReplySeq; //댓글의 순번
 	private int boardReadCount;  //조회수
 	private Date boardDate;
-	
+		
 	public Board() {}
 
 	public Board(int boardNum, String boardWriter, String boardTitle, String boardContent, String boardOriginalFileName,

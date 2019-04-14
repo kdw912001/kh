@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.model.service.BoardService;
 import board.model.vo.Board;
+import notice.model.vo.SearchDate;
 
 /**
  * Servlet implementation class BoardSearchDateServlet
@@ -40,6 +41,7 @@ public class BoardSearchDateServlet extends HttpServlet {
 		
 		Date begin = Date.valueOf(request.getParameter("begin"));
 		Date end = Date.valueOf(request.getParameter("end"));
+		SearchDate date = new SearchDate(begin, end);
 		int currentPage = 1;
 
 		if (request.getParameter("page") != null) {
@@ -52,7 +54,7 @@ public class BoardSearchDateServlet extends HttpServlet {
 		BoardService bservice = new BoardService();
 
 		// 현재 페이지에 출력할 목록 조회
-		ArrayList<Board> list = bservice.boardSearchDate(begin, end, currentPage, limit);
+		ArrayList<Board> list = bservice.boardSearchDate(date, currentPage, limit);
 		// System.out.println("list : " + list);
 
 		// 총 페이지수 계산 : 목록이 마지막 1개일 때 1페이지로 처리
