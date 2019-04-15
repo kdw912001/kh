@@ -3,35 +3,32 @@ package member.model.service;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
 import member.model.dao.MemberDao;
 import member.model.vo.Member;
+
+import static common.SqlSessionTemplate.getSession;
 
 public class MemberService {
 	private MemberDao mdao = new MemberDao();
 			
 	public MemberService() {}
 
-	private SqlSession getSession() {/* jdbcTemplate에 Connection */
+	/*private SqlSession getSession() { jdbcTemplate에 Connection 
 		SqlSession mybatis = null;
 		try {
-			/*마이바티스 config 설정파일의 내용을 읽어서 db 연결하고 PreparedStatement 객체 생성과
-			 * 동일한 의미를 가진 코드임.*/
-			/*String resource = "mybatis/mybatis-config.xml";
+			마이바티스 config 설정파일의 내용을 읽어서 db 연결하고 PreparedStatement 객체 생성과
+			 * 동일한 의미를 가진 코드임.
+			String resource = "mybatis/mybatis-config.xml";
 			InputStream inputStream = Resources.getResourceAsStream(resource);
 			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-			mybatis = sqlSessionFactory.openSession(false); AutoCommit false */
+			mybatis = sqlSessionFactory.openSession(false); AutoCommit false 
 			//위 4줄의 코드 1줄로 줄이기
 			mybatis = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis/mybatis-config.xml")).openSession(false);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return mybatis;
-	}
+	}*/
 	
 	public Member selectLogin(Member member) {/*result를 한번밖에 못하니 변수를 통일하기 위해 Member로 묶음*/
 		SqlSession session = getSession();/* getConnection과 동일한 역할 */

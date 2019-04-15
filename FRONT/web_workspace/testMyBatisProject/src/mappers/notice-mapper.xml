@@ -21,10 +21,41 @@
 		select * from notice where noticeno = #{noticeNo}
 	</select>
 	<insert id="insertNotice" parameterType="Notice">                                               <!-- #{barcode_img_name, jdbcType=VARCHAR}, 'N' -->
-		<![CDATA[insert into notice values ((select max(noticeno) + 1 from notice),#{noticeTitle}, default, #{noticeWriter}, #{noticeContent}, #{originalFilePath, jdbcType=VARCHAR}, #{renameFilePath, jdbcType=VARCHAR})]]>
+		<!-- 내가한거<![CDATA[insert into notice values ((select max(noticeno) + 1 from notice),#{noticeTitle}, default, #{noticeWriter}, #{noticeContent}, #{originalFilePath, jdbcType=VARCHAR}, #{renameFilePath, jdbcType=VARCHAR})]]> -->
+		<!-- insert into notice (noticeno, noticetitle, noticedate, noticewriter, noticecontent
+		<if test="originalFilePath != null">
+		, original_filepath, rename_filepath)
+		</if> 
+		values ((select max(noticeno) + 1 from notice),#{noticeTitle}, default, #{noticeWriter}, #{noticeContent} 
+		<if test="originalFilePath != null">
+		,#{originalFilePath}, 
+		#{renameFilePath}
+		</if> -->
+		<choose>
+		<when test="originalFilePath == null">
+		insert into notice (noticeno, noticetitle, noticedate, noticewriter, noticecontent)
+		values ((select max(noticeno) + 1 from notice),#{noticeTitle}, default, #{noticeWriter}, #{noticeContent})
+		</when>
+		<otherwise>
+		insert into notice (noticeno, noticetitle, noticedate, noticewriter, noticecontent, original_filepath, rename_filepath)
+		values ((select max(noticeno) + 1 from notice),#{noticeTitle}, default, #{noticeWriter}, #{noticeContent},
+			#{originalFilePath}, #{renameFilePath})
+		</otherwise>
+		</choose> 
 	</insert>
+	
+	<sql id="filepath">
+		<if test="originalFilePath != null">
+			, original_filepath = #{originalFilePath}, 
+		 rename_filepath = #{renameFilePath}
+		</if>
+	</sql>
+	
 	<update id="updateNotice" parameterType="Notice">
-	update notice set noticetitle = #{noticeTitle}, noticecontent = #{noticeContent}, original_filepath = #{originalFilePath}, rename_filepath = #{renameFilePath} where noticeno = #{noticeNo}
+	update notice 
+	set noticetitle = #{noticeTitle}, noticecontent = #{noticeContent}, 
+	<include refid="filepath"/>
+	where noticeno = #{noticeNo}
 	</update>
 	<delete id="deleteNotice" parameterType="_int">
 	delete from notice where noticeno = #{noticeNo}

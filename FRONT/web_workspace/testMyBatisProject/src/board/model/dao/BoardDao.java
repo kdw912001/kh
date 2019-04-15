@@ -2,7 +2,9 @@ package board.model.dao;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -82,13 +84,22 @@ public class BoardDao {
 
 	public ArrayList<Board> selectWriterList(SqlSession session, String writer, int currentPage, int limit) {
 		RowBounds rowBounds = new RowBounds(currentPage, limit);
+		Map<String, Object> map = new HashMap<>();
+		map.put("writer", writer);
+	    map.put("offset", rowBounds.getOffset());
+	    map.put("limit", rowBounds.getLimit());
 		List<Board> list = session.selectList("boardMapper.selectWriterList", writer, rowBounds);
 		return (ArrayList<Board>)list;
 	}
 
 	public ArrayList<Board> selectTitleList(SqlSession session, String title, int currentPage, int limit) {
 		RowBounds rowBounds = new RowBounds(currentPage, limit);
-		List<Board> list = session.selectList("boardMapper.selectTitleList", title, rowBounds);
+		Map<String, Object> map = new HashMap<>();
+		map.put("title", title);
+	    map.put("offset", rowBounds.getOffset());
+	    map.put("limit", rowBounds.getLimit());
+	    List<Board> list = session.selectList("boardMapper.selectTitleList", map);
+		
 		return (ArrayList<Board>)list;
 	}
 

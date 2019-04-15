@@ -3,20 +3,18 @@ package notice.model.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
 import notice.model.dao.NoticeDao;
 import notice.model.vo.Notice;
 import notice.model.vo.SearchDate;
+
+import static common.SqlSessionTemplate.getSession;
 
 public class NoticeService {
 	private NoticeDao ndao = new NoticeDao();
 	
 	public NoticeService() {}
 	
-	private SqlSession getSession() {
+	/*private SqlSession getSession() {
 		SqlSession mybatis = null;
 		try {
 			mybatis = new SqlSessionFactoryBuilder().build(Resources.getResourceAsReader("mybatis/mybatis-config.xml")).openSession(false);
@@ -24,7 +22,7 @@ public class NoticeService {
 			e.printStackTrace();
 		}
 		return mybatis;
-	}
+	}*/
 	
 	public HashMap<Integer, Notice> selectMap(){
 		SqlSession session = getSession();

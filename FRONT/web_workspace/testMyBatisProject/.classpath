@@ -13,6 +13,5 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="web/WEB-INF/lib/ext/el-api.jar"/>
 	<classpathentry kind="output" path="web/WEB-INF/classes"/>
 </classpath>

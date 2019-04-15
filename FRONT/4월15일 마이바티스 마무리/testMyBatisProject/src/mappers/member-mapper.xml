@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+
+	<resultMap id="resultMember" type="Member">
+		<id property="userId" column="userid" />
+		<result property="userPwd" column="userpwd" />
+		<result property="userName" column="username" />
+		<result property="gender" column="gender" />
+		<result property="age" column="age" />
+		<result property="phone" column="phone" />
+		<result property="email" column="email" />
+		<result property="hobby" column="hobby" />
+		<result property="etc" column="etc" />
+		<result property="enrollDate" column="enroll_date" />
+		<result property="lastModified" column="lastmodified" />
+	</resultMap>
+
+	<select id="selectLogin" parameterType="Member" 
+	 resultMap="resultMember" useCache="true">
+		select * from member 
+		where userid = #{userId} 
+		and userpwd = #{userPwd}
+	</select>
+	
+	<select id="selectCheckId" parameterType="string" 
+	resultType="_int" useCache="true">
+		select count(userid) from member 
+		where userid = #{userId}
+	</select>
+	
+	<select id="selectMember" parameterType="string" 
+	resultType="Member"  resultMap="resultMember" 
+	useCache="true">
+		select * from member 
+		where userid = #{userId}
+	</select>
+	
+	<select id="selectList" resultMap="resultMember" 
+	useCache="true">
+		select * from member
+	</select>
+	
+	<insert id="insertMember" parameterType="Member">
+		insert into member 
+		values (#{userId}, #{userPwd}, #{userName}, 
+		#{gender}, #{age}, #{phone}, #{email}, #{hobby}, 
+		#{etc}, sysdate, sysdate)
+	</insert>
+	
+	<delete id="deleteMember" parameterType="string">
+		delete from member where userid = #{userId}
+	</delete>
+	
+	<update id="updateMember" parameterType="Member">
+		update member 
+		set userpwd = #{userPwd}, age = #{age}, 
+		email = #{email}, phone = #{phone}, etc = #{etc}, 
+		hobby = #{hobby} where userid = #{userId}
+	</update>
+
+
+
+</mapper>

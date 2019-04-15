@@ -29,7 +29,7 @@
 	<select id="getListCount" resultType="_int">
 		select count(*) from board
 	</select>
-	<select id="selectList" parameterType="Board"  resultMap="resultBoard">
+	<select id="selectList"  resultMap="resultBoard">
 	<![CDATA[
 		select * 
 		from (select rownum rnum, board_num, 
@@ -53,11 +53,30 @@
 		select * from board where board_num = #{boardNum}
 	</select>
 	<insert id="insertBoard" parameterType="Board">
-		insert into board values ((select max(board_num) + 1 from board), #{boardWriter}, #{boardTitle}, #{boardContent}, #{boardOriginalFileName}, #{boardRenameFileName}, (select max(board_num) + 1 from board), 0, 0, 0, default, default)
+
+		<!-- <choose>
+		<when test="boardOriginalFileName == null"> -->
+		insert into board (board_num, BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_REF, BOARD_REPLY_REF, BOARD_REPLY_LEV, BOARD_REPLY_SEQ, BOARD_READCOUNT, board_date)
+		values ((select max(board_num) + 1 from board), #{boardWriter}, #{boardTitle}, #{boardContent}, 
+		(select max(board_num) + 1 from board), 0, 0, 0, default, default)
+	<!-- 	</when>
+		<otherwise>
+		insert into board (board_num, board_writer, board_title, board_content, BOARD_ORIGINAL_FILENAME, BOARD_RENAME_FILENAME, board_ref, board_reply_ref, board_reply_lev, board_reply_seq, board_readcount, board_date)
+		values ((select max(board_num) + 1 from board), #{boardWriter}, #{boardTitle}, #{boardContent}, 
+		#{boardOriginalFileName}, #{boardRenameFileName}, (select max(board_num) + 1 from board), 0, 0, 0, default, default)
+		</otherwise>
+		</choose> -->
 	</insert>
-	<insert id="insertReply">
-		
-	</insert>
+	<!-- <insert id="insertReply" parameterType="Board">
+		<if test="replyBoard.getBoardReplyLev() == 1">
+			insert into board values ((select max(board_num) + 1 from board), ?, ?, ?, NULL, NULL, ?, 
+			(select max(board_num) + 1 from board), 1, ?, default, default)
+		</if>
+		<if test="replyBoard.getBoardReplyLev() == 2">
+			insert into board values ((select max(board_num) + 1 from board), ?, ?, ?, NULL, NULL, 
+			?, ?, 2, ?, default, default)
+		</if>
+	</insert> -->
 	<update id="updateReplySeq" parameterType="Board">
 		update board set board_reply_seq = board_reply_seq + 1 where board_ref = #{boardRef} and board_reply_lev = #{boardReplyLev} and board_reply_ref = #{boardReplyRef}
 	</update>
@@ -65,7 +84,9 @@
 		update board set board_title = #{boardTitle}, board_content = #{boardContent} where board_num = #{boardNum}
 	</update>
 	<update id="updateBoard" parameterType="Board">
-		update board set board_title = #{boardTitle}, board_content = #{boardContent}, board_original_filename = #{boardOriginalFileName}, board_rename_filename = #{boardRenameFileName} where board_num = #{boardNum}
+		update board 
+		set board_title = #{boardTitle}, board_content = #{boardContent}, board_original_filename = #{boardOriginalFileName}, board_rename_filename = #{boardRenameFileName} 
+		where board_num = #{boardNum}
 	</update>
 	<delete id="deleteBoard" parameterType="_int">
 		delete from board where board_num = #{boardNum}
@@ -77,13 +98,13 @@
 				WHERE RNUM >= #{offset} AND RNUM <= #{limit} 
 				]]>
 	</select>
-	<select id="selectWriterList" parameterType="string" resultMap="resultBoard">
+	<select id="selectWriterList" parameterType="map" resultMap="resultBoard">
 		<![CDATA[SELECT * FROM (SELECT ROWNUM RNUM, BOARD_NUM, BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_ORIGINAL_FILENAME, BOARD_RENAME_FILENAME, BOARD_REF, BOARD_REPLY_REF, BOARD_REPLY_LEV, BOARD_REPLY_SEQ, BOARD_READCOUNT, BOARD_DATE 
 				FROM (SELECT * FROM BOARD where board_writer like '%' || #{writer} || '%'  ORDER BY BOARD_REF DESC, BOARD_REPLY_REF ASC, BOARD_REPLY_LEV ASC, BOARD_REPLY_SEQ ASC)) 
 				WHERE RNUM >= #{offset} AND RNUM <= #{limit}
 				]]>
 	</select>
-	<select id="selectTitleList" parameterType="string" resultMap="resultBoard">
+	<select id="selectTitleList" parameterType="map" resultMap="resultBoard">
 		<![CDATA[SELECT * FROM (SELECT ROWNUM RNUM, BOARD_NUM, BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_ORIGINAL_FILENAME, BOARD_RENAME_FILENAME, BOARD_REF,  
 				BOARD_REPLY_REF, BOARD_REPLY_LEV, BOARD_REPLY_SEQ, BOARD_READCOUNT, BOARD_DATE 
 				FROM (SELECT * FROM BOARD where board_title like '%' || #{title} || '%'  ORDER BY BOARD_REF DESC, BOARD_REPLY_REF ASC, BOARD_REPLY_LEV ASC, BOARD_REPLY_SEQ ASC)) 

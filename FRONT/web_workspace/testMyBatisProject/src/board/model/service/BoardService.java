@@ -1,24 +1,22 @@
 package board.model.service;
 
 
-import java.sql.Connection;
-import java.sql.Date;
 import java.util.ArrayList;
 
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import board.model.dao.BoardDao;
 import board.model.vo.Board;
 import notice.model.vo.SearchDate;
+
+import static common.SqlSessionTemplate.getSession;
 
 public class BoardService {
 	private BoardDao bdao = new BoardDao();
 	
 	public BoardService() {}
 
-	private SqlSession getSession() {
+	/*private SqlSession getSession() {
 		SqlSession mybatis = null;
 		try {
 			mybatis = new SqlSessionFactoryBuilder().build(Resources.getResourceAsReader("mybatis/mybatis-config.xml")).openSession(false);
@@ -26,7 +24,7 @@ public class BoardService {
 			e.printStackTrace();
 		}
 		return mybatis;
-	}
+	}*/
 	
 	public int getListCount() {
 		SqlSession session = getSession();
