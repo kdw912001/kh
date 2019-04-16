@@ -1,0 +1,12 @@
+package org.kh.first.member.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class MemberController {
+
+	@RequestMapping(value="login.do")
+	public String loginMethod() {
+		
+	}
+}

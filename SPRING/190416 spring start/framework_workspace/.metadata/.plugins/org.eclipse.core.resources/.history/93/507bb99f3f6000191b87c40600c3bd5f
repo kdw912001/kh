@@ -1,0 +1,5 @@
+package org.kh.first.member.controller;
+
+public class MemberController {
+
+}
