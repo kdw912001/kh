@@ -10,24 +10,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class MemberController {
-
+	
 	@RequestMapping(value="login.do", method=RequestMethod.POST)
-	public String loginMethod(Member member, 
-			HttpSession session) {
+	public String loginMethod(Member member, HttpSession session) {
 		System.out.println(member);
 		member.setUsername("홍길동");
 		
 		//HttpSession session = request.getSession();
 		//메소드 매개변수로 선언하면 자동 생성됨.
 		session.setAttribute("loginMember", member);
-		
 		return "home";
 	}
-	
 }
-
-
-
-
-
-

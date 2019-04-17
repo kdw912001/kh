@@ -21,7 +21,7 @@ public class HomeController {
 	@RequestMapping(value = "main.do", method = RequestMethod.GET)
 	public String home() {
 		logger.info("Welcome home!");
-				
+		
 		return "home";
 	}
 	

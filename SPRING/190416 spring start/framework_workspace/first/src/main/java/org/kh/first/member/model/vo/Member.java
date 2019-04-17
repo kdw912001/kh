@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class Member implements java.io.Serializable{
 	private static final long serialVersionUID = 11111L;
 	
-	//테이블의 컬럼명과 똑같이 필드명 지정함
+	//테이블의 컬럼명과 똑같이 필드명 지정함->getter setter 만들 필요없고, resultMap 만들 필요 없어짐
 	private String userid;
 	private String userpwd;
 	private String username;
@@ -133,10 +133,11 @@ public class Member implements java.io.Serializable{
 
 	@Override
 	public String toString() {
-		return "Member [userid=" + userid + ", userpwd=" + userpwd + ", username=" + username + ", gender=" + gender
-				+ ", age=" + age + ", phone=" + phone + ", email=" + email + ", hobby=" + hobby + ", etc=" + etc
-				+ ", enroll_date=" + enroll_date + ", lastmodified=" + lastmodified + "]";
+		return userid + ", " + userpwd + ", " + username + ", " + gender + ", " + age + ", " + phone + ", " + email
+				+ ", " + hobby + ", " + etc + ", " + enroll_date + ", " + lastmodified;
 	}
+
+	
 	
 	
 }

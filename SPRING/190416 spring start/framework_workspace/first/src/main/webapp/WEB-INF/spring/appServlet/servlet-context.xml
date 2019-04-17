@@ -20,14 +20,7 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
+		
 	<context:component-scan base-package="org.kh.first" />
 	
-	
-	
-	<!-- <beans:bean class="org.kh.first.member.model.vo.Member"></beans:bean> -->
-
-
-
-
 </beans:beans>

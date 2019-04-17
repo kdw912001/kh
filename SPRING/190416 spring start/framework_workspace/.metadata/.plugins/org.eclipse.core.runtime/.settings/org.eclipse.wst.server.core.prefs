@@ -1,3 +1,0 @@
-eclipse.preferences.version=1
-module-start-timeout=300000
-runtimes=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<runtimes>\r\n  <runtime id\="first server" location\="D\:/devtools/webserver_tools/apache-tomcat-8.5.37-windows-x64/apache-tomcat-8.5.37" name\="first server" runtime-type-id\="org.eclipse.jst.server.tomcat.runtime.85" timestamp\="0"/>\r\n  <runtime id\="second server" location\="D\:/devtools/webserver_tools/apache-tomcat-8.5.37-windows-x64/apache-tomcat-8.5.37" name\="second server" runtime-type-id\="org.eclipse.jst.server.tomcat.runtime.85" timestamp\="1"/>\r\n</runtimes>\r\n

@@ -8,9 +8,8 @@
 </head>
 <body>
 <!-- <h1>first spring framework project</h1> -->
-<%-- 
-<% request.getRequestDispatcher("main.do").forward(request, response); %>
- --%>
-<jsp:forward page="main.do" />
+
+<%-- <% request.getRequestDispatcher("main.do").forward(request, response);//<jsp:forward>와 동일 %> --%>
+<jsp:forward page="main.do"/>
 </body>
 </html>
