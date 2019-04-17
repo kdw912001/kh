@@ -1,0 +1,142 @@
+﻿*앞으로 이클립스-오른쪽 아래 잘 봐야 함
+
+1. 프로젝트경로가 한글이면 안됨, 공백X, _가능
+2. 전체 경로를 똑같이 맞출 수 있다면 편하게 버전관리할 수 있음.
+   -똑같이 맞출 수 없다면 sourcetree 사용해야 함.
+3. spring/요약/스프링_1.pdf 를 보면서 환경 구축
+4. 이클립스가 설치된 폴더 안에 eclipse.ini을 열어서  
+--launcher.appendVmargs 밑에 아래 두 줄을 추가함(jdk안에 javaw.exe 경로를 붙여넣기)
+
+--vm
+C:\Program Files\Java\jdk1.8.0_191\bin\javaw.exe       
+
+5. Maven 다운(라이브러리 자동 처리, Maven이 없으면 jar파일 일일이 다운 받아야 함)
+다운받아서 d드라이브에 위치(경로가 복잡하면 문제를 일으킬 확률이 큼)
+
+6. Maven 폴더/conf/settings.xml 실행
+  -주석처리되어있는 <localRepository> 주석 아래에 <localRepository>를 작성하는데
+  -Maven폴더 안에 repository 폴더 생성하여 그 경로를 <localRepository>에 기입
+  -아래 두 줄 처럼 하면 됨.
+  -다시 설명하면 
+   1. repository폴더생성, 경로 복사 
+   2. settings.xml안에 <localRepository>주석 아래에 <localRepository>를 작성하여 그 안에 경로 붙여넣기
+ex) <!-- localrepository관련 내용 -->
+    <localRepository>D:\apache-maven-3.6.1\repository</localRepository>  
+
+ -그 다음 이클립스 내에서 메이븐 설정한다. 
+ => window 메뉴 > Preference 선택 => Maven > User Settings 선택 => Browse 버튼 클릭 
+ => 메이븐의 settings.xml 파일을 선택 => ok 
+
+7. 이클립스 내 UTF-8세팅(JSON/Web안에 Css,HTML,JSP/general-editors-spelling),서버 세팅
+
+
+8. target 제외
+=> 상단의 Window > Preferences를 선택한다.  => Team > Ignored Resources를 선택한다. 
+=> Add Pattern을 누른다.  => */target/* 을 추가한다. => ok
+
+9. 플러그인 설치
+ - 이클립스->help->Elicpse Marketplace->find에 sts 작성->find->3.9.7(3.9.8도 상관없음)->install->전부체크 confirm
+->동의->next(전부 체크하고 동의하면 됨, 이클립스 재실행 뜨면 재실행 하면 됨)
+
+-이클립스->help->Elicpse Marketplace->maven->find->maven Integration 설치되어있는지 확인(installed) 자바8버전부터는 기본설치되어 제공됨.
+
+10. openperspective->spring
+    spring Exploer을 packageExploerer옆에(왼쪽 위)
+    Progress, Problems 필요, navigator view 추가
+  -customize perspective->shortcuts->web,xml,javascript 체크, git사용할거면 체크
+
+11. new spring legacy Project(project이름이 contextroot 이름이 됨.)
+    ->templates에서 spring MVC Project체크->next->org.kh.first  (기관.회사이름.프로젝트이름)->finish
+
+-프로젝트 생성 후 package Exploer로 보면 에러가 뜸. (오른쪽 아래에 download 중)
+-download 끝날 때까지 작업금지
+
+12. 프로젝트 설정 변경
+ -   STS 를 이용하여 ‘Spring MVC Project’ 프로젝트를 생성하면 JRE 버전도 맞지 않고 서버 라이브러리도 등록되어 있지 않음  >> 설정을 수정해 주어야 함 
+ 
+  > 프로젝트 properties 선택   > 왼쪽 Project Facets 선택 > Java 버전 1.8 또는 설치된 버전으로 수정   > 오른쪽의 Runtimes 탭 선택 > 톰켓 8.0 또는 등록된 서버로 체크함   > Apply > OK 
+ 
+  > 왼쪽 Java Build Path > Libraries 탭 클릭  > Tomcat, JRE, Maven 등록 확인함(unbound이면 문제)   > Apply > OK 
+
+13. 프로젝트 한번 테스트 
+** 톰캣 스타트 에러 시 
+1. maven\repository 폴더 내용 전부 삭제하면 자동으로 다시 다운 받음
+
+
+14.  jstl 오류 발생시 
+   - package Exploerer->프로젝트 더블클릭->maven Dependencies에서 jstl-1.2.jar 확인
+   - 일반적으로 jstl 인식을 못함->직접 jstl파일을 넣어줌
+   - src\main\webapp\WEB-INF  밑에 lib폴더 생성->lib 폴더 안에 jstl-1.2.jar 붙여넣기
+
+15. 한글 깨지면
+  - src\main\webapp\WEB-INF\views\home.jsp 안에
+  - <%@ pageEncoding="UTF-8" %>
+  - <head> 밑에 <meta charset="UTF-8"> 추가
+
+
+16. pom.xml 버전 맞춰줘야 함.
+  -url 에 spring.io 로 들어감 -> projects-> spring framework -> learn 들어가면 버전확인 할 수 있음
+  -우리는 5.0.4에서 버전 사용(5.1은 아직 문제가 있음)
+  
+  -pom.xml실행 (아래와같이 수정) - 수정 후 저장하면 다운로드 함 - Maven Dependencies에서 버전 잘 다운되었는지 확인
+  -다운받다가 오류날 수 있으니 maven\repository 안 모두 삭제  
+  
+-버전은 maven에서 확인하여 버전을 맞춤
+<properties>
+		<java-version>1.8</java-version>
+		<org.springframework-version>5.0.4.RELEASE</org.springframework-version>
+		<org.aspectj-version>1.8.13</org.aspectj-version>
+		<org.slf4j-version>1.7.25</org.slf4j-version>
+</properties>
+
+17. web.xml 실행
+   -적당한 위치에 welcome 작성
+ <welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+</welcome-file-list>
+
+18. webapp 아래 index.jsp 생성
+
+19. web.xml 안
+ <url-pattern>*.do</url-pattern>   로 수정   (참고 : *와 / 를 같이 쓸 수 없음)
+
+20. index.jsp 
+<jsp:forward page="main.do"/>
+
+21.HomeController.java 안 value를 / -> main.do로 수정
+1)
+@RequestMapping(value = "main.do", method = RequestMethod.GET)
+(main.do는 가짜 이름, 실제로는 HomeController.java가 실행됨)
+
+2)메소드 안 내용 지움
+public String home() {
+		logger.info("Welcome home!");
+		
+		return "home";
+	}
+	
+22. home.jsp
+
+23. views\common\header.jsp 생성 및 작성  -> home.jsp 에 <c:import url="common/header.jsp" /> 작성
+
+24. org.kh.first.member.model.vo.Member.java 생성
+   - vo 생성시 DB 테이블 내 컬럼과 동일하게 입력
+   - @Component    추가한 후 import 함
+   ->servlet-context.xml에 Beans Graph 에 추가되어 있는걸 확인
+
+25. input name과 c:param name은 vo의 변수명과 동일해야 함
+
+26. controller는 new java파일로 생성 (MemberController.java)
+ -> MemberController 위에     @Controller 추가한 후 import
+ -> 메소드 추가 후 메소드 위에 @RequestMapping(value="login.do", method=RequestMethod.POST) 작성
+ - post 방식일 때는 명시, 기본은 get방식이며 get 방식일 경우 생략 가능
+
+   -메소드 매개변수로 선언하면 자동 생성됨.
+	public String loginMethod(Member member, HttpSession session) {
+		System.out.println(member);
+		
+		//HttpSession session = request.getSession();
+		//메소드 매개변수로 선언하면 자동 생성됨.
+		
+		return "home";
+	}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+
+	<resultMap id="resultMember" type="Member">
+	<!-- resultMap은 while(rset.next){}안 과정을 수행함  -->
+		<id property="userid" column="userid" /><!-- setUserId와 동일 property는 vo변수, column은 db 테이블 컬럼  -->
+		<result property="userpwd" column="userpwd" />
+		<result property="username" column="username" />
+		<result property="gender" column="gender" />
+		<result property="age" column="age" />
+		<result property="phone" column="phone" />
+		<result property="email" column="email" />
+		<result property="hobby" column="hobby" />
+		<result property="etc" column="etc" />
+		<result property="enroll_date" column="enroll_date" />
+		<result property="lastmodified" column="lastmodified" />
+	</resultMap>
+	
+	<select id="selectLogin" parameterType="Member" resultMap="resultMember" useCache="true">
+	<!-- useCache : 구문의 결과에 캐시 사용 여부 지정, 디폴트는 true  -->
+	<!--  mybatis-config.xml에 typeAlias를 선언하지 않으면 parameterType에 패키지 모두 명시해야 함-->
+	<!-- resultType이나 resultMap이 똑같으면 resultType 하나는 생략해도 됨  -->
+		select * from member 
+				where userid = #{userid} and userpwd = #{userpwd}
+	</select><!-- parameterType이 Member일 경우 Member.java(vo)에 생성한 변수의 이름으로 하면 자동으로 getter불러옴  -->
+	<select id="selectCheckId" parameterType="string" resultType="_int" useCache="true">
+	select count(userid) from member where userid = #{userid}
+	</select>
+	<insert id="insertMember" parameterType="Member">
+	insert into member values (#{userid}, #{userpwd}, #{username}, #{gender}, #{age}, #{phone}, #{email}, #{hobby}, #{etc}, sysdate, sysdate)
+	</insert>
+	<select id="selectMember" parameterType="string" resultType="Member"  resultMap="resultMember" useCache="true">
+		select * from member where userid = #{userId}
+	</select>
+	<update id="updateMember" parameterType="Member">
+		update member set userpwd = #{userpwd}, age = #{age}, email = #{email}, phone = #{phone}, etc = #{etc}, 
+				 hobby = #{hobby} where userid = #{userid}
+	</update>
+	<delete id="deleteMember" parameterType="string">
+		delete from member where userid = #{userid}
+	</delete>
+	<select id="selectList"  resultMap="resultMember" useCache="true">
+	<!-- insert,delete,update은 resultType에 _int할 필요없고 ArrayList 리턴은 resultType을 명시할 필요 없음  -->
+		select * from member
+	</select>
+</mapper>

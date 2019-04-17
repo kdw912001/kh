@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- DataSrouce 등록 -->
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<property name="driverClassName"
+		value="oracle.jdbc.driver.OracleDriver"/>
+	<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe
+	" />
+	<property name="username" value="student" />
+	<property name="password" value="student" />
+	</bean>
+	
+	<!-- Spring 과 MyBatis 연동 설정 -->
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean"
+		id="sqlSession">
+		<property name="configLocation"
+			value="classpath:mybatis-config.xml">
+		</property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSession"></constructor-arg>
+	</bean>
+
+	<!-- 트랜잭션 관리 설정 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<property name="dataSource" ref="dataSource"></property>
+	</bean>
+</beans>
