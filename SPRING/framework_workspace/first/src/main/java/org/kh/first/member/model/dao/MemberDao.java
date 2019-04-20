@@ -11,4 +11,20 @@ public class MemberDao {
 		return session.selectOne("memberMapper.selectLogin", member);
 	}
 
+	public int insertMember(SqlSessionTemplate session, Member member) {
+		return session.insert("memberMapper.insertMember", member);
+	}
+
+	public Member selectMember(SqlSessionTemplate session, String userid) {
+		return session.selectOne("memberMapper.selectMember", userid);
+	}
+
+	public int deleteMember(SqlSessionTemplate session, String userid) {
+		return session.delete("memberMapper.deleteMember", userid);
+	}
+
+	public int updateMember(SqlSessionTemplate session, Member member) {
+		return session.update("memberMapper.updateMember", member);
+	}
+
 }

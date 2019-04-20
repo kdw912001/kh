@@ -23,20 +23,22 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int insertMember(Member member) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = memberDao.insertMember(mybatisSession, member);
+		/*if(result > 0)
+			mybatisSession.commit();
+		else
+			mybatisSession.rollback();*/
+		return result;
 	}
 
 	@Override
 	public int updateMember(Member member) {
-		// TODO Auto-generated method stub
-		return 0;
+		return memberDao.updateMember(mybatisSession, member);
 	}
 
 	@Override
 	public int deleteMember(String userid) {
-		// TODO Auto-generated method stub
-		return 0;
+		return memberDao.deleteMember(mybatisSession, userid);
 	}
 
 	@Override
@@ -47,8 +49,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public Member selectMember(String userid) {
-		// TODO Auto-generated method stub
-		return null;
+		return memberDao.selectMember(mybatisSession, userid);
 	}
 
 }

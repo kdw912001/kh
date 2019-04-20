@@ -27,7 +27,7 @@ a { text-decoration: none; }
 	<li><a href="main.do">home</a></li>
 	<li><a href="">AOP란?</a></li>
 	<li><a href="">파일업로드 테스트</a></li>
-	<li><a href="">Ajax Test</a></li>
+	<li><a href="moveAjax.do">Ajax Test</a></li>
 	<li><a href="">패스워드 암호화처리</a></li>
 </ul>
 </nav>

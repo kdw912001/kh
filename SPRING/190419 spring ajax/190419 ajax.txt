@@ -1,0 +1,39 @@
+﻿1. views/test/testAjaxPage.jsp 생성
+  ->org.kh.first.test.controller 패키지안에 TestController.java 생성
+  ->header.jsp 안 Ajax Test에 아래와 같이 href 링크 걸어놓음 
+<li><a href="moveAjax.do">Ajax Test</a></li>
+
+2. pom.xml에  JsonView, JSONObject, Jackson 라이브러리 등록
+
+3.  testAjaxPage.jsp 작성  
+  - jquery 라이브러리 불러올 때 절대경로 하는 방법(아래와 같이 작성)
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/jquery-3.3.1.min.js"></script>
+  - /first/webapp으로 쓰면안되고 꼭 el로 작성해야 함 ->${pageContext.request.contextPath}
+  ->
+4. org.kh.first.test.model.vo 에 Sample.java 작성
+
+5. TestController.java 
+  -public void test1Method() {} 작성
+  ->IOException 처리 (try-catch문이 원칙이나 수업에선 throws로 작성함)
+  ->되는지 확인
+6. TestController.java    test2Method 메소드 작성
+  ->JSONObject 임포트 시 simple org.json.simple.JSONObject
+  ->메소드 상단에 @ResponseBody 작성 -> 리턴하는 json 문자열을 response 객체에 담아서 보내라는 의미
+  
+7. TestController.java    test3Method 메소드 작성
+->JSONObject 임포트 시 simple org.json.simple.JSONObject
+
+8. servlet-context.xml 에 bean 새로 등록(id=jsonview, class=JsonView)
+
+9.  TestController.java    test4Method 메소드 작성
+  -뷰지정 : 등록된 JsonView 의 id를 뷰이름으로 지정함->  mv.setViewName("jsonView");
+  - servlet-context.xml에 JsonView bean의 id값을 기입
+  
+  - 실행해보니 404에러가 발생
+  -> servlet-context.xml에  viewresolver bean 에 property로 <beans:property name="order" value="1"/> 추가
+  ->이래도 404에러 발생
+  -> servlet-context.xml에 BeanNameViewResolver bean 추가
+  -> property로  <beans:property name="order" value="0"></beans:property>   추가
+
+10. TestController.java    test5Method 메소드 작성
+  -JSONParser simple

@@ -29,7 +29,7 @@
 	<select id="selectCheckId" parameterType="string" resultType="_int" useCache="true">
 	select count(userid) from member where userid = #{userid}
 	</select>
-	<insert id="insertMember" parameterType="Member">
+	<insert id="insertMember" parameterType="Member" useGeneratedKeys="true">
 	insert into member values (#{userid}, #{userpwd}, #{username}, #{gender}, #{age}, #{phone}, #{email}, #{hobby}, #{etc}, sysdate, sysdate)
 	</insert>
 	<select id="selectMember" parameterType="string" resultType="Member"  resultMap="resultMember" useCache="true">
