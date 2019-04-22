@@ -1,0 +1,8 @@
+﻿1. header.jsp에 <li><a href="moveFile.do">파일업로드/다운로드 테스트</a></li> 작성
+ ->TestController.java에 moveFilePage() 메소드 작성
+ ->views\test\testFilePage.jsp 생성 및 작성(이름, 나이는 org.kh.first.test.model.vo에 있는 Sample.java)
+ ->TestController.java에 testFileUpload() 메소드 작성
+   - @RequestParam()은 request.getParamenter와 동일한 역할
+2.  views\test\testFilePage.jsp에 다운 관련 작성
+ ->TestController.java에 fileDownUpload() 메소드 작성
+ ->org.kh.first.test.controller 아래에 FileDownloadView.java 생성 및 작성
