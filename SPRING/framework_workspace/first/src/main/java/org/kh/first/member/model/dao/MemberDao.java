@@ -2,13 +2,24 @@ package org.kh.first.member.model.dao;
 
 import org.kh.first.member.model.vo.Member;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 @Repository("memberDao")
 public class MemberDao {
-
+	
+	@Autowired
+	BCryptPasswordEncoder bcryptPasswordEncoder;
+	
 	public Member selectLogin(SqlSessionTemplate session, Member member) {
-		return session.selectOne("memberMapper.selectLogin", member);
+		Member loginMember = session.selectOne("memberMapper.selectLogin", member);
+		
+		if(!bcryptPasswordEncoder.matches(member.getUserpwd(), loginMember.getUserpwd())) {
+			loginMember = null;
+		}
+		
+		return loginMember;
 	}
 
 	public int insertMember(SqlSessionTemplate session, Member member) {

@@ -24,7 +24,7 @@
 	<!--  mybatis-config.xml에 typeAlias를 선언하지 않으면 parameterType에 패키지 모두 명시해야 함-->
 	<!-- resultType이나 resultMap이 똑같으면 resultType 하나는 생략해도 됨  -->
 		select * from member 
-				where userid = #{userid} and userpwd = #{userpwd}
+				where userid = #{userid} <!-- and userpwd = #{userpwd} -->
 	</select><!-- parameterType이 Member일 경우 Member.java(vo)에 생성한 변수의 이름으로 하면 자동으로 getter불러옴  -->
 	<select id="selectCheckId" parameterType="string" resultType="_int" useCache="true">
 	select count(userid) from member where userid = #{userid}

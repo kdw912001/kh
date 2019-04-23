@@ -37,10 +37,10 @@ value="${member.userid }" readonly></td></tr>
 value="${member.username }"></td></tr>
 <tr height="20"><th width="150" bgcolor="orange">암 호</th>
 <td><input type="password" name="userpwd" id="userpwd"
-value="${member.userpwd }"></td></tr>
+value=""></td></tr>
 <tr height="20"><th width="150" bgcolor="orange">암호확인</th>
 <td><input type="password" id="userpwd2" 
-value="${member.userpwd }" ></td></tr>
+value="" ></td></tr>
 <tr height="20"><th bgcolor="orange">성 별</th>
 <td>
 <c:if test="${member.gender eq 'M' }">
