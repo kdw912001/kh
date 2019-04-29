@@ -21,6 +21,7 @@
 			value="[%d{HH:mm:ss}][%-5p][%F:%L]: - %m%n" />
 		</layout>
 	</appender>
+	
 	<!-- 
 	%p : debug, info, warn, error, fatal 등의 priority 출력
 	%m : 로그 메세지(message) 출력
@@ -71,7 +72,14 @@
 	<!-- Root Logger -->
 	<root>
 		<priority value="warn" />
-		<appender-ref ref="fileLogger" />
+		<appender-ref ref="console" />
+		<!-- <appender-ref ref="fileLogger" /> -->
 	</root>
 	
 </log4j:configuration>
+
+
+
+
+
+

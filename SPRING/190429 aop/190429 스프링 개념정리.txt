@@ -1,0 +1,60 @@
+﻿** 선생님이 제공해주신 Spring_기초.pdf
+
+* 라이브러리
+ -패키지와 패키지 안에 존재하는 클래스들을 압집형태(jar)로 압축 해놓은 것
+ -압축을 푸는게 아니라 압축해놓은 상태로 사용 가능
+
+* 스프링, 전자정부프레임워크
+ -전자정부 프레임워크가 스프링 기반임
+ -오라클이 자바를 유료화 시켰기 때문에 과도기에 있음
+ -jdk를 open jdk로 사용하면 큰 차이가 없음
+
+*프레임워크
+ - 틀
+
+* .NET Framework
+ - c언어(콘솔용, 절차지향, 함수들을 별도의 라이브러리로 하여 import) 기반
+ - c언어+객체지향 = c++
+ - c언어 + gui = winAPI
+ - c++ + gui = 비쥬얼 c++
+ - 비쥬얼 c++ +    = .NET Framework
+ - 설치에 필요한 용량이 커서 구동이 무거움, 유료, 코드 비공개
+ - 실무에선 c# .NET Framework 사용할 수도 있음
+ - Struts : 옛날 코드, 최근엔 사용X
+ - Djago Framework : 파이썬(빅데이터, 머신러닝 등), 빅데이터(하둡이 무겁고, 리눅스에서 사용해야함, R사용시 자바(리눅스기반)
+                            ->파이썬 - C++스크립트 기반
+ - Angular JS : gui대체 
+
+* 스프링의 특징
+ - DI : 다른 클래스에서 클래스를 사용하려고 할 때 자동 객체 생성을 하여 클래스간 의존관계 설정, new 생성자 호출
+ - AOP : 어스펙트 오리엔티드 프로그래밍, 관점지향 프로그래밍, 
+ - JDBC : 
+ - MVC : 
+
+* 스프링 용어
+ - POJO : VO클래스, 캡슐화처리된 클래스
+ - IOC : 제어권이 반대로 뒤집어짐(제어반전), 스프링은 개발자가 아닌 프로젝트를 구동하는 제어권이 스프링한테 있음.
+ - AOP : 비즈니스 메소드(Service,DAO단->MODEL단)에서 반복되는 공통 로직을 분리하여 관리
+
+*스프링의 구성모듈 -각 모듈이 제공하는 기능을 읽어보길
+ - core container : 기본 -> Beans, core, Context, Expression Language
+ - AOP : 
+ - web 모듈 : MVC패턴이 제공
+ - Data Access : DB연동 관련
+
+* 스프링 동작구조
+ - 스프링 컨테이너 : spring-context.xml
+ - spring-context.xml : root-context.xml과 동일 -> spring-context.xml로 변경할 시 web.xml안에서 spring-context.xml로 변경해야 함
+                               ->web.xml관 연결되어 root-context.xml이 제일 먼저 구동됨.
+ - 스프링 웹 : servlet컨테이너(톰캣) - dispatcherServlet이 request요청을 받음, web.xml과 연결->스프링컨테이너에서 spring-context.xml -> 리퀘스트 디스팻쳐 ->(p13에 그림보고 참조)
+
+* MVC구조 (p23 참조) 
+ 구성요소 - 읽어보기
+ - dispatcher Servlet
+ - Handler Mapping
+ - Controller
+ - Model And View
+ - ViewResolver
+ - View
+
+* 프로젝트 폴더구조(p32 참조) 읽어보기

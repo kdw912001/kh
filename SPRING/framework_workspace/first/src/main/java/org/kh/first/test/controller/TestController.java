@@ -39,6 +39,12 @@ public class TestController {
 	@Autowired
 	BCryptPasswordEncoder bcryptPasswordEncoder;
 	
+	//testAOPPage.jsp 내보내기
+	@RequestMapping("moveAOP.do")
+	public String moveAOPPage() {
+		return "test/testAOPPage";
+	}
+	
 	//패스워드 암호화 처리 페이지 내보내기
 	@RequestMapping("testView.do")
 	public String moveCryptoPage() {

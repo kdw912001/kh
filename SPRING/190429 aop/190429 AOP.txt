@@ -1,0 +1,26 @@
+﻿ ** AOP  교재_pdf/5. Spring AOP.pdf 참고
+
+ - 우리가 예전에 했던 JDBC에서 AOP개념을 다룸
+ -> JDBCTemplete을 이용해서 DAO에서 불러옴
+ -> 트랜잭션을 정확히 하기 위해 Service 에서 commit, rollback, close,getConnection 메소드 사용  DAO에서는 SQL문만
+ -> 동일한 코드를 관리 ->관점지향
+ 
+ -> 스프링에서는 commit, rollback, close, getConnection 메소드를 굳이 사용하지 않아도 원하는 시점에서 원하는 메소드가 사용되게 자동으로 알아서 함.
+
+ * p3 Logging 등 공통되는 메소드 호출될 때마다 log.info가 자동으로 동작되게
+ - AOP에 대해 설명할 때는 용어가 중요
+ - p6 After Advice 많이 사용
+ - p7 AOP 핵심 용어 : 소스코드와 연계하여 개념을 설명할 줄 알아야 함.
+
+
+1. header.jsp 에 href에 moveAOP.do 작성
+  - <li><a href="moveAOP.do">AOP란?</a></li>
+2. TestController.java 에 moveAOPPage 메소드 작성 -> testAOPPage.jsp 생성
+3. webapp/resources/images 폴더 가져옴(예전 cssProject로부터)
+4. testAOPPage.jsp 작성
+5. org.kh.first.common 패키지 안에 BeforeAdvice.java 생성 및 작성
+  - logger는 slf4j로 임포트
+6. log4j.xml 안에 아래와 같이 처리 - (파일에 안 써지고 console에 출력되게)
+  <appender-ref ref="console"/>
+	<!-- <appender-ref ref="fileLogger" /> -->
+7. servlet-context.xml 안에 <aop:aspectj-autoproxy proxy-target-class="true" />문장 없으면 logger.info 안됨

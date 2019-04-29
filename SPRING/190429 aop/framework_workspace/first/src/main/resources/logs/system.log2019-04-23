@@ -1,0 +1,4 @@
+[18:46:54][INFO ][HomeController.java:23]: - Welcome home!
+[18:47:05][INFO ][MemberController.java:40]: - login.do run.
+[18:47:08][INFO ][MemberController.java:110]: - myinfo.do run.
+[18:47:43][INFO ][MemberController.java:56]: - logout.do run.
