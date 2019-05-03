@@ -23,4 +23,7 @@
 6. log4j.xml 안에 아래와 같이 처리 - (파일에 안 써지고 console에 출력되게)
   <appender-ref ref="console"/>
 	<!-- <appender-ref ref="fileLogger" /> -->
-7. servlet-context.xml 안에 <aop:aspectj-autoproxy proxy-target-class="true" />문장 없으면 logger.info 안됨
+**********************7. servlet-context.xml 안에 <aop:aspectj-autoproxy proxy-target-class="true" />문장 없으면 logger.info 안됨
+8. AfterAdvice, AfterReturningAdvice, AroundAdvice 작성 임포트시 스프링관련
+9. AfterThrowingAdvice.java 작성
+10.PointcutCommon.java 작성

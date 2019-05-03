@@ -1,0 +1,17 @@
+﻿1. root-context.xml, servlet-context.xml에 aop 설정
+ - servlet-context.xml
+ - root-context.xml namespace에 aop,tx체크
+  -> tx 탭에 들어가서  beans 마우스오른쪽 insert tx advice(id:txAdvice)
+  -> transaction-manager: source에서 transactionManager의 id 입력(transactionManager)
+  ->advice 마우스 오른쪽 ->tx attribute->마우스오른쪽 ->insert method advice->method name:select*
+  ->read-only : true(읽기만 가능하여 커밋은 불가능) ->rollback-for : Exception
+
+  ->attribute 마우스오른쪽->insert method advice->method name: insert*->rollback-for : Exception
+  ->update, delete 추가
+
+  ->tx탭에서 beans 마우스오른쪽 -> insert annotation-driven -> transaction-manager : transactionManager
+  
+ ->aop 탭에서 beans 마우스 오른쪽 ->insert config->proxy-target-class : true(실행시 포인트컷 위치에 위빙되게)
+ ->config마우스오른쪽 -> insert pointcut -> id: servicemethod / expression : execution(* org.kh.first..*Impl.*(..))
+ ->config 마우스 오른쪽 -> insert advisor -> advice-ref* : txAdvice(source에서 txAdvice복붙) / pointcut-ref: serviceMethod (pointcut의 id)
+ 
